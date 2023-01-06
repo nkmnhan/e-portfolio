@@ -1,0 +1,84 @@
+{
+  "name": "e-portfolio",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/e-portfolio/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/e-portfolio",
+        "index": "apps/e-portfolio/src/index.html",
+        "baseHref": "/",
+        "main": "apps/e-portfolio/src/main.tsx",
+        "polyfills": "apps/e-portfolio/src/polyfills.ts",
+        "tsConfig": "apps/e-portfolio/tsconfig.app.json",
+        "assets": [
+          "apps/e-portfolio/src/favicon.ico",
+          "apps/e-portfolio/src/assets"
+        ],
+        "styles": ["apps/e-portfolio/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/e-portfolio/src/environments/environment.ts",
+              "with": "apps/e-portfolio/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "e-portfolio:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "e-portfolio:build:development"
+        },
+        "production": {
+          "buildTarget": "e-portfolio:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/e-portfolio/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/e-portfolio/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

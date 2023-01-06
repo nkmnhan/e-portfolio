@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+    e-portfolio:
+      container_name: e-portfolio
+      build:
+        context: ./
+        dockerfile: ./apps/e-portfolio/Dockerfile
+      ports:
+        - 4900:80
+        - 4200:4200
