@@ -1,7 +1,7 @@
 {
-  "name": "potfolio-api",
+  "name": "portfolio-api",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/potfolio-api/src",
+  "sourceRoot": "apps/portfolio-api/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,10 +10,10 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/potfolio-api",
-        "main": "apps/potfolio-api/src/main.ts",
-        "tsConfig": "apps/potfolio-api/tsconfig.app.json",
-        "assets": ["apps/potfolio-api/src/assets"]
+        "outputPath": "dist/apps/portfolio-api",
+        "main": "apps/portfolio-api/src/main.ts",
+        "tsConfig": "apps/portfolio-api/tsconfig.app.json",
+        "assets": ["apps/portfolio-api/src/assets"]
       },
       "configurations": {
         "production": {
@@ -22,8 +22,8 @@
           "inspect": false,
           "fileReplacements": [
             {
-              "replace": "apps/potfolio-api/src/environments/environment.ts",
-              "with": "apps/potfolio-api/src/environments/environment.prod.ts"
+              "replace": "apps/portfolio-api/src/environments/environment.ts",
+              "with": "apps/portfolio-api/src/environments/environment.prod.ts"
             }
           ]
         }
@@ -32,11 +32,11 @@
     "serve": {
       "executor": "@nrwl/js:node",
       "options": {
-        "buildTarget": "potfolio-api:build"
+        "buildTarget": "portfolio-api:build"
       },
       "configurations": {
         "production": {
-          "buildTarget": "potfolio-api:build:production"
+          "buildTarget": "portfolio-api:build:production"
         }
       }
     },
@@ -44,14 +44,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/potfolio-api/**/*.ts"]
+        "lintFilePatterns": ["apps/portfolio-api/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/potfolio-api/jest.config.ts",
+        "jestConfig": "apps/portfolio-api/jest.config.ts",
         "passWithNoTests": true
       }
     }

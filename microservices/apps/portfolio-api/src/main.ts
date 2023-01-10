@@ -11,7 +11,7 @@ const app = express();
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to potfolio-api!' });
+  res.send({ message: 'Welcome to portfolio-api!' });
 });
 
 const port = process.env.port || 3333;
