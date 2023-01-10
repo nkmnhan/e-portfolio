@@ -18,13 +18,13 @@ services:
       networks:
       - frontend
   keycloak:
-      build: .
-      command: start --optimized 
+      image: quay.io/keycloak/keycloak:latest
+      command: start-dev --db=postgres --db-url=jdbc:postgresql://postgres:5432/keycloak --db-username=keycloak --db-password=password
       environment:
         KEYCLOAK_ADMIN: admin
         KEYCLOAK_ADMIN_PASSWORD: admin
       ports:
-        - 8443:8443
+        - 8080:8080
       depends_on:
         - postgres
       networks:
