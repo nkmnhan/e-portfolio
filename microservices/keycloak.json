@@ -1,13 +1,12 @@
 {
-  "realm": "demo",
-  "auth-server-url": "http://192.168.77.130:8080/",
+  "realm": "e-portfolio",
+  "auth-server-url": "http://localhost:8080/",
   "ssl-required": "external",
-  "resource": "demo-client",
+  "resource": "snowball-internal-api",
   "verify-token-audience": true,
   "credentials": {
-    "secret": "kAZ7sdHTb8URCelMTLoBYaRGx3GM7hgy"
+    "secret": "rbfauuPVbD1GJcGVvFNchLM7u6c9kNhE"
   },
-  "use-resource-role-mappings": true,
   "confidential-port": 0,
   "policy-enforcer": {}
 }
