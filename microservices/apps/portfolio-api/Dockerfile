@@ -11,7 +11,7 @@ FROM node:lts-alpine AS final
 WORKDIR /app
 COPY --from=builder /app/dist/apps/portfolio-api .
 COPY /package.json /package-lock.json ./
-
+COPY /keycloak.json /app/keycloak.json
 ENV PORT=3333
 RUN npm install --production
 # dependencies that express needs

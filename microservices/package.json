@@ -5,7 +5,11 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "keycloak-connect": "^20.0.3",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

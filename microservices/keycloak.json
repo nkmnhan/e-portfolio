@@ -1,0 +1,13 @@
+{
+  "realm": "demo",
+  "auth-server-url": "http://192.168.77.130:8080/",
+  "ssl-required": "external",
+  "resource": "demo-client",
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "kAZ7sdHTb8URCelMTLoBYaRGx3GM7hgy"
+  },
+  "use-resource-role-mappings": true,
+  "confidential-port": 0,
+  "policy-enforcer": {}
+}
