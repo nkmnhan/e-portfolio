@@ -1,14 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
+
+import { useEffect } from "react";
+import auth, { callback } from "./auth";
 
 export function App() {
   return (
     <>
-      <NxWelcome title="e-portfolio" />
+      <button onClick={auth}>click</button>
+      <button onClick={callback}>reload</button>
       <div />
     </>
   );
 }
-
 export default App;

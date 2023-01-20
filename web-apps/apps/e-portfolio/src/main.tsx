@@ -1,3 +1,4 @@
+import Keycloak from 'keycloak-js';
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
