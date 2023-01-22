@@ -1,7 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-import { useEffect } from "react";
-import auth, { callback } from "./auth";
+import { useEffect, useState } from "react";
+import auth, { callback, getToken } from "./auth";
+import axios from 'axios';
 
 export function App() {
   return (
@@ -12,4 +13,5 @@ export function App() {
     </>
   );
 }
+
 export default App;
