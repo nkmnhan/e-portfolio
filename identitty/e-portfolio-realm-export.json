@@ -418,10 +418,32 @@
           "containerId": "656af530-5c59-4a83-be51-eb86a2f5aac5",
           "attributes": {}
         }
+      ],
+      "snowball-web-app": [
+        {
+          "id": "30ac3a8c-84ba-495c-8413-161b6d3c5f11",
+          "name": "uma_protection",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "84da6a69-e55f-4416-abdd-10d76bc0cf7a",
+          "attributes": {}
+        }
       ]
     }
   },
-  "groups": [],
+  "groups": [
+    {
+      "id": "73b630b8-2b0e-479a-b369-c16eab0aed0a",
+      "name": "user-group",
+      "path": "/user-group",
+      "attributes": {},
+      "realmRoles": [
+        "user"
+      ],
+      "clientRoles": {},
+      "subGroups": []
+    }
+  ],
   "defaultRole": {
     "id": "11bde554-5955-43fb-8008-2fb977d0c7f3",
     "name": "default-roles-e-portfolio",
@@ -809,7 +831,9 @@
       "clientAuthenticatorType": "client-secret",
       "secret": "rbfauuPVbD1GJcGVvFNchLM7u6c9kNhE",
       "redirectUris": [
-        "http://localhost:3333/*"
+        "http://localhost:3333/*",
+        "http://localhost:4200/*",
+        "*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -935,6 +959,111 @@
         "scopes": [],
         "decisionStrategy": "UNANIMOUS"
       }
+    },
+    {
+      "id": "84da6a69-e55f-4416-abdd-10d76bc0cf7a",
+      "clientId": "snowball-web-app",
+      "name": "Snowball Web App",
+      "description": "",
+      "rootUrl": "",
+      "adminUrl": "",
+      "baseUrl": "",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": true,
+      "clientAuthenticatorType": "client-secret",
+      "redirectUris": [
+        "http://localhost:4200/*"
+      ],
+      "webOrigins": [
+        "http://localhost:4200"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "client.secret.creation.time": "1674568789",
+        "post.logout.redirect.uris": "http://localhost:4200/*",
+        "oauth2.device.authorization.grant.enabled": "false",
+        "backchannel.logout.revoke.offline.tokens": "false",
+        "use.refresh.tokens": "true",
+        "tls-client-certificate-bound-access-tokens": "false",
+        "oidc.ciba.grant.enabled": "false",
+        "backchannel.logout.session.required": "true",
+        "client_credentials.use_refresh_token": "false",
+        "acr.loa.map": "{}",
+        "require.pushed.authorization.requests": "false",
+        "display.on.consent.screen": "false",
+        "token.response.type.bearer.lower-case": "false"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
+      "protocolMappers": [
+        {
+          "id": "caa9ade7-7885-4b71-8d38-0cd23224aec4",
+          "name": "Client Host",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usersessionmodel-note-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.session.note": "clientHost",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "clientHost",
+            "jsonType.label": "String"
+          }
+        },
+        {
+          "id": "99bc3acc-8966-43db-b862-d9b42f6babfb",
+          "name": "Client IP Address",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usersessionmodel-note-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.session.note": "clientAddress",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "clientAddress",
+            "jsonType.label": "String"
+          }
+        },
+        {
+          "id": "e191161c-b374-4935-a7cf-4678277c267d",
+          "name": "Client ID",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usersessionmodel-note-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.session.note": "clientId",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "clientId",
+            "jsonType.label": "String"
+          }
+        }
+      ],
+      "defaultClientScopes": [
+        "web-origins",
+        "acr",
+        "audience",
+        "profile",
+        "roles",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "offline_access",
+        "microprofile-jwt"
+      ]
     }
   ],
   "clientScopes": [

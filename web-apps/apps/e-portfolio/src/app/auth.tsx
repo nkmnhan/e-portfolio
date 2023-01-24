@@ -3,7 +3,7 @@ import Keycloak from "keycloak-js";
 
 const auth = function initKeycloak() {
     let initOptions = {
-        url: 'http://localhost:8080', realm: 'e-portfolio', clientId: 'pkce', onLoad: 'login-required'
+        url: 'http://localhost:8080', realm: 'e-portfolio', clientId: 'snowball-web-app', onLoad: 'login-required'
     }
 
     let keycloak = new Keycloak(initOptions);
@@ -21,7 +21,7 @@ const auth = function initKeycloak() {
 
 export const callback = function initKeycloak() {
     let initOptions = {
-        url: 'http://localhost:8080', realm: 'e-portfolio', clientId: 'pkce', onLoad: 'login-required'
+        url: 'http://localhost:8080', realm: 'e-portfolio', clientId: 'snowball-web-app', onLoad: 'login-required'
     }
 
     let keycloak = new Keycloak(initOptions);
@@ -50,7 +50,7 @@ export const callback = function initKeycloak() {
 
 export const getToken = () => {
     let initOptions = {
-        url: 'http://localhost:8080', realm: 'e-portfolio', clientId: 'pkce', onLoad: 'login-required'
+        url: 'http://localhost:8080', realm: 'e-portfolio', clientId: 'snowball-web-app', onLoad: 'login-required'
     }
 
     let keycloak = new Keycloak(initOptions);
