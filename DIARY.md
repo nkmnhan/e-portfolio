@@ -30,3 +30,11 @@ COPY --from=builder /app/dist/apps/e-portfolio /usr/share/nginx/html
 - Create Realm roles
 - Create user and set password
 - Assign user to realm role
+
+### 29/Jan/2023
+- ***Research Reactjs and boilerplate template***
+- Read [create-react-app](https://github.com/facebook/create-react-app)
+- If your website is mostly static (for example, a portfolio or a blog), consider using Gatsby or Next.js. Unlike Create React App, Gatsby pre-renders the website into HTML at build time. Next.js supports both server rendering and pre-rendering.
+- Read [@nrwl/next](https://nx.dev/packages/next)
+- https://juristr.com/blog/2021/06/create-nextjs-webapp-nx/
+- Decided to use [Material UI](https://mui.com/material-ui/customization/theming/)
