@@ -1,18 +1,18 @@
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import './styles.css';
+import { SessionProvider } from "next-auth/react"
+import "./styles.css"
 
-function CustomApp({ Component, pageProps }: AppProps) {
+import type { AppProps } from "next/app"
+import type { Session } from "next-auth"
+
+// Use of the <SessionProvider> is mandatory to allow components that call
+// `useSession()` anywhere in your application to access the `session` object.
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps<{ session: Session }>) {
   return (
-    <>
-      <Head>
-        <title>Welcome to e-portfolio!</title>
-      </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
-  );
+    <SessionProvider session={session}>
+      <Component {...pageProps} />
+    </SessionProvider>
+  )
 }
-
-export default CustomApp;

@@ -463,8 +463,8 @@
   "otpPolicyPeriod": 30,
   "otpPolicyCodeReusable": false,
   "otpSupportedApplications": [
-    "totpAppGoogleName",
-    "totpAppFreeOTPName"
+    "totpAppFreeOTPName",
+    "totpAppGoogleName"
   ],
   "webAuthnPolicyRpEntityName": "keycloak",
   "webAuthnPolicySignatureAlgorithms": [
@@ -972,11 +972,14 @@
       "enabled": true,
       "alwaysDisplayInConsole": true,
       "clientAuthenticatorType": "client-secret",
+      "secret": "yEoCLyCu5AyyCIdr7kVQjleKqQDSjapW",
       "redirectUris": [
+        "http://localhost:3000/*",
         "http://localhost:4200/*"
       ],
       "webOrigins": [
-        "http://localhost:4200"
+        "http://localhost:4200",
+        "http://localhost:3000"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -985,12 +988,12 @@
       "implicitFlowEnabled": false,
       "directAccessGrantsEnabled": true,
       "serviceAccountsEnabled": false,
-      "publicClient": true,
+      "publicClient": false,
       "frontchannelLogout": true,
       "protocol": "openid-connect",
       "attributes": {
-        "client.secret.creation.time": "1674568789",
-        "post.logout.redirect.uris": "http://localhost:4200/*",
+        "client.secret.creation.time": "1675223487",
+        "post.logout.redirect.uris": "http://localhost:4200/*##http://localhost:3000",
         "oauth2.device.authorization.grant.enabled": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
         "use.refresh.tokens": "true",
@@ -998,8 +1001,8 @@
         "oidc.ciba.grant.enabled": "false",
         "backchannel.logout.session.required": "true",
         "client_credentials.use_refresh_token": "false",
-        "acr.loa.map": "{}",
         "require.pushed.authorization.requests": "false",
+        "acr.loa.map": "{}",
         "display.on.consent.screen": "false",
         "token.response.type.bearer.lower-case": "false"
       },
@@ -1276,7 +1279,7 @@
     {
       "id": "f8ef7afd-1dc9-41f2-b66d-393b83677ca9",
       "name": "audience",
-      "description": "OpenID Connect built-in scope: audience",
+      "description": "Tony OpenID Connect built-in scope: audience",
       "protocol": "openid-connect",
       "attributes": {
         "include.in.token.scope": "true",
@@ -1632,7 +1635,31 @@
   "enabledEventTypes": [],
   "adminEventsEnabled": false,
   "adminEventsDetailsEnabled": false,
-  "identityProviders": [],
+  "identityProviders": [
+    {
+      "alias": "google",
+      "internalId": "e2d7d2bd-502d-4067-9518-9f39d543f9fb",
+      "providerId": "google",
+      "enabled": true,
+      "updateProfileFirstLoginMode": "on",
+      "trustEmail": false,
+      "storeToken": false,
+      "addReadTokenRoleOnCreate": false,
+      "authenticateByDefault": false,
+      "linkOnly": false,
+      "firstBrokerLoginFlowAlias": "first broker login",
+      "config": {
+        "hideOnLoginPage": "false",
+        "offlineAccess": "false",
+        "acceptsPromptNoneForwardFromClient": "false",
+        "clientId": "344067178544-8hr4hpdsn0rnu17rejcms5u4te3htkv6.apps.googleusercontent.com",
+        "disableUserInfo": "false",
+        "syncMode": "IMPORT",
+        "userIp": "false",
+        "clientSecret": "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"
+      }
+    }
+  ],
   "identityProviderMappers": [],
   "components": {
     "org.keycloak.services.clientregistration.policy.ClientRegistrationPolicy": [
@@ -2493,7 +2520,7 @@
     "cibaInterval": "5",
     "realmReusableOtpCode": "false"
   },
-  "keycloakVersion": "20.0.2",
+  "keycloakVersion": "20.0.3",
   "userManagedAccessAllowed": false,
   "clientProfiles": {
     "profiles": []

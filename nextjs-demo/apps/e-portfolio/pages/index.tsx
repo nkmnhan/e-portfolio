@@ -3,6 +3,7 @@ import utilStyles from '../styles/utils.module.scss';
 import Link from 'next/link';
 import Date from '../components/date';
 import { getSortedPostsData } from '../libs/post';
+import LoginBtn from '../components/login-btn';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -16,6 +17,7 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
+      <LoginBtn></LoginBtn>
       {/* Keep the existing code here */}
 
       {/* Add this <section> tag below the existing <section> tag */}
