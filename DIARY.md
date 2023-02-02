@@ -38,3 +38,11 @@ COPY --from=builder /app/dist/apps/e-portfolio /usr/share/nginx/html
 - Read [@nrwl/next](https://nx.dev/packages/next)
 - https://juristr.com/blog/2021/06/create-nextjs-webapp-nx/
 - Decided to use [Material UI](https://mui.com/material-ui/customization/theming/)
+
+### 31/Jan/2023
+- Use next-auth to build authentication with Google, Keycloak providers
+
+### 02/Feb/2023
+- Research Nextjs and serverless
+- Read [serverless-nextjs](https://www.serverless.com/examples/serverless-nextjs)
+- Read [sst.dev](https://sst.dev/) and [stt-dev example](https://sst.dev/examples/how-to-create-a-nextjs-app-with-serverless.html)
