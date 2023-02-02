@@ -38,7 +38,7 @@ export function getSortedPostsData() {
 }
 
 export function getAllPostIds() {
-    const fileNames = fs.readdirSync(postsDirectory);
+    const fileNames = fs.readdirSync(postsDirectory).filter(x => x.endsWith('.md'));
 
     // Returns an array that looks like this:
     // [
