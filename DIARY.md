@@ -46,3 +46,4 @@ COPY --from=builder /app/dist/apps/e-portfolio /usr/share/nginx/html
 - Research Nextjs and serverless
 - Read [serverless-nextjs](https://www.serverless.com/examples/serverless-nextjs)
 - Read [sst.dev](https://sst.dev/) and [stt-dev example](https://sst.dev/examples/how-to-create-a-nextjs-app-with-serverless.html)
+- Read [event-driven-architecture](https://serverlessland.com/event-driven-architecture/visuals)
