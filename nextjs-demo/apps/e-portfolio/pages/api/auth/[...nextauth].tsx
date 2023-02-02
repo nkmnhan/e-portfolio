@@ -1,15 +1,24 @@
 import NextAuth from "next-auth"
-import GithubProvider from "next-auth/providers/github";
 import KeycloakProvider from "next-auth/providers/keycloak";
-
-export const authOptions= {
+import GoogleProvider from "next-auth/providers/google";
+import FacebookProvider from "next-auth/providers/facebook"
+export const authOptions = {
     // Configure one or more authentication providers
     providers: [
-        KeycloakProvider({
-            clientId: 'snowball-web-app',
-            clientSecret: 'yEoCLyCu5AyyCIdr7kVQjleKqQDSjapW',
-            issuer: 'http://localhost:8080/realms/e-portfolio',
-          })
+        // KeycloakProvider({
+        //     clientId: 'snowball-web-app',
+        //     clientSecret: 'yEoCLyCu5AyyCIdr7kVQjleKqQDSjapW',
+        //     issuer: 'http://localhost:8080/realms/e-portfolio',
+        // }),
+        GoogleProvider({
+            clientId: '344067178544-8hr4hpdsn0rnu17rejcms5u4te3htkv6.apps.googleusercontent.com',
+            clientSecret: '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'
+        }),
+        FacebookProvider({
+            clientId: '1551326005367439',
+            clientSecret: 'a78c4003233f93e5032f81ae0dbe2d94'
+        }
+        )
         // ...add more providers here
     ],
     callbacks: {
