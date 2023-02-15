@@ -9,9 +9,9 @@
   "devDependencies": {
     "vitest": "^0.28.5",
     "@types/node": "^18.13.0",
-    "sst": "^2.0.18"
+    "sst": "^2.0.23"
   },
   "dependencies": {
-    "sst": "^2.0.18"
+    "sst": "^2.0.23"
   }
 }
