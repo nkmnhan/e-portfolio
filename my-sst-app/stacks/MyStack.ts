@@ -11,6 +11,10 @@ export function API({ stack }: StackContext) {
   // });
   const site = new NextjsSite(stack, "my-nextjs-site", {
     path: "my-nextjs-app/",
+    customDomain: {
+      domainName: "nkmnhan.com",
+      domainAlias: "www.nkmnhan.com",
+    },
   });
 
   stack.addOutputs({
