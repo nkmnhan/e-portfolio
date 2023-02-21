@@ -2,13 +2,13 @@ import type { NextPageWithLayout } from './_app'
 import Layout from '../components/layout'
 import NavBar from '../components/nav-bar'
 
-const Index: NextPageWithLayout = () => {
-    return <h1>Tony OK!</h1>
-  }
+const ContactPage: NextPageWithLayout = () => {
+  return <h1>Contact, Next.js!</h1>
+}
 
-  export default Index
+export default ContactPage
 
-Index.getLayout = function getLayout(page: React.ReactElement) {
+ContactPage.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <Layout>
       <NavBar />
