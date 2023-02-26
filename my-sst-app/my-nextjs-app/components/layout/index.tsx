@@ -1,5 +1,5 @@
 import Head from 'next/head'
-
+import NavBar from '../nav-bar'
 type LayoutProps = {
   children: React.ReactNode
 }
@@ -10,7 +10,8 @@ export default function Layout({ children }: LayoutProps) {
       <Head>
         <title>Layouts Example</title>
       </Head>
-      <main>{children}</main>
+      <NavBar></NavBar>
+      <main><div className="bg-white dark:bg-black">{children}</div></main>
     </>
   )
 }
