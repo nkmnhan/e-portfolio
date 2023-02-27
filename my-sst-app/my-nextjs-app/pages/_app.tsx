@@ -1,23 +1,14 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-import type { NextPage } from 'next'
-import { ThemeProvider } from 'next-themes'
-import NavBar from '@/components/nav-bar'
-import Layout from '@/components/layout'
+import Layout from "@/components/layout";
+import "@/styles/globals.css";
+import { ThemeProvider } from "next-themes";
+import type { AppProps } from "next/app";
 
-export type NextPageWithLayout = NextPage & {
-  getLayout?: (page: React.ReactElement) => React.ReactNode
-}
-
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
-}
-
-export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class">
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </ThemeProvider>)
+    </ThemeProvider>
+  );
 }

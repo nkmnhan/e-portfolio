@@ -61,7 +61,18 @@ npm run build
 npm run deploy
 ```
 ### 16/Feb/2023
-My first serverless site was online [https://www.nkmnhan.com](https://www.nkmnhan.com)
+- My first serverless site was online [https://www.nkmnhan.com](https://www.nkmnhan.com)
 
 ### 17/Feb/2023
-Read prisma and use supabase for Postgres [reference](https://supabase.com/docs/guides/integrations/prisma#configuring-the-project-to-use-postgresql)
+- Read prisma and use supabase for Postgres [reference](https://supabase.com/docs/guides/integrations/prisma#configuring-the-project-to-use-postgresql)
+
+### 20/Feb/2023
+- Read [tailwindcss.com](https://tailwindcss.com/)
+
+### 27/Feb/2023
+- Config the my-nextjs-app
+Follow [editor-setup](https://tailwindcss.com/docs/editor-setup)
+Run prettier to formart the code
+```
+yarn prettier --write .
+```
