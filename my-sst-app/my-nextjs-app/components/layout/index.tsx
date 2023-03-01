@@ -8,7 +8,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <Head>
-        <title>Layouts Example</title>
+        <title>Tony (NKMNHAN)</title>
       </Head>
       <NavBar></NavBar>
       <main>
