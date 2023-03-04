@@ -12,7 +12,7 @@ const HomePage = () => {
             ></source>
           </video>
         </div>
-        <div className="absolute top-0 h-full w-full bg-[url('/home-dots.png')]  bg-[length:3px_3px]"></div>
+        <div className="hidden md:block absolute top-0 h-full w-full bg-[url('/home-dots.png')]  bg-[length:3px_3px]"></div>
       </div>
       <div className=" fixed top-0 left-0 w-full h-screen -z-40">
         <div className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
