@@ -11,7 +11,7 @@ export default function Layout({ children }: LayoutProps) {
       <Head>
         <title>Tony (NKMNHAN)</title>
       </Head>
-      <NavBar/>
+      <NavBar />
       <main>
         <div className="bg-white dark:bg-black">{children}</div>
       </main>

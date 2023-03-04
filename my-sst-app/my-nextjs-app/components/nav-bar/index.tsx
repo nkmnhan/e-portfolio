@@ -17,13 +17,13 @@ const navigations: NavigationProps[] = [
 
 export default function NavBar() {
   return (
-    <div className="fixed top-4 left-4 md:top-12 md:left-20 w-full max-w-sm">
+    <div className="fixed top-4 left-4 w-full max-w-sm md:top-12 md:left-20">
       <Popover className="relative">
         {({ open }) => (
           /* Use the `open` state to conditionally change the direction of the chevron icon. */
           <>
-            <Popover.Button className="w-14 h-14 inline-block p-0 border-0 m-0 focus-visible:outline-none">
-              <HamburgerBtn active={open}/>
+            <Popover.Button className="m-0 inline-block h-14 w-14 border-0 p-0 focus-visible:outline-none">
+              <HamburgerBtn active={open} />
             </Popover.Button>
             <Transition
               as={Fragment}
@@ -37,9 +37,10 @@ export default function NavBar() {
               <Popover.Panel className="max-w-sms absolute z-10 w-full">
                 {({ close }) => (
                   <div className="overflow-hidden">
-                    <div className="relative grid text-white font-bold pr-10 md:pr-0 md:pt-7">
+                    <div className="relative grid pr-10 font-bold text-white md:pr-0 md:pt-7">
                       {navigations.map((item) => (
-                        <Link key={item.href}
+                        <Link
+                          key={item.href}
                           className="my-0 flex w-full items-center border-b border-white p-2 transition duration-150 ease-in-out first:border-t focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                           href={item.href}
                           onClick={() => close()}
