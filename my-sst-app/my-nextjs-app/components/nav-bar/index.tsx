@@ -39,7 +39,7 @@ export default function NavBar() {
                   <div className="overflow-hidden">
                     <div className="relative grid text-white font-bold pr-10 md:pr-0 md:pt-7">
                       {navigations.map((item) => (
-                        <Link
+                        <Link key={item.href}
                           className="my-0 flex w-full items-center border-b border-white p-2 transition duration-150 ease-in-out first:border-t focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                           href={item.href}
                           onClick={() => close()}
