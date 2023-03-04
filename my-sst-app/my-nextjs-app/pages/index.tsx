@@ -4,7 +4,7 @@ const HomePage = () => {
   return (
     <>
       <div className="bg-center fixed -z-50 h-screen w-full bg-red-900 bg-none bg-cover">
-        <div className="absolute top-0 -z-50 hidden h-full w-full lg:block">
+        <div className="absolute top-0 -z-50 hidden h-full w-full md:block">
           <video autoPlay loop muted className=" min-w-full min-h-full">
             <source
               src="https://mindbender.com/content/videos/starting-page-video.mp4"
