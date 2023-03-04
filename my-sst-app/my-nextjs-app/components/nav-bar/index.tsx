@@ -22,7 +22,7 @@ export default function NavBar() {
         {({ open }) => (
           /* Use the `open` state to conditionally change the direction of the chevron icon. */
           <>
-            <Popover.Button className="w-14 h-14">
+            <Popover.Button className="w-14 h-14 inline-block p-0 border-0 m-0 focus-visible:outline-none">
               <HamburgerBtn active={open}/>
             </Popover.Button>
             <Transition
