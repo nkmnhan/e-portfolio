@@ -41,7 +41,7 @@ export default function NavBar() {
                       {navigations.map((item) => (
                         <Link
                           key={item.href}
-                          className="my-0 flex w-full items-center border-b border-white p-2 transition duration-150 ease-in-out first:border-t focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                          className="my-0 flex w-full items-center border-b border-white p-2 transition delay-75 duration-150 ease-in-out first:border-t focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                           href={item.href}
                           onClick={() => close()}
                         >
