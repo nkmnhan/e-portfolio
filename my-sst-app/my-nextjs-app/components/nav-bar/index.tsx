@@ -17,7 +17,7 @@ const navigations: NavigationProps[] = [
 
 export default function NavBar() {
   return (
-    <div className="fixed top-4 left-4 w-full max-w-sm md:top-12 md:left-20">
+    <div className="fixed top-4 left-4 w-full max-w-sm md:top-12 md:left-20 z-50">
       <Popover className="relative">
         {({ open }) => (
           /* Use the `open` state to conditionally change the direction of the chevron icon. */
