@@ -71,13 +71,15 @@ export default function NavBar() {
                     </div>
                     <div className="flex flex-row bg-gray-50 p-4">
                       {socialContacts.map((item) => (
-                        <Link
+                        <a
                           id={item.id}
-                          href={item.href}
                           className=" flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href={item.href}
                         >
                           <div className=" h-6 w-6">{item.icon}</div>
-                        </Link>
+                        </a>
                       ))}
                     </div>
                   </div>
