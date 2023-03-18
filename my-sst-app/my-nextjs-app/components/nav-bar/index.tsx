@@ -31,7 +31,7 @@ const socialContacts: NavigationProps[] = [
   { id: "linkedin", name: "LinkedIn", href: "##", icon: LinkedInIco() },
 ];
 
-export default function NavBar() {
+export default function NavBar({isHomePage}:{isHomePage?: boolean}) {
   return (
     <div className="fixed top-4 left-4 z-50 w-full max-w-sm md:top-8 md:left-8">
       <Popover className="relative">
@@ -39,7 +39,7 @@ export default function NavBar() {
           /* Use the `open` state to conditionally change the direction of the chevron icon. */
           <>
             <Popover.Button className="m-0 inline-block h-14 w-14 border-0 p-0 focus-visible:outline-none">
-              <HamburgerBtn active={open} />
+              <HamburgerBtn active={open} invert={isHomePage}/>
             </Popover.Button>
             <Transition
               as={Fragment}
