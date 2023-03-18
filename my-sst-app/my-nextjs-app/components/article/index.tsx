@@ -5,6 +5,8 @@ export type ArticleProp = {
   date: Date;
   title: string;
   description: string;
+  role: string
+  responsibility: string;
   url?: string;
 };
 
@@ -53,7 +55,7 @@ function smTimePoint(date: Date) {
 
 function mdTimePoint(date: Date) {
   return (
-    <time className="mt-1 md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500" dateTime="2022-07-14">July 14, 2022</time>
+    <time className="mt-1 md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500" dateTime="2022-07-14">{format(date, 'LLL yyyy')}</time>
 );
 }
 
@@ -70,8 +72,20 @@ export default function Article({ props }: { props: ArticleProp }) {
             </a>
           </h2>
           {smTimePoint(props.date)}
+          <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400 italic">
+            {props.role}
+          </p>
           <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
             {props.description}
+          </p>
+          <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400 font-semibold">Main responsibilities:</p>
+          <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+          - TBC
+          </p>
+          <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400 font-semibold">Main 
+          Technologies:</p>
+          <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+          - TBC
           </p>
           {readArticle(props.url)}
         </div>

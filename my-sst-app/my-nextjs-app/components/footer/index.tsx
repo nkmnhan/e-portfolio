@@ -12,27 +12,27 @@ export default function Footer({ isHomePage }: { isHomePage: boolean }) {
               <div className="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
                 <a
                   className="transition hover:text-teal-500 dark:hover:text-teal-400"
+                  href="/"
+                >
+                  Home
+                </a>
+                <a
+                  className="transition hover:text-teal-500 dark:hover:text-teal-400"
                   href="/about"
                 >
                   About
                 </a>
                 <a
                   className="transition hover:text-teal-500 dark:hover:text-teal-400"
-                  href="/projects"
+                  href="/gallary"
                 >
-                  Projects
+                  Gallary
                 </a>
                 <a
                   className="transition hover:text-teal-500 dark:hover:text-teal-400"
-                  href="/speaking"
+                  href="/contact"
                 >
-                  Speaking
-                </a>
-                <a
-                  className="transition hover:text-teal-500 dark:hover:text-teal-400"
-                  href="/uses"
-                >
-                  Uses
+                  Contact
                 </a>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
