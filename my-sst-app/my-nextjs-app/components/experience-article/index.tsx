@@ -1,12 +1,13 @@
-import { title } from "process";
-import { compareAsc, format } from 'date-fns'
+import { format } from 'date-fns'
+import { Disclosure } from '@headlessui/react'
+import { ChevronUpIcon } from '@heroicons/react/20/solid'
 
-export type ArticleProp = {
+export type ExperienceProp = {
   date: Date;
   title: string;
   description: string;
   role: string
-  responsibility: string;
+  responsibility?: string;
   url?: string;
 };
 
@@ -48,18 +49,18 @@ function smTimePoint(date: Date) {
       >
         <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span>
       </span>
-      {format(date, 'LLL d, yyyy')}
+      {format(date, 'LLL, yyyy')}
     </time>
   );
 }
 
 function mdTimePoint(date: Date) {
   return (
-    <time className="mt-1 md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500" dateTime="2022-07-14">{format(date, 'LLL yyyy')}</time>
+    <time className="mt-1 hidden md:block relative z-10 order-first mb-3 items-center text-sm text-zinc-400 dark:text-zinc-500" dateTime="2022-07-14">{format(date, 'LLL yyyy')}</time>
 );
 }
 
-export default function Article({ props }: { props: ArticleProp }) {
+export default function Article({ props }: { props: ExperienceProp }) {
   return (
     <>
       <article className="md:grid md:grid-cols-4 md:items-baseline">

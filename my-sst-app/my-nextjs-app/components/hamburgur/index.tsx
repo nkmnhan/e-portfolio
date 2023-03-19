@@ -1,12 +1,14 @@
 export type HamburgerBtnProp = {
   active: boolean;
-  invert?: boolean
+  invert?: boolean;
 };
 
 export default function HamburgerBtn({ active, invert }: HamburgerBtnProp) {
   return (
     <>
-      <span className={`relative inline-block h-10 w-10 ${invert ? "invert" : ""}`}>
+      <span
+        className={`relative inline-block h-10 w-10 ${invert ? "invert" : ""}`}
+      >
         {active ? BarX() : Bar3()}
         {/* {Bar3()}
         {BarX()} */}

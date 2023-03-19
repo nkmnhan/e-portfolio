@@ -1,10 +1,10 @@
-import { parseISO, format } from 'date-fns';
+import { parseISO, format } from "date-fns";
 
 export type DateProps = {
-  datetime: string
-}
+  datetime: string;
+};
 
 export default function Date({ datetime, ...chi }: DateProps) {
   const date = parseISO(datetime);
-  return <time dateTime={datetime}>{format(date, 'LLLL d, yyyy')}</time>;
+  return <time dateTime={datetime}>{format(date, "LLLL d, yyyy")}</time>;
 }

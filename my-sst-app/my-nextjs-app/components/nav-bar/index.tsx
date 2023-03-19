@@ -2,9 +2,7 @@ import { Popover, Transition } from "@headlessui/react";
 import Link from "next/link";
 import { Fragment } from "react";
 import HamburgerBtn from "../hamburgur";
-import InstagramIco from "../icons/instagram";
-import GithhubIco from "../icons/github";
-import LinkedInIco from "../icons/linkedin";
+import { navigations, socialContacts } from "@/data/common";
 
 export type NavigationProps = {
   id: string;
@@ -13,25 +11,7 @@ export type NavigationProps = {
   icon?: JSX.Element;
 };
 
-const navigations: NavigationProps[] = [
-  { id: "home", name: "Home", href: "/" },
-  { id: "about", name: "About", href: "/about" },
-  { id: "gallary", name: "Gallary", href: "/gallary" },
-  { id: "contact", name: "Contact", href: "/contact" },
-];
-
-const socialContacts: NavigationProps[] = [
-  { id: "instagram", name: "Instagram", href: "#", icon: InstagramIco() },
-  {
-    id: "github",
-    name: "Github",
-    href: "https://github.com/nkmnhan",
-    icon: GithhubIco(),
-  },
-  { id: "linkedin", name: "LinkedIn", href: "##", icon: LinkedInIco() },
-];
-
-export default function NavBar({isHomePage}:{isHomePage?: boolean}) {
+export default function NavBar({ isHomePage }: { isHomePage?: boolean }) {
   return (
     <div className="fixed top-4 left-4 z-50 w-full max-w-sm md:top-8 md:left-8">
       <Popover className="relative">
@@ -39,7 +19,7 @@ export default function NavBar({isHomePage}:{isHomePage?: boolean}) {
           /* Use the `open` state to conditionally change the direction of the chevron icon. */
           <>
             <Popover.Button className="m-0 inline-block h-14 w-14 border-0 p-0 focus-visible:outline-none">
-              <HamburgerBtn active={open} invert={isHomePage}/>
+              <HamburgerBtn active={open} invert={isHomePage} />
             </Popover.Button>
             <Transition
               as={Fragment}

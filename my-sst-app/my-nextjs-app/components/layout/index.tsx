@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 export default function Layout({ children }: LayoutProps) {
   const router = useRouter();
-  const isHomePage = router.pathname === '/';
+  const isHomePage = router.pathname === "/";
   return (
     <>
       <Head>
@@ -18,7 +18,7 @@ export default function Layout({ children }: LayoutProps) {
       <main>
         <div className="bg-white dark:bg-black">{children}</div>
       </main>
-      <Footer isHomePage={isHomePage}/>
+      <Footer isHomePage={isHomePage} />
     </>
   );
 }
