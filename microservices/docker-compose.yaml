@@ -1,9 +1,0 @@
-version: '3'
-
-services:
-  portfolio-api:
-      build:
-        context: .
-        dockerfile: apps/portfolio-api/Dockerfile
-      ports:
-        - 3333:3333
