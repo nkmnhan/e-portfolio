@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "./components/nav-bar";
-import ThemeSwitcher from "./components/theme-switcher";
-import Script from "next/script";
+import { DarkThemeToggle } from "flowbite-react";
+import { ThemeModeScript } from "flowbite-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <ThemeModeScript />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -35,7 +38,7 @@ export default function RootLayout({
           <NavBar />
           {/* Floating ThemeSwitcher */}
           <div className="fixed bottom-6 left-6 z-50">
-            <ThemeSwitcher />
+            <DarkThemeToggle />
           </div>
           <main>{children}</main>
         </div>

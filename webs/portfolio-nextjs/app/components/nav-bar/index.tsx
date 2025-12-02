@@ -1,52 +1,101 @@
+
 "use client";
+
+import {
+    Drawer,
+    DrawerHeader,
+    DrawerItems,
+    Sidebar,
+    SidebarItem,
+    SidebarItemGroup,
+    SidebarItems,
+    TextInput} from "flowbite-react";
 import { useState } from "react";
+import {
+    HiClipboard,
+    HiCollection,
+    HiInformationCircle,
+    HiSearch,
+} from "react-icons/hi";
 import HamburgerBtn from "../hamburger-btn";
-import Link from 'next/link';
-import { usePathname } from "next/navigation";
+
+const navLinks = [
+    { href: "/", label: "Home", navLabel: "Menu" },
+    { href: "/work", label: "Work", navLabel: "Work" },
+    { href: "/clients", label: "Clients", navLabel: "Clients" },
+    { href: "/about", label: "About Us", navLabel: "About Us" },
+    { href: "/contact", label: "Contact", navLabel: "Contact" },
+];
 
 export function NavBar() {
-    const [open, setOpen] = useState(false);
-    const pathname = usePathname();
+    const [isOpen, setIsOpen] = useState(true);
+    const [navLabel, setNavLabel] = useState(navLinks[0].label);
+    const handleClose = () => setIsOpen(false);
 
-    const navLinks = [
-        { href: "/", label: "Home" },
-        { href: "/work", label: "Work" },
-        { href: "/clients", label: "Clients" },
-        { href: "/about", label: "About Us" },
-        { href: "/contact", label: "Contact" },
-    ];
+    // Get current path
+    if (typeof window !== "undefined") {
+        const currentPath = window.location.pathname;
+        const currentLink = navLinks.find(link => link.href === currentPath);
+        if (!isOpen && currentLink && navLabel !== currentLink.label) {
+            setNavLabel(currentLink.label);
+        }
+    }
+
     return (
         <>
             {/* Animated Hamburger Button */}
             <div
-                className={`fixed z-50 transition-all duration-300
-                    ${open
-                        ? "top-6 left-48"
+                className={`fixed z-50 transition-all duration-200 flex items-center gap-2
+                    ${isOpen
+                        ? "top-6 left-84"
                         : "top-6 left-6"}
                 `}
                 style={{ position: "fixed" }}
             >
-                <HamburgerBtn active={open} onClick={() => setOpen(!open)} />
+                <HamburgerBtn id="nav-btn" active={isOpen} onClick={() => setIsOpen(!isOpen)} />
+                <h5
+                    className={`text-l font-bold ${isOpen ? 'text-white dark:text-white' : 'text-gray-900 dark:text-white'}`}
+                >
+                    {isOpen ? "Close" : navLabel}
+                </h5>
             </div>
-            {/* Drawer */}
-            <nav
-                className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-40 transform transition-transform duration-300 ${open ? "translate-x-0" : "-translate-x-full"} `}
-            >
-                <div className="flex flex-col h-full p-6 relative">
-                    <ul className="space-y-4 text-lg font-semibold mt-12">
-                        {navLinks.map(link => (
-                            <li key={link.href}>
-                                <Link
-                                    href={link.href}
-                                    className={`hover:text-blue-500 ${pathname === link.href ? "text-blue-600 underline" : ""}`}
-                                >
-                                    {link.label}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </nav>
+            <Drawer open={isOpen} onClose={handleClose}>
+                <DrawerHeader title="MENU" titleIcon={() => <></>} closeIcon={() => <></>} />
+                <DrawerItems>
+                    <Sidebar
+                        aria-label="Sidebar with multi-level dropdown example"
+                        className="[&>div]:bg-transparent [&>div]:p-0"
+                    >
+                        <div className="flex h-full flex-col justify-between py-2">
+                            <div>
+                                <form className="pb-3 md:hidden">
+                                    <TextInput icon={HiSearch} type="search" placeholder="Search" required size={32} />
+                                </form>
+                                <SidebarItems>
+                                    <SidebarItemGroup>
+                                        {navLinks.map(link => (
+                                            <SidebarItem key={link.href} href={link.href}>
+                                                {link.label}
+                                            </SidebarItem>
+                                        ))}
+                                    </SidebarItemGroup>
+                                    <SidebarItemGroup>
+                                        <SidebarItem href="https://github.com/themesberg/flowbite-react/" icon={HiClipboard}>
+                                            Docs
+                                        </SidebarItem>
+                                        <SidebarItem href="https://flowbite-react.com/" icon={HiCollection}>
+                                            Components
+                                        </SidebarItem>
+                                        <SidebarItem href="https://github.com/themesberg/flowbite-react/issues" icon={HiInformationCircle}>
+                                            Help
+                                        </SidebarItem>
+                                    </SidebarItemGroup>
+                                </SidebarItems>
+                            </div>
+                        </div>
+                    </Sidebar>
+                </DrawerItems>
+            </Drawer>
         </>
     );
 }
