@@ -9,7 +9,8 @@ import {
     SidebarItem,
     SidebarItemGroup,
     SidebarItems,
-    TextInput} from "flowbite-react";
+    TextInput
+} from "flowbite-react";
 import { useState } from "react";
 import {
     HiClipboard,
@@ -20,11 +21,11 @@ import {
 import HamburgerBtn from "../hamburger-btn";
 
 const navLinks = [
-    { href: "/", label: "Home", navLabel: "Menu" },
-    { href: "/work", label: "Work", navLabel: "Work" },
-    { href: "/clients", label: "Clients", navLabel: "Clients" },
-    { href: "/about", label: "About Us", navLabel: "About Us" },
-    { href: "/contact", label: "Contact", navLabel: "Contact" },
+    { id: "nav-home", href: "/", label: "Home", navLabel: "Menu" },
+    { id: "nav-work", href: "/work", label: "Work", navLabel: "Work" },
+    { id: "nav-clients", href: "/clients", label: "Clients", navLabel: "Clients" },
+    { id: "nav-about", href: "/about", label: "About Us", navLabel: "About Us" },
+    { id: "nav-contact", href: "/contact", label: "Contact", navLabel: "Contact" },
 ];
 
 export function NavBar() {
@@ -59,7 +60,7 @@ export function NavBar() {
                     {isOpen ? "Close" : navLabel}
                 </h5>
             </div>
-            <Drawer open={isOpen} onClose={handleClose}>
+            <Drawer id="drawer" open={isOpen} onClose={handleClose}>
                 <DrawerHeader title="MENU" titleIcon={() => <></>} closeIcon={() => <></>} />
                 <DrawerItems>
                     <Sidebar
@@ -74,7 +75,7 @@ export function NavBar() {
                                 <SidebarItems>
                                     <SidebarItemGroup>
                                         {navLinks.map(link => (
-                                            <SidebarItem key={link.href} href={link.href}>
+                                            <SidebarItem id={link.id} key={link.id} href={link.href}>
                                                 {link.label}
                                             </SidebarItem>
                                         ))}
