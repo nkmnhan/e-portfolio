@@ -4,10 +4,8 @@ import { TabItem, Tabs } from "flowbite-react";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 import MasonryLayout from "../components/masonry-layout";
-import Image from "next/image";
 import IMAGE_URLS from "./data";
 import ImageCard from "../components/image-card";
-import { url } from "inspector/promises";
 
 export default function Work() {
   return (
@@ -16,11 +14,11 @@ export default function Work() {
         <TabItem active title="Profile" icon={HiUserCircle}>
           <div className="max-h-[70vh] md:max-h-[80vh] overflow-y-auto pr-2 hide-scrollbar">
             <MasonryLayout>
-              {IMAGE_URLS.map((url, idx) => {
-                // Randomize image height for testing (between 120px and 320px)
-                const randomHeight = 120 + Math.floor(Math.random() * 200);
+              {IMAGE_URLS.map((url) => {
+                // Randomize image height for testing (between 320px and 520px)
+                const randomHeight = 320 + Math.floor(Math.random() * 200);
                 return (
-                  <ImageCard className="w-full" style={{ height: randomHeight, position: 'relative' }} key={idx} src={url} alt={`Work image ${idx + 1}`} loading="lazy" />
+                  <ImageCard className="w-full" style={{ height: randomHeight, position: 'relative' }} key={url.id} src={url.poster} alt={`Work image ${url.id}`} loading="lazy" title={`Project number ${url.id}`} description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
                 );
               })}
             </MasonryLayout>
