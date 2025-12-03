@@ -12,7 +12,15 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 import HamburgerBtn from "../hamburger-btn";
-import { FaFacebook, FaInstagram, FaYoutube, FaEnvelope } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaYoutube,
+  FaEnvelope,
+  FaCopyright,
+  FaPhone,
+  FaAddressCard,
+} from "react-icons/fa";
 
 const navLinks = [
   { id: "nav-home", href: "/", label: "Home", navLabel: "Menu" },
@@ -71,15 +79,7 @@ export function NavBar() {
           active={isOpen}
           onClick={() => setIsOpen(!isOpen)}
         />
-        <h5
-          className={`text-l font-bold ${
-            isOpen
-              ? "text-white dark:text-white"
-              : currentPath === "/"
-              ? "text-white"
-              : "text-gray-900 dark:text-white"
-          }`}
-        >
+        <h5 className="text-l font-bold  text-white">
           {isOpen ? "Close" : navLabel}
         </h5>
       </div>
@@ -111,14 +111,16 @@ export function NavBar() {
                   </SidebarItemGroup>
                   <SidebarItemGroup>
                     {/* Astronaut image */}
-                    <div className="flex justify-center my-2">
-                      <Image
-                        src="/astronaut.png"
-                        alt="Astronaut"
-                        className="mx-auto min-w-[100px]"
-                        width={150}
-                        height={100}
-                      />
+                    <div className="flex justify-center my-2 h-54 items-center">
+                      <span className="hover:animate-bounce block w-full h-full flex items-center justify-center">
+                        <Image
+                          src="/astronaut.png"
+                          alt="Astronaut"
+                          className="mx-auto min-w-[100px] m-6"
+                          width={150}
+                          height={100}
+                        />
+                      </span>
                     </div>
                     {/* Social icons row */}
                     <div className="flex justify-center gap-4 my-2">
@@ -131,11 +133,30 @@ export function NavBar() {
                           className="flex items-center justify-center text-xl text-gray-600 hover:text-blue-500 transition h-12 w-12" // fixed size
                           style={{ position: "relative" }}
                         >
-                          <span className="hover-bounce block w-full h-full flex items-center justify-center">
+                          <span className="hover:animate-bounce block w-full h-full flex items-center justify-center">
                             <Icon />
                           </span>
                         </a>
                       ))}
+                    </div>
+                  </SidebarItemGroup>
+                  <SidebarItemGroup>
+                    <div className="grid grid-cols-[0.75rem_1fr] gap-x-2 text-[12px] text-gray-500 my-1 text-left">
+                      <FaEnvelope className="w-full h-3 mt-0.5" />
+                      <span className="uppercase">nkmnhan@gmail.com</span>
+                      <FaPhone className="w-full h-3 mt-0.5" />
+                      <span className="uppercase">+84 978 00 43 19</span>
+                      <FaAddressCard className="w-full h-3 self-start mt-0.5" />
+                      <span className="uppercase">
+                        8/15 Phan Huy Ich Street, Quarter 18, Tan Son Ward, Ho
+                        Chi Minh City
+                      </span>
+                    </div>
+                  </SidebarItemGroup>
+                  <SidebarItemGroup>
+                    <div className="flex items-center justify-center gap-2 text-gray-500 mt-4 text-sm">
+                      <FaCopyright />
+                      <span>2025 NKMNHAN</span>
                     </div>
                   </SidebarItemGroup>
                 </SidebarItems>

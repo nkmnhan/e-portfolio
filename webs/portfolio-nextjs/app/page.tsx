@@ -39,19 +39,19 @@ export default function Home() {
         className="absolute inset-0 w-full h-full z-20 pointer-events-none"
         style={{
           backgroundImage: "url('/dot.png')", // Place your 3x3px dot image in public/dot.png
-              backgroundSize: "3px 3px",
-    opacity: 1
+          backgroundSize: "3px 3px",
+          opacity: 1,
         }}
       />
       <main className="relative z-20 flex flex-col items-center">
         <Image
-          className="dark:invert"
+          className="invert"
           src="/logo.svg"
           alt="Github Porfolio QR Code"
           width={120}
           height={120}
         />
-        <h1 className="font-semibold text-gray-900 dark:text-white text-center">
+        <h1 className="font-semibold text-white text-center">
           NKMNHAN
         </h1>
       </main>

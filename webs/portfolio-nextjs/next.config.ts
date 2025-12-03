@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "mindbender.com",
         port: "",
-        pathname: "/content/images/**",
+        pathname: "/**",
       },
     ],
   },
