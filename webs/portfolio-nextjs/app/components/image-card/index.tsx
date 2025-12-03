@@ -1,17 +1,25 @@
 import Image from "next/image";
-import { FiExternalLink } from "react-icons/fi";
+import { useRef } from "react";
+import useColorThief from 'use-color-thief';
 
 interface ImageCardProps {
   src: string;
   alt: string;
   className?: string;
   style?: React.CSSProperties;
-  loading?: 'eager' | 'lazy';
+  loading?: "eager" | "lazy";
   title?: string;
   description?: string;
 }
 
 export default function ImageCard({ src, alt, className, style, loading, title, description }: ImageCardProps) {
+  const imgRef = useRef<HTMLImageElement>(null);
+  const { color, palette } = useColorThief(imgRef as React.RefObject<HTMLImageElement>, {
+    format: 'hex',
+    colorCount: 5,
+    quality: 10,
+  });
+
   return (
     <div
       className={`group relative cursor-pointer ${className}`}
@@ -19,6 +27,7 @@ export default function ImageCard({ src, alt, className, style, loading, title, 
     >
       {/* Poster */}
       <Image
+        ref={imgRef}
         src={src}
         alt={alt}
         fill
@@ -27,9 +36,8 @@ export default function ImageCard({ src, alt, className, style, loading, title, 
       />
       {/* Description Popup (hidden by default, shown on hover, starts at foot of poster) */}
       <div
-        className="text-white absolute left-0 right-0 bottom-0 p-4 rounded-b-lg opacity-0 group-hover:opacity-100 transition-all duration-200 z-10 group-hover:translate-y-30 h-30
-    bg-[#000000db] backdrop-blur-sm"
-      >
+        className="text-white absolute bottom-0 p-4 rounded-b-lg opacity-0 group-hover:opacity-100 transition-all duration-200 z-10 group-hover:translate-y-30 h-30 backdrop-blur-sm"
+        style={{ background: color?.toString() ?? '#000000db' }}>
         <h6 className="flex items-center gap-2 font-bold mb-2">{title}</h6>
         <p className="text-sm line-clamp-3">{description}</p>
       </div>
