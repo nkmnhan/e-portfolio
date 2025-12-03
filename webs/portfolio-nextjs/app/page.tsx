@@ -51,9 +51,7 @@ export default function Home() {
           width={120}
           height={120}
         />
-        <h1 className="font-semibold text-white text-center">
-          NKMNHAN
-        </h1>
+        <h1 className="font-semibold text-white text-center">NKMNHAN</h1>
       </main>
     </div>
   );

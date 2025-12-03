@@ -91,7 +91,7 @@ export default function Clients() {
         className="object-cover absolute inset-0 z-0"
         priority
       />
-      <main >
+      <main>
         <div
           className="
             grid
@@ -105,11 +105,8 @@ export default function Clients() {
           "
         >
           {shuffledIcons.map((Icon, idx) => (
-            <div
-              key={idx}
-              className="flex items-center justify-center"
-            >
-                <Icon className="invert w-20 h-20"/>
+            <div key={idx} className="flex items-center justify-center">
+              <Icon className="invert w-20 h-20" />
             </div>
           ))}
         </div>
