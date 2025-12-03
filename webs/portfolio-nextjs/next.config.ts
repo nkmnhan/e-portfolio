@@ -13,6 +13,17 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.hailuoai.video",
+        port: "",
+        pathname: "/**",
+      }, {
+        protocol: "https",
+        hostname: "cdn.hailuoai.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };
