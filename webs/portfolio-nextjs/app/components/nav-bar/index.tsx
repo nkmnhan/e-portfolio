@@ -83,11 +83,15 @@ export function NavBar() {
     switch (path) {
       case "/":
       case "/clients":
-        return "text-l font-bold  text-white";
+        return "text-l font-bold text-white";
+      case "/contact":
+        return isOpen
+          ? "text-l font-bold text-white"
+          : "text-l font-bold text-dark";
       default:
         return isOpen
-          ? "text-l font-bold  text-white"
-          : "text-l font-bold  text-dark dark:text-white";
+          ? "text-l font-bold text-white"
+          : "text-l font-bold text-dark dark:text-white";
     }
   }
 
