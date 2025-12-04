@@ -49,34 +49,12 @@ const SOCIAL_LINKS = [
 
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [navLabel, setNavLabel] = useState(""); // Start hidden
-  const [currentPath, setCurrentPath] = useState(
-    typeof window !== "undefined" ? window.location.pathname : "/"
-  );
+  const [currentPath, setCurrentPath] = useState("/");
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const path = window.location.pathname;
-      setCurrentPath(path);
-      const currentLink = navLinks.find((link) => link.href === path);
-      if (currentLink) {
-        setNavLabel(currentLink.label);
-      }
-    }
+    const path = window.location.pathname;
+    setCurrentPath(path);
   }, []);
-
-  function handleNavButton() {
-    setIsOpen(!isOpen);
-    handleNavLabel();
-  }
-
-  function handleNavLabel() {
-    // Get current path
-    const currentLink = navLinks.find((link) => link.href === currentPath);
-    if (!isOpen && currentLink && navLabel !== currentLink.label) {
-      setNavLabel(currentLink.label);
-    }
-  }
 
   // Add a function to get dynamic className
   function getLabelClass(path: string) {
@@ -95,6 +73,19 @@ export function NavBar() {
     }
   }
 
+  function getNavLabel(path: string) {
+    if (isOpen) {
+      return "Close";
+    }
+
+    const currentLink = navLinks.find((link) => link.href === path);
+    if (currentLink) {
+      return currentLink.label;
+    }
+
+    return "";
+  }
+
   return (
     <>
       {/* Animated Hamburger Button */}
@@ -108,17 +99,19 @@ export function NavBar() {
                 `}
         style={{ position: "fixed" }}
       >
-        <HamburgerBtn id="nav-btn" active={isOpen} onClick={handleNavButton} />
-        {navLabel && (
-          <h5 className={getLabelClass(currentPath)}>
-            {isOpen ? "Close" : navLabel}
-          </h5>
-        )}
+        <HamburgerBtn
+          id="nav-btn"
+          active={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
+        />
+        <h5 className={getLabelClass(currentPath)}>
+          {getNavLabel(currentPath)}
+        </h5>
       </div>
       <Drawer
         id="drawer"
         open={isOpen}
-        onClose={handleNavButton}
+        onClose={() => setIsOpen(!isOpen)}
         className="w-1/2 sm:w-60"
       >
         <DrawerHeader
