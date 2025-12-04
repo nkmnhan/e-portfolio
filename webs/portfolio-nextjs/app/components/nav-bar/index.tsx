@@ -57,7 +57,7 @@ export function NavBar() {
   }, []);
 
   // Add a function to get dynamic className
-  function getLabelClass(path: string) {
+  function getLabelClass(path: string): string {
     switch (path) {
       case "/":
       case "/clients":
@@ -73,7 +73,17 @@ export function NavBar() {
     }
   }
 
-  function getNavLabel(path: string) {
+  function getBtnMode(path: string): "light" | "transparent" {
+    switch (path) {
+      case "/":
+      case "/clients":
+        return "light";
+      default:
+        return "transparent";
+    }
+  }
+
+  function getNavLabel(path: string): string {
     if (isOpen) {
       return "Close";
     }
@@ -102,6 +112,7 @@ export function NavBar() {
         <HamburgerBtn
           id="nav-btn"
           active={isOpen}
+          mode={getBtnMode(currentPath)}
           onClick={() => setIsOpen(!isOpen)}
         />
         <h5 className={getLabelClass(currentPath)}>
