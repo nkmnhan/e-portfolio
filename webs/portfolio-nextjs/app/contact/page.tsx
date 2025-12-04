@@ -5,7 +5,7 @@ export default function Contact() {
     <div
       className="fixed inset-0 flex items-center justify-center"
       style={{
-        backgroundImage: "url('https://mindbender.com/static/img/contact-map-of-swe.png')",
+        backgroundImage: "url('/contact/bg.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundColor: "#f7f7f7",
