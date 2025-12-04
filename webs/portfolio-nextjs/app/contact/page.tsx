@@ -1,16 +1,18 @@
 import { FaUser, FaEnvelope, FaPhone, FaTag, FaCommentDots, FaPaperPlane } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Contact() {
   return (
     <div
       className="fixed inset-0 flex items-center justify-center"
-      style={{
-        backgroundImage: "url('/contact/bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundColor: "#f7f7f7",
-      }}
     >
+      <Image
+        src="/contact/bg.jpg"
+        alt="cover"
+        layout="fill"
+        objectFit="cover"
+        className="-z-1"
+      />
       <main className="w-full max-w-lg bg-white rounded-xl shadow-xl p-8 flex flex-col items-center">
         <h1 className="text-3xl font-bold text-blue-700 mb-8">Drop Me a Line</h1>
         <form className="w-full flex flex-col gap-6">
