@@ -38,6 +38,7 @@ import {
 } from "react-icons/fa";
 
 import Image from "next/image";
+import Galaxy from "../components/galaxy";
 
 const ICONS = [
   FaApple,
@@ -83,34 +84,59 @@ export default function Clients() {
   const shuffledIcons = [...ICONS].sort(() => Math.random() - 0.5);
 
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <Image
-        src="https://mindbender.com/static/img/clients-bg.jpg"
-        alt="Clients Background"
-        fill
-        className="object-cover absolute inset-0 z-0"
-        priority
-      />
-      <main>
-        <div
-          className="
-            grid
-            grid-cols-2
-            sm:grid-cols-3
-            md:grid-cols-6
-            lg:grid-cols-9
-            gap-15
-            w-full
-            max-w-5xl
-          "
-        >
-          {shuffledIcons.map((Icon, idx) => (
-            <div key={idx} className="flex items-center justify-center">
-              <Icon className="invert w-20 h-20" />
+    <div className="relative min-h-screen flex items-center justify-center font-sans">
+      {/* Content above background */}
+      <Galaxy className="absolute inset-0" />
+      <div
+        className="
+          relative
+          z-10
+          max-w-[80vw]
+          max-h-[76vh]
+          grid
+          grid-cols-2
+          gap-10
+          sm:grid-cols-3
+          md:grid-cols-6
+          lg:grid-cols-9
+          place-items-center
+          mx-auto
+          overflow-x-hidden
+          hide-scrollbar
+        "
+      >
+        {shuffledIcons.map((Icon, idx) => (
+          idx === 0 ? (
+            <div key={idx} className="flex items-center justify-center relative">
+                <Image
+                  src="/astronaut.png"
+                  alt="Astronaut"
+                  width={150}
+                  height={200}
+                  className="
+                  w-20 h-28
+                  fixed float-left -translate-x-20 translate-y-4
+                  transition-all duration-300 ease-in-out hover:rotate-12
+                  sm:w-36
+                  sm:h-48
+                  sm:-translate-x-32
+                  sm:-translate-y-24
+                  md:w-36
+                  md:h-48
+                  md:-translate-x-24
+                  md:-translate-y-20
+                  "
+                  priority
+                />
+              <Icon className="invert w-12 h-12 md:w-12 md:h-12" />
             </div>
-          ))}
-        </div>
-      </main>
+          ) : (
+            <div key={idx} className="flex items-center justify-center">
+              <Icon className="invert w-12 h-12 md:w-12 md:h-12" />
+            </div>
+          )
+        ))}
+      </div>
     </div>
   );
 }
