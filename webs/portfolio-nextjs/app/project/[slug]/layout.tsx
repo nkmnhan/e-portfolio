@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import ImageCard from "@/app/components/image-card";
@@ -29,15 +29,16 @@ export default function ProjectLayout({
   children: React.ReactNode;
 }>) {
   const params = useParams();
-  const [projectId, setProjectId] = useState(params?.slug || "0");
-
-  useEffect(() => {
-    if (params?.slug && params.slug !== projectId) {
-      setProjectId(params.slug);
-    }
-  }, [params?.slug]);
+  const [projectId, setProjectId] = useState("0");
   const [showPrevPreview, setShowPrevPreview] = useState(false);
   const [showNextPreview, setShowNextPreview] = useState(false);
+
+  useEffect(() => {
+    if (params && params.slug) {
+      const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+      setProjectId(slug);
+    }
+  }, [params]);
 
   // Calculate previous and next project IDs
   const currentIndex = IMAGE_URLS.findIndex((img) => img.id === projectId);
