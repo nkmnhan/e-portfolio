@@ -38,3 +38,30 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-right {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.animate-slide-in-left {
+  animation: slide-in-left 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.animate-slide-in-right {
+  animation: slide-in-right 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}

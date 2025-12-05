@@ -5,6 +5,7 @@ import { MdDashboard } from "react-icons/md";
 import MasonryLayout from "../components/masonry-layout";
 import IMAGE_URLS from "./data";
 import ImageCard from "../components/image-card";
+import Link from "next/link";
 
 export default function Work() {
   return (
@@ -17,7 +18,22 @@ export default function Work() {
                 // Randomize image height for testing (between 320px and 520px)
                 const randomHeight = 320 + Math.floor(Math.random() * 200);
                 return (
-                  <ImageCard className="w-full" style={{ height: randomHeight, position: 'relative' }} key={url.id} src={url.poster} alt={`Work image ${url.id}`} loading="lazy" title={`Project number ${url.id}`} description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
+                  <Link
+                    href={`/project/${url.id}`}
+                    key={url.id}
+                    style={{ display: 'block', height: `${randomHeight}px`, position: 'relative' }}
+                    className="w-full"
+                  >
+                    <ImageCard
+                      className="w-full"
+                      style={{ height: '100%', position: 'relative' }}
+                      src={url.poster}
+                      alt={`Work image ${url.id}`}
+                      loading="lazy"
+                      title={`Project number ${url.id}`}
+                      description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                    />
+                  </Link>
                 );
               })}
             </MasonryLayout>
