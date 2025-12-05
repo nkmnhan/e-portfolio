@@ -27,6 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link
+          rel="icon"
+          href="/icon"
+          type="image/png"
+          sizes="32x32"
+        />
         <ThemeModeScript />
       </head>
       <body
