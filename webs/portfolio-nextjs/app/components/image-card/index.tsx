@@ -10,6 +10,7 @@ interface ImageCardProps {
   loading?: "eager" | "lazy";
   title?: string;
   description?: string;
+  forceHover?: boolean;
 }
 
 export default function ImageCard({
@@ -20,11 +21,13 @@ export default function ImageCard({
   loading,
   title,
   description,
+  forceHover = false,
 }: ImageCardProps) {
   const imgRef = useRef<HTMLImageElement>(null);
   const [color, setColor] = useState("#10172f");
   const [xClassName, setXClassName] = useState("");
   const [xStyle, setXStyle] = useState<React.CSSProperties | undefined>(undefined);
+  const [showDesc, setShowDesc] = useState(false);
   const output: ColorThiefOutput = useColorThief(src, {
     format: "hex",
     colorCount: 5,
@@ -39,20 +42,30 @@ export default function ImageCard({
     }
   }, [output.color]);
 
+  useEffect(() => {
+    if (forceHover) {
+      const timer = setTimeout(() => setShowDesc(true), 180); // 180ms delay
+      return () => clearTimeout(timer);
+    } else {
+      setShowDesc(false);
+    }
+  }, [forceHover]);
+
   return (
-    <div className={`group relative cursor-pointer ${xClassName}`} style={xStyle}>
+    <div className={`group relative cursor-pointer w-full ${xClassName} ${forceHover ? 'hover' : ''}`} style={xStyle}>
       {/* Poster */}
       <Image
         ref={imgRef}
         src={src}
         alt={alt}
         fill
-        className="object-cover rounded-lg shadow mb-2 max-w-full max-h-200 group-hover:rounded-b-none"
+        className={`object-cover rounded-t-lg shadow max-w-full max-h-200 group-hover:rounded-b-none ${forceHover ? 'rounded-b-none' : ''}`}
         loading={loading}
       />
       {/* Description Popup (hidden by default, shown on hover, starts at foot of poster) */}
       <div
-        className="text-white absolute bottom-0 p-4 rounded-b-lg opacity-0 group-hover:opacity-100 transition-all duration-200 z-10 group-hover:translate-y-30 h-30 backdrop-blur-sm"
+        className={`text-white absolute bottom-0 left-0 w-full p-4 rounded-b-lg opacity-0 transition-all duration-200 z-10 h-30 backdrop-blur-sm
+          ${forceHover ? (showDesc ? 'opacity-100 translate-y-30' : 'opacity-0') : 'group-hover:opacity-100 group-hover:translate-y-30'}`}
         style={{ background: color }}
       >
         <h6 className="flex items-center gap-2 font-bold mb-2">{title}</h6>
