@@ -1,6 +1,5 @@
 import { Carousel } from "flowbite-react";
 import Image from "next/image";
-import { Caramel } from "next/font/google";
 
 export interface BrandGalleryItem {
   src: string;
@@ -13,6 +12,11 @@ export interface BrandGalleryProps {
   src: BrandGalleryItem[];
 }
 
+const logos = ["https://walt-disney-studios.s3.amazonaws.com/disney_f6a189acd1.svg",
+"https://walt-disney-studios.s3.amazonaws.com/lucasfilmlogo_77d86c53eb.png",
+"https://walt-disney-studios.s3.amazonaws.com/Pixar_logo_1063ed0633.png",
+"https://walt-disney-studios.s3.amazonaws.com/Disney_Theatrical_Group_0368273d86.png"];
+
 const urls = [
   "https://flowbite.com/docs/images/carousel/carousel-1.svg",
   "https://flowbite.com/docs/images/carousel/carousel-2.svg",
@@ -22,7 +26,7 @@ const urls = [
 const tempData: BrandGalleryItem[] = urls.map((url, index) => ({
   src: url,
   alt: `Carousel image ${index + 1}`,
-  logoSrc: "https://walt-disney-studios.s3.amazonaws.com/disney_f6a189acd1.svg", // Provide appropriate logoSrc if available
+  logoSrc: logos[index] || "",
   logoAlt: "", // Provide appropriate logoAlt if available
 }));
 

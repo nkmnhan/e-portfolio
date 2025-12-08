@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import useColorThief, { ColorThiefOutput } from "use-color-thief";
+import { clsxMerge } from "@/app/components/themes/utils";
+import { textWhite } from "@/app/components/themes/default-text";
 
 interface ImageCardProps {
   src: string;
@@ -12,6 +14,15 @@ interface ImageCardProps {
   description?: string;
   forceHover?: boolean;
 }
+
+const posterClass = "object-cover rounded shadow max-w-full";
+
+const descPopupClass = clsxMerge(
+  "absolute bottom-0 left-0 w-full p-4 rounded-b-lg transition-all duration-200 z-10",
+  "h-32",
+  "backdrop-blur-sm",
+  textWhite
+);
 
 export default function ImageCard({
   src,
@@ -52,24 +63,42 @@ export default function ImageCard({
   }, [forceHover]);
 
   return (
-    <div className={`group relative cursor-pointer w-full ${xClassName} ${forceHover ? 'hover' : ''}`} style={xStyle}>
+    <div
+      className={clsxMerge(
+        "group relative cursor-pointer w-full",
+        xClassName,
+        forceHover ? "hover" : ""
+      )}
+      style={xStyle}
+    >
       {/* Poster */}
       <Image
         ref={imgRef}
         src={src}
         alt={alt}
         fill
-        className={`object-cover rounded-t-lg shadow max-w-full max-h-200 group-hover:rounded-b-none ${forceHover ? 'rounded-b-none' : ''}`}
+        className={clsxMerge(
+          posterClass,
+          "group-hover:rounded-b-none",
+          forceHover ? "rounded-b-none" : ""
+        )}
         loading={loading}
       />
-      {/* Description Popup (hidden by default, shown on hover, starts at foot of poster) */}
+      {/* Description Popup */}
       <div
-        className={`text-white absolute bottom-0 left-0 w-full p-4 rounded-b-lg opacity-0 transition-all duration-200 z-10 h-30 backdrop-blur-sm
-          ${forceHover ? (showDesc ? 'opacity-100 translate-y-30' : 'opacity-0') : 'group-hover:opacity-100 group-hover:translate-y-30'}`}
+        className={clsxMerge(
+          descPopupClass,
+          "opacity-0",
+          forceHover
+            ? showDesc
+              ? "opacity-100 translate-y-8"
+              : "opacity-0"
+            : "group-hover:opacity-100 group-hover:translate-y-32"
+        )}
         style={{ background: color }}
       >
-        <h6 className="flex items-center gap-2 font-bold mb-2">{title}</h6>
-        <p className="text-sm line-clamp-3">{description}</p>
+        <h6 className={clsxMerge("flex items-center gap-2 font-bold mb-2")}>{title}</h6>
+        <p className={clsxMerge("text-sm line-clamp-3")}>{description}</p>
       </div>
     </div>
   );

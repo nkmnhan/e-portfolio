@@ -1,5 +1,8 @@
 import Image from "next/image";
 import { HR } from "flowbite-react";
+import { clsxMerge } from "@/app/components/themes/utils";
+import { bgPrimary } from "@/app/components/themes/default-bg";
+import { textBody, textWhite, textPrimary } from "@/app/components/themes/default-text";
 
 const overviewText = `At Mindbender, we specialize in delivering cutting-edge web development solutions that empower businesses to thrive in the digital landscape. Our team of experienced professionals is dedicated to crafting innovative, user-centric websites and applications that not only meet but exceed our clients' expectations. From responsive design to seamless functionality, we leverage the latest technologies to create digital experiences that captivate audiences and drive results. Partner with us to transform your online presence and achieve your business goals with confidence.`;
 
@@ -36,10 +39,10 @@ const ABOUT_STORY = [
 
 export default function About() {
   return (
-    <div className="fixed inset-0 p-20 bg-white dark:bg-gray-800">
-      <div className="overflow-y-auto h-full w-full hide-scrollbar">
+    <div className={clsxMerge("fixed inset-0 p-20", bgPrimary)}>
+      <div className={clsxMerge("overflow-y-auto h-full w-full hide-scrollbar")}>
         {/* Top Image */}
-        <div className="relative w-full h-[100px] rounded-lg overflow-hidden mb-6">
+        <div className={clsxMerge("relative w-full h-[96px] rounded-lg overflow-hidden mb-8")}>
           <Image
             src="https://mindbender.com/static/img/about-us-top-image.jpg"
             alt="About Top Image"
@@ -48,26 +51,25 @@ export default function About() {
             priority
           />
         </div>
-        {/* Flowbite HR */}
         <HR />
         {/* Overview Text */}
-        <div className="text-center text-lg text-gray-700 dark:text-white px-4 mb-6">
+        <div className={clsxMerge("text-center text-lg px-8 mb-8", textBody)}>
           {overviewText}
         </div>
-        {/* Flowbite HR */}
         <HR />
         {/* ABOUT_STORY Section */}
-        <div className="flex flex-col gap-18">
+        <div className={clsxMerge("flex flex-col gap-24")}>
           {ABOUT_STORY.map((story, idx) => (
             <div
               key={idx}
-              className={`flex flex-col md:flex-row ${
+              className={clsxMerge(
+                "flex flex-col md:flex-row items-center gap-8 md:gap-16",
                 idx % 2 === 1 ? "md:flex-row-reverse" : ""
-              } items-center gap-6 md:gap-12`}
+              )}
             >
               {/* Image */}
-              <div className="w-full md:w-1/2 flex justify-center">
-                <div className="relative w-full h-[200px] md:h-[450px]">
+              <div className={clsxMerge("w-full md:w-1/2 flex justify-center")}>
+                <div className={clsxMerge("relative w-full h-[200px] md:h-[448px]")}>
                   <Image
                     src={story.image}
                     alt={story.title}
@@ -77,11 +79,11 @@ export default function About() {
                 </div>
               </div>
               {/* Text */}
-              <div className="w-full md:w-1/2 flex flex-col justify-center items-center text-center">
-                <h3 className="text-2xl font-bold mb-2 text-dark dark:text-white">
+              <div className={clsxMerge("w-full md:w-1/2 flex flex-col justify-center items-center text-center")}>
+                <h3 className={clsxMerge("text-2xl font-bold mb-4", textPrimary)}>
                   {story.title}
                 </h3>
-                <p className="text-base text-gray-600 dark:text-white">
+                <p className={clsxMerge("text-base mb-2", textBody)}>
                   {story.description}
                 </p>
               </div>

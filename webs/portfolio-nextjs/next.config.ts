@@ -26,6 +26,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "walt-disney-studios.s3.amazonaws.com",
+        port: "",
+        pathname: "/**",
+      }
     ],
   },
 };

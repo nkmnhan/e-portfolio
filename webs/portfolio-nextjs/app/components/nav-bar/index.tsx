@@ -21,6 +21,9 @@ import {
   FaPhone,
   FaAddressCard,
 } from "react-icons/fa";
+import { clsxMerge } from "@/app/components/themes/utils";
+import { textWhite, textPrimary, textMuted } from "@/app/components/themes/default-text";
+import { bgPrimary } from "@/app/components/themes/default-bg";
 
 const navLinks = [
   { id: "nav-home", href: "/", label: "Home", navLabel: "Menu" },
@@ -47,6 +50,29 @@ const SOCIAL_LINKS = [
   { icon: FaEnvelope, url: "mailto:your@email.com" },
 ];
 
+const navBtnContainer = clsxMerge(
+  "fixed z-50 transition-all duration-200 flex items-center gap-4", // gap-4 = 16px
+);
+
+const navBtnOpen = "top-6 left-1/2 translate-x-2 sm:left-60";
+const navBtnClosed = "top-6 left-6";
+
+const socialIconClass = clsxMerge(
+  "flex items-center justify-center text-xl text-gray-600 hover:text-blue-500 transition h-12 w-12"
+);
+
+const astronautClass = clsxMerge(
+  "mx-auto min-w-[100px] m-8" // m-8 = 32px
+);
+
+const sidebarContactClass = clsxMerge(
+  "grid grid-cols-[0.75rem_1fr] gap-x-4 text-[12px] text-gray-500 my-4 text-left"
+);
+
+const copyrightClass = clsxMerge(
+  "flex items-center justify-center gap-4 text-gray-500 mt-4 text-sm"
+);
+
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState("/");
@@ -61,15 +87,15 @@ export function NavBar() {
     switch (path) {
       case "/":
       case "/clients":
-        return "text-l font-bold text-white";
+        return clsxMerge("text-lg font-bold", textWhite);
       case "/contact":
         return isOpen
-          ? "text-l font-bold text-white"
-          : "text-l font-bold text-dark";
+          ? clsxMerge("text-lg font-bold", textWhite)
+          : clsxMerge("text-lg font-bold", textPrimary);
       default:
         return isOpen
-          ? "text-l font-bold text-white"
-          : "text-l font-bold text-dark dark:text-white";
+          ? clsxMerge("text-lg font-bold", textWhite)
+          : clsxMerge("text-lg font-bold", textPrimary, "dark:text-white");
     }
   }
 
@@ -100,13 +126,10 @@ export function NavBar() {
     <>
       {/* Animated Hamburger Button */}
       <div
-        className={`fixed z-50 transition-all duration-200 flex items-center gap-2
-                    ${
-                      isOpen
-                        ? "top-6 left-1/2 translate-x-2 sm:left-60"
-                        : "top-6 left-6"
-                    }
-                `}
+        className={clsxMerge(
+          navBtnContainer,
+          isOpen ? navBtnOpen : navBtnClosed
+        )}
         style={{ position: "fixed" }}
       >
         <HamburgerBtn
@@ -123,19 +146,15 @@ export function NavBar() {
         id="drawer"
         open={isOpen}
         onClose={() => setIsOpen(!isOpen)}
-        className="w-1/2 sm:w-60"
+        className={clsxMerge("w-1/2 sm:w-60", bgPrimary)}
       >
-        <DrawerHeader
-          title=""
-          titleIcon={() => <></>}
-          closeIcon={() => <></>}
-        />
+        <DrawerHeader title="" titleIcon={() => <></>} closeIcon={() => <></>} />
         <DrawerItems>
           <Sidebar
             aria-label="Sidebar with multi-level dropdown example"
-            className="[&>div]:bg-transparent [&>div]:p-0 text-center w-full"
+            className={clsxMerge("[&>div]:bg-transparent [&>div]:p-0 text-center w-full")}
           >
-            <div className="flex h-full flex-col justify-between py-2">
+            <div className="flex h-full flex-col justify-between py-4">
               <div>
                 <SidebarItems>
                   <SidebarItemGroup>
@@ -147,26 +166,26 @@ export function NavBar() {
                   </SidebarItemGroup>
                   <SidebarItemGroup>
                     {/* Astronaut image */}
-                    <div className="flex justify-center my-2 h-54 items-center">
+                    <div className="flex justify-center my-4 h-56 items-center">
                       <span className="hover:animate-bounce block w-full h-full flex items-center justify-center">
                         <Image
                           src="/astronaut.png"
                           alt="Astronaut"
-                          className="mx-auto min-w-[100px] m-6"
+                          className={astronautClass}
                           width={150}
                           height={100}
                         />
                       </span>
                     </div>
                     {/* Social icons row */}
-                    <div className="flex justify-center gap-4 my-2">
+                    <div className="flex justify-center gap-4 my-4">
                       {SOCIAL_LINKS.map(({ icon: Icon, url }, idx) => (
                         <a
                           key={idx}
                           href={url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center text-xl text-gray-600 hover:text-blue-500 transition h-12 w-12" // fixed size
+                          className={socialIconClass}
                           style={{ position: "relative" }}
                         >
                           <span className="hover:animate-bounce block w-full h-full flex items-center justify-center">
@@ -177,20 +196,19 @@ export function NavBar() {
                     </div>
                   </SidebarItemGroup>
                   <SidebarItemGroup>
-                    <div className="grid grid-cols-[0.75rem_1fr] gap-x-2 text-[12px] text-gray-500 my-1 text-left">
-                      <FaEnvelope className="w-full h-3 mt-0.5" />
+                    <div className={sidebarContactClass}>
+                      <FaEnvelope className="w-full h-4 mt-1" />
                       <span className="uppercase">nkmnhan@gmail.com</span>
-                      <FaPhone className="w-full h-3 mt-0.5" />
+                      <FaPhone className="w-full h-4 mt-1" />
                       <span className="uppercase">+84 978 00 43 19</span>
-                      <FaAddressCard className="w-full h-3 self-start mt-0.5" />
+                      <FaAddressCard className="w-full h-4 self-start mt-1" />
                       <span className="uppercase">
-                        8/15 Phan Huy Ich Street, Quarter 18, Tan Son Ward, Ho
-                        Chi Minh City
+                        8/15 Phan Huy Ich Street, Quarter 18, Tan Son Ward, Ho Chi Minh City
                       </span>
                     </div>
                   </SidebarItemGroup>
                   <SidebarItemGroup>
-                    <div className="flex items-center justify-center gap-2 text-gray-500 mt-4 text-sm">
+                    <div className={copyrightClass}>
                       <FaCopyright />
                       <span>2025 NKMNHAN</span>
                     </div>

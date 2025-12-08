@@ -1,86 +1,24 @@
 import {
-  FaApple,
-  FaAndroid,
-  FaReact,
-  FaNodeJs,
-  FaGithub,
-  FaGoogle,
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaYoutube,
-  FaLinkedin,
-  FaSlack,
-  FaDocker,
-  FaAws,
-  FaWindows,
-  FaLinux,
-  FaGitlab,
-  FaFigma,
-  FaTrello,
-  FaJira,
-  FaVuejs,
-  FaAngular,
-  FaPython,
-  FaJava,
-  FaPhp,
-  FaSwift,
-  FaRust,
-  FaRedhat,
-  FaBitbucket,
-  FaDribbble,
-  FaBehance,
-  FaStackOverflow,
-  FaWordpress,
-  FaShopify,
-  FaSalesforce,
-  FaDropbox,
+  FaApple, FaAndroid, FaReact, FaNodeJs, FaGithub, FaGoogle, FaFacebook, FaTwitter,
+  FaInstagram, FaYoutube, FaLinkedin, FaSlack, FaDocker, FaAws, FaWindows, FaLinux,
+  FaGitlab, FaFigma, FaTrello, FaJira, FaVuejs, FaAngular, FaPython, FaJava, FaPhp,
+  FaSwift, FaRust, FaRedhat, FaBitbucket, FaDribbble, FaBehance, FaStackOverflow,
+  FaWordpress, FaShopify, FaSalesforce, FaDropbox,
 } from "react-icons/fa";
-
 import Image from "next/image";
 import Galaxy from "../components/galaxy";
+import { clsxMerge } from "@/app/components/themes/utils";
+import { bgPrimary } from "@/app/components/themes/default-bg";
 
 const ICONS = [
-  FaApple,
-  FaAndroid,
-  FaReact,
-  FaNodeJs,
-  FaGithub,
-  FaGoogle,
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaYoutube,
-  FaLinkedin,
-  FaSlack,
-  FaDocker,
-  FaAws,
-  FaWindows,
-  FaLinux,
-  FaGitlab,
-  FaFigma,
-  FaTrello,
-  FaJira,
-  FaVuejs,
-  FaAngular,
-  FaPython,
-  FaJava,
-  FaPhp,
-  FaSwift,
-  FaRust,
-  FaRedhat,
-  FaBitbucket,
-  FaDribbble,
-  FaBehance,
-  FaStackOverflow,
-  FaWordpress,
-  FaShopify,
-  FaSalesforce,
-  FaDropbox,
+  FaApple, FaAndroid, FaReact, FaNodeJs, FaGithub, FaGoogle, FaFacebook, FaTwitter,
+  FaInstagram, FaYoutube, FaLinkedin, FaSlack, FaDocker, FaAws, FaWindows, FaLinux,
+  FaGitlab, FaFigma, FaTrello, FaJira, FaVuejs, FaAngular, FaPython, FaJava, FaPhp,
+  FaSwift, FaRust, FaRedhat, FaBitbucket, FaDribbble, FaBehance, FaStackOverflow,
+  FaWordpress, FaShopify, FaSalesforce, FaDropbox,
 ];
 
 export default function Clients() {
-  // Shuffle icons for random order
   const shuffledIcons = [...ICONS].sort(() => Math.random() - 0.5);
 
   return (
@@ -88,51 +26,34 @@ export default function Clients() {
       {/* Content above background */}
       <Galaxy className="absolute inset-0" />
       <div
-        className="
-          relative
-          z-10
-          max-w-[80vw]
-          max-h-[76vh]
-          grid
-          grid-cols-2
-          gap-10
-          sm:grid-cols-3
-          md:grid-cols-6
-          lg:grid-cols-9
-          place-items-center
-          mx-auto
-          overflow-x-hidden
-          hide-scrollbar
-        "
+        className={clsxMerge(
+          "relative z-10 mx-auto overflow-x-hidden hide-scrollbar",
+          "max-w-[80vw] max-h-[76vh]",
+          "grid grid-cols-2 gap-8", // gap-8 = 32px
+          "sm:grid-cols-4 md:grid-cols-8 lg:grid-cols-10",
+          "place-items-center"
+        )}
       >
         {shuffledIcons.map((Icon, idx) => (
           idx === 0 ? (
-            <div key={idx} className="flex items-center justify-center relative">
-                <Image
-                  src="/astronaut.png"
-                  alt="Astronaut"
-                  width={150}
-                  height={200}
-                  className="
-                  w-20 h-28
-                  fixed float-left -translate-x-20 translate-y-4
-                  transition-all duration-300 ease-in-out hover:rotate-12
-                  sm:w-36
-                  sm:h-48
-                  sm:-translate-x-32
-                  sm:-translate-y-24
-                  md:w-36
-                  md:h-48
-                  md:-translate-x-24
-                  md:-translate-y-20
-                  "
-                  priority
-                />
-              <Icon className="invert w-12 h-12 md:w-12 md:h-12" />
+            <div key={idx} className={clsxMerge("flex items-center justify-center relative")}>
+              <Image
+                src="/astronaut.png"
+                alt="Astronaut"
+                width={144} // 36*4
+                height={192} // 48*4
+                className={clsxMerge(
+                  "w-20 h-28 fixed float-left -translate-x-20 translate-y-4 transition-all duration-300 ease-in-out hover:rotate-12",
+                  "sm:w-36 sm:h-48 sm:-translate-x-32 sm:-translate-y-24",
+                  "md:w-36 md:h-48 md:-translate-x-24 md:-translate-y-20"
+                )}
+                priority
+              />
+              <Icon className={clsxMerge("invert w-12 h-12 md:w-16 md:h-16")} />
             </div>
           ) : (
-            <div key={idx} className="flex items-center justify-center">
-              <Icon className="invert w-12 h-12 md:w-12 md:h-12" />
+            <div key={idx} className={clsxMerge("flex items-center justify-center")}>
+              <Icon className={clsxMerge("invert w-12 h-12 md:w-16 md:h-16")} />
             </div>
           )
         ))}
