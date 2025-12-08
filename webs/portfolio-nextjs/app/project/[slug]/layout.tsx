@@ -3,7 +3,7 @@
 import { useState, createContext, useContext, useEffect, use } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import ImageCard from "@/app/components/image-card";
+import ImageCard from "@/app/components/images/image-card";
 import IMAGE_URLS from "@/app/work/data";
 import { AiOutlineCaretLeft, AiOutlineCaretRight } from "react-icons/ai";
 import { clsxMerge } from "@/app/components/themes/utils";
