@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, createContext, useContext, useEffect } from "react";
+import { useState, createContext, useContext, useEffect, use } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import ImageCard from "@/app/components/image-card";
@@ -9,19 +9,19 @@ import { AiOutlineCaretLeft, AiOutlineCaretRight } from "react-icons/ai";
 
 interface ProjectContextType {
   projectId: string;
+  isCinematicMode: boolean;
   setProjectId: (id: string) => void;
+  setIsCinematicMode: (mode: boolean) => void;
 }
 
 const ProjectContext = createContext<ProjectContextType>({
   projectId: "0",
+  isCinematicMode: false,
   setProjectId: () => {},
+  setIsCinematicMode: () => {},
 });
 
 export const useProjectContext = () => useContext(ProjectContext);
-
-interface ProjectLayoutProps {
-  children: React.ReactNode;
-}
 
 export default function ProjectLayout({
   children,
@@ -30,8 +30,10 @@ export default function ProjectLayout({
 }>) {
   const params = useParams();
   const [projectId, setProjectId] = useState("0");
+  const [isCinematicMode, setIsCinematicMode] = useState(true);
   const [showPrevPreview, setShowPrevPreview] = useState(false);
   const [showNextPreview, setShowNextPreview] = useState(false);
+  const [iconClass, setIconClass] = useState("text-2xl text-gray-800");
 
   useEffect(() => {
     if (params && params.slug) {
@@ -39,6 +41,14 @@ export default function ProjectLayout({
       setProjectId(slug);
     }
   }, [params]);
+
+  useEffect(() => {
+    if (isCinematicMode) {
+      setIconClass("text-2xl text-white");
+    } else {
+      setIconClass("text-2xl text-gray-800");
+    }
+  }, [isCinematicMode]);
 
   // Calculate previous and next project IDs
   const currentIndex = IMAGE_URLS.findIndex((img) => img.id === projectId);
@@ -61,19 +71,21 @@ export default function ProjectLayout({
             href={`/project/${prevProject.id}`}
             className="p-4 hover:opacity-70 transition-all hover:scale-110"
           >
-            <AiOutlineCaretLeft className="text-2xl" />
+            <AiOutlineCaretLeft className={iconClass} />
           </Link>
           {showPrevPreview && (
             <div className="ml-2 w-64 shadow-lg animate-slide-in-left">
               <ImageCard
                 className="w-full"
-                style={{ height: 180, position: 'relative' }}
+                style={{ height: 180, position: "relative" }}
                 key={prevProject.id}
                 src={prevProject.poster}
                 alt={`Work image ${prevProject.id}`}
                 loading="lazy"
                 title={prevProject.title || `Project number ${prevProject.id}`}
-                description={prevProject.description || "No description available."}
+                description={
+                  prevProject.description || "No description available."
+                }
                 forceHover={true}
               />
             </div>
@@ -90,13 +102,15 @@ export default function ProjectLayout({
             <div className="mr-2 w-64 shadow-lg animate-slide-in-right">
               <ImageCard
                 className="w-full"
-                style={{ height: 180, position: 'relative' }}
+                style={{ height: 180, position: "relative" }}
                 key={nextProject.id}
                 src={nextProject.poster}
                 alt={`Work image ${nextProject.id}`}
                 loading="lazy"
                 title={nextProject.title || `Project number ${nextProject.id}`}
-                description={nextProject.description || "No description available."}
+                description={
+                  nextProject.description || "No description available."
+                }
                 forceHover={true}
               />
             </div>
@@ -105,12 +119,19 @@ export default function ProjectLayout({
             href={`/project/${nextProject.id}`}
             className="p-4 hover:opacity-70 transition-all hover:scale-110"
           >
-            <AiOutlineCaretRight className="text-2xl" />
+            <AiOutlineCaretRight className={iconClass} />
           </Link>
         </div>
 
         {/* Main Content */}
-        <ProjectContext.Provider value={{ projectId, setProjectId }}>
+        <ProjectContext.Provider
+          value={{
+            projectId,
+            isCinematicMode,
+            setProjectId,
+            setIsCinematicMode,
+          }}
+        >
           {children}
         </ProjectContext.Provider>
       </div>

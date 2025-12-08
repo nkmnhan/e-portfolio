@@ -1,25 +1,32 @@
 "use client";
 
+import { ProjectInfo } from "@/app/work/data";
 import IMAGE_URLS from "@/app/work/data";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { AiFillDownCircle, AiFillUpCircle } from "react-icons/ai";
+import { useProjectContext } from "./layout";
 
 export default function Project({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const [isCinemaMode, setCinemaMode] = useState(false);
-  const [project, setProject] = useState<any>(null);
+  
+  const { setProjectId, isCinematicMode, setIsCinematicMode } = useProjectContext();
+  const [project, setProject] = useState<ProjectInfo | null>(null);
 
   useEffect(() => {
     const getParams = async () => {
       const resolvedParams = await params;
-      const foundProject = IMAGE_URLS.find(
+      const currentIndex = IMAGE_URLS.findIndex(
         (item) => item.id === resolvedParams.slug
       );
-      setProject(foundProject);
+
+      if(currentIndex !== -1) {
+        setProjectId(IMAGE_URLS[currentIndex].id);
+        setProject(IMAGE_URLS[currentIndex]);
+      }
     };
     getParams();
   }, [params]);
@@ -27,7 +34,7 @@ export default function Project({
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY !== 0) {
-        setCinemaMode(true);
+        setIsCinematicMode(false);
         window.removeEventListener("scroll", handleScroll);
       }
     };
@@ -46,20 +53,18 @@ export default function Project({
       {/* Full Screen Poster Section */}
       <div
         className={`relative transition-all duration-700 ease-in-out flex items-center justify-center overflow-hidden ${
-          isCinemaMode
-            ? "h-[60vh] min-h-[400px]"
-            : "h-screen bg-black"
+          isCinematicMode ? "h-screen bg-black" : "h-[60vh] min-h-[400px]"
         }`}
       >
         {/* Cinema mode background overlay */}
         <div
           className={`absolute inset-0 transition-all duration-700 pointer-events-none z-0 ${
-            isCinemaMode ? "" : "bg-black"
+            isCinematicMode ? "bg-black" : ""
           }`}
         />
         <div
           className={`relative z-10 transition-all duration-700 ease-in-out w-full ${
-            isCinemaMode ? "max-w-3xl aspect-16/7" : "max-w-5xl aspect-video"
+            isCinematicMode ? "max-w-3xl aspect-16/7" : "max-w-5xl aspect-video"
           } mx-auto flex flex-col items-center justify-center rounded-xl overflow-hidden`}
         >
           <div className="absolute inset-0 w-full h-full rounded-xl overflow-hidden z-0">
@@ -75,9 +80,9 @@ export default function Project({
           {/* Project Title below poster in cinema mode */}
           <h2
             className={`mt-6 text-2xl sm:text-3xl font-bold text-white text-center transition-opacity duration-700 z-20 relative ${
-              isCinemaMode
-                ? "opacity-0 pointer-events-none select-none"
-                : "opacity-100"
+              isCinematicMode
+                ? "opacity-100"
+                : "opacity-0 pointer-events-none select-none"
             }`}
           >
             {project.title}
@@ -85,12 +90,12 @@ export default function Project({
         </div>
 
         {/* Scroll Down Icon */}
-        {!isCinemaMode && (
+        {isCinematicMode && (
           <button
             className={
               "absolute bottom-8 p-3 left-1/2 bg-black/50 backdrop-blur-sm rounded-full text-white transform -translate-x-1/2 transition-all duration-500 animate-bounce"
             }
-            onClick={() => setCinemaMode(true)}
+            onClick={() => setIsCinematicMode(false)}
             aria-label="Scroll down"
           >
             <AiFillDownCircle className="w-8 h-8" />
@@ -98,12 +103,12 @@ export default function Project({
         )}
 
         {/* Close Icon */}
-        {isCinemaMode && (
+        {!isCinematicMode && (
           <button
             className={
               "fixed bottom-6 right-6 z-10 p-3 bg-black/50 backdrop-blur-sm rounded-full text-white transition-all duration-500 hover:bg-black/70 animate-bounce"
             }
-            onClick={() => setCinemaMode(false)}
+            onClick={() => setIsCinematicMode(true)}
             aria-label="Scroll up"
           >
             <AiFillUpCircle className="w-8 h-8" />

@@ -1,6 +1,6 @@
 type ProjectType = "private" | "public";
 
-interface ProjectInfo {
+export interface ProjectInfo {
   id: string;
   type?: ProjectType;
   title?: string;
