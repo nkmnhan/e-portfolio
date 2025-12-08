@@ -28,19 +28,11 @@ export default function ProjectLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const params = useParams();
   const [projectId, setProjectId] = useState("0");
   const [isCinematicMode, setIsCinematicMode] = useState(true);
   const [showPrevPreview, setShowPrevPreview] = useState(false);
   const [showNextPreview, setShowNextPreview] = useState(false);
   const [iconClass, setIconClass] = useState("text-2xl text-gray-800");
-
-  useEffect(() => {
-    if (params && params.slug) {
-      const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
-      setProjectId(slug);
-    }
-  }, [params]);
 
   useEffect(() => {
     if (isCinematicMode) {
