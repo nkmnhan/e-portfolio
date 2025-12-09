@@ -1,13 +1,6 @@
-import { Carousel } from "flowbite";
-import type {
-  CarouselItem,
-  CarouselOptions,
-  CarouselInterface,
-} from "flowbite";
-import type { InstanceOptions } from "flowbite";
-import { useRef, useEffect } from "react";
+import { Carousel } from "flowbite-react";
+import { CustomFlowbiteTheme } from "flowbite-react/types";
 import Image from "next/image";
-import { clsxMerge } from "../themes/utils";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 
 export interface BrandGalleryItem {
@@ -24,164 +17,82 @@ export interface BrandGalleryProps {
   src: BrandGalleryItem[];
 }
 
+const customTheme: CustomFlowbiteTheme["carousel"] = {
+  root: {
+    base: "relative h-full w-full",
+    leftControl:
+      "absolute left-0 top-0 flex h-full items-center justify-center px-4 focus:outline-none -translate-y-8",
+    rightControl:
+      "absolute right-0 top-0 flex h-full items-center justify-center px-4 focus:outline-none -translate-y-8",
+  },
+  indicators: {
+    active: {
+      off: "bg-white",
+      on: "bg-black",
+    },
+    base: "w-2 h-2 rounded-full border border-black",
+    wrapper: "absolute bottom-5 left-32 flex -translate-x-1/2 space-x-3",
+  },
+  item: {
+    base: "absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2",
+    wrapper: {
+      off: "w-full shrink-0 transform cursor-default snap-center",
+      on: "w-full shrink-0 transform cursor-grab snap-center",
+    },
+  },
+  control: {
+    base: "inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white sm:h-10 sm:w-10 dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70",
+    icon: "h-5 w-5 text-white sm:h-6 sm:w-6 dark:text-gray-800",
+  },
+  scrollContainer: {
+    base: "flex h-full snap-mandatory overflow-y-hidden overflow-x-hidden scroll-smooth rounded-lg",
+    snap: "snap-x",
+  },
+};
+
 export default function BrandGallery({ className, src }: BrandGalleryProps) {
-  // Refs for carousel element
-  const carouselElement = useRef<HTMLDivElement>(null);
-  // Ref for carousel instance to control it programmatically
-  const carouselInstance = useRef<CarouselInterface | null>(null);
-
-  // Dynamic refs for carousel items and indicators
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const indicatorRefs = useRef<(HTMLButtonElement | null)[]>([]);
-
-  // Refs for controls
-  const prevButtonRef = useRef<HTMLButtonElement>(null);
-  const nextButtonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (!carouselElement.current || src.length === 0) return;
-
-    const items: CarouselItem[] = src.map((_, index) => ({
-      position: index,
-      el: itemRefs.current[index] as HTMLElement,
-    }));
-
-    const options: CarouselOptions = {
-      defaultPosition: 0,
-      interval: 3000,
-      indicators: {
-        items: src.map((_, index) => ({
-          position: index,
-          el: indicatorRefs.current[index] as HTMLElement,
-        })),
-        activeClasses: "bg-black",
-        inactiveClasses: "bg-white",
-      },
-    };
-
-    const instanceOptions: InstanceOptions = {
-      id: "brand-gallery-carousel",
-      override: true,
-    };
-
-    carouselInstance.current = new Carousel(
-      carouselElement.current,
-      items,
-      options,
-      instanceOptions
-    );
-
-    // carouselInstance.current.cycle();
-
-    // Set up event listeners for prev and next buttons
-    const prevButton = prevButtonRef.current;
-    const nextButton = nextButtonRef.current;
-
-    const handlePrev = () => {
-      carouselInstance.current?.prev();
-    };
-
-    const handleNext = () => {
-      carouselInstance.current?.next();
-    };
-
-    prevButton?.addEventListener("click", handlePrev);
-    nextButton?.addEventListener("click", handleNext);
-
-    // Cleanup
-    return () => {
-      prevButton?.removeEventListener("click", handlePrev);
-      nextButton?.removeEventListener("click", handleNext);
-      carouselInstance.current?.pause();
-    };
-  }, [src]);
-
   return (
-    <>
-      <div
-        ref={carouselElement}
-        className={clsxMerge("relative w-full h-full mb-12", className)}
-        data-carousel="static"
-      >
-        {/* Carousel wrapper */}
-        <div className="relative h-full overflow-x-clip overflow-y-visible rounded-base">
-          {src.map((item, index) => (
-            <div
-              key={index}
-              ref={(el) => {
-                itemRefs.current[index] = el;
-              }}
-              className="hidden duration-700 ease-in-out"
-              data-carousel-item={index === 0 ? "active" : undefined}
-            >
-              {/* Carousel item */}
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="absolute block w-full object-cover"
-              />
-              {item.logoSrc && (
-                  <div className="min-w-50 min-h-25 absolute -bottom-8 bg-white rounded right-1/12 flex items-center justify-center shadow-lg">
-                    <Image
-                      src={item.logoSrc}
-                      alt={item.logoAlt}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-              )}
-              {item.title && item.description && (
-                <div className="absolute bottom-4 left-4 p-4 max-w-md text-white">
-                  <h4 className="font-semibold mb-2">
-                    {item.title}
-                  </h4>
-                  <span className="text-sm">{item.description}</span>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Slider indicators */}
-        <div className="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse -bottom-8 left-1/12">
-          {src.map((_, index) => (
-            <button
-              key={index}
-              ref={(el) => {
-                indicatorRefs.current[index] = el;
-              }}
-              type="button"
-              className="w-2 h-2 rounded-full border border-black"
-              aria-current={index === 0 ? "true" : "false"}
-              aria-label={`Slide ${index + 1}`}
-              data-carousel-slide-to={index.toString()}
-            ></button>
-          ))}
-        </div>
-
-        {/* Slider controls */}
-        <button
-          ref={prevButtonRef}
-          type="button"
-          className="absolute -left-10 top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-          data-carousel-prev
-        >
+    <div className={className}>
+      <Carousel
+        theme={customTheme}
+        leftControl={
           <span className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
             <AiFillLeftCircle className="w-10 h-10" />
           </span>
-        </button>
-        <button
-          ref={nextButtonRef}
-          type="button"
-          className="absolute -right-10 top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-          data-carousel-next
-        >
+        }
+        rightControl={
           <span className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
             <AiFillRightCircle className="w-10 h-10" />
           </span>
-        </button>
-      </div>
-    </>
+        }
+      >
+        {src.map((item, index) => (
+          <div className="relative w-full h-full">
+            <Image
+              className="object-cover pb-12 pl-10 pr-10"
+              src={item.src}
+              alt={item.alt}
+              fill
+            />
+            {item.logoSrc && (
+              <div className="min-w-50 min-h-25 absolute bottom-4 bg-white rounded right-28 flex items-center justify-center shadow-lg">
+                <Image
+                  src={item.logoSrc}
+                  alt={item.logoAlt}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            )}
+            {item.title && item.description && (
+              <div className="absolute bottom-12 left-16 p-4 max-w-md text-white">
+                <h4 className="font-semibold mb-2">{item.title}</h4>
+                <span className="text-sm">{item.description}</span>
+              </div>
+            )}
+          </div>
+        ))}
+      </Carousel>
+    </div>
   );
 }

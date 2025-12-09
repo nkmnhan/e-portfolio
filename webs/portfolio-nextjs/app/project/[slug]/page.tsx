@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { AiFillDownCircle, AiFillUpCircle } from "react-icons/ai";
 import { useProjectContext } from "./layout";
-import BrandGallery, { BrandGalleryItem } from "@/app/components/brand-gallery";
 import { clsxMerge } from "@/app/components/themes/utils";
 import {
   textPrimary,
@@ -15,6 +14,8 @@ import {
   textWhite,
 } from "@/app/components/themes/default-text";
 import { bgPrimary } from "@/app/components/themes/default-bg";
+import BrandGallaryTestData from "@/app/components/brand-gallery/data";
+import BrandGallary from "@/app/components/brand-gallery";
 
 const posterContainer =
   "relative z-10 transition-all duration-700 ease-in-out w-full mx-auto flex flex-col items-center justify-center rounded-xl overflow-hidden";
@@ -28,38 +29,6 @@ const scrollBtn =
   "absolute bottom-8 p-4 left-1/2 bg-black/50 backdrop-blur-sm rounded-full text-white transform -translate-x-1/2 transition-all duration-500 animate-bounce";
 const closeBtn =
   "fixed bottom-8 right-8 z-10 p-4 bg-black/50 backdrop-blur-sm rounded-full text-white transition-all duration-500 hover:bg-black/70 animate-bounce";
-
-const logos = [
-  "/carousel/free-time1.jpg",
-  "/carousel/free-time2.jpg",
-  "/carousel/free-time3.jpg",
-  "/carousel/free-time4.jpg",
-  "/carousel/free-time5.jpg",
-];
-
-const details: {title: string, description: string}[] = [
-  { title: "Brand Logo 1", description: "Description for Brand Logo 1" },
-  { title: "Brand Logo 2", description: "Description for Brand Logo 2" },
-  { title: "Brand Logo 3", description: "Description for Brand Logo 3" },
-  { title: "Brand Logo 4", description: "Description for Brand Logo 4" },
-  { title: "Brand Logo 5", description: "Description for Brand Logo 5" },
-];
-
-const urls = [
-  "https://flowbite.com/docs/images/carousel/carousel-1.svg",
-  "https://flowbite.com/docs/images/carousel/carousel-2.svg",
-  "https://flowbite.com/docs/images/carousel/carousel-3.svg",
-  "https://flowbite.com/docs/images/carousel/carousel-4.svg",
-  "https://flowbite.com/docs/images/carousel/carousel-5.svg",
-];
-const tempData: BrandGalleryItem[] = urls.map((url, index) => ({
-  src: url,
-  alt: `Carousel image ${index + 1}`,
-  logoSrc: logos[index] || "",
-  logoAlt: "", // Provide appropriate logoAlt if available
-  title: details[index]?.title || "",
-  description: details[index]?.description || "",
-}));
 
 export default function Project({
   params,
@@ -106,9 +75,7 @@ export default function Project({
 
   return (
     <div className={clsxMerge("relative w-full overflow-x-hidden", bgPrimary)}>
-      <div className="w-full flex justify-center">
-        <BrandGallery className="h-140 w-280" src={tempData} />
-      </div>
+      <BrandGallary className="w-[80vw] h-140 m-auto" src={BrandGallaryTestData} />
       {/* Full Screen Poster Section */}
       <div
         className={clsxMerge(
