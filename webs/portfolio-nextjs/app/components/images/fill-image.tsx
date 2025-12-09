@@ -9,9 +9,5 @@ interface FillImageProps {
 }
 
 export default function FillImage({ className, src, alt }: FillImageProps) {
-  return (
-    <div className={clsxMerge("relative", className)}>
-      <Image src={src} alt={alt} fill className="object-cover" />
-    </div>
-  );
+  return <Image src={src} alt={alt} fill className={clsxMerge("object-cover", className)} />;
 }

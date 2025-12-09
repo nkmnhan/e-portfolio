@@ -30,11 +30,19 @@ const closeBtn =
   "fixed bottom-8 right-8 z-10 p-4 bg-black/50 backdrop-blur-sm rounded-full text-white transition-all duration-500 hover:bg-black/70 animate-bounce";
 
 const logos = [
-  "https://walt-disney-studios.s3.amazonaws.com/disney_f6a189acd1.svg",
-  "https://walt-disney-studios.s3.amazonaws.com/lucasfilmlogo_77d86c53eb.png",
-  "https://walt-disney-studios.s3.amazonaws.com/Pixar_logo_1063ed0633.png",
-  "https://walt-disney-studios.s3.amazonaws.com/Pixar_logo_1063ed0633.png",
-  "https://walt-disney-studios.s3.amazonaws.com/Disney_Theatrical_Group_0368273d86.png",
+  "/carousel/free-time1.jpg",
+  "/carousel/free-time2.jpg",
+  "/carousel/free-time3.jpg",
+  "/carousel/free-time4.jpg",
+  "/carousel/free-time5.jpg",
+];
+
+const details: {title: string, description: string}[] = [
+  { title: "Brand Logo 1", description: "Description for Brand Logo 1" },
+  { title: "Brand Logo 2", description: "Description for Brand Logo 2" },
+  { title: "Brand Logo 3", description: "Description for Brand Logo 3" },
+  { title: "Brand Logo 4", description: "Description for Brand Logo 4" },
+  { title: "Brand Logo 5", description: "Description for Brand Logo 5" },
 ];
 
 const urls = [
@@ -49,6 +57,8 @@ const tempData: BrandGalleryItem[] = urls.map((url, index) => ({
   alt: `Carousel image ${index + 1}`,
   logoSrc: logos[index] || "",
   logoAlt: "", // Provide appropriate logoAlt if available
+  title: details[index]?.title || "",
+  description: details[index]?.description || "",
 }));
 
 export default function Project({
@@ -96,6 +106,9 @@ export default function Project({
 
   return (
     <div className={clsxMerge("relative w-full overflow-x-hidden", bgPrimary)}>
+      <div className="w-full flex justify-center">
+        <BrandGallery className="h-140 w-280" src={tempData} />
+      </div>
       {/* Full Screen Poster Section */}
       <div
         className={clsxMerge(
@@ -195,7 +208,6 @@ export default function Project({
             >
               {project.description}
             </p>
-            <BrandGallery src={tempData} />
             <div
               className={clsxMerge(
                 "flex flex-col sm:flex-row justify-center gap-2 sm:gap-8 text-xs sm:text-sm pt-4",
