@@ -2,6 +2,8 @@ import { Carousel } from "flowbite-react";
 import { CustomFlowbiteTheme } from "flowbite-react/types";
 import Image from "next/image";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
+import { clsxMerge } from "../themes/utils";
+import { textWhite } from "../themes/default-text";
 
 export interface BrandGalleryItem {
   src: string;
@@ -17,13 +19,16 @@ export interface BrandGalleryProps {
   src: BrandGalleryItem[];
 }
 
+const slideClass =
+  "absolute top-0 flex h-full items-center justify-center px-4 focus:outline-none -translate-y-8";
+const iconClass =
+  "w-12 h-12 bg-white rounded-full flex items-center justify-center";
+
 const customTheme: CustomFlowbiteTheme["carousel"] = {
   root: {
     base: "relative h-full w-full",
-    leftControl:
-      "absolute left-0 top-0 flex h-full items-center justify-center px-4 focus:outline-none -translate-y-8",
-    rightControl:
-      "absolute right-0 top-0 flex h-full items-center justify-center px-4 focus:outline-none -translate-y-8",
+    leftControl: clsxMerge(slideClass, "left-0"),
+    rightControl: clsxMerge(slideClass, "right-0"),
   },
   indicators: {
     active: {
@@ -56,12 +61,12 @@ export default function BrandGallery({ className, src }: BrandGalleryProps) {
       <Carousel
         theme={customTheme}
         leftControl={
-          <span className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+          <span className={iconClass}>
             <AiFillLeftCircle className="w-10 h-10" />
           </span>
         }
         rightControl={
-          <span className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+          <span className={iconClass}>
             <AiFillRightCircle className="w-10 h-10" />
           </span>
         }
@@ -85,7 +90,12 @@ export default function BrandGallery({ className, src }: BrandGalleryProps) {
               </div>
             )}
             {item.title && item.description && (
-              <div className="absolute bottom-12 left-16 p-4 max-w-md text-white">
+              <div
+                className={clsxMerge(
+                  "absolute bottom-12 left-16 p-4 max-w-md",
+                  textWhite
+                )}
+              >
                 <h4 className="font-semibold mb-2">{item.title}</h4>
                 <span className="text-sm">{item.description}</span>
               </div>
