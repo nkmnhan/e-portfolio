@@ -18,7 +18,7 @@ interface ImageCardProps {
 const posterClass = "object-cover rounded shadow max-w-full";
 
 const descPopupClass = clsxMerge(
-  "absolute bottom-0 left-0 w-full p-4 rounded-b-lg transition-all duration-200 z-10",
+  "absolute bottom-0 left-0 w-full p-4 rounded-b transition-all duration-200 z-10",
   "h-32",
   "backdrop-blur-sm",
   textWhite
@@ -37,7 +37,9 @@ export default function ImageCard({
   const imgRef = useRef<HTMLImageElement>(null);
   const [color, setColor] = useState("#10172f");
   const [xClassName, setXClassName] = useState("");
-  const [xStyle, setXStyle] = useState<React.CSSProperties | undefined>(undefined);
+  const [xStyle, setXStyle] = useState<React.CSSProperties | undefined>(
+    undefined
+  );
   const [showDesc, setShowDesc] = useState(false);
   const output: ColorThiefOutput = useColorThief(src, {
     format: "hex",
@@ -67,7 +69,7 @@ export default function ImageCard({
       className={clsxMerge(
         "group relative cursor-pointer w-full",
         xClassName,
-        forceHover ? "hover" : ""
+        forceHover && "hover"
       )}
       style={xStyle}
     >
@@ -80,7 +82,7 @@ export default function ImageCard({
         className={clsxMerge(
           posterClass,
           "group-hover:rounded-b-none",
-          forceHover ? "rounded-b-none" : ""
+          forceHover && "rounded-b-none"
         )}
         loading={loading}
       />
@@ -91,13 +93,15 @@ export default function ImageCard({
           "opacity-0",
           forceHover
             ? showDesc
-              ? "opacity-100 translate-y-8"
+              ? "opacity-100 translate-y-32"
               : "opacity-0"
             : "group-hover:opacity-100 group-hover:translate-y-32"
         )}
         style={{ background: color }}
       >
-        <h6 className={clsxMerge("flex items-center gap-2 font-bold mb-2")}>{title}</h6>
+        <h6 className={clsxMerge("flex items-center gap-2 font-bold mb-2")}>
+          {title}
+        </h6>
         <p className={clsxMerge("text-sm line-clamp-3")}>{description}</p>
       </div>
     </div>

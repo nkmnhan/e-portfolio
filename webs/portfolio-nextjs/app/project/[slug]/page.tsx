@@ -6,27 +6,58 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { AiFillDownCircle, AiFillUpCircle } from "react-icons/ai";
 import { useProjectContext } from "./layout";
-import BrandGallery from "@/app/components/brand-gallery";
+import BrandGallery, { BrandGalleryItem } from "@/app/components/brand-gallery";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { textPrimary, textBody, textMuted, textWhite } from "@/app/components/themes/default-text";
+import {
+  textPrimary,
+  textBody,
+  textMuted,
+  textWhite,
+} from "@/app/components/themes/default-text";
 import { bgPrimary } from "@/app/components/themes/default-bg";
 
-const posterContainer = "relative z-10 transition-all duration-700 ease-in-out w-full mx-auto flex flex-col items-center justify-center rounded-xl overflow-hidden";
-const posterImage = "object-cover rounded-xl transition-all duration-700 shadow-2xl";
+const posterContainer =
+  "relative z-10 transition-all duration-700 ease-in-out w-full mx-auto flex flex-col items-center justify-center rounded-xl overflow-hidden";
+const posterImage =
+  "object-cover rounded-xl transition-all duration-700 shadow-2xl";
 const posterTitle = clsxMerge(
   "mt-6 text-2xl sm:text-3xl font-bold text-center transition-opacity duration-700 z-20 relative",
   textWhite
 );
-const scrollBtn = "absolute bottom-8 p-4 left-1/2 bg-black/50 backdrop-blur-sm rounded-full text-white transform -translate-x-1/2 transition-all duration-500 animate-bounce";
-const closeBtn = "fixed bottom-8 right-8 z-10 p-4 bg-black/50 backdrop-blur-sm rounded-full text-white transition-all duration-500 hover:bg-black/70 animate-bounce";
+const scrollBtn =
+  "absolute bottom-8 p-4 left-1/2 bg-black/50 backdrop-blur-sm rounded-full text-white transform -translate-x-1/2 transition-all duration-500 animate-bounce";
+const closeBtn =
+  "fixed bottom-8 right-8 z-10 p-4 bg-black/50 backdrop-blur-sm rounded-full text-white transition-all duration-500 hover:bg-black/70 animate-bounce";
+
+const logos = [
+  "https://walt-disney-studios.s3.amazonaws.com/disney_f6a189acd1.svg",
+  "https://walt-disney-studios.s3.amazonaws.com/lucasfilmlogo_77d86c53eb.png",
+  "https://walt-disney-studios.s3.amazonaws.com/Pixar_logo_1063ed0633.png",
+  "https://walt-disney-studios.s3.amazonaws.com/Pixar_logo_1063ed0633.png",
+  "https://walt-disney-studios.s3.amazonaws.com/Disney_Theatrical_Group_0368273d86.png",
+];
+
+const urls = [
+  "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+  "https://flowbite.com/docs/images/carousel/carousel-2.svg",
+  "https://flowbite.com/docs/images/carousel/carousel-3.svg",
+  "https://flowbite.com/docs/images/carousel/carousel-4.svg",
+  "https://flowbite.com/docs/images/carousel/carousel-5.svg",
+];
+const tempData: BrandGalleryItem[] = urls.map((url, index) => ({
+  src: url,
+  alt: `Carousel image ${index + 1}`,
+  logoSrc: logos[index] || "",
+  logoAlt: "", // Provide appropriate logoAlt if available
+}));
 
 export default function Project({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-
-  const { setProjectId, isCinematicMode, setIsCinematicMode } = useProjectContext();
+  const { setProjectId, isCinematicMode, setIsCinematicMode } =
+    useProjectContext();
   const [project, setProject] = useState<ProjectInfo | null>(null);
 
   useEffect(() => {
@@ -82,7 +113,7 @@ export default function Project({
         <div
           className={clsxMerge(
             posterContainer,
-            isCinematicMode ? "max-w-3xl aspect-[16/7]" : "max-w-5xl aspect-video"
+            isCinematicMode ? "max-w-3xl aspect-16/7" : "max-w-5xl aspect-video"
           )}
         >
           <div className="absolute inset-0 w-full h-full rounded-xl overflow-hidden z-0">
@@ -132,23 +163,45 @@ export default function Project({
       </div>
       {/* Project Details Section */}
       <div className="w-full">
-        <div className={clsxMerge("container mx-auto px-4 sm:px-8 py-8 sm:py-16 max-w-4xl")}>
+        <div
+          className={clsxMerge(
+            "container mx-auto px-4 sm:px-8 py-8 sm:py-16 max-w-4xl"
+          )}
+        >
           <div className="text-center space-y-4 sm:space-y-8">
-            <h1 className={clsxMerge("text-2xl sm:text-4xl font-bold px-2", textPrimary)}>
+            <h1
+              className={clsxMerge(
+                "text-2xl sm:text-4xl font-bold px-2",
+                textPrimary
+              )}
+            >
               {project.title}
             </h1>
-            <div className={clsxMerge("text-xs sm:text-sm space-x-2 sm:space-x-4", textMuted)}>
+            <div
+              className={clsxMerge(
+                "text-xs sm:text-sm space-x-2 sm:space-x-4",
+                textMuted
+              )}
+            >
               <span>ID: {project.id}</span>
               <span>•</span>
               <span>Type: {project.type}</span>
             </div>
-            <p className={clsxMerge("text-base sm:text-lg leading-relaxed max-w-2xl mx-auto px-2", textBody)}>
+            <p
+              className={clsxMerge(
+                "text-base sm:text-lg leading-relaxed max-w-2xl mx-auto px-2",
+                textBody
+              )}
+            >
               {project.description}
             </p>
-            <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
-              <BrandGallery src={[]} />
-            </div>
-            <div className={clsxMerge("flex flex-col sm:flex-row justify-center gap-2 sm:gap-8 text-xs sm:text-sm pt-4", textMuted)}>
+            <BrandGallery src={tempData} />
+            <div
+              className={clsxMerge(
+                "flex flex-col sm:flex-row justify-center gap-2 sm:gap-8 text-xs sm:text-sm pt-4",
+                textMuted
+              )}
+            >
               <span>Created: {project.createddate}</span>
               <span>Updated: {project.updateddate}</span>
             </div>

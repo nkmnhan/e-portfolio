@@ -4,7 +4,7 @@ import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 import MasonryLayout from "../components/masonry-layout";
 import IMAGE_URLS from "./data";
-import ImageCard from "../components/image-card";
+import ImageCard from "../components/images/image-card";
 import Link from "next/link";
 import { clsxMerge } from "@/app/components/themes/utils";
 import { bgPrimary } from "@/app/components/themes/default-bg";
