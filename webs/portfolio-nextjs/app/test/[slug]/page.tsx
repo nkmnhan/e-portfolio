@@ -11,6 +11,7 @@ import ModelViewer from '../../components/model-viewer';
 import BrandGallery from '../../components/brand-gallery';
 import Galaxy from '../../components/galaxy';
 import MasonryLayout from '../../components/masonry-layout';
+import SnapEdgeMenu from '../../components/snap-edge';
 
 const components: Record<string, { title: string; component: React.ReactNode }> = {
   'skeletons': {
@@ -125,6 +126,30 @@ const components: Record<string, { title: string; component: React.ReactNode }> 
       <div className="space-y-6">
         <TestimonialPlaceholder lines={2} />
         <TestimonialPlaceholder lines={4} />
+      </div>
+    ),
+  },
+  'snap-edge': {
+    title: 'Snap Edge Menu',
+    component: (
+      <div className="relative h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-lg">
+        <div className="p-8">
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+            Draggable Floating Menu
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
+            Drag the floating bubble around. When you release it, it will snap to the nearest edge.
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
+            <li>Drag the bubble to move it</li>
+            <li>Release to snap to nearest edge</li>
+            <li>Tap for action (customizable)</li>
+            <li>Smooth spring animations</li>
+          </ul>
+        </div>
+        <SnapEdgeMenu 
+          onTap={() => alert('Bubble tapped!')}
+        />
       </div>
     ),
   },

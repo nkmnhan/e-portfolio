@@ -2,18 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import {
-  Drawer,
-  DrawerHeader,
-  DrawerItems,
-  Sidebar,
-  SidebarItem,
-  SidebarItemGroup,
-  SidebarItems,
-} from "flowbite-react";
-import HamburgerBtn from "../components/hamburger-btn";
+import SnapEdgeMenu from "../components/snap-edge";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { bgPrimary } from "@/app/components/themes/default-bg";
 
 const components = [
   { slug: "skeletons", name: "Skeleton Components", icon: "💀" },
@@ -31,70 +21,90 @@ export default function TestLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Navigation Drawer Button */}
-      <div
-        className={clsxMerge(
-          "fixed z-50 transition-all duration-200 flex items-center gap-4",
-          isDrawerOpen
-            ? "top-6 right-1/2 -translate-x-2 sm:right-60"
-            : "top-6 right-6"
-        )}
-      >
-        <h5 className="text-lg font-bold text-gray-900 dark:text-white">
-          {isDrawerOpen ? "Close" : "Components"}
-        </h5>
-        <HamburgerBtn
-          id="test-nav-btn"
-          active={isDrawerOpen}
-          mode="transparent"
-          onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-        />
-      </div>
+      {/* Floating Menu Button */}
+      <SnapEdgeMenu onTap={() => setIsMenuOpen(!isMenuOpen)}>
+        <svg
+          className="w-5 h-5 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </SnapEdgeMenu>
 
-      {/* Drawer */}
-      <Drawer
-        id="test-drawer"
-        open={isDrawerOpen}
-        onClose={() => setIsDrawerOpen(false)}
-        position="right"
-        className={clsxMerge("w-1/2 sm:w-60", bgPrimary)}
-      >
-        <DrawerHeader title="" titleIcon={() => <></>} closeIcon={() => <></>} />
-        <DrawerItems>
-          <Sidebar
-            aria-label="Component navigation"
-            className={clsxMerge(
-              "[&>div]:bg-transparent [&>div]:p-0 text-center w-full"
-            )}
-          >
-            <div className="flex h-full flex-col justify-between py-4">
-              <div>
-                <SidebarItems>
-                  <SidebarItemGroup>
-                    {components.map((component) => (
-                      <SidebarItem
-                        id={`test-${component.slug}`}
-                        key={component.slug}
-                        href={`/test/${component.slug}`}
-                        onClick={() => setIsDrawerOpen(false)}
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="text-2xl">{component.icon}</span>
-                          <span>{component.name}</span>
-                        </div>
-                      </SidebarItem>
-                    ))}
-                  </SidebarItemGroup>
-                </SidebarItems>
+      {/* Menu Overlay */}
+      {isMenuOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 backdrop-blur-sm"
+            onClick={() => setIsMenuOpen(false)}
+          />
+
+          {/* Menu Panel */}
+          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[90vw] max-w-md max-h-[80vh] overflow-y-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl">
+            <div className="p-6">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  Components
+                </h2>
+                <button
+                  onClick={() => setIsMenuOpen(false)}
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                >
+                  <svg
+                    className="w-6 h-6 text-gray-600 dark:text-gray-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
               </div>
+
+              {/* Component List */}
+              <nav className="space-y-2">
+                {components.map((component) => (
+                  <Link
+                    key={component.slug}
+                    href={`/test/${component.slug}`}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={clsxMerge(
+                      "flex items-center gap-4 p-4 rounded-xl transition-all",
+                      "hover:bg-linear-0-to-r hover:from-blue-50 hover:to-purple-50",
+                      "dark:hover:from-blue-900/20 dark:hover:to-purple-900/20",
+                      "border border-transparent hover:border-blue-200 dark:hover:border-blue-700",
+                      "group"
+                    )}
+                  >
+                    <span className="text-3xl">{component.icon}</span>
+                    <span className="text-gray-700 dark:text-gray-200 group-hover:text-gray-900 dark:group-hover:text-white font-medium">
+                      {component.name}
+                    </span>
+                  </Link>
+                ))}
+              </nav>
             </div>
-          </Sidebar>
-        </DrawerItems>
-      </Drawer>
+          </div>
+        </>
+      )}
 
       {/* Main Content */}
       {children}
