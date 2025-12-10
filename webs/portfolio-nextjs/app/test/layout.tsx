@@ -97,11 +97,12 @@ export default function TestLayout({
             <div
               className={clsxMerge(
                 "h-12 w-12 rounded p-3 shadow-lg border border-gray-300",
+                menuTrigger !== "click" && "animate-bounce",
                 "bg-black"
               )}
             >
               {menuTrigger !== "click" && (
-                <span className="absolute flex size-3 top-0 right-0">
+                <span className="absolute flex size-3 -top-1 -right-1">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
                   <span className="relative inline-flex size-3 rounded-full bg-sky-500"></span>
                 </span>
