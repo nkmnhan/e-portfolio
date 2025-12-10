@@ -38,7 +38,7 @@ export default function ProjectLayout({
   children: React.ReactNode;
 }>) {
   const [projectId, setProjectId] = useState("0");
-  const [isCinematicMode, setIsCinematicMode] = useState(true);
+  const [isCinematicMode, setIsCinematicMode] = useState(false);
   const [showPrevPreview, setShowPrevPreview] = useState(false);
   const [showNextPreview, setShowNextPreview] = useState(false);
   const [iconClass, setIconClass] = useState("text-2xl text-gray-800");

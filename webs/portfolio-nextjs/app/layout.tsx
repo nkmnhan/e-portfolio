@@ -48,10 +48,7 @@ export default function RootLayout({
       >
         <div>
           <NavBar />
-          {/* Floating ThemeSwitcher */}
-          <div className="fixed bottom-4 left-4 z-48">
-            <DarkThemeToggle />
-          </div>
+          {/* Theme switcher hidden - light mode only */}
           <main>{children}</main>
         </div>
       </body>

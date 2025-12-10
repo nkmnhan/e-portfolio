@@ -13,24 +13,6 @@ const nextConfig: NextConfig = {
         hostname: "mindbender.com",
         port: "",
         pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "cdn.hailuoai.video",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "cdn.hailuoai.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "walt-disney-studios.s3.amazonaws.com",
-        port: "",
-        pathname: "/**",
       }
     ],
   },

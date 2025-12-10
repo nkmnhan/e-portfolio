@@ -26,9 +26,9 @@ const posterTitle = clsxMerge(
   textWhite
 );
 const scrollBtn =
-  "absolute bottom-8 p-4 left-1/2 bg-black/50 backdrop-blur-sm rounded-full text-white transform -translate-x-1/2 transition-all duration-500 animate-bounce";
+  "absolute bottom-8 p-4 left-1/2 bg-black/50 backdrop-blur-sm rounded-full text-white transform -translate-x-1/2 transition-all duration-500 hover:animate-bounce hover:bg-black/70";
 const closeBtn =
-  "fixed bottom-8 right-8 z-10 p-4 bg-black/50 backdrop-blur-sm rounded-full text-white transition-all duration-500 hover:bg-black/70 animate-bounce";
+  "fixed bottom-8 right-8 z-10 p-4 bg-black/50 backdrop-blur-sm rounded-full text-white transition-all duration-500 hover:bg-black/70 hover:animate-bounce";
 
 export default function Project({
   params,
@@ -64,6 +64,23 @@ export default function Project({
 
     window.addEventListener("scroll", handleScroll);
   });
+
+  // Keyboard navigation support
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      // Escape key exits cinematic mode
+      if (e.key === "Escape" && isCinematicMode) {
+        setIsCinematicMode(false);
+      }
+      // F key toggles fullscreen/cinematic mode
+      else if (e.key === "f" || e.key === "F") {
+        setIsCinematicMode(!isCinematicMode);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [isCinematicMode]);
 
   if (!project) {
     return (
@@ -148,6 +165,18 @@ export default function Project({
             "container mx-auto px-4 sm:px-8 py-8 sm:py-16 max-w-4xl"
           )}
         >
+          {/* Back to Work button */}
+          <div className="mb-6">
+            <a
+              href="/work"
+              className={clsxMerge(
+                "inline-flex items-center gap-2 text-sm hover:underline",
+                textPrimary
+              )}
+            >
+              ← Back to Work
+            </a>
+          </div>
           <div className="text-center space-y-4 sm:space-y-8">
             <h1
               className={clsxMerge(
