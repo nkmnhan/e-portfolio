@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Popover } from "flowbite-react";
 import SnapEdgeMenu from "../components/snap-edge";
 import { clsxMerge } from "@/app/components/themes/utils";
+import Image from "next/image";
 
 const components = [
   { slug: "skeletons", name: "Skeleton Components", icon: "💀" },
@@ -25,46 +27,13 @@ export default function TestLayout({
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Floating Menu Button */}
-      <SnapEdgeMenu onTap={() => setIsMenuOpen(!isMenuOpen)} />
-
-      {/* Menu Overlay */}
-      {isMenuOpen && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 backdrop-blur-sm"
-            onClick={() => setIsMenuOpen(false)}
-          />
-
-          {/* Menu Panel */}
-          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[90vw] max-w-md max-h-[80vh] overflow-y-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl">
-            <div className="p-6">
-              {/* Header */}
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Components
-                </h2>
-                <button
-                  onClick={() => setIsMenuOpen(false)}
-                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-                >
-                  <svg
-                    className="w-6 h-6 text-gray-600 dark:text-gray-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-
+      {/* Floating Menu Button with Popover */}
+      <SnapEdgeMenu onDragStart={() => setIsMenuOpen(false)}>
+        <Popover
+          open={isMenuOpen}
+          onOpenChange={setIsMenuOpen}
+          content={
+            <div className="min-w-[280px] max-w-[90vw] bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-700/50">
               {/* Component List */}
               <nav className="space-y-2">
                 {components.map((component) => (
@@ -73,24 +42,37 @@ export default function TestLayout({
                     href={`/test/${component.slug}`}
                     onClick={() => setIsMenuOpen(false)}
                     className={clsxMerge(
-                      "flex items-center gap-4 p-4 rounded-xl transition-all",
-                      "hover:bg-linear-0-to-r hover:from-blue-50 hover:to-purple-50",
-                      "dark:hover:from-blue-900/20 dark:hover:to-purple-900/20",
-                      "border border-transparent hover:border-blue-200 dark:hover:border-blue-700",
+                      "flex items-center gap-3 p-3 rounded-xl transition-all",
+                      "hover:bg-white/10 active:bg-white/20",
+                      "border border-transparent hover:border-white/20",
                       "group"
                     )}
                   >
-                    <span className="text-3xl">{component.icon}</span>
-                    <span className="text-gray-700 dark:text-gray-200 group-hover:text-gray-900 dark:group-hover:text-white font-medium">
+                    <span className="text-2xl">{component.icon}</span>
+                    <span className="text-white/90 group-hover:text-white font-medium">
                       {component.name}
                     </span>
                   </Link>
                 ))}
               </nav>
             </div>
-          </div>
-        </>
-      )}
+          }
+        >
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="w-full h-full rounded-full flex items-center justify-center bg-transparent"
+          >
+            <Image
+              src="/ufo.svg"
+              alt="Menu"
+              width={40}
+              height={40}
+              className="pointer-events-none"
+              draggable={false}
+            />
+          </button>
+        </Popover>
+      </SnapEdgeMenu>
 
       {/* Main Content */}
       {children}

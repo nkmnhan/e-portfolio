@@ -6,39 +6,22 @@ import { clsxMerge } from "@/app/components/themes/utils";
 import Image from "next/image";
 
 interface SnapEdgeMenuProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   size?: number;
   className?: string;
-  onTap?: () => void;
+  onDragStart?: () => void;
   initialSide?: "left" | "right";
 }
 
-// Default iOS-style Home Button Component
-const DefaultHomeButton = ({ size = 40 }: { size?: number }) => {
-  return (
-    <div className="relative w-full h-full flex items-center justify-center rounded-full overflow-hidden pointer-events-none">
-      <Image
-        src="/ufo.svg"
-        alt="Menu"
-        width={size}
-        height={size}
-        className="object-cover pointer-events-none"
-        draggable={false}
-      />
-    </div>
-  );
-};
-
 export default function SnapEdgeMenu({
   children,
-  size = 40,
+  size = 60,
   className,
-  onTap,
+  onDragStart,
   initialSide = "right",
 }: SnapEdgeMenuProps) {
   const [isDragging, setIsDragging] = useState(false);
   const constraintsRef = useRef<HTMLDivElement>(null);
-  const hasDragged = useRef(false);
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -62,11 +45,9 @@ export default function SnapEdgeMenu({
 
   const handleDragStart = () => {
     setIsDragging(true);
-    hasDragged.current = false;
-  };
-
-  const handleDrag = () => {
-    hasDragged.current = true;
+    if (onDragStart) {
+      onDragStart();
+    }
   };
 
   const handleDragEnd = () => {
@@ -116,17 +97,6 @@ export default function SnapEdgeMenu({
     });
   };
 
-  const handleTap = () => {
-    // Reset hasDragged after a short delay to allow onTap to work
-    setTimeout(() => {
-      if (!hasDragged.current && onTap) {
-        onTap();
-      }
-      // Reset for next interaction
-      hasDragged.current = false;
-    }, 10);
-  };
-
   return (
     <>
       {/* Constraints container */}
@@ -135,8 +105,8 @@ export default function SnapEdgeMenu({
         className="fixed inset-0 pointer-events-none z-40"
       />
 
-      {/* Floating bubble */}
-      <motion.button
+      {/* Floating draggable container */}
+      <motion.div
         style={{
           x,
           y,
@@ -149,26 +119,16 @@ export default function SnapEdgeMenu({
         dragElastic={0.1}
         dragMomentum={false}
         onDragStart={handleDragStart}
-        onDrag={handleDrag}
         onDragEnd={handleDragEnd}
-        onTap={handleTap}
         whileHover={{ 
           scale: 1.05,
-          rotate: [0, -5, 5, -5, 0],
           transition: { 
-            rotate: { 
-              repeat: Infinity, 
-              duration: 0.5,
-              ease: "easeInOut" 
-            },
             scale: { duration: 0.2 }
           }
         }}
         className={clsxMerge(
           "fixed z-50",
-          "rounded-full",
           "flex items-center justify-center",
-          "transition-shadow duration-200",
           isDragging && "cursor-grabbing",
           className
         )}
@@ -183,8 +143,8 @@ export default function SnapEdgeMenu({
           },
         }}
       >
-        {children || <DefaultHomeButton size={size} />}
-      </motion.button>
+        {children}
+      </motion.div>
     </>
   );
 }
