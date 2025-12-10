@@ -14,6 +14,7 @@ interface SnapEdgeProps {
   onClick?: () => void;
   initialSide?: "left" | "right";
   disabled?: boolean;
+  useParent?: boolean; // When true, uses parent container instead of window
 }
 
 export default function SnapEdge({
@@ -25,9 +26,11 @@ export default function SnapEdge({
   onClick,
   initialSide = "left",
   disabled = false,
+  useParent = false,
 }: SnapEdgeProps) {
   const [isDragging, setIsDragging] = useState(false);
   const constraintsRef = useRef<HTMLDivElement>(null);
+  const parentRef = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(20);
   const y = useMotionValue(20);
@@ -35,18 +38,27 @@ export default function SnapEdge({
   useEffect(() => {
     // Set initial position
     const updateInitialPosition = () => {
-      if (typeof window !== "undefined") {
+      if (useParent && parentRef.current) {
+        const parentRect = parentRef.current.getBoundingClientRect();
+        const containerWidth = parentRect.width;
+        const containerHeight = parentRect.height;
+        const initialX = initialSide === "left" ? 20 : containerWidth - size - 20;
+        const initialY = 20; // Start at top
+        x.set(initialX);
+        y.set(initialY);
+      } else if (typeof window !== "undefined") {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
         const initialX = initialSide === "left" ? 20 : windowWidth - size - 20;
         x.set(initialX);
+        y.set(20);
       }
     };
 
     updateInitialPosition();
     window.addEventListener("resize", updateInitialPosition);
     return () => window.removeEventListener("resize", updateInitialPosition);
-  }, [x, y, size, initialSide]);
+  }, [x, y, size, initialSide, useParent]);
 
   const dragStartPos = useRef({ x: 0, y: 0 });
 
@@ -63,8 +75,18 @@ export default function SnapEdge({
 
     const currentX = x.get();
     const currentY = y.get();
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
+    
+    let containerWidth: number;
+    let containerHeight: number;
+
+    if (useParent && parentRef.current) {
+      const parentRect = parentRef.current.getBoundingClientRect();
+      containerWidth = parentRect.width;
+      containerHeight = parentRect.height;
+    } else {
+      containerWidth = window.innerWidth;
+      containerHeight = window.innerHeight;
+    }
 
     // Calculate center of the button
     const buttonCenterX = currentX + size / 2;
@@ -75,21 +97,21 @@ export default function SnapEdge({
     let targetY: number;
 
     // Determine horizontal side (left or right)
-    if (buttonCenterX < windowWidth / 2) {
+    if (buttonCenterX < containerWidth / 2) {
       // Snap to left
       targetX = 20;
     } else {
       // Snap to right
-      targetX = windowWidth - size - 20;
+      targetX = containerWidth - size - 20;
     }
 
     // Determine vertical side (top or bottom)
-    if (buttonCenterY < windowHeight / 2) {
+    if (buttonCenterY < containerHeight / 2) {
       // Snap to top
       targetY = 20;
     } else {
       // Snap to bottom
-      targetY = windowHeight - size - 20;
+      targetY = containerHeight - size - 20;
     }
 
     // Animate to target position with spring
@@ -119,6 +141,54 @@ export default function SnapEdge({
       onClick();
     }
   };
+
+  if (useParent) {
+    return (
+      <div ref={parentRef} className="absolute inset-0 pointer-events-none">
+        {/* Constraints container */}
+        <div
+          ref={constraintsRef}
+          className="absolute inset-0 pointer-events-none"
+        />
+
+        {/* Floating draggable container */}
+        <motion.div
+          style={{
+            x,
+            y,
+            width: size,
+            height: size,
+            cursor: isDragging ? "grabbing" : "pointer",
+          }}
+          drag={!disabled}
+          dragConstraints={constraintsRef}
+          dragElastic={0.5}
+          dragMomentum={false}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          onClick={handleClick}
+          className={clsxMerge(
+            "absolute pointer-events-auto z-50",
+            "flex items-center justify-center",
+            isDragging && "cursor-grabbing",
+            className
+          )}
+          animate={{
+            scale: isDragging ? 1.1 : 1,
+          }}
+          transition={{
+            scale: {
+              type: "spring",
+              stiffness: 400,
+              damping: 25,
+            },
+          }}
+        >
+          {children}
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <>
