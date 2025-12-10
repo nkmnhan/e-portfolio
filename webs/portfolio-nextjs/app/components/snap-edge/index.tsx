@@ -5,26 +5,32 @@ import { useState, useEffect, useRef } from "react";
 import { clsxMerge } from "@/app/components/themes/utils";
 import Image from "next/image";
 
-interface SnapEdgeMenuProps {
+interface SnapEdgeProps {
   children: React.ReactNode;
   size?: number;
   className?: string;
   onDragStart?: () => void;
+  onDragEnd?: () => void;
+  onClick?: () => void;
   initialSide?: "left" | "right";
+  disabled?: boolean;
 }
 
-export default function SnapEdgeMenu({
+export default function SnapEdge({
   children,
   size = 60,
   className,
   onDragStart,
-  initialSide = "right",
-}: SnapEdgeMenuProps) {
+  onDragEnd,
+  onClick,
+  initialSide = "left",
+  disabled = false,
+}: SnapEdgeProps) {
   const [isDragging, setIsDragging] = useState(false);
   const constraintsRef = useRef<HTMLDivElement>(null);
-  
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+
+  const x = useMotionValue(20);
+  const y = useMotionValue(20);
 
   useEffect(() => {
     // Set initial position
@@ -34,7 +40,6 @@ export default function SnapEdgeMenu({
         const windowHeight = window.innerHeight;
         const initialX = initialSide === "left" ? 20 : windowWidth - size - 20;
         x.set(initialX);
-        y.set(windowHeight / 2 - size / 2);
       }
     };
 
@@ -43,8 +48,11 @@ export default function SnapEdgeMenu({
     return () => window.removeEventListener("resize", updateInitialPosition);
   }, [x, y, size, initialSide]);
 
+  const dragStartPos = useRef({ x: 0, y: 0 });
+
   const handleDragStart = () => {
     setIsDragging(true);
+    dragStartPos.current = { x: x.get(), y: y.get() };
     if (onDragStart) {
       onDragStart();
     }
@@ -95,6 +103,21 @@ export default function SnapEdgeMenu({
       stiffness: 300,
       damping: 30,
     });
+
+    if (onDragEnd) {
+      onDragEnd();
+    }
+  };
+
+  const handleClick = () => {
+    if (isDragging) {
+      debugger;
+      return;
+    }
+
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (
@@ -114,18 +137,13 @@ export default function SnapEdgeMenu({
           height: size,
           cursor: isDragging ? "grabbing" : "pointer",
         }}
-        drag
+        drag={!disabled}
         dragConstraints={constraintsRef}
-        dragElastic={0.1}
+        dragElastic={0.5}
         dragMomentum={false}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
-        whileHover={{ 
-          scale: 1.05,
-          transition: { 
-            scale: { duration: 0.2 }
-          }
-        }}
+        onClick={handleClick}
         className={clsxMerge(
           "fixed z-50",
           "flex items-center justify-center",

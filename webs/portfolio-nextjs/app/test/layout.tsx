@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Popover } from "flowbite-react";
-import SnapEdgeMenu from "../components/snap-edge";
+import SnapEdge from "../components/snap-edge";
 import { clsxMerge } from "@/app/components/themes/utils";
 import Image from "next/image";
 
@@ -23,15 +23,30 @@ export default function TestLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const [menuTrigger, setMenuTrigger] = useState<"click" | "hover" | undefined>(
+    "click"
+  );
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div
+      className="min-h-screen bg-white dark:bg-gray-900"
+    >
       {/* Floating Menu Button with Popover */}
-      <SnapEdgeMenu onDragStart={() => setIsMenuOpen(false)}>
+      <SnapEdge
+        onDragStart={() => {
+          setMenuTrigger(undefined);
+          setIsMenuOpen(false);
+        }}
+        onClick={() => setIsMenuOpen(true)}
+        onDragEnd={() =>
+          setTimeout(() => {
+            setMenuTrigger("click");
+          }, 300)
+        }
+      >
         <Popover
           open={isMenuOpen}
-          onOpenChange={setIsMenuOpen}
+          trigger={menuTrigger}
           content={
             <div className="min-w-[280px] max-w-[90vw] bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-700/50">
               {/* Component List */}
@@ -40,7 +55,7 @@ export default function TestLayout({
                   <Link
                     key={component.slug}
                     href={`/test/${component.slug}`}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => setMenuTrigger(undefined)}
                     className={clsxMerge(
                       "flex items-center gap-3 p-3 rounded-xl transition-all",
                       "hover:bg-white/10 active:bg-white/20",
@@ -58,10 +73,7 @@ export default function TestLayout({
             </div>
           }
         >
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="w-full h-full rounded-full flex items-center justify-center bg-transparent"
-          >
+          <div className="w-full h-full flex items-center justify-center">
             <Image
               src="/ufo.svg"
               alt="Menu"
@@ -70,9 +82,9 @@ export default function TestLayout({
               className="pointer-events-none"
               draggable={false}
             />
-          </button>
+          </div>
         </Popover>
-      </SnapEdgeMenu>
+      </SnapEdge>
 
       {/* Main Content */}
       {children}

@@ -11,7 +11,7 @@ import ModelViewer from '../../components/model-viewer';
 import BrandGallery from '../../components/brand-gallery';
 import Galaxy from '../../components/galaxy';
 import MasonryLayout from '../../components/masonry-layout';
-import SnapEdgeMenu from '../../components/snap-edge';
+import SnapEdge from '../../components/snap-edge';
 
 const components: Record<string, { title: string; component: React.ReactNode }> = {
   'skeletons': {
@@ -147,7 +147,7 @@ const components: Record<string, { title: string; component: React.ReactNode }> 
             <li>Smooth spring animations</li>
           </ul>
         </div>
-        <SnapEdgeMenu 
+        <SnapEdge 
           onTap={() => alert('Bubble tapped!')}
         />
       </div>
