@@ -25,7 +25,6 @@ import { clsxMerge } from "@/app/components/themes/utils";
 import {
   textWhite,
   textPrimary,
-  textMuted,
 } from "@/app/components/themes/default-text";
 import { bgPrimary } from "@/app/components/themes/default-bg";
 
@@ -54,9 +53,8 @@ const SOCIAL_LINKS = [
   { icon: FaEnvelope, url: "mailto:your@email.com" },
 ];
 
-const navBtnContainer = clsxMerge(
-  "fixed z-50 transition-all duration-200 flex items-center gap-4" // gap-4 = 16px
-);
+const navBtnContainer =
+  "fixed z-50 transition-all duration-200 flex items-center gap-4 p-3 rounded";
 
 const navBtnOpen = "top-6 left-1/2 translate-x-2 sm:left-60";
 const navBtnClosed = "top-6 left-6";
@@ -126,7 +124,8 @@ export function NavBar() {
       <div
         className={clsxMerge(
           navBtnContainer,
-          isOpen ? navBtnOpen : navBtnClosed
+          isOpen ? navBtnOpen : navBtnClosed,
+          isOpen && "bg-[#00000033]"
         )}
         style={{ position: "fixed" }}
       >
