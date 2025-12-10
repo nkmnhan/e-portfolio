@@ -3,7 +3,6 @@
 import { motion, useMotionValue, animate, PanInfo } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { clsxMerge } from "@/app/components/themes/utils";
-import Image from "next/image";
 
 interface SnapEdgeProps {
   children: React.ReactNode;
@@ -32,26 +31,36 @@ export default function SnapEdge({
   const constraintsRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
 
-  const x = useMotionValue(20);
-  const y = useMotionValue(20);
+  const margin = 20; // Margin from edges
+  const x = useMotionValue(margin);
+  const y = useMotionValue(margin);
+
+  const getContainerSize = () => {
+    if (useParent && parentRef.current) {
+      const parentRect = parentRef.current.getBoundingClientRect();
+      return {
+        width: parentRect.width,
+        height: parentRect.height,
+      };
+    } else if (typeof window !== "undefined") {
+      return {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    }
+    return { width: 0, height: 0 };
+  };
 
   useEffect(() => {
     // Set initial position
     const updateInitialPosition = () => {
-      if (useParent && parentRef.current) {
-        const parentRect = parentRef.current.getBoundingClientRect();
-        const containerWidth = parentRect.width;
-        const containerHeight = parentRect.height;
-        const initialX = initialSide === "left" ? 20 : containerWidth - size - 20;
-        const initialY = 20; // Start at top
+      const { width: containerWidth } = getContainerSize();
+      if (containerWidth > 0) {
+        const initialX =
+          initialSide === "left" ? margin : containerWidth - size - margin;
+        const initialY = margin; // Start at top
         x.set(initialX);
         y.set(initialY);
-      } else if (typeof window !== "undefined") {
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-        const initialX = initialSide === "left" ? 20 : windowWidth - size - 20;
-        x.set(initialX);
-        y.set(20);
       }
     };
 
@@ -75,18 +84,7 @@ export default function SnapEdge({
 
     const currentX = x.get();
     const currentY = y.get();
-    
-    let containerWidth: number;
-    let containerHeight: number;
-
-    if (useParent && parentRef.current) {
-      const parentRect = parentRef.current.getBoundingClientRect();
-      containerWidth = parentRect.width;
-      containerHeight = parentRect.height;
-    } else {
-      containerWidth = window.innerWidth;
-      containerHeight = window.innerHeight;
-    }
+    const { width: containerWidth, height: containerHeight } = getContainerSize();
 
     // Calculate center of the button
     const buttonCenterX = currentX + size / 2;
@@ -99,19 +97,19 @@ export default function SnapEdge({
     // Determine horizontal side (left or right)
     if (buttonCenterX < containerWidth / 2) {
       // Snap to left
-      targetX = 20;
+      targetX = margin;
     } else {
       // Snap to right
-      targetX = containerWidth - size - 20;
+      targetX = containerWidth - size - margin;
     }
 
     // Determine vertical side (top or bottom)
     if (buttonCenterY < containerHeight / 2) {
       // Snap to top
-      targetY = 20;
+      targetY = margin;
     } else {
       // Snap to bottom
-      targetY = containerHeight - size - 20;
+      targetY = containerHeight - size - margin;
     }
 
     // Animate to target position with spring
