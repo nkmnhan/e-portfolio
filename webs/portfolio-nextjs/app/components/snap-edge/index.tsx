@@ -3,6 +3,7 @@
 import { motion, useMotionValue, animate, PanInfo } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { clsxMerge } from "@/app/components/themes/utils";
+import Image from "next/image";
 
 interface SnapEdgeMenuProps {
   children?: React.ReactNode;
@@ -11,6 +12,22 @@ interface SnapEdgeMenuProps {
   onTap?: () => void;
   initialSide?: "left" | "right";
 }
+
+// Default iOS-style Home Button Component
+const DefaultHomeButton = ({ size = 40 }: { size?: number }) => {
+  return (
+    <div className="relative w-full h-full flex items-center justify-center rounded-full overflow-hidden pointer-events-none">
+      <Image
+        src="/ufo.svg"
+        alt="Menu"
+        width={size}
+        height={size}
+        className="object-cover pointer-events-none"
+        draggable={false}
+      />
+    </div>
+  );
+};
 
 export default function SnapEdgeMenu({
   children,
@@ -149,13 +166,10 @@ export default function SnapEdgeMenu({
         }}
         className={clsxMerge(
           "fixed z-50",
-          "rounded-full backdrop-blur-md",
-          "bg-[rgba(0,0,0,0.8)]",
-          "shadow-[0_0_0_1px_#171717,inset_0_0_0_1px_hsla(0,0%,100%,0.14),0px_16px_32px_-8px_rgba(0,0,0,0.24)]",
+          "rounded-full",
           "flex items-center justify-center",
           "transition-shadow duration-200",
-          "hover:bg-[rgba(0,0,0,0.85)]",
-          isDragging && "shadow-2xl cursor-grabbing",
+          isDragging && "cursor-grabbing",
           className
         )}
         animate={{
@@ -169,21 +183,7 @@ export default function SnapEdgeMenu({
           },
         }}
       >
-        {children || (
-          <svg
-            className="w-5 h-5 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        )}
+        {children || <DefaultHomeButton size={size} />}
       </motion.button>
     </>
   );

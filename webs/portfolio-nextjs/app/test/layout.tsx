@@ -26,21 +26,7 @@ export default function TestLayout({
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Floating Menu Button */}
-      <SnapEdgeMenu onTap={() => setIsMenuOpen(!isMenuOpen)}>
-        <svg
-          className="w-5 h-5 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </SnapEdgeMenu>
+      <SnapEdgeMenu onTap={() => setIsMenuOpen(!isMenuOpen)} />
 
       {/* Menu Overlay */}
       {isMenuOpen && (
