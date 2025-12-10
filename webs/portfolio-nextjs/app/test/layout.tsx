@@ -7,15 +7,13 @@ import SnapEdge from "../components/snap-edge";
 import { clsxMerge } from "@/app/components/themes/utils";
 import Image from "next/image";
 
-const components = [
+export const DEMOs = [
   { slug: "skeletons", name: "Skeleton Components", icon: "💀" },
   { slug: "model-viewer", name: "3D Model Viewer", icon: "🎨" },
   { slug: "brand-gallery", name: "Brand Gallery", icon: "🏢" },
   { slug: "galaxy", name: "Galaxy Animation", icon: "🌌" },
   { slug: "masonry-layout", name: "Masonry Layout", icon: "📱" },
-  { slug: "image-placeholder", name: "Image Placeholder", icon: "🖼️" },
-  { slug: "video-placeholder", name: "Video Placeholder", icon: "🎥" },
-  { slug: "testimonial", name: "Testimonial", icon: "💬" },
+  { slug: "snap-edge", name: "Snap Edge Menu", icon: "🚀" },
 ];
 
 export default function TestLayout({
@@ -51,7 +49,7 @@ export default function TestLayout({
             <div className="min-w-[280px] max-w-[90vw] bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-700/50">
               {/* Component List */}
               <nav className="space-y-2">
-                {components.map((component) => (
+                {DEMOs.map((component) => (
                   <Link
                     key={component.slug}
                     href={`/test/${component.slug}`}

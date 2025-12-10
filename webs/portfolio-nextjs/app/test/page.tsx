@@ -1,18 +1,6 @@
 "use client";
-
+import { DEMOs } from "./layout";
 import Link from "next/link";
-import { useState } from "react";
-
-const components = [
-  { slug: "skeletons", name: "Skeleton Components", icon: "💀" },
-  { slug: "model-viewer", name: "3D Model Viewer", icon: "🎨" },
-  { slug: "brand-gallery", name: "Brand Gallery", icon: "🏢" },
-  { slug: "galaxy", name: "Galaxy Animation", icon: "🌌" },
-  { slug: "masonry-layout", name: "Masonry Layout", icon: "📱" },
-  { slug: "image-placeholder", name: "Image Placeholder", icon: "🖼️" },
-  { slug: "video-placeholder", name: "Video Placeholder", icon: "🎥" },
-  { slug: "testimonial", name: "Testimonial", icon: "💬" },
-];
 
 export default function Test() {
   return (
@@ -25,7 +13,7 @@ export default function Test() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {components.map((component) => (
+        {DEMOs.map((component) => (
           <Link
             key={component.slug}
             href={`/test/${component.slug}`}
