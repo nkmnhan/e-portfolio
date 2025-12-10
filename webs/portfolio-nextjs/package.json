@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@google/model-viewer": "^4.1.0",
     "clsx": "^2.1.1",
     "flowbite": "^4.0.1",
     "flowbite-react": "^0.12.10",
