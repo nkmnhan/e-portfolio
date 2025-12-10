@@ -26,7 +26,7 @@ export default function SnapEdgeDemo() {
           useParent={true}
           onClick={() => alert('Bubble tapped!')}
         >
-          <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+          <div className="w-full h-full bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
             <span className="text-2xl">🚀</span>
           </div>
         </SnapEdge>

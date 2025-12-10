@@ -22,7 +22,11 @@ import {
   FaAddressCard,
 } from "react-icons/fa";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { textWhite, textPrimary, textMuted } from "@/app/components/themes/default-text";
+import {
+  textWhite,
+  textPrimary,
+  textMuted,
+} from "@/app/components/themes/default-text";
 import { bgPrimary } from "@/app/components/themes/default-bg";
 
 const navLinks = [
@@ -51,7 +55,7 @@ const SOCIAL_LINKS = [
 ];
 
 const navBtnContainer = clsxMerge(
-  "fixed z-50 transition-all duration-200 flex items-center gap-4", // gap-4 = 16px
+  "fixed z-50 transition-all duration-200 flex items-center gap-4" // gap-4 = 16px
 );
 
 const navBtnOpen = "top-6 left-1/2 translate-x-2 sm:left-60";
@@ -73,9 +77,13 @@ const copyrightClass = clsxMerge(
   "flex items-center justify-center gap-4 text-gray-500 mt-4 text-sm"
 );
 
+const emptyFunc = () => {
+  return <></>;
+};
+
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentPath, setCurrentPath] = useState("/");
+  const [currentPath, setCurrentPath] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const path = window.location.pathname;
@@ -83,7 +91,7 @@ export function NavBar() {
   }, []);
 
   // Add a function to get dynamic className
-  function getLabelClass(path: string): string {
+  function getLabelClass(path: string | undefined): string {
     switch (path) {
       case "/":
       case "/clients":
@@ -99,17 +107,7 @@ export function NavBar() {
     }
   }
 
-  function getBtnMode(path: string): "light" | "transparent" {
-    switch (path) {
-      case "/":
-      case "/clients":
-        return "light";
-      default:
-        return "transparent";
-    }
-  }
-
-  function getNavLabel(path: string): string {
+  function getNavLabel(path: string | undefined): string {
     if (isOpen) {
       return "Close";
     }
@@ -135,90 +133,100 @@ export function NavBar() {
         <HamburgerBtn
           id="nav-btn"
           active={isOpen}
-          mode={getBtnMode(currentPath)}
+          mode="light"
           onClick={() => setIsOpen(!isOpen)}
         />
         <h5 className={getLabelClass(currentPath)}>
           {getNavLabel(currentPath)}
         </h5>
       </div>
-      <Drawer
-        id="drawer"
-        open={isOpen}
-        onClose={() => setIsOpen(!isOpen)}
-        className={clsxMerge("w-1/2 sm:w-60", bgPrimary)}
-      >
-        <DrawerHeader title="" titleIcon={() => <></>} closeIcon={() => <></>} />
-        <DrawerItems>
-          <Sidebar
-            aria-label="Sidebar with multi-level dropdown example"
-            className={clsxMerge("[&>div]:bg-transparent [&>div]:p-0 text-center w-full")}
-          >
-            <div className="flex h-full flex-col justify-between py-4">
-              <div>
-                <SidebarItems>
-                  <SidebarItemGroup>
-                    {navLinks.map((link) => (
-                      <SidebarItem id={link.id} key={link.id} href={link.href}>
-                        {link.label}
-                      </SidebarItem>
-                    ))}
-                  </SidebarItemGroup>
-                  <SidebarItemGroup>
-                    {/* Astronaut image */}
-                    <div className="flex justify-center my-4 h-56 items-center">
-                      <span className="hover:animate-bounce block w-full h-full flex items-center justify-center">
-                        <Image
-                          src="/astronaut.png"
-                          alt="Astronaut"
-                          className={astronautClass}
-                          width={150}
-                          height={100}
-                        />
-                      </span>
-                    </div>
-                    {/* Social icons row */}
-                    <div className="flex justify-center gap-4 my-4">
-                      {SOCIAL_LINKS.map(({ icon: Icon, url }, idx) => (
-                        <a
-                          key={idx}
-                          href={url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={socialIconClass}
-                          style={{ position: "relative" }}
+      {/* Sidebar Drawer */}
+      {currentPath && (
+        <Drawer
+          id="drawer"
+          open={isOpen}
+          onClose={() => setIsOpen(!isOpen)}
+          className={clsxMerge("w-1/2 sm:w-60", bgPrimary)}
+        >
+          <DrawerHeader title="" titleIcon={emptyFunc} closeIcon={emptyFunc} />
+          <DrawerItems>
+            <Sidebar
+              aria-label="Sidebar with multi-level dropdown example"
+              className={clsxMerge(
+                "[&>div]:bg-transparent [&>div]:p-0 text-center w-full"
+              )}
+            >
+              <div className="flex h-full flex-col justify-between py-4">
+                <div>
+                  <SidebarItems>
+                    <SidebarItemGroup>
+                      {navLinks.map((link) => (
+                        <SidebarItem
+                          id={link.id}
+                          key={link.id}
+                          href={link.href}
                         >
-                          <span className="hover:animate-bounce block w-full h-full flex items-center justify-center">
-                            <Icon />
-                          </span>
-                        </a>
+                          {link.label}
+                        </SidebarItem>
                       ))}
-                    </div>
-                  </SidebarItemGroup>
-                  <SidebarItemGroup>
-                    <div className={sidebarContactClass}>
-                      <FaEnvelope className="w-full h-4 mt-1" />
-                      <span className="uppercase">nkmnhan@gmail.com</span>
-                      <FaPhone className="w-full h-4 mt-1" />
-                      <span className="uppercase">+84 978 00 43 19</span>
-                      <FaAddressCard className="w-full h-4 self-start mt-1" />
-                      <span className="uppercase">
-                        8/15 Phan Huy Ich Street, Quarter 18, Tan Son Ward, Ho Chi Minh City
-                      </span>
-                    </div>
-                  </SidebarItemGroup>
-                  <SidebarItemGroup>
-                    <div className={copyrightClass}>
-                      <FaCopyright />
-                      <span>2025 NKMNHAN</span>
-                    </div>
-                  </SidebarItemGroup>
-                </SidebarItems>
+                    </SidebarItemGroup>
+                    <SidebarItemGroup>
+                      {/* Astronaut image */}
+                      <div className="flex justify-center my-4 h-56 items-center">
+                        <span className="hover:animate-bounce w-full h-full flex items-center justify-center">
+                          <Image
+                            src="/astronaut.png"
+                            alt="Astronaut"
+                            className={astronautClass}
+                            width={150}
+                            height={100}
+                          />
+                        </span>
+                      </div>
+                      {/* Social icons row */}
+                      <div className="flex justify-center gap-4 my-4">
+                        {SOCIAL_LINKS.map(({ icon: Icon, url }, idx) => (
+                          <a
+                            key={idx}
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={socialIconClass}
+                            style={{ position: "relative" }}
+                          >
+                            <span className="hover:animate-bounce block w-full h-full flex items-center justify-center">
+                              <Icon />
+                            </span>
+                          </a>
+                        ))}
+                      </div>
+                    </SidebarItemGroup>
+                    <SidebarItemGroup>
+                      <div className={sidebarContactClass}>
+                        <FaEnvelope className="w-full h-4 mt-1" />
+                        <span className="uppercase">nkmnhan@gmail.com</span>
+                        <FaPhone className="w-full h-4 mt-1" />
+                        <span className="uppercase">+84 978 00 43 19</span>
+                        <FaAddressCard className="w-full h-4 self-start mt-1" />
+                        <span className="uppercase">
+                          8/15 Phan Huy Ich Street, Quarter 18, Tan Son Ward, Ho
+                          Chi Minh City
+                        </span>
+                      </div>
+                    </SidebarItemGroup>
+                    <SidebarItemGroup>
+                      <div className={copyrightClass}>
+                        <FaCopyright />
+                        <span>2025 NKMNHAN</span>
+                      </div>
+                    </SidebarItemGroup>
+                  </SidebarItems>
+                </div>
               </div>
-            </div>
-          </Sidebar>
-        </DrawerItems>
-      </Drawer>
+            </Sidebar>
+          </DrawerItems>
+        </Drawer>
+      )}
     </>
   );
 }

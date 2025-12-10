@@ -84,7 +84,8 @@ export default function SnapEdge({
 
     const currentX = x.get();
     const currentY = y.get();
-    const { width: containerWidth, height: containerHeight } = getContainerSize();
+    const { width: containerWidth, height: containerHeight } =
+      getContainerSize();
 
     // Calculate center of the button
     const buttonCenterX = currentX + size / 2;

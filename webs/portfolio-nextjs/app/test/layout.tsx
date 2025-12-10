@@ -58,11 +58,7 @@ export default function TestLayout({
             setIsMenuOpen(false);
           }}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          onDragEnd={() =>
-            setTimeout(() => {
-              setMenuTrigger("click");
-            }, 300)
-          }
+          onDragEnd={() => setMenuTrigger("click")}
         >
           <Popover
             open={isMenuOpen}
@@ -78,7 +74,6 @@ export default function TestLayout({
                     <Link
                       key={component.slug}
                       href={`/test/${component.slug}`}
-                      onClick={() => setMenuTrigger(undefined)}
                       className={clsxMerge(
                         "flex items-center p-2",
                         "hover:bg-gray-100 hover:rounded-lg active:bg-gray-200 focus-visible:outline-none"
