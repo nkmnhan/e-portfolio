@@ -4,6 +4,7 @@ import { clsxMerge } from "@/app/components/themes/utils";
 export type HamburgerIconProp = {
   active: boolean;
   mode?: "light" | "transparent";
+  className?: string;
 };
 
 const defaultClasses = clsxMerge(
@@ -16,6 +17,7 @@ const defaultClasses = clsxMerge(
 export default function HamburgerIcon({
   active,
   mode = "light",
+  className,
 }: HamburgerIconProp) {
   const modeClasses =
     mode === "light"
@@ -24,7 +26,7 @@ export default function HamburgerIcon({
 
   return (
     <div
-      className={modeClasses}
+      className={clsxMerge(modeClasses, className)}
       aria-pressed={active ? "true" : "false"}
     >
       <span className="sr-only">Menu</span>

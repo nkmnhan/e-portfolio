@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Popover } from "flowbite-react";
 import SnapEdge from "../components/snap-edge";
 import { clsxMerge } from "@/app/components/themes/utils";
-import Image from "next/image";
+import HamburgerIcon from "../components/hamburger-btn/hamburger-icon";
 
 export const DEMOs = [
   { slug: "skeletons", name: "Skeleton Components", icon: "💀" },
@@ -25,64 +25,95 @@ export default function TestLayout({
     "click"
   );
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  // Ref for SnapEdge root
+  const snapEdgeRef = useRef<HTMLDivElement>(null);
+  const popoverContentRef = useRef<HTMLDivElement>(null);
+
+  // Close popover on outside click
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      const snapEdgeEl = snapEdgeRef.current;
+      const popoverEl = popoverContentRef.current;
+      if (!snapEdgeEl || !popoverEl) return;
+      if (
+        !snapEdgeEl.contains(e.target as Node) &&
+        !popoverEl.contains(e.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [isMenuOpen]);
+
   return (
-    <div
-      className="min-h-screen bg-white dark:bg-gray-900"
-    >
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Floating Menu Button with Popover */}
-      <SnapEdge
-        onDragStart={() => {
-          setMenuTrigger(undefined);
-          setIsMenuOpen(false);
-        }}
-        onClick={() => setIsMenuOpen(true)}
-        onDragEnd={() =>
-          setTimeout(() => {
-            setMenuTrigger("click");
-          }, 300)
-        }
-      >
-        <Popover
-          open={isMenuOpen}
-          trigger={menuTrigger}
-          content={
-            <div className="min-w-[280px] max-w-[90vw] bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-700/50">
-              {/* Component List */}
-              <nav className="space-y-2">
-                {DEMOs.map((component) => (
-                  <Link
-                    key={component.slug}
-                    href={`/test/${component.slug}`}
-                    onClick={() => setMenuTrigger(undefined)}
-                    className={clsxMerge(
-                      "flex items-center gap-3 p-3 rounded-xl transition-all",
-                      "hover:bg-white/10 active:bg-white/20",
-                      "border border-transparent hover:border-white/20",
-                      "group"
-                    )}
-                  >
-                    <span className="text-2xl">{component.icon}</span>
-                    <span className="text-white/90 group-hover:text-white font-medium">
-                      {component.name}
-                    </span>
-                  </Link>
-                ))}
-              </nav>
-            </div>
+      <div ref={snapEdgeRef}>
+        <SnapEdge
+          initialSide="right"
+          onDragStart={() => {
+            setMenuTrigger(undefined);
+            setIsMenuOpen(false);
+          }}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onDragEnd={() =>
+            setTimeout(() => {
+              setMenuTrigger("click");
+            }, 300)
           }
         >
-          <div className="w-full h-full flex items-center justify-center">
-            <Image
-              src="/ufo.svg"
-              alt="Menu"
-              width={40}
-              height={40}
-              className="pointer-events-none"
-              draggable={false}
-            />
-          </div>
-        </Popover>
-      </SnapEdge>
+          <Popover
+            open={isMenuOpen}
+            trigger={menuTrigger}
+            content={
+              <div
+                ref={popoverContentRef}
+                className="p-6 shadow-lg max-w-xs backdrop:backdrop-blur-2xl"
+              >
+                {/* Component List */}
+                <nav>
+                  {DEMOs.map((component) => (
+                    <Link
+                      key={component.slug}
+                      href={`/test/${component.slug}`}
+                      onClick={() => setMenuTrigger(undefined)}
+                      className={clsxMerge(
+                        "flex items-center p-2",
+                        "hover:bg-gray-100 hover:rounded-lg active:bg-gray-200 focus-visible:outline-none"
+                      )}
+                    >
+                      <span className="text-2xl">{component.icon}</span>
+                      <span className="text-sm text-gray-900 group-hover:text-black font-medium">
+                        {component.name}
+                      </span>
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+            }
+          >
+            <div
+              className={clsxMerge(
+                "h-12 w-12 rounded p-3 shadow-lg border border-gray-300",
+                "bg-black"
+              )}
+            >
+              {menuTrigger !== "click" && (
+                <span className="absolute flex size-3 top-0 right-0">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                  <span className="relative inline-flex size-3 rounded-full bg-sky-500"></span>
+                </span>
+              )}
+              <HamburgerIcon
+                active={isMenuOpen}
+                className="pointer-events-none text-white"
+              />
+            </div>
+          </Popover>
+        </SnapEdge>
+      </div>
 
       {/* Main Content */}
       {children}
