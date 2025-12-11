@@ -34,7 +34,7 @@ const SOCIAL_LINKS = [
 ];
 
 const socialIconClass = clsxMerge(
-  "flex items-center justify-center text-xl text-gray-600 hover:text-blue-500 transition h-12 w-12"
+  "flex items-center justify-center text-xl text-gray-600 hover:text-cyan-700 transition h-12 w-12"
 );
 
 const astronautClass = clsxMerge(
@@ -42,11 +42,11 @@ const astronautClass = clsxMerge(
 );
 
 const sidebarContactClass = clsxMerge(
-  "grid grid-cols-[0.75rem_1fr] gap-x-4 text-[12px] text-gray-500 my-4 text-left"
+  "grid grid-cols-[0.75rem_1fr] gap-x-4 text-[12px] text-gray-500 my-4 text-left hover:text-cyan-700 transition"
 );
 
 const copyrightClass = clsxMerge(
-  "flex items-center justify-center gap-4 text-gray-500 mt-4 text-sm"
+  "flex items-center justify-center gap-4 text-gray-500 mt-4 text-sm hover:text-cyan-700 transition"
 );
 
 const emptyFunc = () => {
@@ -65,7 +65,6 @@ export function NavBar() {
       <NavButton
         className={clsxMerge(
           active ? navBtnOpen : navBtnClosed,
-          active && "bg-[#0000000a]"
         )}
         active={active}
         onClick={() => setActive(!active)}
@@ -77,7 +76,6 @@ export function NavBar() {
         onClose={() => setActive(!active)}
         className={clsxMerge("w-1/2 sm:w-60", bgPrimary)}
       >
-        <DrawerHeader title="" titleIcon={emptyFunc} closeIcon={emptyFunc} />
         <DrawerItems>
           <Sidebar
             aria-label="Sidebar with multi-level dropdown example"
@@ -91,7 +89,7 @@ export function NavBar() {
                   <SidebarItemGroup>
                     {NAV_ITEMS.map((link) => (
                       <SidebarItem id={link.id} key={link.id} href={link.href}>
-                        <span className="flex flex-row items-center gap-2">
+                        <span className="flex flex-row items-center gap-2 hover:text-cyan-700 transition">
                           <NavIcon className="w-4 h-4" path={link.href} />
                           {link.label}
                         </span>

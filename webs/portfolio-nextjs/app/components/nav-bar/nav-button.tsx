@@ -36,7 +36,14 @@ export default function NavButton({
         mode="light"
         onClick={onClick}
       />
-      <NavIcon className={clsxMerge(iconClass,"w-6 h-6")} path={currentPath} />
+      <NavIcon
+        className={clsxMerge(
+          iconClass,
+          "w-6 h-6 hover:text-cyan-700 transition",
+          active && "bg-[#0000000a] rounded"
+        )}
+        path={currentPath}
+      />
     </div>
   );
 }
