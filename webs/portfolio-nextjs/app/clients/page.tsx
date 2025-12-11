@@ -8,7 +8,6 @@ import {
 import Image from "next/image";
 import Galaxy from "../components/galaxy";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { bgPrimary } from "@/app/components/themes/default-bg";
 
 const ICONS = [
   FaApple, FaAndroid, FaReact, FaNodeJs, FaGithub, FaGoogle, FaFacebook, FaTwitter,

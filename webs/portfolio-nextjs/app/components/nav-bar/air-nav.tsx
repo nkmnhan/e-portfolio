@@ -7,6 +7,7 @@ import HamburgerIcon from "../hamburger-btn/hamburger-icon";
 import { clsxMerge } from "../themes/utils";
 import Link from "next/dist/client/link";
 import { PLAY_GROUND_ITEMS } from "./sites";
+import Image from "next/image";
 
 export default function AirNav() {
   const [menuTrigger, setMenuTrigger] = useState<"click" | "hover" | undefined>(
@@ -36,6 +37,15 @@ export default function AirNav() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [isMenuOpen]);
 
+  // Helper to chunk array
+  function chunkArray<T>(array: T[], chunkSize: number): T[][] {
+    const chunks: T[][] = [];
+    for (let i = 0; i < array.length; i += chunkSize) {
+      chunks.push(array.slice(i, i + chunkSize));
+    }
+    return chunks;
+  }
+
   return (
     <div ref={snapEdgeRef}>
       <SnapEdge
@@ -54,23 +64,34 @@ export default function AirNav() {
           content={
             <div
               ref={popoverContentRef}
-              className="p-6 shadow-lg max-w-xs backdrop:backdrop-blur-2xl"
+              className="p-6 shadow-lg max-w-2l backdrop:backdrop-blur-2xl"
             >
-              {/* Component List */}
-              <nav>
-                {PLAY_GROUND_ITEMS.map((component) => (
-                  <Link
-                    key={component.id}
-                    href={component.href}
-                    className={clsxMerge(
-                      "flex items-center p-2",
-                      "hover:bg-gray-100 hover:rounded-lg active:bg-gray-200 focus-visible:outline-none"
-                    )}
-                  >
-                    <span className="text-sm text-gray-900 group-hover:text-black font-medium">
-                      {component.label}
-                    </span>
-                  </Link>
+              {/* Component List as columns */}
+              <nav className="flex gap-4">
+                {chunkArray(PLAY_GROUND_ITEMS, 4).map((column, colIdx) => (
+                  <div key={colIdx} className="flex flex-col">
+                    {column.map((component) => (
+                      <Link
+                        key={component.id}
+                        href={component.href}
+                        className={clsxMerge(
+                          "flex items-center p-2",
+                          "hover:bg-gray-100 hover:rounded-lg active:bg-gray-200 focus-visible:outline-none"
+                        )}
+                      >
+                        <Image
+                          src={component.imageUrl || ""}
+                          alt={component.label}
+                          width={16}
+                          height={16}
+                          className="mr-3 w-4 h-4 object-contain"
+                        />
+                        <span className="text-sm text-gray-500 hover:text-sky-600 font-medium">
+                          {component.label}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
                 ))}
               </nav>
             </div>

@@ -1,55 +1,65 @@
 export interface Site {
   id: string;
-  type: "nav" | "play-ground";
+  type: "nav" | "playground";
   slug?: string;
   href: string;
   label: string;
   navLabel?: string;
+  imageUrl?: string;
 }
 
-export const SITES: Site[] = [
+export const PLAY_GROUND_ITEMS: Site[] = [
   {
-    id: "play-ground-skeletons",
-    type: "play-ground",
+    id: "playground-skeletons",
+    type: "playground",
     slug: "skeletons",
-    href: "/play-ground/skeletons",
-    label: "💀 Skeleton Components",
+    href: "/playground/skeletons",
+    label: "Skeleton Components",
+    imageUrl: "/playground-skeletons.svg",
   },
   {
-    id: "play-ground-model-viewer",
-    type: "play-ground",
+    id: "playground-model-viewer",
+    type: "playground",
     slug: "model-viewer",
-    href: "/play-ground/model-viewer",
-    label: "🎨 3D Model Viewer",
+    href: "/playground/model-viewer",
+    label: "3D Model Viewer",
+    imageUrl: "/playground-model-viewer.svg",
   },
   {
-    id: "play-ground-brand-gallery",
-    type: "play-ground",
+    id: "playground-brand-gallery",
+    type: "playground",
     slug: "brand-gallery",
-    href: "/play-ground/brand-gallery",
-    label: "🏢 Brand Gallery",
+    href: "/playground/brand-gallery",
+    label: "Brand Gallery",
+    imageUrl: "/playground-brand-gallery.svg",
   },
   {
-    id: "play-ground-galaxy",
-    type: "play-ground",
+    id: "playground-galaxy",
+    type: "playground",
     slug: "galaxy",
-    href: "/play-ground/galaxy",
-    label: "🌌 Galaxy Animation",
+    href: "/playground/galaxy",
+    label: "Galaxy Animation",
+    imageUrl: "/playground-galaxy.svg",
   },
   {
-    id: "play-ground-masonry-layout",
-    type: "play-ground",
+    id: "playground-masonry-layout",
+    type: "playground",
     slug: "masonry-layout",
-    href: "/play-ground/masonry-layout",
-    label: "📱 Masonry Layout",
+    href: "/playground/masonry-layout",
+    label: "Masonry Layout",
+    imageUrl: "/playground-masonry-layout.svg",
   },
   {
-    id: "play-ground-snap-edge",
-    type: "play-ground",
+    id: "playground-snap-edge",
+    type: "playground",
     slug: "snap-edge",
-    href: "/play-ground/snap-edge",
-    label: "🚀 Snap Edge Menu",
+    href: "/playground/snap-edge",
+    label: "Snap Edge Menu",
+    imageUrl: "/playground-snap-edge.svg",
   },
+];
+
+export const NAV_ITEMS: Site[] = [
   { id: "nav-home", type: "nav", href: "/", label: "Home", navLabel: "Menu" },
   {
     id: "nav-work",
@@ -66,9 +76,9 @@ export const SITES: Site[] = [
     navLabel: "Clients",
   },
   {
-    id: "nav-play-ground",
+    id: "nav-playground",
     type: "nav",
-    href: "/play-ground",
+    href: "/playground",
     label: "Play Ground",
     navLabel: "Play Ground",
   },
@@ -87,6 +97,3 @@ export const SITES: Site[] = [
     navLabel: "Contact",
   },
 ];
-
-export const PLAY_GROUND_ITEMS = SITES.filter(site => site.type === "play-ground");
-export const NAV_ITEMS = SITES.filter(site => site.type === "nav");

@@ -173,7 +173,7 @@ export function NavBar() {
                             className={socialIconClass}
                             style={{ position: "relative" }}
                           >
-                            <span className="hover:animate-bounce block w-full h-full flex items-center justify-center">
+                            <span className="hover:animate-bounce w-full h-full flex items-center justify-center">
                               <Icon />
                             </span>
                           </a>
