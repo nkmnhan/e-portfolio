@@ -11,7 +11,8 @@ interface SnapEdgeProps {
   onDragStart?: () => void;
   onDragEnd?: () => void;
   onClick?: () => void;
-  initialSide?: "left" | "right";
+  defaultHorizontal?: "left" | "right";
+  defaultVertical?: "top" | "bottom";
   disabled?: boolean;
   useParent?: boolean; // When true, uses parent container instead of window
 }
@@ -23,11 +24,14 @@ export default function SnapEdge({
   onDragStart,
   onDragEnd,
   onClick,
-  initialSide = "left",
+  defaultHorizontal = "left",
+  defaultVertical = "top",
   disabled = false,
   useParent = false,
 }: SnapEdgeProps) {
   const [isDragging, setIsDragging] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isBouncing, setIsBouncing] = useState(false);
   const constraintsRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
 
@@ -52,13 +56,24 @@ export default function SnapEdge({
   };
 
   useEffect(() => {
+    // Set mounted state
+    setIsMounted(true);
+    // Start bounce animation for 3 seconds after mount
+    setIsBouncing(true);
+    const bounceTimeout = setTimeout(() => {
+      setIsBouncing(false);
+    }, 500);
     // Set initial position
     const updateInitialPosition = () => {
-      const { width: containerWidth } = getContainerSize();
-      if (containerWidth > 0) {
+      const { width: containerWidth, height: containerHeight } =
+        getContainerSize();
+      if (containerWidth > 0 && containerHeight > 0) {
         const initialX =
-          initialSide === "left" ? margin : containerWidth - size - margin;
-        const initialY = margin; // Start at top
+          defaultHorizontal === "left"
+            ? margin
+            : containerWidth - size - margin;
+        const initialY =
+          defaultVertical === "top" ? margin : containerHeight - size - margin;
         x.set(initialX);
         y.set(initialY);
       }
@@ -66,8 +81,11 @@ export default function SnapEdge({
 
     updateInitialPosition();
     window.addEventListener("resize", updateInitialPosition);
-    return () => window.removeEventListener("resize", updateInitialPosition);
-  }, [x, y, size, initialSide, useParent]);
+    return () => {
+      window.removeEventListener("resize", updateInitialPosition);
+      clearTimeout(bounceTimeout);
+    };
+  }, [x, y, size, defaultHorizontal, defaultVertical, useParent]);
 
   const dragStartPos = useRef({ x: 0, y: 0 });
 
@@ -141,6 +159,8 @@ export default function SnapEdge({
     }
   };
 
+  if (!isMounted) return null;
+
   if (useParent) {
     return (
       <div ref={parentRef} className="absolute inset-0 pointer-events-none">
@@ -167,20 +187,26 @@ export default function SnapEdge({
           onDragEnd={handleDragEnd}
           onClick={handleClick}
           className={clsxMerge(
-            "absolute pointer-events-auto z-50",
+            "absolute pointer-events-auto z-999",
             "flex items-center justify-center",
             isDragging && "cursor-grabbing",
             className
           )}
           animate={{
-            scale: isDragging ? 1.1 : 1,
+            scale: isDragging ? 1.1 : isBouncing ? [1, 1.2, 0.9, 1.1, 1] : 1,
           }}
           transition={{
-            scale: {
-              type: "spring",
-              stiffness: 400,
-              damping: 25,
-            },
+            scale: isBouncing
+              ? {
+                  duration: 0.3,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                }
+              : {
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 25,
+                },
           }}
         >
           {children}
@@ -214,20 +240,26 @@ export default function SnapEdge({
         onDragEnd={handleDragEnd}
         onClick={handleClick}
         className={clsxMerge(
-          "fixed z-50",
+          "fixed z-999",
           "flex items-center justify-center",
           isDragging && "cursor-grabbing",
           className
         )}
         animate={{
-          scale: isDragging ? 1.1 : 1,
+          scale: isDragging ? 1.1 : isBouncing ? [1, 1.2, 0.9, 1.1, 1] : 1,
         }}
         transition={{
-          scale: {
-            type: "spring",
-            stiffness: 400,
-            damping: 25,
-          },
+          scale: isBouncing
+            ? {
+                duration: 0.6,
+                repeat: Infinity,
+                repeatType: "loop",
+              }
+            : {
+                type: "spring",
+                stiffness: 400,
+                damping: 25,
+              },
         }}
       >
         {children}

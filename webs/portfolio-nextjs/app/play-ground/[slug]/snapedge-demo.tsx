@@ -25,7 +25,7 @@ export default function SnapEdgeDemo() {
         <SnapEdge
           useParent={true}
           onClick={() => alert("Rocket tapped!")}
-          initialSide="right"
+          defaultHorizontal="right"
         >
           <div className="w-full h-full bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
             <span className="text-2xl">🚀</span>
@@ -36,7 +36,7 @@ export default function SnapEdgeDemo() {
         <SnapEdge
           useParent={true}
           onClick={() => alert("UFO tapped!")}
-          initialSide="left"
+          defaultHorizontal="left"
         >
           <div className="w-full h-full bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
             <Image src="/ufo.svg" alt="UFO" width={48} height={48} draggable={false} />

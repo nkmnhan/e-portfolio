@@ -1,7 +1,6 @@
 "use client";
-import { DEMOs } from "./layout";
 import Link from "next/link";
-
+import { PLAY_GROUND_ITEMS } from "@/app/layout";
 export default function Test() {
   return (
     <div className="p-8 md:p-16">
@@ -13,10 +12,10 @@ export default function Test() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {DEMOs.map((component) => (
+        {PLAY_GROUND_ITEMS.map((component) => (
           <Link
             key={component.slug}
-            href={`/test/${component.slug}`}
+            href={`/play-ground/${component.slug}`}
             className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow bg-white dark:bg-gray-800"
           >
             <div className="text-4xl mb-4">{component.icon}</div>

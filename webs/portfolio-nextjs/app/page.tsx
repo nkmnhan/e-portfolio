@@ -1,7 +1,24 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import { clsxMerge } from "@/app/components/themes/utils";
 import { bgPrimary } from "@/app/components/themes/default-bg";
 import { textWhite } from "@/app/components/themes/default-text";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://nkmnhan.com"
+  ),
+  title: "NKM-NHAN Portfolio | Web Developer & Designer",
+  description:
+    "Portfolio of NKM-NHAN showcasing web development projects, UI/UX design, and creative solutions",
+  keywords: ["portfolio", "web developer", "Next.js", "React", "UI/UX"],
+  authors: [{ name: "NKM-NHAN" }],
+  openGraph: {
+    title: "NKM-NHAN Portfolio",
+    description: "Web developer portfolio",
+    images: ["/astronaut.png", "/baby-astronaut.jpeg"],
+  },
+};
 
 export default function Home() {
   return (
@@ -42,7 +59,12 @@ export default function Home() {
             fill
           />
         </div>
-        <h1 className={clsxMerge("font-semibold text-center text-4xl mt-1", textWhite)}>
+        <h1
+          className={clsxMerge(
+            "font-semibold text-center text-4xl mt-1",
+            textWhite
+          )}
+        >
           NKM-NHAN
         </h1>
       </main>

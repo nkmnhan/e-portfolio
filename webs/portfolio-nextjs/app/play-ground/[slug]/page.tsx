@@ -1,42 +1,45 @@
-import { notFound } from 'next/navigation';
-import SkeletonDemo from './skeleton-demo';
-import ModelViewerDemo from './model-viewer-demo';
-import BrandGalleryDemo from './brand-gallery-demo';
-import GalaxyDemo from './galaxy-demo';
-import MasonryLayoutDemo from './masonry-demo';
-import SnapEdgeDemo from './snapedge-demo';
+import { notFound } from "next/navigation";
+import SkeletonDemo from "./skeleton-demo";
+import ModelViewerDemo from "./model-viewer-demo";
+import BrandGalleryDemo from "./brand-gallery-demo";
+import GalaxyDemo from "./galaxy-demo";
+import MasonryLayoutDemo from "./masonry-demo";
+import SnapEdgeDemo from "./snapedge-demo";
 
-const components: Record<string, { title: string; component: React.ReactNode }> = {
-  'skeletons': {
-    title: 'Skeleton Components',
+const components: Record<
+  string,
+  { title: string; component: React.ReactNode }
+> = {
+  skeletons: {
+    title: "Skeleton Components",
     component: <SkeletonDemo />,
   },
-  'model-viewer': {
-    title: '3D Model Viewer',
+  "model-viewer": {
+    title: "3D Model Viewer",
     component: <ModelViewerDemo />,
   },
-  'brand-gallery': {
-    title: 'Brand Gallery',
+  "brand-gallery": {
+    title: "Brand Gallery",
     component: <BrandGalleryDemo />,
   },
-  'galaxy': {
-    title: 'Galaxy Animation',
+  galaxy: {
+    title: "Galaxy Animation",
     component: <GalaxyDemo />,
   },
-  'masonry-layout': {
-    title: 'Masonry Layout',
+  "masonry-layout": {
+    title: "Masonry Layout",
     component: <MasonryLayoutDemo />,
   },
-  'snap-edge': {
-    title: 'Snap Edge Menu',
+  "snap-edge": {
+    title: "Snap Edge Menu",
     component: <SnapEdgeDemo />,
   },
 };
 
-export default async function TestSlug({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
+export default async function TestSlug({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
   const component = components[slug];
