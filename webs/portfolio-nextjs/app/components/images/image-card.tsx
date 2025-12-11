@@ -95,9 +95,12 @@ export default function ImageCard({
             ? showDesc
               ? "opacity-100 translate-y-32"
               : "opacity-0"
-            : "group-hover:opacity-100 group-hover:translate-y-32"
+            : "group-hover:opacity-100 group-hover:translate-y-31"
         )}
-        style={{ background: color }}
+        style={{
+          background: `linear-gradient(135deg, ${color}dd 0%, ${color}aa 50%, ${color}88 100%)`,
+          boxShadow: `inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.2)`
+        }}
       >
         <h6 className={clsxMerge("flex items-center gap-2 font-bold mb-2 line-clamp-1")}>
           {title}
