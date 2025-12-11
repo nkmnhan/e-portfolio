@@ -36,7 +36,7 @@ export default function NavButton({
         mode="light"
         onClick={onClick}
       />
-      <NavIcon className={iconClass} path={currentPath} />
+      <NavIcon className={clsxMerge(iconClass,"w-6 h-6")} path={currentPath} />
     </div>
   );
 }

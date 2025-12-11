@@ -5,6 +5,9 @@ import BrandGalleryDemo from "./brand-gallery-demo";
 import GalaxyDemo from "./galaxy-demo";
 import MasonryLayoutDemo from "./masonry-demo";
 import SnapEdgeDemo from "./snapedge-demo";
+import { clsxMerge } from "../../components/themes/utils";
+import { bgPrimary } from "../../components/themes/default-bg";
+import { textPrimary } from "../../components/themes/default-text";
 
 const components: Record<
   string,
@@ -49,8 +52,8 @@ export default async function TestSlug({
   }
 
   return (
-    <div className="p-32 bg-white dark:bg-gray-900 min-h-screen">
-      <h1 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
+    <div className={clsxMerge("p-32 min-h-screen", bgPrimary)}>
+      <h1 className={clsxMerge("text-3xl font-bold mb-8", textPrimary)}>
         {component.title}
       </h1>
       {component.component}

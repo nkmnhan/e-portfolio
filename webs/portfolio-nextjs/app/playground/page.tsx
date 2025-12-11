@@ -1,14 +1,17 @@
 "use client";
 import Link from "next/link";
 import { PLAY_GROUND_ITEMS } from "@/app/components/nav-bar/sites";
+import { clsxMerge } from "@/app/components/themes/utils";
+import { bgPrimary } from "@/app/components/themes/default-bg";
+import { textPrimary, textSecondary } from "@/app/components/themes/default-text";
 
 export default function Test() {
   return (
     <div className="pt-32 pl-8 pr-8">
-      <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+      <h1 className={clsxMerge("text-4xl font-bold mb-4", textPrimary)}>
         Component Testing
       </h1>
-      <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+      <p className={clsxMerge("text-lg mb-8", textSecondary)}>
         Open the drawer to navigate between different components
       </p>
 
@@ -17,12 +20,15 @@ export default function Test() {
           <Link
             key={component.id}
             href={component.href}
-            className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow bg-white dark:bg-gray-800"
+            className={clsxMerge(
+              "p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow",
+              bgPrimary
+            )}
           >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            <h3 className={clsxMerge("text-xl font-semibold mb-2", textPrimary)}>
               {component.label}
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className={clsxMerge(textSecondary)}>
               Click to view component
             </p>
           </Link>
