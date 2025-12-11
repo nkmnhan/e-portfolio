@@ -1,13 +1,13 @@
 import {
   FaHome,
-  FaBriefcase,
-  FaUsers,
-  FaPuzzlePiece,
-  FaInfoCircle,
-  FaEnvelope,
+  FaUserAstronaut,
 } from "react-icons/fa";
 import { textWhite, textPrimary } from "../themes/default-text";
 import { clsxMerge } from "../themes/utils";
+import { SiFurrynetwork } from "react-icons/si";
+import { PiMicrosoftOutlookLogoFill } from "react-icons/pi";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
+import { BsFillPersonVcardFill } from "react-icons/bs";
 
 export interface Site {
   id: string;
@@ -97,8 +97,8 @@ export const NAV_ITEMS: Site[] = [
     id: "nav-about",
     type: "nav",
     href: "/about",
-    label: "About Us",
-    navLabel: "About Us",
+    label: "About Me",
+    navLabel: "About Me",
   },
   {
     id: "nav-contact",
@@ -109,7 +109,10 @@ export const NAV_ITEMS: Site[] = [
   },
 ];
 
-export const getIconClass = (active: boolean, path: string | undefined): string => {
+export const getIconClass = (
+  active: boolean,
+  path: string | undefined
+): string => {
   switch (path) {
     case "/":
     case "/clients":
@@ -137,18 +140,18 @@ export function NavIcon({
     case "/":
       return <FaHome className={className} />;
     case "/work":
-      return <FaBriefcase className={className} />;
+      return <AiOutlineFundProjectionScreen className={className} />;
     case "/clients":
-      return <FaUsers className={className} />;
+      return <BsFillPersonVcardFill className={className} />;
     case "/playground":
-      return <FaPuzzlePiece className={className} />;
+      return <SiFurrynetwork className={className} />;
     case "/about":
-      return <FaInfoCircle className={className} />;
+      return <FaUserAstronaut className={className} />;
     case "/contact":
-      return <FaEnvelope className={className} />;
+      return <PiMicrosoftOutlookLogoFill className={className} />;
     default:
       return path && path.startsWith("/playground") ? (
-        <FaPuzzlePiece className={className} />
+        <SiFurrynetwork className={className} />
       ) : null;
   }
 }

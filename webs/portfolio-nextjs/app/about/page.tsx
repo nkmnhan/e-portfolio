@@ -4,36 +4,32 @@ import { clsxMerge } from "@/app/components/themes/utils";
 import { bgPrimary } from "@/app/components/themes/default-bg";
 import { textBody, textWhite, textPrimary } from "@/app/components/themes/default-text";
 
-const overviewText = `At Mindbender, we specialize in delivering cutting-edge web development solutions that empower businesses to thrive in the digital landscape. Our team of experienced professionals is dedicated to crafting innovative, user-centric websites and applications that not only meet but exceed our clients' expectations. From responsive design to seamless functionality, we leverage the latest technologies to create digital experiences that captivate audiences and drive results. Partner with us to transform your online presence and achieve your business goals with confidence.`;
+const overviewText = `Hi, I'm Tony Nguyen (Nhan), a Senior Software Engineer with 8+ years of experience specializing in .NET Core, JavaScript frameworks, and microservices architecture. I'm passionate about building scalable, maintainable solutions and driving technical excellence in cross-functional teams. With a strong foundation in Agile/Scrum methodologies, I thrive on creating innovative web and mobile applications that solve real-world problems. My journey in tech has been driven by curiosity, continuous learning, and a commitment to clean code and system performance. Let's collaborate to bring your vision to life!`;
 
 const ABOUT_STORY = [
   {
-    title: "Services We Offer",
+    title: "My Journey",
     description:
-      "Discover our comprehensive range of web development, design, and consulting services tailored to help your business thrive in the digital world.",
-    image:
-      "https://mindbender.com/static/img/about-us-illustration-services.png",
+      "Starting as a Software Engineer at Hitachi Consulting Vietnam in 2016, I worked on semiconductor manufacturing systems and enterprise solutions. In 2019, I advanced to Senior Software Engineer, leading microservices development for European and Singaporean clients at NASH TECH and Orient Software. My career has evolved from backend systems to building innovative digital learning platforms and mobile applications using .NET MAUI, Angular, and AWS.",
+    image: "/home/journey.svg",
   },
   {
-    title: "Story Behind Us",
+    title: "Skills & Expertise",
     description:
-      "Learn how our journey began, the values that drive us, and our commitment to delivering innovative solutions for our clients.",
-    image:
-      "https://mindbender.com/static/img/about-us-illustration-storytelling.png",
+      "Core expertise in C# (.NET Core 8, ASP.NET Core), JavaScript/TypeScript (Angular 19, Vue.js, React, Next.js), and microservices architecture. Proficient in databases (PostgreSQL, SQL Server, MongoDB, Elasticsearch), cloud platforms (AWS, Azure), DevOps (Docker, Kubernetes, GoCD), and testing (Playwright). Specialized in REST APIs, gRPC, serverless functions, and mobile development with .NET MAUI.",
+    image: "/home/skills.svg",
   },
   {
-    title: "Animated Solutions",
+    title: "Projects & Creations",
     description:
-      "Experience the power of engaging animations and interactive features that bring your ideas to life and captivate your audience.",
-    image:
-      "https://mindbender.com/static/img/about-us-illustration-commercials.jpg",
+      "Led development on MOE platform for Singapore's Ministry of Education (2020-present), building .NET MAUI mobile apps, AWS Lambda functions, and implementing Playwright automation. Architected Lowell microservices system on Azure for European clients. Contributed to Open Create for UK's Open University, transforming static materials into dynamic learning experiences. Built MES systems for semiconductor factories using IBM frameworks.",
+    image: "/home/projects.svg",
   },
   {
-    title: "Techinologies We Use",
+    title: "Technologies I Love",
     description:
-      "We leverage the latest technologies and frameworks to build robust, scalable, and future-proof digital products for our clients.",
-    image:
-      "https://mindbender.com/static/img/about-us-illustration-technology.png",
+      "Passionate about the .NET ecosystem (.NET Core, C#, MAUI), modern JavaScript frameworks (Angular, React, Vue), cloud-native architecture (AWS Lambda, Azure Service Bus), containerization (Docker, Kubernetes), message queuing (RabbitMQ), and identity management (IdentityServer 4). Always exploring cutting-edge tools to deliver high-performance, scalable solutions.",
+    image: "/home/tech.svg",
   },
 ];
 
@@ -44,11 +40,12 @@ export default function About() {
         {/* Top Image */}
         <div className={clsxMerge("relative w-full h-[96px] rounded-lg overflow-hidden mb-8")}>
           <Image
-            src="https://mindbender.com/static/img/about-us-top-image.jpg"
-            alt="About Top Image"
+            src="/home/about-hero.svg"
+            alt="About Me Hero Image"
             fill
             className="object-cover"
             priority
+            unoptimized
           />
         </div>
         <HR />
@@ -67,7 +64,6 @@ export default function About() {
                 idx % 2 === 1 ? "md:flex-row-reverse" : ""
               )}
             >
-              {/* Image */}
               <div className={clsxMerge("w-full md:w-1/2 flex justify-center")}>
                 <div className={clsxMerge("relative w-full h-[200px] md:h-[448px]")}>
                   <Image
@@ -75,6 +71,7 @@ export default function About() {
                     alt={story.title}
                     fill
                     className="object-cover rounded-lg"
+                    unoptimized
                   />
                 </div>
               </div>
