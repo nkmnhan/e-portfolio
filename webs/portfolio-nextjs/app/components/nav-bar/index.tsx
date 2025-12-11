@@ -22,30 +22,9 @@ import {
   FaAddressCard,
 } from "react-icons/fa";
 import { clsxMerge } from "@/app/components/themes/utils";
-import {
-  textWhite,
-  textPrimary,
-} from "@/app/components/themes/default-text";
+import { textWhite, textPrimary } from "@/app/components/themes/default-text";
 import { bgPrimary } from "@/app/components/themes/default-bg";
-
-const navLinks = [
-  { id: "nav-home", href: "/", label: "Home", navLabel: "Menu" },
-  { id: "nav-work", href: "/work", label: "Work", navLabel: "Work" },
-  {
-    id: "nav-clients",
-    href: "/clients",
-    label: "Clients",
-    navLabel: "Clients",
-  },
-  { id: "nav-play-ground", href: "/play-ground", label: "Play Ground", navLabel: "Play Ground" },
-  { id: "nav-about", href: "/about", label: "About Us", navLabel: "About Us" },
-  {
-    id: "nav-contact",
-    href: "/contact",
-    label: "Contact",
-    navLabel: "Contact",
-  },
-];
+import { NAV_ITEMS } from "./sites";
 
 const SOCIAL_LINKS = [
   { icon: FaFacebook, url: "https://facebook.com" },
@@ -111,7 +90,7 @@ export function NavBar() {
       return "Close";
     }
 
-    const currentLink = navLinks.find((link) => link.href === path);
+    const currentLink = NAV_ITEMS.find((link) => link.href === path);
     if (currentLink) {
       return currentLink.label;
     }
@@ -160,7 +139,7 @@ export function NavBar() {
                 <div>
                   <SidebarItems>
                     <SidebarItemGroup>
-                      {navLinks.map((link) => (
+                      {NAV_ITEMS.map((link) => (
                         <SidebarItem
                           id={link.id}
                           key={link.id}
