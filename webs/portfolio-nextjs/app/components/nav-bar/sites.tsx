@@ -1,3 +1,14 @@
+import {
+  FaHome,
+  FaBriefcase,
+  FaUsers,
+  FaPuzzlePiece,
+  FaInfoCircle,
+  FaEnvelope,
+} from "react-icons/fa";
+import { textWhite, textPrimary } from "../themes/default-text";
+import { clsxMerge } from "../themes/utils";
+
 export interface Site {
   id: string;
   type: "nav" | "playground";
@@ -97,3 +108,47 @@ export const NAV_ITEMS: Site[] = [
     navLabel: "Contact",
   },
 ];
+
+export const getIconClass = (isOpen: boolean, path: string | undefined): string => {
+  switch (path) {
+    case "/":
+    case "/clients":
+    case "/playground/galaxy":
+      return clsxMerge("text-lg font-bold", textWhite);
+    case "/contact":
+      return isOpen
+        ? clsxMerge("text-lg font-bold", textWhite)
+        : clsxMerge("text-lg font-bold", textPrimary);
+    default:
+      return isOpen
+        ? clsxMerge("text-lg font-bold", textWhite)
+        : clsxMerge("text-lg font-bold", textPrimary, "dark:text-white");
+  }
+};
+
+export function NavIcon({
+  className,
+  path,
+}: {
+  className: string;
+  path: string;
+}): React.ReactNode {
+  switch (path) {
+    case "/":
+      return <FaHome className={className} />;
+    case "/work":
+      return <FaBriefcase className={className} />;
+    case "/clients":
+      return <FaUsers className={className} />;
+    case "/playground":
+      return <FaPuzzlePiece className={className} />;
+    case "/about":
+      return <FaInfoCircle className={className} />;
+    case "/contact":
+      return <FaEnvelope className={className} />;
+    default:
+      return path && path.startsWith("/playground") ? (
+        <FaPuzzlePiece className={className} />
+      ) : null;
+  }
+}
