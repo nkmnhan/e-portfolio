@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sqlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0288d1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0277bd;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#sqlGrad)"/>
+  <text x="300" y="260" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">SQL</text>
+  <text x="300" y="340" font-family="Arial, sans-serif" font-size="52" font-weight="bold" fill="white" text-anchor="middle">Converter</text>
+  <text x="300" y="400" font-family="Arial, sans-serif" font-size="26" fill="white" text-anchor="middle" opacity="0.9">Data to SQL Scripts</text>
+  <rect x="200" y="450" width="200" height="180" rx="12" fill="white" opacity="0.2"/>
+  <text x="300" y="495" font-family="monospace" font-size="22" fill="white" text-anchor="middle">INSERT INTO</text>
+  <text x="300" y="535" font-family="monospace" font-size="22" fill="white" text-anchor="middle">VALUES (...)</text>
+  <text x="300" y="575" font-family="monospace" font-size="22" fill="white" text-anchor="middle">UPDATE SET</text>
+  <text x="300" y="615" font-family="monospace" font-size="22" fill="white" text-anchor="middle">WHERE ...</text>
+  <text x="300" y="700" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" opacity="0.8">Migration Tool</text>
+</svg>

@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "mindbender.com",
+        hostname: "avatars.githubusercontent.com",
         port: "",
         pathname: "/**",
       }

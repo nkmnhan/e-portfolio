@@ -99,7 +99,7 @@ export default function ImageCard({
         )}
         style={{ background: color }}
       >
-        <h6 className={clsxMerge("flex items-center gap-2 font-bold mb-2")}>
+        <h6 className={clsxMerge("flex items-center gap-2 font-bold mb-2 line-clamp-1")}>
           {title}
         </h6>
         <p className={clsxMerge("text-sm line-clamp-3")}>{description}</p>
