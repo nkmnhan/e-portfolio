@@ -79,8 +79,8 @@ export const NAV_ITEMS: Site[] = [
     id: "nav-playground",
     type: "nav",
     href: "/playground",
-    label: "Play Ground",
-    navLabel: "Play Ground",
+    label: "Playground",
+    navLabel: "Playground",
   },
   {
     id: "nav-about",

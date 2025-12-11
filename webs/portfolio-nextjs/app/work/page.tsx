@@ -8,9 +8,8 @@ import ImageCard from "../components/images/image-card";
 import Link from "next/link";
 import { clsxMerge } from "@/app/components/themes/utils";
 import { bgPrimary } from "@/app/components/themes/default-bg";
-import { textPrimary, textWhite } from "@/app/components/themes/default-text";
+import { textPrimary } from "@/app/components/themes/default-text";
 import { useEffect, useState } from "react";
-import { url } from "inspector/promises";
 
 const pagePadding = "pl-20 pt-20 pr-20";
 const tabContentWrapper =

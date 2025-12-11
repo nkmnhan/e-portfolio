@@ -4,7 +4,7 @@ import { PLAY_GROUND_ITEMS } from "@/app/components/nav-bar/sites";
 
 export default function Test() {
   return (
-    <div className="p-8 md:p-16">
+    <div className="pt-32 pl-8 pr-8">
       <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
         Component Testing
       </h1>

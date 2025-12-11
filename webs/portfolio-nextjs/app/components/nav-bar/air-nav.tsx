@@ -49,6 +49,7 @@ export default function AirNav() {
   return (
     <div ref={snapEdgeRef}>
       <SnapEdge
+        id="air-nav"
         defaultHorizontal="right"
         defaultVertical="bottom"
         onDragStart={() => {

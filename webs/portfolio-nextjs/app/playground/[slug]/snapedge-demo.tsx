@@ -5,24 +5,25 @@ import Image from "next/image";
 
 export default function SnapEdgeDemo() {
   return (
-    <div className="h-full bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-lg overflow-hidden">
-      <div className="p-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+    <div className="flex h-full w-full bg-linear-to-br from-gray-100 to-gray-200 rounded">
+      <div className="p-8 w-full">
+        <h2 className="text-2xl font-semibold mb-4 text-gray-800">
           Draggable Floating Menu
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
+        <p className="text-gray-600 mb-4">
           Drag the floating bubble around. When you release it, it will snap to
           the nearest corner.
         </p>
-        <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
+        <ul className="list-disc list-inside space-y-2 text-gray-600">
           <li>Drag the bubble to move it</li>
           <li>Release to snap to nearest corner</li>
           <li>Tap for action (customizable)</li>
           <li>Smooth spring animations</li>
         </ul>
       </div>
-      <div className="absolute w-full h-full">
+      <div className="w-full h-full">
         <SnapEdge
+          id="rocket"
           useParent={true}
           onClick={() => alert("Rocket tapped!")}
           defaultHorizontal="right"
@@ -32,14 +33,22 @@ export default function SnapEdgeDemo() {
           </div>
         </SnapEdge>
       </div>
-      <div className="absolute w-full h-full">
+      <div className="w-full h-full">
         <SnapEdge
+          id="ufo"
           useParent={true}
           onClick={() => alert("UFO tapped!")}
           defaultHorizontal="left"
+          defaultVertical="bottom"
         >
           <div className="w-full h-full bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-            <Image src="/ufo.svg" alt="UFO" width={48} height={48} draggable={false} />
+            <Image
+              src="/ufo.svg"
+              alt="UFO"
+              width={48}
+              height={48}
+              draggable={false}
+            />
           </div>
         </SnapEdge>
       </div>

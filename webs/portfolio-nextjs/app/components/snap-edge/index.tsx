@@ -1,10 +1,11 @@
 "use client";
 
 import { motion, useMotionValue, animate, PanInfo } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, use } from "react";
 import { clsxMerge } from "@/app/components/themes/utils";
 
 interface SnapEdgeProps {
+  id: string;
   children: React.ReactNode;
   size?: number;
   className?: string;
@@ -17,7 +18,53 @@ interface SnapEdgeProps {
   useParent?: boolean; // When true, uses parent container instead of window
 }
 
+const getContainerSize = (
+  useParent: boolean,
+  parentRef: React.RefObject<HTMLDivElement | null>
+) => {
+  if (useParent && parentRef.current) {
+    const parentRect = parentRef.current.getBoundingClientRect();
+    return {
+      width: parentRect.width,
+      height: parentRect.height,
+    };
+  } else if (typeof window !== "undefined") {
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  }
+  return { width: 0, height: 0 };
+};
+
+const storePosition = (id: string, posX: number, posY: number) => {
+  if (typeof window !== "undefined" && id) {
+    try {
+      window.localStorage.setItem(
+        `snapedge-pos-${id}`,
+        JSON.stringify({ x: posX, y: posY })
+      );
+    } catch {}
+  }
+};
+
+const getStoredPosition = (id: string): { x: number; y: number } | null => {
+  if (typeof window !== "undefined" && id) {
+    const stored = window.localStorage.getItem(`snapedge-pos-${id}`);
+    if (stored) {
+      try {
+        const { x: storedX, y: storedY } = JSON.parse(stored);
+        if (typeof storedX === "number" && typeof storedY === "number") {
+          return { x: storedX, y: storedY };
+        }
+      } catch {}
+    }
+  }
+  return null;
+};
+
 export default function SnapEdge({
+  id,
   children,
   size = 60,
   className,
@@ -39,41 +86,37 @@ export default function SnapEdge({
   const x = useMotionValue(margin);
   const y = useMotionValue(margin);
 
-  const getContainerSize = () => {
-    if (useParent && parentRef.current) {
-      const parentRect = parentRef.current.getBoundingClientRect();
-      return {
-        width: parentRect.width,
-        height: parentRect.height,
-      };
-    } else if (typeof window !== "undefined") {
-      return {
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-    }
-    return { width: 0, height: 0 };
-  };
-
   useEffect(() => {
-    // Set mounted state
     setIsMounted(true);
-    // Start bounce animation for 3 seconds after mount
     setIsBouncing(true);
     const bounceTimeout = setTimeout(() => {
       setIsBouncing(false);
     }, 500);
-    // Set initial position
+
+    // Set initial position, restoring from localStorage if available
     const updateInitialPosition = () => {
       const { width: containerWidth, height: containerHeight } =
-        getContainerSize();
+        getContainerSize(useParent, parentRef);
       if (containerWidth > 0 && containerHeight > 0) {
-        const initialX =
-          defaultHorizontal === "left"
-            ? margin
-            : containerWidth - size - margin;
-        const initialY =
-          defaultVertical === "top" ? margin : containerHeight - size - margin;
+        let initialX, initialY;
+        const storedPos = getStoredPosition(id);
+        if (storedPos) {
+          initialX = storedPos.x;
+          initialY = storedPos.y;
+        }
+
+        if (typeof initialX !== "number") {
+          initialX =
+            defaultHorizontal === "left"
+              ? margin
+              : containerWidth - size - margin;
+        }
+        if (typeof initialY !== "number") {
+          initialY =
+            defaultVertical === "top"
+              ? margin
+              : containerHeight - size - margin;
+        }
         x.set(initialX);
         y.set(initialY);
       }
@@ -85,7 +128,7 @@ export default function SnapEdge({
       window.removeEventListener("resize", updateInitialPosition);
       clearTimeout(bounceTimeout);
     };
-  }, [x, y, size, defaultHorizontal, defaultVertical, useParent]);
+  }, [x, y, size, defaultHorizontal, defaultVertical, useParent, id]);
 
   const dragStartPos = useRef({ x: 0, y: 0 });
 
@@ -102,8 +145,10 @@ export default function SnapEdge({
 
     const currentX = x.get();
     const currentY = y.get();
-    const { width: containerWidth, height: containerHeight } =
-      getContainerSize();
+    const { width: containerWidth, height: containerHeight } = getContainerSize(
+      useParent,
+      parentRef
+    );
 
     // Calculate center of the button
     const buttonCenterX = currentX + size / 2;
@@ -143,6 +188,9 @@ export default function SnapEdge({
       damping: 30,
     });
 
+    // Store the last position in localStorage
+    storePosition(id, targetX, targetY);
+
     if (onDragEnd) {
       onDragEnd();
     }
@@ -150,7 +198,6 @@ export default function SnapEdge({
 
   const handleClick = () => {
     if (isDragging) {
-      debugger;
       return;
     }
 

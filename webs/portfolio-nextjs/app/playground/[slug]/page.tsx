@@ -49,7 +49,7 @@ export default async function TestSlug({
   }
 
   return (
-    <div className="p-8 bg-white dark:bg-gray-900 min-h-screen">
+    <div className="p-32 bg-white dark:bg-gray-900 min-h-screen">
       <h1 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
         {component.title}
       </h1>
