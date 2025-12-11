@@ -109,18 +109,18 @@ export const NAV_ITEMS: Site[] = [
   },
 ];
 
-export const getIconClass = (isOpen: boolean, path: string | undefined): string => {
+export const getIconClass = (active: boolean, path: string | undefined): string => {
   switch (path) {
     case "/":
     case "/clients":
     case "/playground/galaxy":
       return clsxMerge("text-lg font-bold", textWhite);
     case "/contact":
-      return isOpen
+      return active
         ? clsxMerge("text-lg font-bold", textWhite)
         : clsxMerge("text-lg font-bold", textPrimary);
     default:
-      return isOpen
+      return active
         ? clsxMerge("text-lg font-bold", textWhite)
         : clsxMerge("text-lg font-bold", textPrimary, "dark:text-white");
   }

@@ -57,24 +57,24 @@ const navBtnOpen = "top-6 left-1/2 translate-x-2 sm:left-60";
 const navBtnClosed = "top-6 left-6";
 
 export function NavBar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState(false);
 
   return (
     <>
       {/* Nav Button */}
       <NavButton
         className={clsxMerge(
-          isOpen ? navBtnOpen : navBtnClosed,
-          isOpen && "bg-[#0000000a]"
+          active ? navBtnOpen : navBtnClosed,
+          active && "bg-[#0000000a]"
         )}
-        active={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
+        active={active}
+        onClick={() => setActive(!active)}
       />
       {/* Sidebar Drawer */}
       <Drawer
         id="drawer"
-        open={isOpen}
-        onClose={() => setIsOpen(!isOpen)}
+        open={active}
+        onClose={() => setActive(!active)}
         className={clsxMerge("w-1/2 sm:w-60", bgPrimary)}
       >
         <DrawerHeader title="" titleIcon={emptyFunc} closeIcon={emptyFunc} />
