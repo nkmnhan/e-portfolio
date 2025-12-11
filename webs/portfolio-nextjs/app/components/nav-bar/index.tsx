@@ -37,6 +37,7 @@ const navLinks = [
     label: "Clients",
     navLabel: "Clients",
   },
+  { id: "nav-play-ground", href: "/play-ground", label: "Play Ground", navLabel: "Play Ground" },
   { id: "nav-about", href: "/about", label: "About Us", navLabel: "About Us" },
   {
     id: "nav-contact",
@@ -125,7 +126,7 @@ export function NavBar() {
         className={clsxMerge(
           navBtnContainer,
           isOpen ? navBtnOpen : navBtnClosed,
-          isOpen && "bg-[#00000033]"
+          isOpen && "bg-[#0000000a]"
         )}
         style={{ position: "fixed" }}
       >
