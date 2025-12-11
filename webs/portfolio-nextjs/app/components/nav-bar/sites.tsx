@@ -80,11 +80,11 @@ export const NAV_ITEMS: Site[] = [
     navLabel: "Work",
   },
   {
-    id: "nav-clients",
+    id: "nav-hello-world",
     type: "nav",
-    href: "/clients",
-    label: "Clients",
-    navLabel: "Clients",
+    href: "/hello-world",
+    label: "Hello World",
+    navLabel: "Hello World",
   },
   {
     id: "nav-playground",
@@ -115,7 +115,7 @@ export const getIconClass = (
 ): string => {
   switch (path) {
     case "/":
-    case "/clients":
+    case "/hello-world":
     case "/playground/galaxy":
       return clsxMerge("text-lg font-bold", textWhite);
     case "/contact":
@@ -141,7 +141,7 @@ export function NavIcon({
       return <FaHome className={className} />;
     case "/work":
       return <AiOutlineFundProjectionScreen className={className} />;
-    case "/clients":
+    case "/hello-world":
       return <BsFillPersonVcardFill className={className} />;
     case "/playground":
       return <SiFurrynetwork className={className} />;
