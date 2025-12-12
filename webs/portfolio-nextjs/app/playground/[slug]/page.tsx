@@ -1,13 +1,15 @@
 import { notFound } from "next/navigation";
-import SkeletonDemo from "./skeleton-demo";
-import ModelViewerDemo from "./model-viewer-demo";
-import BrandGalleryDemo from "./brand-gallery-demo";
-import GalaxyDemo from "./galaxy-demo";
-import MasonryLayoutDemo from "./masonry-demo";
-import SnapEdgeDemo from "./snapedge-demo";
+import dynamic from "next/dynamic";
 import { clsxMerge } from "../../components/themes/utils";
 import { bgPrimary } from "../../components/themes/default-bg";
 import { textPrimary } from "../../components/themes/default-text";
+
+const SkeletonDemo = dynamic(() => import("./skeleton-demo"));
+const ModelViewerDemo = dynamic(() => import("./model-viewer-demo"));
+const BrandGalleryDemo = dynamic(() => import("./brand-gallery-demo"));
+const GalaxyDemo = dynamic(() => import("./galaxy-demo"));
+const MasonryLayoutDemo = dynamic(() => import("./masonry-demo"));
+const SnapEdgeDemo = dynamic(() => import("./snapedge-demo"));
 
 const components: Record<
   string,

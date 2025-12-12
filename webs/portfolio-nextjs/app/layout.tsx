@@ -4,6 +4,7 @@ import "./globals.css";
 import { NavBar } from "./components/nav-bar";
 import { ThemeModeScript } from "flowbite-react";
 import AirNav from "./components/nav-bar/air-nav";
+import PerformanceMonitor from "./components/performance-monitor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,6 +47,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning={true}
       >
+        <PerformanceMonitor />
         {/* Floating Menu Button with Popover */}
         <AirNav/>
         <div>

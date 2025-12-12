@@ -42,6 +42,7 @@ export default function Home() {
             src="/logo.svg"
             alt="Github Porfolio QR Code"
             fill
+            priority
           />
         </div>
         <h1

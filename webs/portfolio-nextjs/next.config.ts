@@ -16,6 +16,16 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  experimental: {
+    optimizePackageImports: ["@google/model-viewer", "framer-motion"],
+  },
 };
 
-export default withFlowbiteReact(nextConfig);
+// Conditionally wrap with bundle analyzer
+const config = process.env.ANALYZE === "true"
+  ? require("@next/bundle-analyzer")({
+      enabled: true,
+    })(withFlowbiteReact(nextConfig))
+  : withFlowbiteReact(nextConfig);
+
+export default config;
