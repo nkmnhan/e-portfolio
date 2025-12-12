@@ -24,7 +24,7 @@ export default function Contact() {
         priority
       />
       <main className={clsxMerge(
-        "w-full max-w-lg rounded-xl shadow-xl p-8 flex flex-col items-center",
+        "w-full max-w-lg rounded-xl shadow-xl p-4 md:p-8 flex flex-col items-center",
         bgPrimary
       )}>
         <h1 className={clsxMerge(
@@ -33,7 +33,7 @@ export default function Contact() {
         )}>
           Drop Me a Line
         </h1>
-        <form className={clsxMerge("w-full flex flex-col gap-8")}>
+        <form className={clsxMerge("w-full flex flex-col gap-4 md:gap-8")}>
           {/* Name */}
           <div className={clsxMerge(
             inputWrapper
@@ -96,7 +96,7 @@ export default function Contact() {
           <button
             type="submit"
             className={clsxMerge(
-              "mt-8 flex items-center justify-center gap-4",
+              "mt-4 md:mt-8 flex items-center justify-center gap-4",
               blueBg,
               "text-white font-semibold py-4 rounded-lg transition",
               textWhite

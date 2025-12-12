@@ -18,8 +18,8 @@ interface ImageCardProps {
 const posterClass = "object-cover rounded shadow max-w-full";
 
 const descPopupClass = clsxMerge(
-  "absolute bottom-0 left-0 w-full p-4 rounded-b transition-all duration-200 z-10",
-  "h-32",
+  "absolute bottom-0 left-0 w-full p-2 md:p-4 rounded-b transition-all duration-200 z-10",
+  "h-24 md:h-32",
   "backdrop-blur-sm",
   textWhite
 );

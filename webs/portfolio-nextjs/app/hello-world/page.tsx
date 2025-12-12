@@ -58,7 +58,7 @@ export default function HelloWorld() {
   return (
     <div className="fixed inset-0 overflow-y-auto hide-scrollbar">
       <Galaxy className="absolute inset-0" />
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-12">
 
         {/* Hero Section with Astronaut */}
         <div className="text-center mb-16">
@@ -101,7 +101,7 @@ export default function HelloWorld() {
           <h2 className={clsxMerge("text-3xl md:text-4xl font-bold mb-8 text-center", textWhite)}>
             Technologies Used
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {TECHNOLOGIES.map((tech, idx) => (
               <div key={idx} className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
                 <tech.icon className={clsxMerge("w-12 h-12 mx-auto mb-4", textPrimary)} />
@@ -136,7 +136,7 @@ export default function HelloWorld() {
           <h2 className={clsxMerge("text-3xl md:text-4xl font-bold mb-8 text-center", textWhite)}>
             Development Tools
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {TOOLS.map((tool, idx) => (
               <div key={idx} className="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/30 dark:to-teal-900/30 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
                 <tool.icon className={clsxMerge("w-12 h-12 mx-auto mb-4", textPrimary)} />
@@ -170,7 +170,7 @@ export default function HelloWorld() {
           <h2 className={clsxMerge("text-3xl md:text-4xl font-bold mb-8 text-center", textWhite)}>
             Future Development Plans
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {TODO_ACTIONS.map((todo, idx) => (
               <div key={idx} className="bg-gradient-to-r from-orange-500/10 to-red-500/10 dark:from-orange-500/20 dark:to-red-500/20 rounded-xl p-6 border-l-4 border-orange-500">
                 <div className="flex items-center justify-between mb-3">

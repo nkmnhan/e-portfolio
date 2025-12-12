@@ -38,15 +38,15 @@ const socialIconClass = clsxMerge(
 );
 
 const astronautClass = clsxMerge(
-  "mx-auto min-w-[100px] m-8" // m-8 = 32px
+  "mx-auto min-w-[100px] m-4 md:m-8" // responsive margin
 );
 
 const sidebarContactClass = clsxMerge(
-  "grid grid-cols-[0.75rem_1fr] gap-x-4 text-[12px] text-gray-500 my-4 text-left hover:text-cyan-700 transition"
+  "grid grid-cols-[0.75rem_1fr] gap-x-2 md:gap-x-4 text-[12px] text-gray-500 my-2 md:my-4 text-left hover:text-cyan-700 transition"
 );
 
 const copyrightClass = clsxMerge(
-  "flex items-center justify-center gap-4 text-gray-500 mt-4 text-sm hover:text-cyan-700 transition"
+  "flex items-center justify-center gap-2 md:gap-4 text-gray-500 mt-2 md:mt-4 text-sm hover:text-cyan-700 transition"
 );
 
 const emptyFunc = () => {
@@ -83,7 +83,7 @@ export function NavBar() {
               "[&>div]:bg-transparent [&>div]:p-0 text-center w-full"
             )}
           >
-            <div className="flex h-full flex-col justify-between py-4">
+              <div className="flex h-full flex-col justify-between py-2 md:py-4">
               <div>
                 <SidebarItems>
                   <SidebarItemGroup>
@@ -98,7 +98,7 @@ export function NavBar() {
                   </SidebarItemGroup>
                   <SidebarItemGroup>
                     {/* Astronaut image */}
-                    <div className="flex justify-center my-4 h-56 items-center">
+                    <div className="flex justify-center my-2 md:my-4 h-56 items-center">
                       <span className="hover:animate-bounce w-full h-full flex items-center justify-center">
                         <Image
                           src="/astronaut.png"
@@ -110,7 +110,7 @@ export function NavBar() {
                       </span>
                     </div>
                     {/* Social icons row */}
-                    <div className="flex justify-center gap-4 my-4">
+                    <div className="flex justify-center gap-2 md:gap-4 my-2 md:my-4">
                       {SOCIAL_LINKS.map(({ icon: Icon, url }, idx) => (
                         <a
                           key={idx}

@@ -31,8 +31,8 @@ type Highlight = {
 
 // Style Constants
 const STYLES = {
-  container: "max-w-7xl mx-auto px-6 md:px-12 py-12",
-  heroImage: "relative w-full h-[120px] md:h-40 rounded-xl overflow-hidden mb-12 shadow-2xl",
+  container: "max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-12",
+  heroImage: "relative w-full h-20 md:h-48 lg:h-56 rounded-xl overflow-hidden shadow-2xl",
   overviewText: "text-center text-lg md:text-xl leading-relaxed px-4 md:px-16 mb-12",
   statGrid: "grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12",
   statCard: "text-center p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300",
@@ -177,7 +177,7 @@ export default function About() {
               src="/home/about-hero.svg?v=2"
               alt="About Me Hero Image"
               fill
-              className="object-contain"
+              className="object-cover"
               priority
               unoptimized
             />

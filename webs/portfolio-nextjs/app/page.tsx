@@ -36,7 +36,7 @@ export default function Home() {
         }}
       />
       <main className="relative z-20 flex flex-col items-center">
-        <div className="h-100 w-100 relative rounded-lg bg-[#00000033]">
+        <div className="h-20 w-20 md:h-24 md:w-24 lg:h-28 lg:w-28 relative rounded-lg bg-[#00000033]">
           <Image
             className="invert object-cover"
             src="/logo.svg"
@@ -46,7 +46,7 @@ export default function Home() {
         </div>
         <h1
           className={clsxMerge(
-            "font-semibold text-center text-4xl mt-1",
+            "font-semibold text-center text-2xl md:text-4xl mt-1",
             textWhite
           )}
         >
