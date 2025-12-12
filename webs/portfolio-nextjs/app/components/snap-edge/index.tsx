@@ -37,25 +37,22 @@ const getContainerSize = (
   return { width: 0, height: 0 };
 };
 
-const storePosition = (id: string, posX: number, posY: number) => {
+const storePosition = (id: string, position: { horizontal: string; vertical: string }) => {
   if (typeof window !== "undefined" && id) {
     try {
-      window.localStorage.setItem(
-        `snapedge-pos-${id}`,
-        JSON.stringify({ x: posX, y: posY })
-      );
+      window.localStorage.setItem(`snapedge-pos-${id}`, JSON.stringify(position));
     } catch {}
   }
 };
 
-const getStoredPosition = (id: string): { x: number; y: number } | null => {
+const getStoredPosition = (id: string): { horizontal: string; vertical: string } | null => {
   if (typeof window !== "undefined" && id) {
     const stored = window.localStorage.getItem(`snapedge-pos-${id}`);
     if (stored) {
       try {
-        const { x: storedX, y: storedY } = JSON.parse(stored);
-        if (typeof storedX === "number" && typeof storedY === "number") {
-          return { x: storedX, y: storedY };
+        const parsed = JSON.parse(stored);
+        if (parsed && typeof parsed.horizontal === 'string' && typeof parsed.vertical === 'string') {
+          return parsed;
         }
       } catch {}
     }
@@ -72,7 +69,7 @@ export default function SnapEdge({
   onDragEnd,
   onClick,
   defaultHorizontal = "left",
-  defaultVertical = "top",
+  defaultVertical = "bottom",
   disabled = false,
   useParent = false,
 }: SnapEdgeProps) {
@@ -91,7 +88,7 @@ export default function SnapEdge({
     setIsBouncing(true);
     const bounceTimeout = setTimeout(() => {
       setIsBouncing(false);
-    }, 500);
+    }, 300);
 
     // Set initial position, restoring from localStorage if available
     const updateInitialPosition = () => {
@@ -99,24 +96,23 @@ export default function SnapEdge({
         getContainerSize(useParent, parentRef);
       if (containerWidth > 0 && containerHeight > 0) {
         let initialX, initialY;
-        const storedPos = getStoredPosition(id);
-        if (storedPos) {
-          initialX = storedPos.x;
-          initialY = storedPos.y;
+        let effectiveHorizontal = defaultHorizontal;
+        let effectiveVertical = defaultVertical;
+        const stored = getStoredPosition(id);
+        if (stored) {
+          effectiveHorizontal = stored.horizontal as "left" | "right";
+          effectiveVertical = stored.vertical as "top" | "bottom";
         }
 
-        if (typeof initialX !== "number") {
-          initialX =
-            defaultHorizontal === "left"
-              ? margin
-              : containerWidth - size - margin;
-        }
-        if (typeof initialY !== "number") {
-          initialY =
-            defaultVertical === "top"
-              ? margin
-              : containerHeight - size - margin;
-        }
+        initialX =
+          effectiveHorizontal === "left"
+            ? margin
+            : containerWidth - size - margin;
+        initialY =
+          effectiveVertical === "top"
+            ? margin
+            : containerHeight - size - margin;
+
         x.set(initialX);
         y.set(initialY);
       }
@@ -176,6 +172,10 @@ export default function SnapEdge({
       targetY = containerHeight - size - margin;
     }
 
+    // Determine stored horizontal and vertical
+    const storedHorizontal = buttonCenterX < containerWidth / 2 ? "left" : "right";
+    const storedVertical = buttonCenterY < containerHeight / 2 ? "top" : "bottom";
+
     // Animate to target position with spring
     animate(x, targetX, {
       type: "spring",
@@ -188,8 +188,8 @@ export default function SnapEdge({
       damping: 30,
     });
 
-    // Store the last position in localStorage
-    storePosition(id, targetX, targetY);
+    // Store the position in localStorage
+    storePosition(id, { horizontal: storedHorizontal, vertical: storedVertical });
 
     if (onDragEnd) {
       onDragEnd();

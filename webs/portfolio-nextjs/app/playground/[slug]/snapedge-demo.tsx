@@ -26,6 +26,7 @@ export default function SnapEdgeDemo() {
           id="rocket"
           useParent={true}
           onClick={() => alert("Rocket tapped!")}
+          defaultVertical="top"
           defaultHorizontal="right"
         >
           <div className="w-full h-full bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
