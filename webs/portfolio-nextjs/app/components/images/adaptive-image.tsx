@@ -40,7 +40,7 @@ function AdaptiveImage({
   const containerClass = clsxMerge(
     "relative w-full",
     aspectRatio in aspectRatioClasses ? aspectRatioClasses[aspectRatio] : "",
-    aspectRatio.includes("/") ? `aspect-[${aspectRatio}]` : "",
+    typeof aspectRatio === "string" && aspectRatio.includes("/") ? `aspect-[${aspectRatio}]` : "",
     className
   );
 
@@ -51,7 +51,7 @@ function AdaptiveImage({
         src={src}
         alt={alt}
         className="object-cover"
-        loading={loading}
+        loading={priority ? "eager" : loading}
         onLoadingComplete={() => setIsLoading(false)}
         priority={priority}
         width={width}
