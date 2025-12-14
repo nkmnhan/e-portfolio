@@ -23,7 +23,7 @@ export interface BrandGalleryProps {
 const slideClass =
   "absolute top-0 flex h-full items-center justify-center px-4 focus:outline-none -translate-y-8";
 const iconClass =
-  "w-12 h-12 bg-white rounded-full flex items-center justify-center";
+  "w-12 h-12 bg-white rounded-full flex items-center justify-center sm:w-14 sm:h-14";
 
 const customTheme: CustomFlowbiteTheme["carousel"] = {
   root: {
@@ -37,7 +37,7 @@ const customTheme: CustomFlowbiteTheme["carousel"] = {
       on: "bg-black",
     },
     base: "w-2 h-2 rounded-full border border-black",
-    wrapper: "absolute bottom-5 left-32 flex -translate-x-1/2 space-x-3",
+    wrapper: "absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3 sm:bottom-6",
   },
   item: {
     base: "absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2",
@@ -75,30 +75,30 @@ export default function BrandGallery({ className, src }: BrandGalleryProps) {
         {src.map((item, index) => (
           <div className="relative w-full h-full">
             <AdaptiveImage
-              className="object-cover pb-12 pl-10 pr-10"
+              className="object-cover pb-12 pl-4 pr-4 sm:pl-10 sm:pr-10"
               src={item.src}
               alt={item.alt}
               fill
             />
             {item.logoSrc && (
-              <div className="min-w-50 min-h-25 absolute bottom-4 bg-white rounded right-28 flex items-center justify-center shadow-lg">
+              <div className="min-w-20 min-h-10 sm:min-w-50 sm:min-h-25 absolute bottom-4 right-4 sm:right-28 bg-white rounded flex items-center justify-center shadow-lg">
                 <AdaptiveImage
                   src={item.logoSrc}
                   alt={item.logoAlt}
                   fill
-                  className="object-contain"
+                  className="object-contain p-2"
                 />
               </div>
             )}
             {item.title && item.description && (
               <div
                 className={clsxMerge(
-                  "absolute bottom-12 left-16 p-4 max-w-md",
+                  "absolute bottom-12 left-4 sm:left-16 p-2 sm:p-4 max-w-xs sm:max-w-md",
                   textWhite
                 )}
               >
-                <h4 className="font-semibold mb-2">{item.title}</h4>
-                <span className="text-sm">{item.description}</span>
+                <h4 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{item.title}</h4>
+                <span className="text-xs sm:text-sm">{item.description}</span>
               </div>
             )}
           </div>

@@ -7,8 +7,8 @@ export default function BrandGalleryDemo() {
   return (
     <div>
       <p className={clsxMerge("mb-4", textSecondary)}>Example brand gallery component</p>
-      <div className="absolute border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-       <BrandGallary className="w-[80vw] h-140 m-auto" src={BrandGallaryTestData} />
+      <div className="relative border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+       <BrandGallary className="w-full h-64 sm:h-80 md:h-96 lg:h-112 xl:h-140 m-auto" src={BrandGallaryTestData} />
       </div>
     </div>
   );
