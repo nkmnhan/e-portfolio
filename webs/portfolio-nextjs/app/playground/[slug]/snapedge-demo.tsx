@@ -1,7 +1,7 @@
 "use client";
 
+import AdaptiveImage from "@/app/components/images/adaptive-image";
 import SnapEdge from "../../components/snap-edge";
-import Image from "next/image";
 
 export default function SnapEdgeDemo() {
   return (
@@ -43,7 +43,7 @@ export default function SnapEdgeDemo() {
           defaultVertical="bottom"
         >
           <div className="w-full h-full bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-            <Image
+            <AdaptiveImage
               src="/ufo.svg"
               alt="UFO"
               width={48}

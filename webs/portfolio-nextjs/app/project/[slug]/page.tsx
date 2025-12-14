@@ -16,6 +16,9 @@ import {
 import { bgPrimary } from "@/app/components/themes/default-bg";
 import BrandGallaryTestData from "@/app/components/brand-gallery/data";
 import BrandGallary from "@/app/components/brand-gallery";
+import AdaptiveImage, {
+  adaptiveImageMaxLandscape,
+} from "@/app/components/images/adaptive-image";
 
 const posterContainer =
   "relative z-10 transition-all duration-700 ease-in-out w-full mx-auto flex flex-col items-center justify-center rounded-xl overflow-hidden";
@@ -92,7 +95,10 @@ export default function Project({
 
   return (
     <div className={clsxMerge("relative w-full overflow-x-hidden", bgPrimary)}>
-      <BrandGallary className="w-[80vw] h-140 m-auto" src={BrandGallaryTestData} />
+      <BrandGallary
+        className="w-[80vw] h-140 m-auto"
+        src={BrandGallaryTestData}
+      />
       {/* Full Screen Poster Section */}
       <div
         className={clsxMerge(
@@ -114,13 +120,12 @@ export default function Project({
           )}
         >
           <div className="absolute inset-0 w-full h-full rounded-xl overflow-hidden z-0">
-            <Image
+            <AdaptiveImage
               src={project.poster}
               alt={project.title || `Project image ${project.id}`}
               fill
-              className={posterImage}
-              sizes="(max-width: 768px) 100vw, 100vw"
-              priority
+              className={clsxMerge(posterImage, adaptiveImageMaxLandscape)}
+              preload
             />
           </div>
           {/* Project Title below poster in cinema mode */}

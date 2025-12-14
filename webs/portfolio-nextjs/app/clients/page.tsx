@@ -5,9 +5,9 @@ import {
   FaSwift, FaRust, FaRedhat, FaBitbucket, FaDribbble, FaBehance, FaStackOverflow,
   FaWordpress, FaShopify, FaSalesforce, FaDropbox,
 } from "react-icons/fa";
-import Image from "next/image";
 import Galaxy from "../components/galaxy";
 import { clsxMerge } from "@/app/components/themes/utils";
+import AdaptiveImage from "../components/images/adaptive-image";
 
 const ICONS = [
   FaApple, FaAndroid, FaReact, FaNodeJs, FaGithub, FaGoogle, FaFacebook, FaTwitter,
@@ -36,7 +36,7 @@ export default function Clients() {
         {shuffledIcons.map((Icon, idx) => (
           idx === 0 ? (
             <div key={idx} className={clsxMerge("flex items-center justify-center relative")}>
-              <Image
+              <AdaptiveImage
                 src="/astronaut.png"
                 alt="Astronaut"
                 width={144} // 36*4
@@ -46,7 +46,7 @@ export default function Clients() {
                   "sm:w-36 sm:h-48 sm:-translate-x-32 sm:-translate-y-24",
                   "md:w-36 md:h-48 md:-translate-x-24 md:-translate-y-20"
                 )}
-                priority
+                preload
               />
               <Icon className={clsxMerge("invert w-12 h-12 md:w-16 md:h-16")} />
             </div>

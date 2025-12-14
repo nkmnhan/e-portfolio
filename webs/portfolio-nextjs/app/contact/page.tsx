@@ -1,8 +1,8 @@
 import { FaUser, FaEnvelope, FaPhone, FaTag, FaCommentDots, FaPaperPlane } from "react-icons/fa";
-import Image from "next/image";
 import { clsxMerge } from "@/app/components/themes/utils";
 import { bgPrimary } from "@/app/components/themes/default-bg";
 import { textPrimary, textBody, textWhite } from "@/app/components/themes/default-text";
+import AdaptiveImage from "../components/images/adaptive-image";
 
 const inputWrapper = "flex items-center border-b border-gray-300 dark:border-gray-700 py-2";
 const bluePrimary = "text-blue-500";
@@ -16,7 +16,7 @@ export default function Contact() {
         bgPrimary
       )}
     >
-      <Image
+      <AdaptiveImage
         src="/contact/bg.jpg"
         alt="cover"
         fill

@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import useColorThief, { ColorThiefOutput } from "use-color-thief";
 import { clsxMerge } from "@/app/components/themes/utils";
 import { textWhite } from "@/app/components/themes/default-text";
+import AdaptiveImage from "./adaptive-image";
 
 interface ImageCardProps {
   src: string;
@@ -74,7 +74,7 @@ export default function ImageCard({
       style={xStyle}
     >
       {/* Poster */}
-      <Image
+      <AdaptiveImage
         ref={imgRef}
         src={src}
         alt={alt}
@@ -99,10 +99,14 @@ export default function ImageCard({
         )}
         style={{
           background: `linear-gradient(135deg, ${color}dd 0%, ${color}aa 50%, ${color}88 100%)`,
-          boxShadow: `inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.2)`
+          boxShadow: `inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.2)`,
         }}
       >
-        <h6 className={clsxMerge("flex items-center gap-2 font-bold mb-2 line-clamp-1")}>
+        <h6
+          className={clsxMerge(
+            "flex items-center gap-2 font-bold mb-2 line-clamp-1"
+          )}
+        >
           {title}
         </h6>
         <p className={clsxMerge("text-sm line-clamp-3")}>{description}</p>

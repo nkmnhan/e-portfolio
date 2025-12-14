@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { HR } from "flowbite-react";
 import { clsxMerge } from "@/app/components/themes/utils";
 import { bgPrimary } from "@/app/components/themes/default-bg";
@@ -8,6 +7,7 @@ import {
   textPrimary,
   textSecondary,
 } from "@/app/components/themes/default-text";
+import AdaptiveImage from "../components/images/adaptive-image";
 
 // Types
 type Article = {
@@ -146,12 +146,12 @@ const StoryArticle = ({ article, index }: { article: Article; index: number }) =
   >
     <div className={STYLES.storyImageWrapper}>
       <div className={STYLES.storyImage}>
-        <Image
+        <AdaptiveImage
           src={article.image}
           alt={article.title}
           fill
           className="object-contain p-6 md:p-8"
-          unoptimized
+          preload
         />
       </div>
     </div>
@@ -173,13 +173,12 @@ export default function About() {
         <div className={STYLES.container}>
           {/* Hero Image */}
           <div className={STYLES.heroImage}>
-            <Image
+            <AdaptiveImage
               src="/home/about-hero.svg?v=2"
               alt="About Me Hero Image"
               fill
               className="object-cover"
-              priority
-              unoptimized
+              preload
             />
           </div>
           <HR />

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import { clsxMerge } from "../themes/utils";
 import { textWhite } from "../themes/default-text";
+import AdaptiveImage from "../images/adaptive-image";
 
 export interface BrandGalleryItem {
   src: string;
@@ -73,7 +74,7 @@ export default function BrandGallery({ className, src }: BrandGalleryProps) {
       >
         {src.map((item, index) => (
           <div className="relative w-full h-full">
-            <Image
+            <AdaptiveImage
               className="object-cover pb-12 pl-10 pr-10"
               src={item.src}
               alt={item.alt}
@@ -81,7 +82,7 @@ export default function BrandGallery({ className, src }: BrandGalleryProps) {
             />
             {item.logoSrc && (
               <div className="min-w-50 min-h-25 absolute bottom-4 bg-white rounded right-28 flex items-center justify-center shadow-lg">
-                <Image
+                <AdaptiveImage
                   src={item.logoSrc}
                   alt={item.logoAlt}
                   fill

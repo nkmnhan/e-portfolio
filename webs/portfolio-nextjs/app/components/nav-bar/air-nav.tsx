@@ -8,6 +8,7 @@ import { clsxMerge } from "../themes/utils";
 import Link from "next/dist/client/link";
 import { PLAY_GROUND_ITEMS } from "./sites";
 import Image from "next/image";
+import AdaptiveImage from "../images/adaptive-image";
 
 export default function AirNav() {
   const [menuTrigger, setMenuTrigger] = useState<"click" | "hover" | undefined>(
@@ -80,7 +81,7 @@ export default function AirNav() {
                           "hover:bg-gray-100 hover:rounded-lg active:bg-gray-200 focus-visible:outline-none"
                         )}
                       >
-                        <Image
+                        <AdaptiveImage
                           src={component.imageUrl || ""}
                           alt={component.label}
                           width={16}

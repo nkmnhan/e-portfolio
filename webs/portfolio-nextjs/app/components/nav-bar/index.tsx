@@ -2,14 +2,12 @@
 
 import {
   Drawer,
-  DrawerHeader,
   DrawerItems,
   Sidebar,
   SidebarItem,
   SidebarItemGroup,
   SidebarItems,
 } from "flowbite-react";
-import Image from "next/image";
 import { useState } from "react";
 import {
   FaFacebook,
@@ -25,6 +23,7 @@ import { bgPrimary } from "@/app/components/themes/default-bg";
 import { NAV_ITEMS } from "./sites";
 import NavButton from "./nav-button";
 import { NavIcon } from "./sites";
+import AdaptiveImage from "../images/adaptive-image";
 
 const SOCIAL_LINKS = [
   { icon: FaFacebook, url: "https://facebook.com" },
@@ -100,7 +99,7 @@ export function NavBar() {
                     {/* Astronaut image */}
                     <div className="flex justify-center my-2 md:my-4 h-56 items-center">
                       <span className="hover:animate-bounce w-full h-full flex items-center justify-center">
-                        <Image
+                        <AdaptiveImage
                           src="/astronaut.png"
                           alt="Astronaut"
                           className={astronautClass}

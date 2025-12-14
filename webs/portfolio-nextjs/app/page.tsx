@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { clsxMerge } from "@/app/components/themes/utils";
 import { bgPrimary } from "@/app/components/themes/default-bg";
 import { textWhite } from "@/app/components/themes/default-text";
+import AdaptiveImage from "./components/images/adaptive-image";
 
 
 
@@ -37,12 +37,12 @@ export default function Home() {
       />
       <main className="relative z-20 flex flex-col items-center">
         <div className="h-20 w-20 md:h-24 md:w-24 lg:h-28 lg:w-28 relative rounded-lg bg-[#00000033]">
-          <Image
+          <AdaptiveImage
             className="invert object-cover"
             src="/logo.svg"
             alt="Github Porfolio QR Code"
             fill
-            priority
+            preload
           />
         </div>
         <h1
