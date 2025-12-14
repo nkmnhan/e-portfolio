@@ -1,11 +1,15 @@
+"use client";
 import { clsxMerge } from "@/app/components/themes/utils";
 import { bgPrimary } from "@/app/components/themes/default-bg";
 import { textWhite } from "@/app/components/themes/default-text";
 import AdaptiveImage from "./components/images/adaptive-image";
+import { useState } from "react";
 
-
+const videoClass =
+  "absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500";
 
 export default function Home() {
+  const [showPoster, setShowPoster] = useState(false);
   return (
     <div
       className={clsxMerge(
@@ -15,17 +19,24 @@ export default function Home() {
     >
       {/* Background Video with poster */}
       <video
-        className={clsxMerge(
-          "absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500"
-        )}
+        className={videoClass}
         autoPlay
         loop
         muted
         playsInline
         poster="/home/poster.jpg"
+        onError={() => setShowPoster(true)}
       >
         <source src="/home/bg.mp4" type="video/mp4" />
       </video>
+      {showPoster && (
+        <AdaptiveImage
+          className={videoClass}
+          fill
+          src="/home/poster.jpg"
+          alt="Video fallback"
+        />
+      )}
       {/* Dot Cover Overlay */}
       <div
         className="absolute inset-0 w-full h-full z-20 pointer-events-none"
