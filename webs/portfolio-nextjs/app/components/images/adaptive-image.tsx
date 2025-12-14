@@ -1,65 +1,47 @@
-import { memo, useState } from "react";
-import Image from "next/image";
-import { clsxMerge } from "../themes/utils";
+"use client";
+import { memo, useState, forwardRef } from "react";
 import { ImagePlaceholder } from "../skeletons/image-placeholder";
+import Image, { ImageProps } from "next/image";
 
-interface AdaptiveImageProps {
-  className?: string;
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  fill?: boolean;
-  priority?: boolean;
-  loading?: "eager" | "lazy";
+// Extend ImageProps and add custom props
+export interface AdaptiveImageProps extends Omit<ImageProps, "ref"> {
+  containerClass?: string;
   showSkeleton?: boolean;
-  aspectRatio?: "square" | "video" | "portrait" | string; // Add this
 }
+const AdaptiveImage = forwardRef<HTMLImageElement, AdaptiveImageProps>(
+  ({ containerClass, className, showSkeleton = false, ...imageProps }, ref) => {
+    const [isLoading, setIsLoading] = useState(true);
 
-function AdaptiveImage({
-  className,
-  src,
-  alt,
-  width,
-  height,
-  fill = false,
-  priority = false,
-  loading = "lazy",
-  showSkeleton = false,
-  aspectRatio = "video", // Default 16:9
-}: AdaptiveImageProps) {
-  const [isLoading, setIsLoading] = useState(true);
+    return (
+      <div className={containerClass}>
+        {isLoading && showSkeleton && <ImagePlaceholder />}
+        <Image
+          ref={ref}
+          className={className}
+          onLoadingComplete={() => setIsLoading(false)}
+          {...imageProps}
+        />
+      </div>
+    );
+  }
+);
 
-  // Apply aspect ratio to prevent layout shift
-  const aspectRatioClasses: Record<string, string> = {
-    square: "aspect-square",
-    video: "aspect-video",
-    portrait: "aspect-[3/4]",
-  };
-
-  const containerClass = clsxMerge(
-    "relative w-full",
-    aspectRatio in aspectRatioClasses ? aspectRatioClasses[aspectRatio] : "",
-    typeof aspectRatio === "string" && aspectRatio.includes("/") ? `aspect-[${aspectRatio}]` : "",
-    className
-  );
-
-  return (
-    <div className={containerClass}>
-      {isLoading && showSkeleton && <ImagePlaceholder />}
-      <Image
-        src={src}
-        alt={alt}
-        className="object-cover"
-        loading={priority ? "eager" : loading}
-        onLoadingComplete={() => setIsLoading(false)}
-        priority={priority}
-        width={width}
-        height={height}
-        fill={fill || !width || !height} // Auto-fill if no dimensions
-      />
-    </div>
-  );
-}
+AdaptiveImage.displayName = "AdaptiveImage";
 
 export default memo(AdaptiveImage);
+
+// Utility classes for image usage
+export const adaptiveImageContainerClass = "relative overflow-hidden bg-gray-100";
+export const adaptiveImageClass = "object-cover w-full h-full transition-opacity duration-300";
+
+// Aspect ratio utility classes
+export const adaptiveImageRatioSquare = "aspect-square";
+export const adaptiveImageRatioPortrait = "aspect-[3/4]";
+export const adaptiveImageRatioVideo = "aspect-video";
+export const adaptiveImageRatioLandscape = "aspect-[4/3]";
+
+// Max size utility classes for each aspect ratio
+export const adaptiveImageMaxSquare = "max-w-xs max-h-xs";        // e.g., 20rem x 20rem
+export const adaptiveImageMaxPortrait = "max-w-xs max-h-[32rem]"; // e.g., 20rem x 32rem
+export const adaptiveImageMaxVideo = "max-w-lg max-h-[18rem]";    // e.g., 32rem x 18rem
+export const adaptiveImageMaxLandscape = "max-w-lg max-h-[24rem]";// e.g., 32rem x 24rem

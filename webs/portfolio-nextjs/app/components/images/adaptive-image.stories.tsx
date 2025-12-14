@@ -1,6 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-
-import AdaptiveImage from './adaptive-image';
+import AdaptiveImage, {
+  adaptiveImageContainerClass,
+  adaptiveImageClass,
+  adaptiveImageRatioSquare,
+  adaptiveImageRatioPortrait,
+  adaptiveImageRatioVideo,
+  adaptiveImageRatioLandscape,
+  adaptiveImageMaxSquare,
+  adaptiveImageMaxPortrait,
+  adaptiveImageMaxVideo,
+  adaptiveImageMaxLandscape,
+} from './adaptive-image';
 
 const meta: Meta<typeof AdaptiveImage> = {
   component: AdaptiveImage,
@@ -10,11 +20,6 @@ const meta: Meta<typeof AdaptiveImage> = {
     layout: "centered",
   },
   argTypes: {
-    aspectRatio: {
-      control: "select",
-      options: ["square", "video", "portrait", "1/2"],
-      description: "Image aspect ratio",
-    },
     showSkeleton: {
       control: "boolean",
       description: "Show loading skeleton",
@@ -27,6 +32,14 @@ const meta: Meta<typeof AdaptiveImage> = {
       control: "select",
       options: ["eager", "lazy"],
     },
+    className: {
+      control: "text",
+      description: "Custom image className",
+    },
+    containerClass: {
+      control: "text",
+      description: "Custom container className",
+    },
   },
 };
 
@@ -34,116 +47,93 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const imageUrl = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80";
+
 export const VideoAspect: Story = {
   args: {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    src: imageUrl,
     alt: "Mountain landscape",
     showSkeleton: true,
-    aspectRatio: "video",
+    containerClass: `${adaptiveImageContainerClass} ${adaptiveImageRatioVideo} ${adaptiveImageMaxVideo}`,
+    className: adaptiveImageClass,
+    fill: true,
   },
-  decorators: [
-    (Story) => (
-      <div className="w-full max-w-2xl">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const SquareAspect: Story = {
   args: {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",
+    src: imageUrl,
     alt: "Square image",
     showSkeleton: true,
-    aspectRatio: "square",
+    containerClass: `${adaptiveImageContainerClass} ${adaptiveImageRatioSquare} ${adaptiveImageMaxSquare}`,
+    className: adaptiveImageClass,
+    fill: true,
   },
-  decorators: [
-    (Story) => (
-      <div className="w-96">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const PortraitAspect: Story = {
   args: {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",
+    src: imageUrl,
     alt: "Portrait image",
     showSkeleton: true,
-    aspectRatio: "portrait",
+    containerClass: `${adaptiveImageContainerClass} ${adaptiveImageRatioPortrait} ${adaptiveImageMaxPortrait}`,
+    className: adaptiveImageClass,
+    fill: true,
   },
-  decorators: [
-    (Story) => (
-      <div className="w-64">
-        <Story />
-      </div>
-    ),
-  ],
+};
+
+export const LandscapeAspect: Story = {
+  args: {
+    src: imageUrl,
+    alt: "Landscape image",
+    showSkeleton: true,
+    containerClass: `${adaptiveImageContainerClass} ${adaptiveImageRatioLandscape} ${adaptiveImageMaxLandscape}`,
+    className: adaptiveImageClass,
+    fill: true,
+  },
 };
 
 export const WithDimensions: Story = {
   args: {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    src: imageUrl,
     alt: "With explicit dimensions",
     width: 800,
     height: 600,
     showSkeleton: true,
+    className: adaptiveImageClass,
+    containerClass: adaptiveImageContainerClass,
   },
-  decorators: [
-    (Story) => (
-      <div className="w-full max-w-2xl">
-        <Story />
-      </div>
-    ),
-  ],
-};
-
-export const WithPriority: Story = {
-  args: {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-    alt: "Priority loaded image",
-    priority: true,
-    aspectRatio: "video",
-  },
-  decorators: [
-    (Story) => (
-      <div className="w-full max-w-2xl">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const CustomAspectRatio: Story = {
   args: {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    src: imageUrl,
     alt: "Custom aspect ratio",
     showSkeleton: true,
-    aspectRatio: "1/2",
+    containerClass: `${adaptiveImageContainerClass} aspect-[1/2] w-48`,
+    className: adaptiveImageClass,
+    fill: true,
   },
-  decorators: [
-    (Story) => (
-      <div className="w-48">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const WithCustomClass: Story = {
   args: {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    src: imageUrl,
     alt: "With custom styles",
     showSkeleton: true,
-    aspectRatio: "video",
-    className: "rounded-lg border-4 border-blue-500",
+    containerClass: `${adaptiveImageContainerClass} ${adaptiveImageRatioVideo} ${adaptiveImageMaxVideo}`,
+    className: "rounded-lg border-4 border-blue-500 " + adaptiveImageClass,
+    fill: true,
   },
-  decorators: [
-    (Story) => (
-      <div className="w-full max-w-2xl">
-        <Story />
-      </div>
-    ),
-  ],
+};
+
+export const WithPriority: Story = {
+  args: {
+    src: imageUrl,
+    alt: "Priority loaded image",
+    priority: true,
+    containerClass: `${adaptiveImageContainerClass} ${adaptiveImageRatioVideo} ${adaptiveImageMaxVideo}`,
+    className: adaptiveImageClass,
+    fill: true,
+  },
 };
