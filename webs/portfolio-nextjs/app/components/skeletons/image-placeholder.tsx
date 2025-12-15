@@ -53,12 +53,12 @@ export function ImagePlaceholder({
       </div>
       {withText && (
         <div className={clsxMerge("w-full", textClassName)}>
-          <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-48 mb-4"></div>
-          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-[480px] mb-2.5"></div>
+          <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full max-w-4/10 mb-4"></div>
+          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-9/10 mb-2.5"></div>
           <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full mb-2.5"></div>
-          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-[440px] mb-2.5"></div>
-          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-[460px] mb-2.5"></div>
-          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-[360px]"></div>
+          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-7/10 mb-2.5"></div>
+          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-9/10 mb-2.5"></div>
+          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-6/10"></div>
         </div>
       )}
       <span className="sr-only">Loading...</span>

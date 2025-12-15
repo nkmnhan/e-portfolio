@@ -47,7 +47,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const imageUrl = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80";
+const imageUrl = "https://app.requestly.io/delay/5000/https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80";
 
 export const VideoAspect: Story = {
   args: {
@@ -155,6 +155,22 @@ export const EagerLoading: Story = {
     alt: "Eagerly loaded image",
     loading: "eager",
     containerClass: `${adaptiveImageContainerClass} ${adaptiveImageRatioPortrait} ${adaptiveImageMaxPortrait} w-[20rem]`,
+    className: adaptiveImageClass,
+    fill: true,
+  },
+};
+
+export const customPlaceholder: Story = {
+  args: {
+    src: imageUrl,
+    alt: "Image with custom placeholder",
+    showSkeleton: true,
+    customPlaceholder: (
+      <div className="flex items-center justify-center h-full w-full bg-purple-300 dark:bg-purple-700 rounded-lg">
+        <span className="text-white dark:text-gray-200">Loading...</span>
+      </div>
+    ),
+    containerClass: `${adaptiveImageContainerClass} ${adaptiveImageRatioLandscape} ${adaptiveImageMaxLandscape} w-[32rem]`,
     className: adaptiveImageClass,
     fill: true,
   },
