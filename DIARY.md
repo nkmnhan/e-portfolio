@@ -52,3 +52,27 @@ COPY --from=builder /app/dist/apps/e-portfolio /usr/share/nginx/html
 - Research serverless
 - Read [sst.dev](https://docs.sst.dev/)
 - Read [how to create a nextjs app with serverless](https://sst.dev/examples/how-to-create-a-nextjs-app-with-serverless.html#add-the-api)
+
+### 13/Feb/2023
+```
+npx create-sst@latest my-sst-app
+npx create-next-app@latest
+npm run build
+npm run deploy
+```
+### 16/Feb/2023
+- My first serverless site was online [https://www.nkmnhan.com](https://www.nkmnhan.com)
+
+### 17/Feb/2023
+- Read prisma and use supabase for Postgres [reference](https://supabase.com/docs/guides/integrations/prisma#configuring-the-project-to-use-postgresql)
+
+### 20/Feb/2023
+- Read [tailwindcss.com](https://tailwindcss.com/)
+
+### 27/Feb/2023
+- Config the my-nextjs-app
+Follow [editor-setup](https://tailwindcss.com/docs/editor-setup)
+Run prettier to formart the code
+```
+yarn prettier --write .
+```

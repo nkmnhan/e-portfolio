@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#667eea"/>
+  <text x="400" y="80" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">My Journey</text>
+  <text x="400" y="120" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle" opacity="0.9">2016 - Present: 8+ Years of Innovation</text>
+  
+  <!-- Timeline path -->
+  <path d="M 100 300 L 700 300" stroke="white" stroke-width="4" opacity="0.3"/>
+  
+  <!-- 2016: Hitachi -->
+  <circle cx="100" cy="300" r="12" fill="white"/>
+  <text x="100" y="250" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">2016</text>
+  <text x="100" y="275" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Hitachi</text>
+  <text x="100" y="350" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.8">Software</text>
+  <text x="100" y="370" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.8">Engineer</text>
+  
+  <!-- 2019: Senior Role -->
+  <circle cx="350" cy="300" r="12" fill="#FFD700"/>
+  <text x="350" y="250" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">2019</text>
+  <text x="350" y="275" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">NASH TECH</text>
+  <text x="350" y="350" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.8">Senior Software</text>
+  <text x="350" y="370" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.8">Engineer</text>
+  
+  <!-- 2020: MOE Project -->
+  <circle cx="550" cy="300" r="12" fill="#FFD700"/>
+  <text x="550" y="250" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">2020</text>
+  <text x="550" y="275" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Orient Software</text>
+  <text x="550" y="350" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.8">MOE Platform</text>
+  <text x="550" y="370" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.8">Lead</text>
+  
+  <!-- Present -->
+  <circle cx="700" cy="300" r="12" fill="#00FF88"/>
+  <text x="700" y="250" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">Now</text>
+  <text x="700" y="275" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Senior</text>
+  <text x="700" y="350" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.8">Leading</text>
+  <text x="700" y="370" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.8">Innovation</text>
+  
+  <!-- Skills evolution -->
+  <text x="400" y="480" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.7">MES Systems → Microservices → Cloud-Native → Mobile Apps</text>
+</svg>

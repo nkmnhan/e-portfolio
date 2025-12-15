@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+# Ignore Flowbite React CLI files
+.flowbite-react/
+
+#  VS Code workspace settings
+.vscode/
+
+/webs/portfolio-nextjs/public/temp-images/*

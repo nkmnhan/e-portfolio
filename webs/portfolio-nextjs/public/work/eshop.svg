@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="eshopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00bfa5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00897b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#eshopGrad)"/>
+  <text x="300" y="270" font-family="Arial, sans-serif" font-size="76" font-weight="bold" fill="white" text-anchor="middle">E-Shop</text>
+  <text x="300" y="350" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle" opacity="0.9">E-Commerce</text>
+  <text x="300" y="395" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle" opacity="0.9">Platform</text>
+  <path d="M 250 470 L 275 470 L 285 600 L 315 600 L 325 470 L 350 470 L 338 630 L 262 630 Z" fill="white" opacity="0.3" stroke="white" stroke-width="4"/>
+  <circle cx="280" cy="660" r="16" fill="white"/>
+  <circle cx="320" cy="660" r="16" fill="white"/>
+  <text x="300" y="730" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" opacity="0.8">Shopping Cart</text>
+</svg>

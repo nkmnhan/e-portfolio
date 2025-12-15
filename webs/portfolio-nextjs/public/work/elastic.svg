@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="elasticGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fec514;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f39c12;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#elasticGrad)"/>
+  <text x="300" y="250" font-family="Arial, sans-serif" font-size="62" font-weight="bold" fill="white" text-anchor="middle">Elasticsearch</text>
+  <text x="300" y="320" font-family="Arial, sans-serif" font-size="58" font-weight="bold" fill="white" text-anchor="middle">NEST</text>
+  <text x="300" y="380" font-family="Arial, sans-serif" font-size="26" fill="white" text-anchor="middle" opacity="0.9">.NET Client</text>
+  <text x="300" y="420" font-family="Arial, sans-serif" font-size="26" fill="white" text-anchor="middle" opacity="0.9">Full-Text Search</text>
+  <text x="300" y="460" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle" opacity="0.9">⭐ 1</text>
+  <circle cx="300" cy="560" r="90" fill="white" opacity="0.3"/>
+  <circle cx="300" cy="560" r="70" fill="white" opacity="0.3"/>
+  <circle cx="300" cy="560" r="50" fill="white" opacity="0.3"/>
+  <text x="300" y="580" font-family="Arial, sans-serif" font-size="56" fill="white" text-anchor="middle" font-weight="bold">E</text>
+  <text x="300" y="700" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" opacity="0.8">Query Patterns</text>
+</svg>

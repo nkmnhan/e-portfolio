@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f093fb"/>
+  <text x="400" y="80" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">Skills &amp; Expertise</text>
+  <text x="400" y="120" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle" opacity="0.9">Full-Stack Mastery</text>
+  
+  <text x="100" y="180" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">C# / .NET Core</text>
+  <rect x="100" y="190" width="600" height="30" fill="white" opacity="0.3" rx="5"/>
+  <rect x="100" y="190" width="600" height="30" fill="white" rx="5"/>
+  <text x="720" y="210" font-family="Arial, sans-serif" font-size="16" fill="white">8 years</text>
+  
+  <text x="100" y="250" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Microservices</text>
+  <rect x="100" y="260" width="600" height="30" fill="white" opacity="0.3" rx="5"/>
+  <rect x="100" y="260" width="450" height="30" fill="white" rx="5"/>
+  <text x="720" y="280" font-family="Arial, sans-serif" font-size="16" fill="white">6 years</text>
+  
+  <text x="100" y="320" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">JS/TS (Angular, React, Vue)</text>
+  <rect x="100" y="330" width="600" height="30" fill="white" opacity="0.3" rx="5"/>
+  <rect x="100" y="330" width="375" height="30" fill="white" rx="5"/>
+  <text x="720" y="350" font-family="Arial, sans-serif" font-size="16" fill="white">5 years</text>
+  
+  <text x="100" y="390" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">AWS / Azure</text>
+  <rect x="100" y="400" width="600" height="30" fill="white" opacity="0.3" rx="5"/>
+  <rect x="100" y="400" width="300" height="30" fill="white" rx="5"/>
+  <text x="720" y="420" font-family="Arial, sans-serif" font-size="16" fill="white">4 years</text>
+  
+  <text x="100" y="460" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">.NET MAUI</text>
+  <rect x="100" y="470" width="600" height="30" fill="white" opacity="0.3" rx="5"/>
+  <rect x="100" y="470" width="150" height="30" fill="white" rx="5"/>
+  <text x="720" y="490" font-family="Arial, sans-serif" font-size="16" fill="white">2 years</text>
+  
+  <text x="400" y="550" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.8">Docker • Kubernetes • PostgreSQL • MongoDB • RabbitMQ • IdentityServer</text>
+</svg>

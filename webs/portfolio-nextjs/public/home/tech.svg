@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#43e97b"/>
+  <text x="400" y="80" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">Technologies I Love</text>
+  <text x="400" y="120" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle" opacity="0.9">Modern Stack for Scalable Solutions</text>
+  
+  <!-- Backend Section -->
+  <text x="200" y="170" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Backend</text>
+  <circle cx="140" cy="230" r="35" fill="white"/>
+  <text x="140" y="240" font-family="Arial, sans-serif" font-size="16" fill="#43e97b" text-anchor="middle" font-weight="bold">C#</text>
+  
+  <circle cx="260" cy="230" r="35" fill="white"/>
+  <text x="260" y="235" font-family="Arial, sans-serif" font-size="14" fill="#43e97b" text-anchor="middle" font-weight="bold">.NET</text>
+  <text x="260" y="248" font-family="Arial, sans-serif" font-size="12" fill="#43e97b" text-anchor="middle">Core 8</text>
+  
+  <!-- Frontend Section -->
+  <text x="400" y="170" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Frontend</text>
+  <circle cx="340" cy="230" r="35" fill="white"/>
+  <text x="340" y="235" font-family="Arial, sans-serif" font-size="13" fill="#43e97b" text-anchor="middle" font-weight="bold">Angular</text>
+  <text x="340" y="248" font-family="Arial, sans-serif" font-size="11" fill="#43e97b" text-anchor="middle">19</text>
+  
+  <circle cx="460" cy="230" r="35" fill="white"/>
+  <text x="460" y="240" font-family="Arial, sans-serif" font-size="15" fill="#43e97b" text-anchor="middle" font-weight="bold">React</text>
+  
+  <!-- Cloud Section -->
+  <text x="600" y="170" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Cloud</text>
+  <circle cx="540" cy="230" r="35" fill="white"/>
+  <text x="540" y="240" font-family="Arial, sans-serif" font-size="15" fill="#43e97b" text-anchor="middle" font-weight="bold">AWS</text>
+  
+  <circle cx="660" cy="230" r="35" fill="white"/>
+  <text x="660" y="240" font-family="Arial, sans-serif" font-size="14" fill="#43e97b" text-anchor="middle" font-weight="bold">Azure</text>
+  
+  <!-- DevOps Section -->
+  <text x="200" y="330" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">DevOps</text>
+  <circle cx="140" cy="390" r="35" fill="white"/>
+  <text x="140" y="395" font-family="Arial, sans-serif" font-size="13" fill="#43e97b" text-anchor="middle" font-weight="bold">Docker</text>
+  
+  <circle cx="260" cy="390" r="35" fill="white"/>
+  <text x="260" y="390" font-family="Arial, sans-serif" font-size="11" fill="#43e97b" text-anchor="middle" font-weight="bold">Kuber-</text>
+  <text x="260" y="402" font-family="Arial, sans-serif" font-size="11" fill="#43e97b" text-anchor="middle" font-weight="bold">netes</text>
+  
+  <!-- Database Section -->
+  <text x="400" y="330" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Database</text>
+  <circle cx="340" cy="390" r="35" fill="white"/>
+  <text x="340" y="390" font-family="Arial, sans-serif" font-size="12" fill="#43e97b" text-anchor="middle" font-weight="bold">Post-</text>
+  <text x="340" y="402" font-family="Arial, sans-serif" font-size="12" fill="#43e97b" text-anchor="middle" font-weight="bold">greSQL</text>
+  
+  <circle cx="460" cy="390" r="35" fill="white"/>
+  <text x="460" y="390" font-family="Arial, sans-serif" font-size="12" fill="#43e97b" text-anchor="middle" font-weight="bold">Mongo</text>
+  <text x="460" y="402" font-family="Arial, sans-serif" font-size="12" fill="#43e97b" text-anchor="middle" font-weight="bold">DB</text>
+  
+  <!-- Mobile Section -->
+  <text x="600" y="330" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Mobile</text>
+  <circle cx="600" cy="390" r="35" fill="white"/>
+  <text x="600" y="390" font-family="Arial, sans-serif" font-size="13" fill="#43e97b" text-anchor="middle" font-weight="bold">.NET</text>
+  <text x="600" y="402" font-family="Arial, sans-serif" font-size="13" fill="#43e97b" text-anchor="middle" font-weight="bold">MAUI</text>
+  
+  <!-- Additional tech -->
+  <text x="400" y="490" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.9">REST APIs • gRPC • RabbitMQ • Elasticsearch • IdentityServer 4</text>
+  <text x="400" y="520" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.9">Playwright • Firebase • GoCD • Vue.js • Next.js</text>
+</svg>

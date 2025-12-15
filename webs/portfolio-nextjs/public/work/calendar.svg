@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="calendarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec407a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d81b60;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#calendarGrad)"/>
+  <text x="300" y="270" font-family="Arial, sans-serif" font-size="76" font-weight="bold" fill="white" text-anchor="middle">Calendar</text>
+  <text x="300" y="350" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle" opacity="0.9">TypeScript</text>
+  <text x="300" y="395" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle" opacity="0.9">Component</text>
+  <rect x="200" y="450" width="200" height="180" rx="12" fill="white" opacity="0.3"/>
+  <rect x="210" y="465" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="245" y="465" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="280" y="465" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="315" y="465" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="350" y="465" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="210" y="505" width="28" height="28" rx="3" fill="white" opacity="0.7"/>
+  <rect x="245" y="505" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="280" y="505" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="315" y="505" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="350" y="505" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="210" y="545" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="245" y="545" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="280" y="545" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="315" y="545" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="350" y="545" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="210" y="585" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <rect x="245" y="585" width="28" height="28" rx="3" fill="white" opacity="0.5"/>
+  <text x="300" y="700" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" opacity="0.8">Event Management</text>
+</svg>

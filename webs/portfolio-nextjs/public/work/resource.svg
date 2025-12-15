@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="resourceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#66bb6a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#43a047;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#resourceGrad)"/>
+  <text x="300" y="260" font-family="Arial, sans-serif" font-size="58" font-weight="bold" fill="white" text-anchor="middle">Resource</text>
+  <text x="300" y="330" font-family="Arial, sans-serif" font-size="58" font-weight="bold" fill="white" text-anchor="middle">Manager</text>
+  <text x="300" y="390" font-family="Arial, sans-serif" font-size="26" fill="white" text-anchor="middle" opacity="0.9">XML Resources</text>
+  <text x="300" y="430" font-family="Arial, sans-serif" font-size="26" fill="white" text-anchor="middle" opacity="0.9">Excel Management</text>
+  <text x="300" y="470" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle" opacity="0.9">⭐ 1</text>
+  <rect x="200" y="520" width="200" height="140" rx="12" fill="white" opacity="0.3"/>
+  <line x1="220" y1="555" x2="380" y2="555" stroke="white" stroke-width="4"/>
+  <line x1="220" y1="590" x2="365" y2="590" stroke="white" stroke-width="4"/>
+  <line x1="220" y1="625" x2="370" y2="625" stroke="white" stroke-width="4"/>
+  <text x="300" y="720" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" opacity="0.8">Localization Tool</text>
+</svg>
