@@ -1,17 +1,20 @@
-# read all paths and sub paths in the current directory
-# if contains "bin" or "obj" or "node_modules", delete the folder and all its contents
-# write to console which folders are being deleted
+# Recursively scan the directory and delete folders whose names contain "bin", "obj", "node_modules", or "storybook-static"
 param(
     [Parameter(Mandatory = $false)]
     [string]$path = $PSScriptRoot
 )
 
-$foldersToDelete = @('\\bin\\', '\\obj\\', '\\node_modules\\')
+$foldersToDeletePatterns = @('*bin*', '*obj*', '*node_modules*', '*storybook-static*')  # Changed to patterns for "contains" logic
 
 Get-ChildItem -Path $path -Recurse -Directory | ForEach-Object {
-    write-Host "Checking folder: $($_.FullName)" -Foregroundcolor Green
-    if ($_.Name -in $foldersToDelete) {
-        Write-Host "Deleting folder: $($_.FullName)"  -Foregroundcolor Red
-        Remove-Item -Path $_.FullName -Recurse -Force
+    $folderName = $_.Name
+    $matches = $foldersToDeletePatterns | Where-Object { $folderName -like $_ }
+    if ($matches) {
+        Write-Host "Deleting folder: $($_.FullName)" -ForegroundColor Red
+        try {
+            Remove-Item -Path $_.FullName -Recurse -Force
+        } catch {
+            Write-Host "Failed to delete $($_.FullName): $($_.Exception.Message)" -ForegroundColor Yellow
+        }
     }
 }

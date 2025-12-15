@@ -31,6 +31,20 @@ try {
     Write-Host "======================================" -ForegroundColor Cyan
     Write-Host ""
 
+    if ($c -eq "build-storybook") {
+    Write-Host "Cleaning up existing storybook-static folder..." -ForegroundColor Yellow
+        if (Test-Path ".\storybook-static") {
+            try {
+                Remove-Item -Path ".\storybook-static" -Recurse -Force
+                Write-Host "Successfully removed storybook-static." -ForegroundColor Green
+            } catch {
+                Write-Host "Failed to remove storybook-static: $($_.Exception.Message)" -ForegroundColor Red
+            }
+        } else {
+            Write-Host "storybook-static folder not found; skipping cleanup." -ForegroundColor Gray
+        }
+    }
+
     pnpm $c
 }
 finally {
