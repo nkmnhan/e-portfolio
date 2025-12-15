@@ -6,11 +6,12 @@ param(
     [string]$path = $PSScriptRoot
 )
 
-$foldersToDelete = @('/bin/', '/obj/', '/node_modules/')
+$foldersToDelete = @('\\bin\\', '\\obj\\', '\\node_modules\\')
 
 Get-ChildItem -Path $path -Recurse -Directory | ForEach-Object {
+    write-Host "Checking folder: $($_.FullName)" -Foregroundcolor Green
     if ($_.Name -in $foldersToDelete) {
-        Write-Host "Deleting folder: $($_.FullName)"
+        Write-Host "Deleting folder: $($_.FullName)"  -Foregroundcolor Red
         Remove-Item -Path $_.FullName -Recurse -Force
     }
 }
