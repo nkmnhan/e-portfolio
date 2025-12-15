@@ -3,13 +3,16 @@
 
 param(
     [Parameter(Mandatory = $false)]
-    [string]$projectRoot = $PSScriptRoot
+    [string]$path = $PSScriptRoot,
+
+    [Parameter(Mandatory = $true)]
+    [string]$c = "dev"
 )
 
-$portfolioDir = Join-Path $projectRoot "webs\portfolio-nextjs"
+$portfolioDir = Join-Path $path "webs\portfolio-nextjs"
 
 Write-Host "======================================" -ForegroundColor Cyan
-Write-Host "   E-Portfolio Storybook" -ForegroundColor Cyan
+Write-Host "   E-Portfolio Development" -ForegroundColor Cyan
 Write-Host "======================================" -ForegroundColor Cyan
 write-Host "portfolioDir: $portfolioDir" -ForegroundColor Gray
 Write-Host ""
@@ -17,19 +20,18 @@ Write-Host ""
 Push-Location $portfolioDir
 try {
 
-    Write-Host "Starting Storybook setup..." -ForegroundColor Green
+    Write-Host "Starting development setup..." -ForegroundColor Green
     pnpm install
 
-    Write-Host "Starting Storybook server..." -ForegroundColor Yellow
-    Write-Host "  -> Running 'pnpm storybook' in $portfolioDir" -ForegroundColor Gray
+    Write-Host "Starting development server..." -ForegroundColor Yellow
+    Write-Host "  -> Running 'pnpm dev' in $portfolioDir" -ForegroundColor Gray
     Write-Host ""
     Write-Host "======================================" -ForegroundColor Cyan
     Write-Host "   Server Starting..." -ForegroundColor Cyan
     Write-Host "======================================" -ForegroundColor Cyan
     Write-Host ""
 
-    pnpm build-storybook
-    pnpm storybook
+    pnpm $c
 }
 finally {
     Pop-Location
