@@ -22,8 +22,8 @@ import {
   SiVercel,
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
-import Galaxy from "../components/galaxy";
 import AdaptiveImage from "../components/images/adaptive-image";
+import { Galaxy } from "../components/galaxy";
 
 // Data for the page
 const TECHNOLOGIES = [

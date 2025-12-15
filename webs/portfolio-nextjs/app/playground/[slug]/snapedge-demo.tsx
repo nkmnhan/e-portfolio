@@ -1,7 +1,7 @@
 "use client";
 
 import AdaptiveImage from "@/app/components/images/adaptive-image";
-import SnapEdge from "../../components/snap-edge";
+import { SnapEdge } from "@/app/components/snap-edge";
 
 export default function SnapEdgeDemo() {
   return (

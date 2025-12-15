@@ -6,7 +6,7 @@ interface TestimonialPlaceholderProps {
   lines?: number;
 }
 
-export function TestimonialPlaceholder({
+export default function TestimonialPlaceholder({
   className,
   lines = 2,
 }: TestimonialPlaceholderProps) {

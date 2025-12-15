@@ -5,7 +5,7 @@ interface WidgetPlaceholderProps {
   bars?: number;
 }
 
-export function WidgetPlaceholder({
+export default function WidgetPlaceholder({
   className,
   bars = 7,
 }: WidgetPlaceholderProps) {

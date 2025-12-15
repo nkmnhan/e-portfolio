@@ -24,7 +24,7 @@ const urls = [
   "https://flowbite.com/docs/images/carousel/carousel-5.svg",
 ];
 
-const BrandGallaryTestData: BrandGalleryItem[] = urls.map((url, index) => ({
+const BrandGalleryTestData: BrandGalleryItem[] = urls.map((url, index) => ({
   src: url,
   alt: `Carousel image ${index + 1}`,
   logoSrc: logos[index] || "",
@@ -33,4 +33,4 @@ const BrandGallaryTestData: BrandGalleryItem[] = urls.map((url, index) => ({
   description: details[index]?.description || "",
 }));
 
-export default BrandGallaryTestData;
+export default BrandGalleryTestData;

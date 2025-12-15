@@ -2,7 +2,6 @@
 
 import { ProjectInfo } from "@/app/work/data";
 import IMAGE_URLS from "@/app/work/data";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { AiFillDownCircle, AiFillUpCircle } from "react-icons/ai";
 import { useProjectContext } from "./layout";
@@ -14,11 +13,13 @@ import {
   textWhite,
 } from "@/app/components/themes/default-text";
 import { bgPrimary } from "@/app/components/themes/default-bg";
-import BrandGallaryTestData from "@/app/components/brand-gallery/data";
-import BrandGallary from "@/app/components/brand-gallery";
 import AdaptiveImage, {
   adaptiveImageMaxLandscape,
 } from "@/app/components/images/adaptive-image";
+import {
+  BrandGalleryTestData,
+  BrandGallery,
+} from "@/app/components/brand-gallery";
 
 const posterContainer =
   "relative z-10 transition-all duration-700 ease-in-out w-full mx-auto flex flex-col items-center justify-center rounded-xl overflow-hidden";
@@ -95,9 +96,9 @@ export default function Project({
 
   return (
     <div className={clsxMerge("relative w-full overflow-x-hidden", bgPrimary)}>
-      <BrandGallary
+      <BrandGallery
         className="w-[80vw] h-140 m-auto"
-        src={BrandGallaryTestData}
+        src={BrandGalleryTestData}
       />
       {/* Full Screen Poster Section */}
       <div

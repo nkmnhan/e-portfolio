@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { Galaxy } from ".";
+
+import { ModelViewer } from ".";
 
 const meta = {
-  component: Galaxy,
-  title: "Components/Galaxy",
-} satisfies Meta<typeof Galaxy>;
+  component: ModelViewer,
+  title: "Components/ModelViewer",
+} satisfies Meta<typeof ModelViewer>;
 
 export default meta;
 

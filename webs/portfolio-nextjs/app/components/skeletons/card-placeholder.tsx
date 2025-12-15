@@ -7,7 +7,7 @@ interface CardPlaceholderProps {
   imageHeight?: string;
 }
 
-export function CardPlaceholder({
+export default function CardPlaceholder({
   className,
   withAvatar = true,
   imageHeight = "h-48",

@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import AdaptiveImage, {
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import {
+  AdaptiveImage,
   adaptiveImageContainerClass,
   adaptiveImageClass,
   adaptiveImageRatioSquare,
@@ -10,7 +11,7 @@ import AdaptiveImage, {
   adaptiveImageMaxPortrait,
   adaptiveImageMaxVideo,
   adaptiveImageMaxLandscape,
-} from './adaptive-image';
+} from ".";
 
 const meta: Meta<typeof AdaptiveImage> = {
   component: AdaptiveImage,
@@ -47,7 +48,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const imageUrl = "https://app.requestly.io/delay/5000/https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80";
+const imageUrl =
+  "https://app.requestly.io/delay/5000/https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80";
 
 export const VideoAspect: Story = {
   args: {

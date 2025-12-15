@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import HamburgerBtn from "../hamburger-btn";
+import { HamburgerBtn } from "../hamburger-btn";
 import { clsxMerge } from "../themes/utils";
 import { getIconClass, NavIcon } from "./sites";
 

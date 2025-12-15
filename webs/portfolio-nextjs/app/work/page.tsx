@@ -3,11 +3,10 @@ import { TabItem, Tabs } from "flowbite-react";
 import { HiCode, HiGlobe, HiLightningBolt, HiCollection } from "react-icons/hi";
 import { MdWork } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
-import MasonryLayout from "../components/masonry-layout";
+import { MasonryLayout } from "../components/masonry-layout";
 import IMAGE_URLS from "./data";
 import ImageCard from "../components/images/image-card";
 import Link from "next/link";
-import Image from "next/image";
 import { clsxMerge } from "@/app/components/themes/utils";
 import { bgPrimary } from "@/app/components/themes/default-bg";
 import {

@@ -9,7 +9,7 @@ interface ImagePlaceholderProps {
   orientation?: "horizontal" | "vertical";
 }
 
-export function ImagePlaceholder({
+export default function ImagePlaceholder({
   className,
   withText = true,
   imageClassName,

@@ -5,7 +5,7 @@ interface TextPlaceholderProps {
   lines?: number;
 }
 
-export function TextPlaceholder({ className, lines = 6 }: TextPlaceholderProps) {
+export default function TextPlaceholder({ className, lines = 6 }: TextPlaceholderProps) {
   const lineConfigs = [
     { maxWidth: "w-full", segments: ["w-32", "w-24", "w-full"] },
     { maxWidth: "max-w-[480px]", segments: ["w-full", "w-full", "w-24"] },

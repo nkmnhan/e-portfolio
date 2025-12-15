@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, use } from "react";
-import MasonryLayout from "../../components/masonry-layout";
+import { MasonryLayout } from "../../components/masonry-layout";
 const items = Array.from({ length: 30 }, (_, i) => i + 1);
 export default function MasonryLayoutDemo() {
   const [heights, setHeights] = useState<number[]>([]);

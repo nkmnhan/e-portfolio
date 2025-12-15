@@ -1,20 +1,82 @@
 import {
-  FaApple, FaAndroid, FaReact, FaNodeJs, FaGithub, FaGoogle, FaFacebook, FaTwitter,
-  FaInstagram, FaYoutube, FaLinkedin, FaSlack, FaDocker, FaAws, FaWindows, FaLinux,
-  FaGitlab, FaFigma, FaTrello, FaJira, FaVuejs, FaAngular, FaPython, FaJava, FaPhp,
-  FaSwift, FaRust, FaRedhat, FaBitbucket, FaDribbble, FaBehance, FaStackOverflow,
-  FaWordpress, FaShopify, FaSalesforce, FaDropbox,
+  FaApple,
+  FaAndroid,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
+  FaGoogle,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+  FaLinkedin,
+  FaSlack,
+  FaDocker,
+  FaAws,
+  FaWindows,
+  FaLinux,
+  FaGitlab,
+  FaFigma,
+  FaTrello,
+  FaJira,
+  FaVuejs,
+  FaAngular,
+  FaPython,
+  FaJava,
+  FaPhp,
+  FaSwift,
+  FaRust,
+  FaRedhat,
+  FaBitbucket,
+  FaDribbble,
+  FaBehance,
+  FaStackOverflow,
+  FaWordpress,
+  FaShopify,
+  FaSalesforce,
+  FaDropbox,
 } from "react-icons/fa";
-import Galaxy from "../components/galaxy";
 import { clsxMerge } from "@/app/components/themes/utils";
 import AdaptiveImage from "../components/images/adaptive-image";
+import { Galaxy } from "../components/galaxy";
 
 const ICONS = [
-  FaApple, FaAndroid, FaReact, FaNodeJs, FaGithub, FaGoogle, FaFacebook, FaTwitter,
-  FaInstagram, FaYoutube, FaLinkedin, FaSlack, FaDocker, FaAws, FaWindows, FaLinux,
-  FaGitlab, FaFigma, FaTrello, FaJira, FaVuejs, FaAngular, FaPython, FaJava, FaPhp,
-  FaSwift, FaRust, FaRedhat, FaBitbucket, FaDribbble, FaBehance, FaStackOverflow,
-  FaWordpress, FaShopify, FaSalesforce, FaDropbox,
+  FaApple,
+  FaAndroid,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
+  FaGoogle,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+  FaLinkedin,
+  FaSlack,
+  FaDocker,
+  FaAws,
+  FaWindows,
+  FaLinux,
+  FaGitlab,
+  FaFigma,
+  FaTrello,
+  FaJira,
+  FaVuejs,
+  FaAngular,
+  FaPython,
+  FaJava,
+  FaPhp,
+  FaSwift,
+  FaRust,
+  FaRedhat,
+  FaBitbucket,
+  FaDribbble,
+  FaBehance,
+  FaStackOverflow,
+  FaWordpress,
+  FaShopify,
+  FaSalesforce,
+  FaDropbox,
 ];
 
 export default function Clients() {
@@ -33,9 +95,12 @@ export default function Clients() {
           "place-items-center"
         )}
       >
-        {shuffledIcons.map((Icon, idx) => (
+        {shuffledIcons.map((Icon, idx) =>
           idx === 0 ? (
-            <div key={idx} className={clsxMerge("flex items-center justify-center relative")}>
+            <div
+              key={idx}
+              className={clsxMerge("flex items-center justify-center relative")}
+            >
               <AdaptiveImage
                 src="/astronaut.png"
                 alt="Astronaut"
@@ -51,11 +116,14 @@ export default function Clients() {
               <Icon className={clsxMerge("invert w-12 h-12 md:w-16 md:h-16")} />
             </div>
           ) : (
-            <div key={idx} className={clsxMerge("flex items-center justify-center")}>
+            <div
+              key={idx}
+              className={clsxMerge("flex items-center justify-center")}
+            >
               <Icon className={clsxMerge("invert w-12 h-12 md:w-16 md:h-16")} />
             </div>
           )
-        ))}
+        )}
       </div>
     </div>
   );

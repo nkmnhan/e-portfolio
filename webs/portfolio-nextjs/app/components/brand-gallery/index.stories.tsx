@@ -1,12 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import BrandGallaryTestData from './data';
-import Index from './index';
-
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { BrandGallery, BrandGalleryTestData } from ".";
 const meta = {
-  component: Index,
+  component: BrandGallery,
   title: "Components/BrandGallery",
-} satisfies Meta<typeof Index>;
-
+} satisfies Meta<typeof BrandGallery>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
@@ -14,6 +11,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     className: "w-full h-64 sm:h-80 md:h-96 lg:h-112 xl:h-140 m-auto",
-    src: BrandGallaryTestData
-  }
+    src: BrandGalleryTestData,
+  },
 };

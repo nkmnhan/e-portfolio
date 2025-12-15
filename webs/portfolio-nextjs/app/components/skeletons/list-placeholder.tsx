@@ -5,7 +5,7 @@ interface ListPlaceholderProps {
   items?: number;
 }
 
-export function ListPlaceholder({ className, items = 5 }: ListPlaceholderProps) {
+export default function ListPlaceholder({ className, items = 5 }: ListPlaceholderProps) {
   return (
     <div
       role="status"

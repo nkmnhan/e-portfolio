@@ -2,13 +2,12 @@
 
 import { Popover } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
-import SnapEdge from "../snap-edge";
 import HamburgerIcon from "../hamburger-btn/hamburger-icon";
 import { clsxMerge } from "../themes/utils";
 import Link from "next/dist/client/link";
 import { PLAY_GROUND_ITEMS } from "./sites";
-import Image from "next/image";
 import AdaptiveImage from "../images/adaptive-image";
+import { SnapEdge } from "../snap-edge";
 
 export default function AirNav() {
   const [menuTrigger, setMenuTrigger] = useState<"click" | "hover" | undefined>(

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { IoIosAppstore } from "react-icons/io";
-import Index from "./index";
+import { SnapEdge } from ".";
 
 const meta = {
-  component: Index,
+  component: SnapEdge,
   title: "Components/SnapEdge",
-} satisfies Meta<typeof Index>;
+} satisfies Meta<typeof SnapEdge>;
 
 export default meta;
 
@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     id: "default",
-    children: (<IoIosAppstore className="w-40 h-40"/>),
+    children: <IoIosAppstore className="w-40 h-40" />,
     defaultHorizontal: "left",
     defaultVertical: "top",
   },

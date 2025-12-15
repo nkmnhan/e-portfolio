@@ -1,7 +1,7 @@
 "use client";
 import { memo, useState, forwardRef } from "react";
-import { ImagePlaceholder } from "../skeletons/image-placeholder";
 import Image, { ImageProps } from "next/image";
+import { ImagePlaceholder } from "../skeletons";
 
 // Extend ImageProps and add custom props
 export interface AdaptiveImageProps extends Omit<ImageProps, "ref"> {

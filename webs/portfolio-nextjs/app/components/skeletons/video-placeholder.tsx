@@ -5,7 +5,7 @@ interface VideoPlaceholderProps {
   className?: string;
 }
 
-export function VideoPlaceholder({ className }: VideoPlaceholderProps) {
+export default function VideoPlaceholder({ className }: VideoPlaceholderProps) {
   return (
     <div
       role="status"

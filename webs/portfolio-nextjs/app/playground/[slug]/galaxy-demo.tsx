@@ -1,4 +1,4 @@
-import Galaxy from "../../components/galaxy";
+import { Galaxy } from "../../components/galaxy";
 
 export default function GalaxyDemo() {
   return (

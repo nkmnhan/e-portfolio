@@ -1,9 +1,8 @@
 import { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { NavBar } from "./components/nav-bar";
+import { NavBar, AirNav } from "./components/nav-bar";
 import { ThemeModeScript } from "flowbite-react";
-import AirNav from "./components/nav-bar/air-nav";
 import PerformanceMonitor from "./components/performance-monitor";
 
 const geistSans = Geist({
@@ -49,7 +48,7 @@ export default function RootLayout({
       >
         <PerformanceMonitor />
         {/* Floating Menu Button with Popover */}
-        <AirNav/>
+        <AirNav />
         <div>
           {/* Menu drawer */}
           <NavBar />
