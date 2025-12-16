@@ -66,12 +66,17 @@ export default function Google3DViewer() {
   }
 
   return (
-    <model-viewer
-      src="/sketch/just_a_girl_texture_1k.glb"
-      alt="3D model"
-      auto-rotate
-      camera-controls
-      className="w-full h-screen bg-gray-100 dark:bg-gray-900"
-    />
+    <>
+      <h1 className="text-2xl font-bold text-center my-4">
+        Google Model Viewer
+      </h1>
+      <model-viewer
+        src="/sketch/just_a_girl_texture_1k.glb"
+        alt="3D model"
+        auto-rotate
+        camera-controls
+        className="w-full h-screen bg-gray-100 dark:bg-gray-900"
+      />
+    </>
   );
 }
