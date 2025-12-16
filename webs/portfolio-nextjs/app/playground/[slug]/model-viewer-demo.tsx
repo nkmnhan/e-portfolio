@@ -1,5 +1,5 @@
-import { ModelViewer } from "../../components/model-viewer";
+import { GoogleModelViewer } from "../../components/model-viewer";
 
 export default function ModelViewerDemo() {
-  return <ModelViewer />;
+  return <GoogleModelViewer />;
 }

@@ -1,16 +1,27 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { ModelViewer } from ".";
+import { GoogleModelViewer, BabylonJSViewer } from ".";
 
-const meta = {
-  component: ModelViewer,
-  title: "Components/ModelViewer",
-} satisfies Meta<typeof ModelViewer>;
+const googleMeta = {
+  component: GoogleModelViewer,
+  title: "Components/3D-ModelViewer",
+} satisfies Meta<typeof GoogleModelViewer>;
 
-export default meta;
+export default googleMeta;
 
-type Story = StoryObj<typeof meta>;
+type GoogleStory = StoryObj<typeof googleMeta>;
 
-export const Default: Story = {
+export const Google: GoogleStory = {
+  args: {},
+};
+
+const babylonMeta = {
+  component: BabylonJSViewer,
+  title: "Components/3D-ModelViewer",
+} satisfies Meta<typeof BabylonJSViewer>;
+
+type BabylonStory = StoryObj<typeof babylonMeta>;
+
+export const Babylon: BabylonStory = {
   args: {},
 };

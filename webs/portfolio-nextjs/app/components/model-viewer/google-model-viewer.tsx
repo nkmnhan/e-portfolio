@@ -22,7 +22,7 @@ declare module "react" {
   }
 }
 
-export default function ModelViewer() {
+export default function GoogleModelViewer() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
