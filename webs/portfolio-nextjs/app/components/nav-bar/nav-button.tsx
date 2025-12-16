@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
+import { usePathname } from "next/navigation";
 import { HamburgerBtn } from "../hamburger-btn";
 import { clsxMerge } from "../themes/utils";
 import { getIconClass, NavIcon } from "./sites";
@@ -14,21 +15,19 @@ export default function NavButton({
   active: boolean;
   onClick: () => void;
 }) {
-  const [currentPath, setCurrentPath] = useState<string>("/");
-  const [iconClass, setIconClass] = useState<string>("");
+  // use Next's pathname hook so component updates on navigation without manual effects
+  const pathname = usePathname() ?? "/";
 
-  useEffect(() => {
-    setCurrentPath(window.location.pathname);
-    setIconClass(getIconClass(active, currentPath));
-  }, [active, currentPath]);
+  // memoize derived class to avoid recomputation on every render
+  const iconClass = useMemo(() => getIconClass(active, pathname), [active, pathname]);
 
   return (
     <div
       className={clsxMerge(
-        "fixed z-50 transition-all duration-200 flex items-center gap-4 p-3 rounded",
+        // Tailwind z utility corrected
+        "absolute z-100 transition-all duration-200 flex items-center gap-4 p-3 rounded",
         className
       )}
-      style={{ position: "fixed" }}
     >
       <HamburgerBtn
         id="nav-btn"
@@ -42,7 +41,7 @@ export default function NavButton({
           "w-6 h-6 hover:text-cyan-700 transition",
           active && "bg-[#0000000a] rounded"
         )}
-        path={currentPath}
+        path={pathname}
       />
     </div>
   );
