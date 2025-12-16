@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import * as BABYLON from "@babylonjs/core";
 import "@babylonjs/loaders/glTF";
 
-export default function BabylonJSViewer() {
+export default function BabylonJS3DViewer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
