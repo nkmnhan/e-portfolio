@@ -9,6 +9,14 @@
   --foreground: #171717;
 }
 
+/* Animation / hover system variables */
+:root{
+  --hover-scale: 1.03;
+  --hover-ease: cubic-bezier(.2,1,.3,1);
+  --hover-duration: .18s;
+  --focus-outline: 3px solid rgba(34,139,230,.16);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -64,4 +72,76 @@ body {
 }
 .animate-slide-in-right {
   animation: slide-in-right 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Page transition container baseline */
+.page-transition {
+  min-height: 100%;
+  will-change: transform, opacity;
+}
+
+/* Hover utility for consistent interactive polish */
+.hover-animate {
+  transition: transform var(--hover-duration) var(--hover-ease), box-shadow var(--hover-duration) var(--hover-ease), color var(--hover-duration) var(--hover-ease);
+  transform-origin: center;
+  backface-visibility: hidden;
+}
+.hover-animate:hover,
+.hover-animate:focus {
+  transform: scale(var(--hover-scale));
+  outline: none;
+}
+
+/* Subtle elevated card hover */
+.hover-card {
+  border-radius: 10px;
+  transition: box-shadow var(--hover-duration) var(--hover-ease), transform var(--hover-duration) var(--hover-ease);
+}
+.hover-card:hover,
+.hover-card:focus {
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.12);
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* Small utility for link hover underline */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  transition: background-size var(--hover-duration) var(--hover-ease);
+}
+.link-underline:hover { background-size: 100% 2px; }
+
+/* motion-safe/unsafe fine-tuning */
+@media (prefers-reduced-motion: no-preference) {
+  .hover-animate { will-change: transform; }
+}
+
+/* touch / card helpers */
+.card-link {
+  display: block; /* ensure whole card is clickable on mobile */
+  -webkit-tap-highlight-color: transparent; /* remove tap highlight on mobile */
+  text-decoration: none;
+}
+
+.card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* small safe scale on hover (motion-safe) */
+.motion-safe\:hover\:scale-102:hover {
+  transform: scale(1.02);
 }

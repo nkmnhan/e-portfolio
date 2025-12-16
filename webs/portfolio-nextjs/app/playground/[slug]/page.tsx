@@ -41,7 +41,7 @@ const components: Record<
   },
 };
 
-export default async function TestSlug({
+export default async function PlaygroundDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
