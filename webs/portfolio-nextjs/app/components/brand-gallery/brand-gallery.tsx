@@ -20,9 +20,9 @@ export interface BrandGalleryProps {
 }
 
 const slideClass =
-  "absolute top-0 flex h-full items-center justify-center px-4 focus:outline-none -translate-y-8";
+  "absolute top-1/2 transform -translate-y-5/8 sm:-translate-y-1/2 flex h-full items-center justify-center px-3 focus:outline-none";
 const iconClass =
-  "w-12 h-12 bg-white rounded-full flex items-center justify-center sm:w-14 sm:h-14";
+  "w-8 h-8 bg-white rounded-full flex items-center justify-center sm:w-12 sm:h-12";
 
 const customTheme: CustomFlowbiteTheme["carousel"] = {
   root: {
@@ -46,8 +46,8 @@ const customTheme: CustomFlowbiteTheme["carousel"] = {
     },
   },
   control: {
-    base: "inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white sm:h-10 sm:w-10 dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70",
-    icon: "h-5 w-5 text-white sm:h-6 sm:w-6 dark:text-gray-800",
+    base: "inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-3 group-focus:ring-white sm:h-9 sm:w-9 dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70",
+    icon: "h-4 w-4 text-white sm:h-5 sm:w-5 dark:text-gray-800",
   },
   scrollContainer: {
     base: "flex h-full snap-mandatory overflow-y-hidden overflow-x-hidden scroll-smooth rounded-lg",
@@ -56,8 +56,13 @@ const customTheme: CustomFlowbiteTheme["carousel"] = {
 };
 
 export default function BrandGallery({ className, src }: BrandGalleryProps) {
+  const containerClass = clsxMerge(
+    className,
+    "w-full h-56 sm:h-72 md:h-96 lg:h-[28rem]"
+  );
+
   return (
-    <div className={className}>
+    <div className={containerClass}>
       <Carousel
         theme={customTheme}
         leftControl={
@@ -72,15 +77,15 @@ export default function BrandGallery({ className, src }: BrandGalleryProps) {
         }
       >
         {src.map((item, index) => (
-          <div className="relative w-full h-full">
+          <div key={index} className="relative w-full h-full">
             <AdaptiveImage
-              className="object-cover pb-12 pl-4 pr-4 sm:pl-10 sm:pr-10"
+              className="object-cover pb-12 pl-6 pr-6 sm:pl-10 sm:pr-10"
               src={item.src}
               alt={item.alt}
               fill
             />
             {item.logoSrc && (
-              <div className="min-w-20 min-h-10 sm:min-w-50 sm:min-h-25 absolute bottom-4 right-4 sm:right-28 bg-white rounded flex items-center justify-center shadow-lg">
+              <div className="w-24 h-12 sm:w-48 sm:h-24 absolute bottom-8 sm:bottom-4 right-8 sm:right-28 bg-white rounded flex items-center justify-center shadow-lg">
                 <AdaptiveImage
                   src={item.logoSrc}
                   alt={item.logoAlt}
@@ -92,7 +97,7 @@ export default function BrandGallery({ className, src }: BrandGalleryProps) {
             {item.title && item.description && (
               <div
                 className={clsxMerge(
-                  "absolute bottom-12 left-4 sm:left-16 p-2 sm:p-4 max-w-xs sm:max-w-md",
+                  "absolute bottom-12 left-10 sm:left-16 p-2 sm:p-4 max-w-xs sm:max-w-md",
                   textWhite
                 )}
               >
