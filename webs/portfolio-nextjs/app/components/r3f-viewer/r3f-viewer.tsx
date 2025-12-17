@@ -16,7 +16,7 @@ import {
   updateBoundingBoxHelper,
   saveOriginalMaterials,
 } from "./r3f-viewer-controller";
-import { BoxHelper, Material } from "three";
+import { BoxHelper, Material, Mesh } from "three";
 
 function RendererConfig({ settings, onSettingsChange }: { settings: R3fViewerSettings; onSettingsChange: (settings: R3fViewerSettings) => void }) {
   const { gl, camera } = useThree();
@@ -170,7 +170,7 @@ function Model({ settings }: { settings: R3fViewerSettings }) {
     }
     // Traverse scene and replace mesh materials with UV debug shader
     scene.traverse((child) => {
-      if (child.isMesh && child.geometry && child.material) {
+      if (child instanceof Mesh && child.geometry && child.material) {
         // Save original material if not already
         if (!uvOverlayMaterials.has(child)) {
           uvOverlayMaterials.set(child, child.material);
