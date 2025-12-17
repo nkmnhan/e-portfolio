@@ -24,67 +24,22 @@ import {
 import { MdRestartAlt } from "react-icons/md";
 import { MdOpenInFull, MdCloseFullscreen } from "react-icons/md";
 import { clsxMerge } from "../themes/utils";
-
-export interface R3fViewerSettings {
-  wireframe: boolean;
-  viewportBg: string;
-  cameraFov: number;
-  gridHelper: boolean;
-  axesHelper: boolean;
-  shadows: boolean;
-  toneMapping: string;
-  exposure: number;
-  baseColor: string;
-  metalness: number;
-  roughness: number;
-  opacity: number;
-  emissive: string;
-  showNormals: boolean;
-  showBoundingBox: boolean;
-  showVertexColors: boolean;
-  showUVChecker: boolean;
-  showUVOverlay: boolean;
-  showMatcap: boolean;
-  showMatcapBlend: boolean;
-  autoRotate: boolean;
-  lockControls: boolean;
-}
-
-export const defaultSettings: R3fViewerSettings = {
-  wireframe: false,
-  viewportBg: "#e5e7eb",
-  cameraFov: 50,
-  gridHelper: false,
-  axesHelper: false,
-  shadows: true,
-  toneMapping: "None",
-  exposure: 1.5,
-  baseColor: "#f3eded",
-  metalness: 1.0,
-  roughness: 0.05,
-  opacity: 1.0,
-  emissive: "#000000",
-  showNormals: false,
-  showBoundingBox: false,
-  showVertexColors: false,
-  showUVChecker: false,
-  showUVOverlay: false,
-  showMatcap: false,
-  showMatcapBlend: false,
-  autoRotate: true,
-  lockControls: false,
-};
+import { R3fViewerSettings, defaultSettings } from "./r3f-viewer-controller";
 
 export default function R3fViewerControlPanel({
   settings,
   onChange,
   theaterMode,
   setTheaterMode,
+  isFullScreen,
+  onFullScreenToggle,
 }: {
   settings: R3fViewerSettings;
   onChange: (settings: R3fViewerSettings) => void;
   theaterMode: boolean;
   setTheaterMode: (mode: boolean | ((prev: boolean) => boolean)) => void;
+  isFullScreen: boolean;
+  onFullScreenToggle: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -98,21 +53,15 @@ export default function R3fViewerControlPanel({
     uv: false,
   });
 
-  const [isFullScreen, setIsFullScreen] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    const handleFullScreenChange = () => {
-      setIsFullScreen(!!document.fullscreenElement);
-    };
     checkMobile();
     window.addEventListener("resize", checkMobile);
-    document.addEventListener("fullscreenchange", handleFullScreenChange);
     return () => {
       window.removeEventListener("resize", checkMobile);
-      document.removeEventListener("fullscreenchange", handleFullScreenChange);
     };
   }, []);
 
@@ -124,13 +73,7 @@ export default function R3fViewerControlPanel({
     onChange({ ...defaultSettings });
   };
 
-  const toggleFullScreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
-  };
+
 
   const toggleSection = (section: keyof typeof sectionStates) => {
     setSectionStates((prev) => ({ ...prev, [section]: !prev[section] }));
@@ -150,7 +93,7 @@ export default function R3fViewerControlPanel({
         <button
           type="button"
           className="rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-all active:scale-95 hover:bg-white/10 p-2"
-          onClick={toggleFullScreen}
+          onClick={onFullScreenToggle}
           aria-label={isFullScreen ? "Exit Full Screen" : "Enter Full Screen"}
         >
           {isFullScreen ? (
