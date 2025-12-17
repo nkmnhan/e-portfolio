@@ -94,12 +94,16 @@ function RendererConfig({ settings, onSettingsChange }: { settings: R3fViewerSet
   return null;
 }
 
-function Model({ settings, theaterMode }: { settings: R3fViewerSettings; theaterMode: boolean }) {
-  const { scene } = useGLTF("/sketch/just_a_girl_texture_1k.glb");
+
+import { useState as useReactState } from "react";
+
+function Model({ settings }: { settings: R3fViewerSettings }) {
+  const { scene, nodes } = useGLTF("/sketch/just_a_girl_texture_1k.glb");
   const normalsHelpersRef = useRef<VertexNormalsHelper[]>([]);
   const boundingBoxHelperRef = useRef<BoxHelper | null>(null);
   const originalMaterialsRef = useRef<Map<any, any>>(new Map());
   const matcapMaterialsRef = useRef<Map<any, Material>>(new Map());
+  const [uvOverlayMaterials] = useReactState(() => new Map());
 
   // Create textures using controller functions
   const uvCheckerTexture = useMemo(() => createUVCheckerTexture(), []);
@@ -114,11 +118,10 @@ function Model({ settings, theaterMode }: { settings: R3fViewerSettings; theater
   useEffect(() => {
     applyMaterialSettings(scene, settings, uvCheckerTexture, originalMaterialsRef);
   }, [scene, settings.wireframe, settings.baseColor, settings.metalness, settings.roughness, settings.opacity, settings.emissive, settings.showVertexColors, settings.showUVChecker, uvCheckerTexture]);
-  
+
   // Normals helpers
   useEffect(() => {
     updateNormalsHelpers(scene, settings.showNormals, normalsHelpersRef);
-    
     return () => {
       normalsHelpersRef.current.forEach(helper => {
         scene.remove(helper);
@@ -127,11 +130,10 @@ function Model({ settings, theaterMode }: { settings: R3fViewerSettings; theater
       normalsHelpersRef.current = [];
     };
   }, [scene, settings.showNormals]);
-  
+
   // Bounding Box helper
   useEffect(() => {
     updateBoundingBoxHelper(scene, settings.showBoundingBox, boundingBoxHelperRef);
-    
     return () => {
       if (boundingBoxHelperRef.current) {
         scene.remove(boundingBoxHelperRef.current);
@@ -140,11 +142,10 @@ function Model({ settings, theaterMode }: { settings: R3fViewerSettings; theater
       }
     };
   }, [scene, settings.showBoundingBox]);
-  
+
   // Matcap material switching
   useEffect(() => {
     applyMatcapMaterial(scene, settings, matcapTexture, originalMaterialsRef, matcapMaterialsRef);
-    
     return () => {
       // Cleanup matcap materials
       matcapMaterialsRef.current.forEach((mat) => {
@@ -153,12 +154,55 @@ function Model({ settings, theaterMode }: { settings: R3fViewerSettings; theater
       matcapMaterialsRef.current.clear();
     };
   }, [scene, settings.showMatcap, settings.showMatcapBlend, matcapTexture]);
-  
-  // Theater mode scaling
+
+  // --- UV Overlay Implementation ---
   useEffect(() => {
-    scene.scale.set(theaterMode ? 0.8 : 1, theaterMode ? 0.8 : 1, theaterMode ? 0.8 : 1);
-  }, [scene, theaterMode]);
-  
+    if (!settings.showUVOverlay) {
+      // Restore original materials if overlay is off
+      originalMaterialsRef.current.forEach((mat, mesh) => {
+        if (mesh.material && uvOverlayMaterials.has(mesh)) {
+          mesh.material.dispose?.();
+          mesh.material = mat;
+        }
+      });
+      uvOverlayMaterials.clear();
+      return;
+    }
+    // Traverse scene and replace mesh materials with UV debug shader
+    scene.traverse((child) => {
+      if (child.isMesh && child.geometry && child.material) {
+        // Save original material if not already
+        if (!uvOverlayMaterials.has(child)) {
+          uvOverlayMaterials.set(child, child.material);
+        }
+        // Assign UV debug shader material
+        child.material = new (require("three").ShaderMaterial)({
+          vertexShader: `
+            varying vec2 vUv;
+            void main() {
+              vUv = uv;
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+          `,
+          fragmentShader: `
+            varying vec2 vUv;
+            void main() {
+              gl_FragColor = vec4(vUv, 0.0, 1.0);
+            }
+          `,
+        });
+      }
+    });
+    // Cleanup on unmount or when disabling overlay
+    return () => {
+      uvOverlayMaterials.forEach((origMat, mesh) => {
+        if (mesh.material) mesh.material.dispose?.();
+        mesh.material = origMat;
+      });
+      uvOverlayMaterials.clear();
+    };
+  }, [settings.showUVOverlay, scene]);
+
   return (
     <Center>
       <primitive object={scene} />
@@ -170,7 +214,7 @@ function Model({ settings, theaterMode }: { settings: R3fViewerSettings; theater
 import { useState, useCallback } from "react";
 
 function R3fViewer() {
-  const { settings, setSettings, theaterMode, setTheaterMode } = useR3fViewerController();
+  const { settings, setSettings } = useR3fViewerController();
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   // Fullscreen API handler (optional, for browser fullscreen)
@@ -201,26 +245,22 @@ function R3fViewer() {
           ? "fixed inset-0 z-[9999] w-screen h-screen !max-w-none !max-h-none bg-black group"
           : "relative w-full h-screen overflow-hidden group")
       }
-      style={{ background: theaterMode ? '#000000' : settings.viewportBg }}
+      style={{ background: settings.viewportBg }}
     >
       <R3fViewerControlPanel
         settings={settings}
         onChange={setSettings}
-        theaterMode={theaterMode}
-        setTheaterMode={setTheaterMode}
         isFullScreen={isFullScreen}
         onFullScreenToggle={handleFullScreenToggle}
       />
-      {!theaterMode && (
-        <div className="absolute top-4 left-4 z-30 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
-          <h1 className="text-lg md:text-xl font-bold">R3F Viewer</h1>
-        </div>
-      )}
+      <div className="absolute top-4 left-4 z-30 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
+        <h1 className="text-lg md:text-xl font-bold">R3F Viewer</h1>
+      </div>
       <div className="w-full h-full">
         <Canvas camera={{ position: [0, 2, 90], fov: settings.cameraFov }} gl={{ antialias: true }}>
           {/* Viewport Helpers */}
           {settings.gridHelper && <gridHelper args={[100, 100, 100, 100]} position={[0, 0, 0]} />}
-          {settings.axesHelper && <axesHelper args={[10]} />}
+          {settings.axesHelper && <axesHelper args={[50]} />}
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} castShadow={settings.shadows} shadow-mapSize={[1024, 1024]} />
           <pointLight position={[-5, 5, -5]} intensity={0.5} />
@@ -231,16 +271,10 @@ function R3fViewer() {
               <meshStandardMaterial color="gray" />
             </mesh>
           }>
-            <Model settings={settings} theaterMode={theaterMode} />
+            <Model settings={settings} />
           </Suspense>
           <RendererConfig settings={settings} onSettingsChange={setSettings} />
-          {/* Note: UV Overlay requires custom shader implementation - currently not implemented */}
-          {settings.showUVOverlay && (
-            <mesh position={[0, 0, 0]}>
-              <planeGeometry args={[0.1, 0.1]} />
-              <meshBasicMaterial color="red" transparent opacity={0} />
-            </mesh>
-          )}
+          {/* UV Overlay is now implemented with a custom shader in <Model /> */}
           <OrbitControls
             enableDamping
             dampingFactor={0.15}
@@ -253,10 +287,6 @@ function R3fViewer() {
             autoRotateSpeed={1}
             enablePan={!settings.lockControls}
             enableRotate={!settings.lockControls}
-            touches={{
-              ONE: 2, // TOUCH.ROTATE
-              TWO: 1, // TOUCH.DOLLY_PAN
-            }}
           />
         </Canvas>
       </div>

@@ -265,6 +265,11 @@ export const applyMaterialSettings = (
       }
       if (obj.material.emissive && settings.emissive) {
         obj.material.emissive.set(settings.emissive);
+        // Set emissive intensity to make the color visible
+        if (typeof obj.material.emissiveIntensity === "number") {
+          // Only set intensity if a non-black color is selected
+          obj.material.emissiveIntensity = settings.emissive !== '#000000' ? 1.0 : 0.0;
+        }
       }
       obj.material.transparent = settings.opacity < 1.0;
       obj.material.vertexColors = settings.showVertexColors;
