@@ -2,11 +2,11 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Center, Environment } from "@react-three/drei";
 import { Suspense, useState } from "react";
-import ModelViewerControlPanel, { ModelViewerSettings } from "./r3f-control-panel";
+import R3fViewerControlPanel, { R3fViewerSettings } from "./r3f-control-panel";
 
 import { useEffect, useRef } from "react";
 
-function Model({ settings, theaterMode }: { settings: ModelViewerSettings; theaterMode: boolean }) {
+function Model({ settings, theaterMode }: { settings: R3fViewerSettings; theaterMode: boolean }) {
   const { scene, materials, nodes } = useGLTF("/sketch/just_a_girl_texture_1k.glb");
   // Wireframe/material controls
   useEffect(() => {
@@ -34,7 +34,7 @@ function Model({ settings, theaterMode }: { settings: ModelViewerSettings; theat
 }
 
 function R3fViewer() {
-  const [settings, setSettings] = useState<ModelViewerSettings>({
+  const [settings, setSettings] = useState<R3fViewerSettings>({
     wireframe: false,
     viewportBg: "#e5e7eb",
     cameraFov: 50,
@@ -53,13 +53,15 @@ function R3fViewer() {
     showVertexColors: false,
     showUVChecker: false,
     showUVOverlay: false,
+    autoRotate: false,
+    lockControls: false,
   });
 
   const [theaterMode, setTheaterMode] = useState(false);
 
   return (
     <div className="relative w-full h-screen overflow-hidden group" style={{ background: theaterMode ? '#000000' : settings.viewportBg }}>
-      <ModelViewerControlPanel settings={settings} onChange={setSettings} theaterMode={theaterMode} setTheaterMode={setTheaterMode} />
+      <R3fViewerControlPanel settings={settings} onChange={setSettings} theaterMode={theaterMode} setTheaterMode={setTheaterMode} />
       {!theaterMode && (
         <div className="absolute top-4 left-4 z-30 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
           <h1 className="text-lg md:text-xl font-bold">R3F Viewer</h1>
@@ -86,14 +88,15 @@ function R3fViewer() {
           <OrbitControls
             enableDamping
             dampingFactor={0.15}
-            enableZoom
+            enableZoom={!settings.lockControls}
             zoomSpeed={1.0}
             minDistance={4}
             maxDistance={400}
             target={[0, 0, 0]}
-            autoRotate
+            autoRotate={settings.autoRotate}
             autoRotateSpeed={1}
-            enablePan={true}
+            enablePan={!settings.lockControls}
+            enableRotate={!settings.lockControls}
             touches={{
               ONE: 2, // TOUCH.ROTATE
               TWO: 1, // TOUCH.DOLLY_PAN

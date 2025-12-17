@@ -16,11 +16,15 @@ import {
   HiChevronUp,
   HiQuestionMarkCircle,
   HiVideoCamera,
+  HiRefresh,
+  HiLockClosed,
+  HiLockOpen,
+  HiPlay,
 } from "react-icons/hi";
 import { MdRestartAlt } from "react-icons/md";
 import { MdOpenInFull, MdCloseFullscreen } from "react-icons/md";
 
-export interface ModelViewerSettings {
+export interface R3fViewerSettings {
   wireframe: boolean;
   viewportBg: string;
   cameraFov: number;
@@ -39,9 +43,11 @@ export interface ModelViewerSettings {
   showVertexColors: boolean;
   showUVChecker: boolean;
   showUVOverlay: boolean;
+  autoRotate: boolean;
+  lockControls: boolean;
 }
 
-export const defaultSettings: ModelViewerSettings = {
+export const defaultSettings: R3fViewerSettings = {
   wireframe: false,
   viewportBg: "#e5e7eb",
   cameraFov: 50,
@@ -60,16 +66,18 @@ export const defaultSettings: ModelViewerSettings = {
   showVertexColors: false,
   showUVChecker: false,
   showUVOverlay: false,
+  autoRotate: true,
+  lockControls: false,
 };
 
-export default function ModelViewerControlPanel({
+export default function R3fViewerControlPanel({
   settings,
   onChange,
   theaterMode,
   setTheaterMode,
 }: {
-  settings: ModelViewerSettings;
-  onChange: (settings: ModelViewerSettings) => void;
+  settings: R3fViewerSettings;
+  onChange: (settings: R3fViewerSettings) => void;
   theaterMode: boolean;
   setTheaterMode: (mode: boolean | ((prev: boolean) => boolean)) => void;
 }) {
@@ -105,7 +113,7 @@ export default function ModelViewerControlPanel({
       document.removeEventListener("fullscreenchange", handleFullScreenChange);
   }, []);
 
-  const handleChange = (key: keyof ModelViewerSettings, value: any) => {
+  const handleChange = (key: keyof R3fViewerSettings, value: any) => {
     onChange({ ...settings, [key]: value });
   };
 
@@ -128,10 +136,17 @@ export default function ModelViewerControlPanel({
   return (
     <>
       {/* The gadget bard */}
-      <div className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300 bottom-2 right-2 z-40 bg-black/30 border-t border-white/50 p-2 backdrop-blur-sm rounded-l-lg rounded-r-lg flex justify-end w-64">
+      <div className="absolute transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 bottom-2 right-2 z-40 bg-black/30 border-t border-white/50 p-2 backdrop-blur-sm rounded-l-lg rounded-r-lg flex justify-start w-fit">
         <button
           type="button"
-          className="rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-all active:scale-95 hover:bg-white/10 p-2 mr-2"
+          className="transition-all hover:bg-white/10 p-2 mr-2 -translate-x-full group-hover:translate-x-0 block group-hover:hidden"
+          aria-label="Hover to show controls"
+        >
+          <HiPlay className="w-6 h-6 rounded-full" />
+        </button>
+        <button
+          type="button"
+          className="rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-all active:scale-95 hover:bg-white/10 p-2"
           onClick={toggleFullScreen}
           aria-label={isFullScreen ? "Exit Full Screen" : "Enter Full Screen"}
         >
@@ -164,6 +179,34 @@ export default function ModelViewerControlPanel({
           aria-label="Toggle Theater Mode"
         >
           <HiVideoCamera className="w-6 h-6 text-white" />
+        </button>
+        <button
+          type="button"
+          className="rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-all active:scale-95 hover:bg-white/10 p-2 ml-2"
+          onClick={() => handleChange("autoRotate", !settings.autoRotate)}
+          aria-label={
+            settings.autoRotate ? "Disable Auto Rotate" : "Enable Auto Rotate"
+          }
+        >
+          <HiRefresh
+            className={`w-6 h-6 text-white ${
+              settings.autoRotate ? "animate-[spin_1s_linear_infinite_reverse]" : ""
+            }`}
+          />
+        </button>
+        <button
+          type="button"
+          className="rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-all active:scale-95 hover:bg-white/10 p-2 ml-2"
+          onClick={() => handleChange("lockControls", !settings.lockControls)}
+          aria-label={
+            settings.lockControls ? "Unlock Controls" : "Lock Controls"
+          }
+        >
+          {settings.lockControls ? (
+            <HiLockClosed className="w-6 h-6 text-white" />
+          ) : (
+            <HiLockOpen className="w-6 h-6 text-white" />
+          )}
         </button>
       </div>
 
@@ -504,6 +547,10 @@ export default function ModelViewerControlPanel({
                 Click the gear icon to open the control panel for settings.
               </li>
               <li>Click the expand icon to enter full screen mode.</li>
+              <li>
+                Click the rotate icon to toggle automatic rotation of the model.
+              </li>
+              <li>Click the lock icon to lock/unlock the camera controls.</li>
               <li>Click the question mark for this help.</li>
             </ul>
             <button

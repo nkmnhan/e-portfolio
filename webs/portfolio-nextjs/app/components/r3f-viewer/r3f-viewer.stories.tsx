@@ -3,7 +3,7 @@ import R3fViewer from "./r3f-viewer";
 
 const meta = {
   component: R3fViewer,
-  title: "Components/3D-ModelViewer/R3fViewer",
+  title: "Components/3D-R3fViewer/R3fViewer",
 } satisfies Meta<typeof R3fViewer>;
 
 export default meta;

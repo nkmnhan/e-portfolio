@@ -5,7 +5,7 @@ import { bgPrimary } from "../../components/themes/default-bg";
 import { textPrimary } from "../../components/themes/default-text";
 
 const SkeletonDemo = dynamic(() => import("./skeleton-demo"));
-const ModelViewerDemo = dynamic(() => import("./model-viewer-demo"));
+const R3fViewerDemo = dynamic(() => import("./model-viewer-demo"));
 const BrandGalleryDemo = dynamic(() => import("./brand-gallery-demo"));
 const GalaxyDemo = dynamic(() => import("./galaxy-demo"));
 const MasonryLayoutDemo = dynamic(() => import("./masonry-demo"));
@@ -21,7 +21,7 @@ const components: Record<
   },
   "model-viewer": {
     title: "3D Model Viewer",
-    component: <ModelViewerDemo />,
+    component: <R3fViewerDemo />,
   },
   "brand-gallery": {
     title: "Brand Gallery",
