@@ -2,7 +2,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Center, Environment } from "@react-three/drei";
 import { Suspense, useState } from "react";
-import ModelViewerControlPanel, { ModelViewerSettings } from "./model-viewer-control-panel";
+import ModelViewerControlPanel, { ModelViewerSettings } from "./r3f-control-panel";
 
 import { useEffect, useRef } from "react";
 
@@ -29,7 +29,7 @@ function Model({ settings }: { settings: ModelViewerSettings }) {
   );
 }
 
-function ThreeFiber3DViewer() {
+function R3fViewer() {
   const [settings, setSettings] = useState<ModelViewerSettings>({
     wireframe: false,
     viewportBg: "#e5e7eb",
@@ -38,10 +38,10 @@ function ThreeFiber3DViewer() {
     axesHelper: false,
     shadows: true,
     toneMapping: "None",
-    exposure: 1.0,
+    exposure: 1.5, // Increased for more pop
     baseColor: "#ffffff",
-    metalness: 0.5,
-    roughness: 0.5,
+    metalness: 1.0, // Max for shiny
+    roughness: 0.05, // Low for shiny
     opacity: 1.0,
     emissive: "#000000",
     showNormals: false,
@@ -92,4 +92,4 @@ function ThreeFiber3DViewer() {
 
 useGLTF.preload("/sketch/just_a_girl_texture_1k.glb");
 
-export default ThreeFiber3DViewer;
+export default R3fViewer;

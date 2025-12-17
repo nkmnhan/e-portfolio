@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import GoogleModelViewer from "./google-3d-viewer";
+import R3fViewer from "./r3f-viewer";
 
 const meta = {
-  component: GoogleModelViewer,
-  title: "Components/3D-ModelViewer/Google",
-} satisfies Meta<typeof GoogleModelViewer>;
+  component: R3fViewer,
+  title: "Components/3D-ModelViewer/R3fViewer",
+} satisfies Meta<typeof R3fViewer>;
 
 export default meta;
 

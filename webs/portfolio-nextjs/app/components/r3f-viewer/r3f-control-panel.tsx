@@ -33,10 +33,10 @@ export const defaultSettings: ModelViewerSettings = {
   axesHelper: false,
   shadows: true,
   toneMapping: "None",
-  exposure: 1.0,
-  baseColor: "#ffffff",
-  metalness: 0.5,
-  roughness: 0.5,
+  exposure: 1.5, // Brighter for more pop
+  baseColor: "#ffe0b2", // Warm light orange/peach
+  metalness: 1.0, // Max for shiny
+  roughness: 0.05, // Low for shiny
   opacity: 1.0,
   emissive: "#000000",
   showNormals: false,
@@ -75,7 +75,7 @@ export default function ModelViewerControlPanel({
       >
         <HiCog className="w-5 h-5 text-gray-700" />
       </button>
-      <Drawer open={open} onClose={() => setOpen(false)} position="right" backdrop>
+      <Drawer open={open} onClose={() => setOpen(false)} position="right" backdrop={false}>
         <DrawerHeader title="3D Model Viewer Controls" />
         <div className="flex justify-end mb-2">
           <Button color="light" size="sm" onClick={handleReset} aria-label="Reset to default">
