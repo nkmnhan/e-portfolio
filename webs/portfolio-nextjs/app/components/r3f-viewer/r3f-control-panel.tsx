@@ -23,6 +23,7 @@ import {
 } from "react-icons/hi";
 import { MdRestartAlt } from "react-icons/md";
 import { MdOpenInFull, MdCloseFullscreen } from "react-icons/md";
+import { clsxMerge } from "../themes/utils";
 
 export interface R3fViewerSettings {
   wireframe: boolean;
@@ -43,6 +44,8 @@ export interface R3fViewerSettings {
   showVertexColors: boolean;
   showUVChecker: boolean;
   showUVOverlay: boolean;
+  showMatcap: boolean;
+  showMatcapBlend: boolean;
   autoRotate: boolean;
   lockControls: boolean;
 }
@@ -56,7 +59,7 @@ export const defaultSettings: R3fViewerSettings = {
   shadows: true,
   toneMapping: "None",
   exposure: 1.5,
-  baseColor: "#ffe0b2",
+  baseColor: "#f3eded",
   metalness: 1.0,
   roughness: 0.05,
   opacity: 1.0,
@@ -66,6 +69,8 @@ export const defaultSettings: R3fViewerSettings = {
   showVertexColors: false,
   showUVChecker: false,
   showUVOverlay: false,
+  showMatcap: false,
+  showMatcapBlend: false,
   autoRotate: true,
   lockControls: false,
 };
@@ -84,7 +89,7 @@ export default function R3fViewerControlPanel({
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
-  const [expandedSections, setExpandedSections] = useState({
+  const [sectionStates, setSectionStates] = useState({
     wireframe: true,
     viewport: false,
     render: false,
@@ -93,24 +98,22 @@ export default function R3fViewerControlPanel({
     uv: false,
   });
 
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const [isFullScreen, setIsFullScreen] = useState(false);
-
-  useEffect(() => {
     const handleFullScreenChange = () => {
       setIsFullScreen(!!document.fullscreenElement);
     };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
     document.addEventListener("fullscreenchange", handleFullScreenChange);
-    return () =>
+    return () => {
+      window.removeEventListener("resize", checkMobile);
       document.removeEventListener("fullscreenchange", handleFullScreenChange);
+    };
   }, []);
 
   const handleChange = (key: keyof R3fViewerSettings, value: any) => {
@@ -129,13 +132,13 @@ export default function R3fViewerControlPanel({
     }
   };
 
-  const toggleSection = (section: keyof typeof expandedSections) => {
-    setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
+  const toggleSection = (section: keyof typeof sectionStates) => {
+    setSectionStates((prev) => ({ ...prev, [section]: !prev[section] }));
   };
 
   return (
     <>
-      {/* The gadget bard */}
+      {/* The gadget bar */}
       <div className="absolute transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 bottom-2 right-2 z-40 bg-black/30 border-t border-white/50 p-2 backdrop-blur-sm rounded-l-lg rounded-r-lg flex justify-start w-fit">
         <button
           type="button"
@@ -189,9 +192,7 @@ export default function R3fViewerControlPanel({
           }
         >
           <HiRefresh
-            className={`w-6 h-6 text-white ${
-              settings.autoRotate ? "animate-[spin_1s_linear_infinite_reverse]" : ""
-            }`}
+            className={clsxMerge("w-6 h-6 text-white", settings.autoRotate && "animate-[spin_1s_linear_infinite_reverse]")}
           />
         </button>
         <button
@@ -216,9 +217,7 @@ export default function R3fViewerControlPanel({
         onClose={() => setOpen(false)}
         position={isMobile ? "bottom" : "right"}
         backdrop={true}
-        className={`backdrop-blur-sm ${
-          isMobile ? "h-[80vh] rounded-t-3xl" : ""
-        } bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-l border-gray-200/50 dark:border-gray-700/50 shadow-2xl`}
+        className={clsxMerge("backdrop-blur-sm", isMobile && "h-[80vh] rounded-t-3xl", "bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-l border-gray-200/50 dark:border-gray-700/50 shadow-2xl")}
       >
         <DrawerHeader title="3D Controls" titleIcon={HiCog} />
         <div className="flex justify-between items-center mb-3 px-4 md:px-0">
@@ -243,9 +242,9 @@ export default function R3fViewerControlPanel({
               className="flex justify-between items-center w-full text-left font-semibold mb-2 text-gray-800 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all duration-300 rounded-lg px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-800/50"
             >
               <span>Wireframe</span>
-              {expandedSections.wireframe ? <HiChevronUp /> : <HiChevronDown />}
+              {sectionStates.wireframe ? <HiChevronUp /> : <HiChevronDown />}
             </button>
-            {expandedSections.wireframe && (
+            {sectionStates.wireframe && (
               <div className="space-y-3 mt-3">
                 <ToggleSwitch
                   checked={settings.wireframe}
@@ -263,9 +262,9 @@ export default function R3fViewerControlPanel({
               className="flex justify-between items-center w-full text-left font-semibold mb-2 text-gray-800 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all duration-300 rounded-lg px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-800/50"
             >
               <span>Viewport</span>
-              {expandedSections.viewport ? <HiChevronUp /> : <HiChevronDown />}
+              {sectionStates.viewport ? <HiChevronUp /> : <HiChevronDown />}
             </button>
-            {expandedSections.viewport && (
+            {sectionStates.viewport && (
               <div className="space-y-3 mt-3">
                 <div>
                   <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
@@ -319,9 +318,9 @@ export default function R3fViewerControlPanel({
               className="flex justify-between items-center w-full text-left font-semibold mb-2 text-gray-800 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all duration-300 rounded-lg px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-800/50"
             >
               <span>Render</span>
-              {expandedSections.render ? <HiChevronUp /> : <HiChevronDown />}
+              {sectionStates.render ? <HiChevronUp /> : <HiChevronDown />}
             </button>
-            {expandedSections.render && (
+            {sectionStates.render && (
               <div className="space-y-3 mt-3">
                 <ToggleSwitch
                   checked={settings.shadows}
@@ -380,9 +379,9 @@ export default function R3fViewerControlPanel({
               className="flex justify-between items-center w-full text-left font-semibold mb-2 text-gray-800 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all duration-300 rounded-lg px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-800/50"
             >
               <span>Material</span>
-              {expandedSections.material ? <HiChevronUp /> : <HiChevronDown />}
+              {sectionStates.material ? <HiChevronUp /> : <HiChevronDown />}
             </button>
-            {expandedSections.material && (
+            {sectionStates.material && (
               <div className="space-y-3 mt-3">
                 <div>
                   <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
@@ -475,13 +474,13 @@ export default function R3fViewerControlPanel({
               className="flex justify-between items-center w-full text-left font-semibold mb-2 text-gray-800 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all duration-300 rounded-lg px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-800/50"
             >
               <span>Geometry</span>
-              {expandedSections.geometry ? <HiChevronUp /> : <HiChevronDown />}
+              {sectionStates.geometry ? <HiChevronUp /> : <HiChevronDown />}
             </button>
-            {expandedSections.geometry && (
+            {sectionStates.geometry && (
               <div className="space-y-3 mt-3">
                 <ToggleSwitch
                   checked={settings.showNormals}
-                  label="Normals"
+                  label="Vertex Normals"
                   color="cyan"
                   onChange={(v) => handleChange("showNormals", v)}
                 />
@@ -497,6 +496,24 @@ export default function R3fViewerControlPanel({
                   color="cyan"
                   onChange={(v) => handleChange("showVertexColors", v)}
                 />
+                <ToggleSwitch
+                  checked={settings.showMatcap}
+                  label="Matcap"
+                  color="cyan"
+                  onChange={(v) => {
+                    handleChange("showMatcap", v);
+                    if (v && settings.showMatcapBlend) handleChange("showMatcapBlend", false);
+                  }}
+                />
+                <ToggleSwitch
+                  checked={settings.showMatcapBlend}
+                  label="Matcap+Surface"
+                  color="cyan"
+                  onChange={(v) => {
+                    handleChange("showMatcapBlend", v);
+                    if (v && settings.showMatcap) handleChange("showMatcap", false);
+                  }}
+                />
               </div>
             )}
           </div>
@@ -507,9 +524,9 @@ export default function R3fViewerControlPanel({
               className="flex justify-between items-center w-full text-left font-semibold mb-2 text-gray-800 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all duration-300 rounded-lg px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-800/50"
             >
               <span>UV</span>
-              {expandedSections.uv ? <HiChevronUp /> : <HiChevronDown />}
+              {sectionStates.uv ? <HiChevronUp /> : <HiChevronDown />}
             </button>
-            {expandedSections.uv && (
+            {sectionStates.uv && (
               <div className="space-y-3 mt-3">
                 <ToggleSwitch
                   checked={settings.showUVChecker}
@@ -542,7 +559,7 @@ export default function R3fViewerControlPanel({
             </h2>
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
               <li>Left-click and drag to orbit around the 3D model.</li>
-              <li>Scroll or right-click drag to zoom in/out.</li>
+              <li>Mouse wheel to smoothly zoom in/out (FOV adjustment).</li>
               <li>
                 Click the gear icon to open the control panel for settings.
               </li>
@@ -551,7 +568,10 @@ export default function R3fViewerControlPanel({
                 Click the rotate icon to toggle automatic rotation of the model.
               </li>
               <li>Click the lock icon to lock/unlock the camera controls.</li>
-              <li>Click the question mark for this help.</li>
+              <li>UV Checker shows a grid texture to visualize UV mapping.</li>
+              <li>Matcap applies a spherical material capture for fast preview.</li>
+              <li>Matcap+Surface blends matcap with the original surface.</li>
+              <li className="text-xs text-gray-500 italic">Note: UV Overlay feature is not yet implemented.</li>
             </ul>
             <button
               onClick={() => setShowHelp(false)}
