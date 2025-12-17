@@ -4,6 +4,7 @@ import HamburgerIcon from "./hamburger-icon";
 
 export type HamburgerBtnProp = {
   id?: string;
+  className?: string;
   active: boolean;
   mode?: "light" | "transparent";
   onClick: () => void;
@@ -19,6 +20,7 @@ const defaultClasses = clsxMerge(
 
 export default function HamburgerBtn({
   id,
+  className,
   active,
   onClick,
   mode = "light",
@@ -33,7 +35,7 @@ export default function HamburgerBtn({
       id={id}
       size="xs"
       color="light"
-      className={modeClasses}
+      className={clsxMerge(modeClasses, className)}
       aria-pressed={active ? "true" : "false"}
       onClick={onClick}
     >

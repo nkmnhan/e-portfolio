@@ -14,7 +14,7 @@ interface PerformanceMetrics {
 
 export default function PerformanceMonitor() {
   const [metrics, setMetrics] = useState<PerformanceMetrics>({});
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const updateMetric = (metric: Metric) => {
