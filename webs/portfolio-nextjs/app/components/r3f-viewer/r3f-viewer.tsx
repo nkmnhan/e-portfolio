@@ -6,7 +6,7 @@ import ModelViewerControlPanel, { ModelViewerSettings } from "./r3f-control-pane
 
 import { useEffect, useRef } from "react";
 
-function Model({ settings }: { settings: ModelViewerSettings }) {
+function Model({ settings, theaterMode }: { settings: ModelViewerSettings; theaterMode: boolean }) {
   const { scene, materials, nodes } = useGLTF("/sketch/just_a_girl_texture_1k.glb");
   // Wireframe/material controls
   useEffect(() => {
@@ -22,6 +22,10 @@ function Model({ settings }: { settings: ModelViewerSettings }) {
       }
     });
   }, [scene, settings.wireframe, settings.baseColor, settings.metalness, settings.roughness, settings.opacity, settings.emissive]);
+  // Theater mode scaling
+  useEffect(() => {
+    scene.scale.set(theaterMode ? 0.8 : 1, theaterMode ? 0.8 : 1, theaterMode ? 0.8 : 1);
+  }, [scene, theaterMode]);
   return (
     <Center>
       <primitive object={scene} />
@@ -51,11 +55,17 @@ function R3fViewer() {
     showUVOverlay: false,
   });
 
+  const [theaterMode, setTheaterMode] = useState(false);
+
   return (
-    <>
-      <ModelViewerControlPanel settings={settings} onChange={setSettings} />
-      <h1 className="text-2xl font-bold text-center my-4">Three Fiber Model Viewer</h1>
-      <div className="w-full h-screen" style={{ background: settings.viewportBg }}>
+    <div className="relative w-full h-screen overflow-hidden group" style={{ background: theaterMode ? '#000000' : settings.viewportBg }}>
+      <ModelViewerControlPanel settings={settings} onChange={setSettings} theaterMode={theaterMode} setTheaterMode={setTheaterMode} />
+      {!theaterMode && (
+        <div className="absolute top-4 left-4 z-30 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
+          <h1 className="text-lg md:text-xl font-bold">R3F Viewer</h1>
+        </div>
+      )}
+      <div className="w-full h-full">
         <Canvas camera={{ position: [0, 2, 90], fov: settings.cameraFov }} gl={{ antialias: true }}>
           {/* Helpers */}
           {settings.gridHelper && <gridHelper args={[100, 100]} />}
@@ -70,7 +80,7 @@ function R3fViewer() {
               <meshStandardMaterial color="gray" />
             </mesh>
           }>
-            <Model settings={settings} />
+            <Model settings={settings} theaterMode={theaterMode} />
           </Suspense>
           {/* TODO: Geometry, UV, and other controls can be added here */}
           <OrbitControls
@@ -83,10 +93,15 @@ function R3fViewer() {
             target={[0, 0, 0]}
             autoRotate
             autoRotateSpeed={1}
+            enablePan={true}
+            touches={{
+              ONE: 2, // TOUCH.ROTATE
+              TWO: 1, // TOUCH.DOLLY_PAN
+            }}
           />
         </Canvas>
       </div>
-    </>
+    </div>
   );
 }
 
