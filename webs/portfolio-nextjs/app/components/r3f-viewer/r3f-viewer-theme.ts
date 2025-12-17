@@ -48,11 +48,14 @@ export const r3fViewerTheme: CustomFlowbiteTheme = createTheme({
   select: {
     field: {
       select: {
-        base: "block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-700 border-cyan-700/60 text-cyan-100 focus:border-cyan-500 focus:ring-cyan-500",
+        base: "block w-full rounded-lg border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-700 border-cyan-700/60 text-cyan-100 placeholder-cyan-300/50 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 hover:border-cyan-600 transition-colors",
+        colors: {
+          gray: "bg-gray-700 border-cyan-700/60 text-cyan-100 focus:border-cyan-500 focus:ring-cyan-500/50",
+        },
         sizes: {
-          sm: "p-2 text-xs",
-          md: "p-2.5 text-sm",
-          lg: "p-3 text-base",
+          sm: "p-2 text-xs rounded-lg",
+          md: "p-2.5 text-sm rounded-lg",
+          lg: "p-3 text-base rounded-lg",
         },
       },
     },
