@@ -25,6 +25,13 @@ type Highlight = {
 };
 
 // Data
+const HERO_INFO = {
+  name: "Tony Nguyen",
+  title: "Senior Software Engineer",
+  experience: "8+ Years Experience",
+  technologies: [".NET Core", "Microservices", "Cloud Architecture"],
+};
+
 const overviewText = `Hi, I'm Tony Nguyen (Nhan), a Senior Software Engineer with 8+ years of experience specializing in .NET Core, JavaScript frameworks, and microservices architecture. I'm passionate about building scalable, maintainable solutions and driving technical excellence in cross-functional teams. With a strong foundation in Agile/Scrum methodologies, I thrive on creating innovative web and mobile applications that solve real-world problems. My journey in tech has been driven by curiosity, continuous learning, and a commitment to clean code and system performance. Let's collaborate to bring your vision to life!`;
 
 const SUMMARY_STATS: StatCard[] = [
@@ -241,21 +248,20 @@ const StoryArticle = ({
 
 export default function About() {
   return (
-    <div className="fixed inset-0">
-      <div className="overflow-y-auto h-full w-full hide-scrollbar">
+      <div className="mt-20 sm:mt-15">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-12">
           {/* Hero Section - Text Based */}
           <div className="relative w-full bg-linear-to-r from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 cyan700:from-cyan-600 cyan700:to-cyan-700 rounded-2xl overflow-hidden shadow-2xl mb-4">
             <div className="absolute inset-0 backdrop-blur-sm"></div>
             <div className="relative px-6 md:px-12 lg:px-16 py-12 md:py-20 text-center">
               <h1 className="text-4xl md:text-6xl font-bold mb-4 theme-text drop-shadow-md">
-                Tony Nguyen
+                {HERO_INFO.name}
               </h1>
               <p className="text-xl md:text-2xl font-semibold theme-text drop-shadow-md mb-4">
-                Senior Software Engineer · 8+ Years Experience
+                {HERO_INFO.title} · {HERO_INFO.experience}
               </p>
               <p className="text-lg md:text-xl theme-text drop-shadow-md opacity-90">
-                .NET Core · Microservices · Cloud Architecture
+                {HERO_INFO.technologies.join(" · ")}
               </p>
             </div>
           </div>
@@ -295,7 +301,6 @@ export default function About() {
           </div>
           <div className="h-12"></div>
         </div>
-      </div>
     </div>
   );
 }
