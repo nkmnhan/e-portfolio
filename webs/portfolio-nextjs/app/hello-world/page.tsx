@@ -81,8 +81,8 @@ const TOOLS = [
 
 export default function HelloWorld() {
   return (
-    <div className="fixed inset-0 overflow-y-auto hide-scrollbar">
-      <Galaxy className="absolute inset-0" />
+    <div className="fixed inset-0 overflow-y-auto hide-scrollbar bg-white dark:bg-slate-900 cyan700:bg-cyan-700">
+      <Galaxy className="absolute inset-0 opacity-30 dark:opacity-50 cyan700:opacity-60" />
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-12">
         {/* Hero Section with Astronaut */}
         <div className="text-center mb-16">
@@ -93,31 +93,27 @@ export default function HelloWorld() {
               width={144}
               height={192}
               className={clsxMerge(
-                "w-20 h-28 mx-auto transition-all duration-300 ease-in-out hover:rotate-12",
+                "w-20 h-28 mx-auto transition-all duration-300 ease-in-out hover:rotate-12 drop-shadow-lg",
                 "sm:w-36 sm:h-48"
               )}
               priority
             />
           </div>
-          <h1 className={clsxMerge("text-4xl md:text-6xl font-bold mb-4")}>
+          <h1 className={clsxMerge("text-4xl md:text-6xl font-bold mb-4 theme-text drop-shadow-md")}>
             Portfolio Behind the Scenes
           </h1>
-          <p className={clsxMerge("text-lg md:text-xl max-w-2xl mx-auto")}>
+          <p className={clsxMerge("text-lg md:text-xl max-w-2xl mx-auto theme-text opacity-90 drop-shadow-sm")}>
             Discover how this portfolio was built, from concept to deployment
           </p>
         </div>
 
         {/* Purpose Section */}
         <section className="mb-16">
-          <h2
-            className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center"
-            )}
-          >
+          <h2 className={clsxMerge("text-3xl md:text-4xl font-bold mb-8 text-center theme-text drop-shadow-md")}>
             Why This Portfolio?
           </h2>
-          <div className="bg-linear-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 rounded-2xl p-8 md:p-12">
-            <p className={clsxMerge("text-base md:text-lg leading-relaxed")}>
+          <div className="bg-white/80 dark:bg-slate-800/80 cyan700:bg-cyan-500/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-blue-200 dark:border-blue-800 cyan700:border-cyan-400 shadow-xl hover:shadow-2xl transition-shadow">
+            <p className={clsxMerge("text-base md:text-lg leading-relaxed theme-text")}>
               This portfolio serves as a showcase of my skills in modern web
               development, demonstrating proficiency in Next.js, TypeScript, and
               responsive design. It was created to attract potential clients and
@@ -130,22 +126,18 @@ export default function HelloWorld() {
 
         {/* Technologies Section */}
         <section className="mb-16">
-          <h2
-            className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center"
-            )}
-          >
+          <h2 className={clsxMerge("text-3xl md:text-4xl font-bold mb-8 text-center theme-text drop-shadow-md")}>
             Technologies Used
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {TECHNOLOGIES.map((tech, idx) => (
               <div
                 key={idx}
-                className="bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 text-center hover:shadow-lg transition-shadow"
+                className="bg-white/85 dark:bg-slate-800/85 cyan700:bg-cyan-500/85 backdrop-blur-sm rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700 cyan700:border-cyan-400"
               >
-                <tech.icon className={clsxMerge("w-12 h-12 mx-auto mb-4")} />
-                <h3 className={clsxMerge("font-semibold mb-2")}>{tech.name}</h3>
-                <p className={clsxMerge("text-sm")}>{tech.desc}</p>
+                <tech.icon className={clsxMerge("w-12 h-12 mx-auto mb-4 theme-text")} />
+                <h3 className={clsxMerge("font-semibold mb-2 theme-text")}>{tech.name}</h3>
+                <p className={clsxMerge("text-sm theme-text opacity-80")}>{tech.desc}</p>
               </div>
             ))}
           </div>
@@ -153,20 +145,16 @@ export default function HelloWorld() {
 
         {/* Timeline Section */}
         <section className="mb-16">
-          <h2
-            className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center"
-            )}
-          >
+          <h2 className={clsxMerge("text-3xl md:text-4xl font-bold mb-8 text-center theme-text drop-shadow-md")}>
             Development Timeline
           </h2>
           <div className="space-y-6">
             {TIMELINE.map((item, idx) => (
               <div key={idx} className="flex items-center gap-6">
-                <div className="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold min-w-25 text-center">
+                <div className="bg-blue-600 dark:bg-blue-700 cyan700:bg-cyan-400 text-white dark:text-white cyan700:text-slate-900 px-4 py-2 rounded-lg font-semibold min-w-25 text-center shadow-lg">
                   {item.date}
                 </div>
-                <div className="flex-1 bg-linear-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-lg p-4">
+                <div className="flex-1 bg-white/80 dark:bg-slate-800/80 cyan700:bg-cyan-500/80 backdrop-blur-sm rounded-lg p-4 border border-blue-200 dark:border-blue-800 cyan700:border-cyan-400 shadow-md hover:shadow-lg transition-shadow theme-text">
                   <p>{item.event}</p>
                 </div>
               </div>
@@ -176,22 +164,18 @@ export default function HelloWorld() {
 
         {/* Development Tools Section */}
         <section className="mb-16">
-          <h2
-            className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center"
-            )}
-          >
+          <h2 className={clsxMerge("text-3xl md:text-4xl font-bold mb-8 text-center theme-text drop-shadow-md")}>
             Development Tools
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {TOOLS.map((tool, idx) => (
               <div
                 key={idx}
-                className="bg-linear-to-br from-green-50 to-teal-50 dark:from-green-900/30 dark:to-teal-900/30 rounded-xl p-6 text-center hover:shadow-lg transition-shadow"
+                className="bg-green-50/80 dark:bg-green-900/40 cyan700:bg-green-500/80 backdrop-blur-sm rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border border-green-200 dark:border-green-700 cyan700:border-green-400"
               >
-                <tool.icon className={clsxMerge("w-12 h-12 mx-auto mb-4")} />
-                <h3 className={clsxMerge("font-semibold mb-2")}>{tool.name}</h3>
-                <p className={clsxMerge("text-sm")}>{tool.desc}</p>
+                <tool.icon className={clsxMerge("w-12 h-12 mx-auto mb-4 theme-text")} />
+                <h3 className={clsxMerge("font-semibold mb-2 theme-text")}>{tool.name}</h3>
+                <p className={clsxMerge("text-sm theme-text opacity-80")}>{tool.desc}</p>
               </div>
             ))}
           </div>
@@ -199,25 +183,17 @@ export default function HelloWorld() {
 
         {/* CI/CD Section */}
         <section className="mb-16">
-          <h2
-            className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center"
-            )}
-          >
+          <h2 className={clsxMerge("text-3xl md:text-4xl font-bold mb-8 text-center theme-text drop-shadow-md")}>
             CI/CD with Vercel
           </h2>
-          <div className="bg-linear-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/20 rounded-2xl p-8 md:p-12">
+          <div className="bg-purple-50/80 dark:bg-purple-900/40 cyan700:bg-purple-500/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-purple-200 dark:border-purple-800 cyan700:border-purple-400 shadow-xl hover:shadow-2xl transition-shadow">
             <div className="flex items-center justify-center mb-6">
-              <SiVercel className={clsxMerge("w-16 h-16")} />
+              <SiVercel className={clsxMerge("w-16 h-16 theme-text")} />
             </div>
-            <h3 className={clsxMerge("text-xl font-semibold mb-4 text-center")}>
+            <h3 className={clsxMerge("text-xl font-semibold mb-4 text-center theme-text")}>
               Automated Deployment
             </h3>
-            <p
-              className={clsxMerge(
-                "text-base md:text-lg leading-relaxed text-center"
-              )}
-            >
+            <p className={clsxMerge("text-base md:text-lg leading-relaxed text-center theme-text opacity-90")}>
               This portfolio is deployed using Vercel's platform, which provides
               automatic deployments from GitHub, preview deployments for pull
               requests, and global CDN for optimal performance. The CI/CD
@@ -229,34 +205,30 @@ export default function HelloWorld() {
 
         {/* Future Development Section */}
         <section className="mb-16">
-          <h2
-            className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center"
-            )}
-          >
+          <h2 className={clsxMerge("text-3xl md:text-4xl font-bold mb-8 text-center theme-text drop-shadow-md")}>
             Future Development Plans
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {TODO_ACTIONS.map((todo, idx) => (
               <div
                 key={idx}
-                className="bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-500/20 dark:to-red-500/20 rounded-xl p-6 border-l-4 border-orange-500"
+                className="bg-orange-50/80 dark:bg-orange-900/40 cyan700:bg-orange-500/80 backdrop-blur-sm rounded-xl p-6 border-l-4 border-orange-500 dark:border-orange-400 cyan700:border-orange-300 shadow-lg hover:shadow-xl transition-shadow"
               >
                 <div className="flex items-center justify-between mb-3">
                   <span
                     className={clsxMerge(
-                      "px-3 py-1 rounded-full text-xs font-semibold",
+                      "px-3 py-1 rounded-full text-xs font-semibold shadow-md",
                       todo.priority === "High"
-                        ? "bg-red-500 text-white"
+                        ? "bg-red-500 text-white dark:bg-red-600 cyan700:bg-red-400 cyan700:text-slate-900"
                         : todo.priority === "Medium"
-                        ? "bg-yellow-500 text-black"
-                        : "bg-green-500 text-white"
+                        ? "bg-yellow-500 text-black dark:bg-yellow-600 cyan700:bg-yellow-400"
+                        : "bg-green-500 text-white dark:bg-green-600 cyan700:bg-green-400 cyan700:text-slate-900"
                     )}
                   >
                     {todo.priority}
                   </span>
                 </div>
-                <p className={clsxMerge("text-base")}>{todo.action}</p>
+                <p className={clsxMerge("text-base theme-text")}>{todo.action}</p>
               </div>
             ))}
           </div>
