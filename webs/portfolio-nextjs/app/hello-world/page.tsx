@@ -1,12 +1,7 @@
 "use client";
 
 import { clsxMerge } from "@/app/components/themes/utils";
-import {
-  textPrimary,
-  textSecondary,
-  textMuted,
-  textWhite,
-} from "@/app/components/themes/default-text";
+// import theme tokens removed
 import {
   FaGithub,
   FaReact,
@@ -104,20 +99,10 @@ export default function HelloWorld() {
               priority
             />
           </div>
-          <h1
-            className={clsxMerge(
-              "text-4xl md:text-6xl font-bold mb-4",
-              textWhite
-            )}
-          >
+          <h1 className={clsxMerge("text-4xl md:text-6xl font-bold mb-4")}>
             Portfolio Behind the Scenes
           </h1>
-          <p
-            className={clsxMerge(
-              "text-lg md:text-xl max-w-2xl mx-auto",
-              textWhite
-            )}
-          >
+          <p className={clsxMerge("text-lg md:text-xl max-w-2xl mx-auto")}>
             Discover how this portfolio was built, from concept to deployment
           </p>
         </div>
@@ -126,19 +111,13 @@ export default function HelloWorld() {
         <section className="mb-16">
           <h2
             className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center",
-              textWhite
+              "text-3xl md:text-4xl font-bold mb-8 text-center"
             )}
           >
             Why This Portfolio?
           </h2>
           <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 rounded-2xl p-8 md:p-12">
-            <p
-              className={clsxMerge(
-                "text-base md:text-lg leading-relaxed",
-                textWhite
-              )}
-            >
+            <p className={clsxMerge("text-base md:text-lg leading-relaxed")}>
               This portfolio serves as a showcase of my skills in modern web
               development, demonstrating proficiency in Next.js, TypeScript, and
               responsive design. It was created to attract potential clients and
@@ -153,8 +132,7 @@ export default function HelloWorld() {
         <section className="mb-16">
           <h2
             className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center",
-              textWhite
+              "text-3xl md:text-4xl font-bold mb-8 text-center"
             )}
           >
             Technologies Used
@@ -165,13 +143,9 @@ export default function HelloWorld() {
                 key={idx}
                 className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 text-center hover:shadow-lg transition-shadow"
               >
-                <tech.icon
-                  className={clsxMerge("w-12 h-12 mx-auto mb-4", textPrimary)}
-                />
-                <h3 className={clsxMerge("font-semibold mb-2", textPrimary)}>
-                  {tech.name}
-                </h3>
-                <p className={clsxMerge("text-sm", textMuted)}>{tech.desc}</p>
+                <tech.icon className={clsxMerge("w-12 h-12 mx-auto mb-4")} />
+                <h3 className={clsxMerge("font-semibold mb-2")}>{tech.name}</h3>
+                <p className={clsxMerge("text-sm")}>{tech.desc}</p>
               </div>
             ))}
           </div>
@@ -181,8 +155,7 @@ export default function HelloWorld() {
         <section className="mb-16">
           <h2
             className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center",
-              textWhite
+              "text-3xl md:text-4xl font-bold mb-8 text-center"
             )}
           >
             Development Timeline
@@ -194,7 +167,7 @@ export default function HelloWorld() {
                   {item.date}
                 </div>
                 <div className="flex-1 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-lg p-4">
-                  <p className={clsxMerge(textSecondary)}>{item.event}</p>
+                  <p>{item.event}</p>
                 </div>
               </div>
             ))}
@@ -205,8 +178,7 @@ export default function HelloWorld() {
         <section className="mb-16">
           <h2
             className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center",
-              textWhite
+              "text-3xl md:text-4xl font-bold mb-8 text-center"
             )}
           >
             Development Tools
@@ -217,13 +189,9 @@ export default function HelloWorld() {
                 key={idx}
                 className="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/30 dark:to-teal-900/30 rounded-xl p-6 text-center hover:shadow-lg transition-shadow"
               >
-                <tool.icon
-                  className={clsxMerge("w-12 h-12 mx-auto mb-4", textPrimary)}
-                />
-                <h3 className={clsxMerge("font-semibold mb-2", textPrimary)}>
-                  {tool.name}
-                </h3>
-                <p className={clsxMerge("text-sm", textMuted)}>{tool.desc}</p>
+                <tool.icon className={clsxMerge("w-12 h-12 mx-auto mb-4")} />
+                <h3 className={clsxMerge("font-semibold mb-2")}>{tool.name}</h3>
+                <p className={clsxMerge("text-sm")}>{tool.desc}</p>
               </div>
             ))}
           </div>
@@ -233,28 +201,21 @@ export default function HelloWorld() {
         <section className="mb-16">
           <h2
             className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center",
-              textWhite
+              "text-3xl md:text-4xl font-bold mb-8 text-center"
             )}
           >
             CI/CD with Vercel
           </h2>
           <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/20 rounded-2xl p-8 md:p-12">
             <div className="flex items-center justify-center mb-6">
-              <SiVercel className={clsxMerge("w-16 h-16", textWhite)} />
+              <SiVercel className={clsxMerge("w-16 h-16")} />
             </div>
-            <h3
-              className={clsxMerge(
-                "text-xl font-semibold mb-4 text-center",
-                textWhite
-              )}
-            >
+            <h3 className={clsxMerge("text-xl font-semibold mb-4 text-center")}>
               Automated Deployment
             </h3>
             <p
               className={clsxMerge(
-                "text-base md:text-lg leading-relaxed text-center",
-                textWhite
+                "text-base md:text-lg leading-relaxed text-center"
               )}
             >
               This portfolio is deployed using Vercel's platform, which provides
@@ -270,8 +231,7 @@ export default function HelloWorld() {
         <section className="mb-16">
           <h2
             className={clsxMerge(
-              "text-3xl md:text-4xl font-bold mb-8 text-center",
-              textWhite
+              "text-3xl md:text-4xl font-bold mb-8 text-center"
             )}
           >
             Future Development Plans
@@ -296,9 +256,7 @@ export default function HelloWorld() {
                     {todo.priority}
                   </span>
                 </div>
-                <p className={clsxMerge("text-base", textWhite)}>
-                  {todo.action}
-                </p>
+                <p className={clsxMerge("text-base")}>{todo.action}</p>
               </div>
             ))}
           </div>

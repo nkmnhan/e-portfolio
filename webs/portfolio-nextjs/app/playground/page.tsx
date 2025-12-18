@@ -2,11 +2,6 @@
 import Link from "next/link";
 import { PLAY_GROUND_ITEMS } from "@/app/components/nav-bar/sites";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { bgPrimary } from "@/app/components/themes/default-bg";
-import {
-  textPrimary,
-  textSecondary,
-} from "@/app/components/themes/default-text";
 import { Reveal } from "../components/transitions";
 
 const cardDisplay =
@@ -17,15 +12,10 @@ const cardAnimation =
 export default function PlaygroundPage() {
   return (
     <div className="pt-20 sm:pt-32 px-4 sm:px-8 max-w-7xl mx-auto">
-      <h1
-        className={clsxMerge(
-          "text-3xl sm:text-4xl font-bold mb-4",
-          textPrimary
-        )}
-      >
+      <h1 className={clsxMerge("text-3xl sm:text-4xl font-bold mb-4")}>
         Component Testing
       </h1>
-      <p className={clsxMerge("text-base sm:text-lg mb-8", textSecondary)}>
+      <p className={clsxMerge("text-base sm:text-lg mb-8")}>
         Open the drawer to navigate between different components
       </p>
 
@@ -34,27 +24,17 @@ export default function PlaygroundPage() {
           <Reveal key={component.id} className="block" delay={i * 0.01}>
             <Link
               href={component.href}
-              className={clsxMerge(
-                bgPrimary,
-                cardDisplay,
-                cardAnimation
-              )}
+              className={clsxMerge(cardDisplay, cardAnimation)}
             >
               <div className="card-content h-full flex flex-col justify-between">
                 <h3
                   className={clsxMerge(
-                    "text-xl sm:text-2xl font-semibold mb-2",
-                    textPrimary
+                    "text-xl sm:text-2xl font-semibold mb-2"
                   )}
                 >
                   {component.label}
                 </h3>
-                <p
-                  className={clsxMerge(
-                    "mt-2 text-sm sm:text-base",
-                    textSecondary
-                  )}
-                >
+                <p className={clsxMerge("mt-2 text-sm sm:text-base")}>
                   Click to view component
                 </p>
               </div>

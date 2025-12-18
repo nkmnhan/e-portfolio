@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import useColorThief, { ColorThiefOutput } from "use-color-thief";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { textWhite } from "@/app/components/themes/default-text";
 import AdaptiveImage from "./adaptive-image";
 
 interface ImageCardProps {
@@ -20,8 +19,7 @@ const posterClass = "object-cover rounded shadow max-w-full";
 const descPopupClass = clsxMerge(
   "absolute bottom-0 left-0 w-full p-2 md:p-4 rounded-b transition-all duration-200 z-10",
   "h-24 md:h-32",
-  "backdrop-blur-sm",
-  textWhite
+  "backdrop-blur-sm"
 );
 
 export default function ImageCard({

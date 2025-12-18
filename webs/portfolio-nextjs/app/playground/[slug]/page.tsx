@@ -1,8 +1,6 @@
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import { clsxMerge } from "../../components/themes/utils";
-import { bgPrimary } from "../../components/themes/default-bg";
-import { textPrimary } from "../../components/themes/default-text";
 
 const SkeletonDemo = dynamic(() => import("./skeleton-demo"));
 const R3fViewerDemo = dynamic(() => import("./model-viewer-demo"));
@@ -54,8 +52,8 @@ export default async function PlaygroundDetailPage({
   }
 
   return (
-    <div className={clsxMerge("p-32 min-h-screen", bgPrimary)}>
-      <h1 className={clsxMerge("text-3xl font-bold mb-8", textPrimary)}>
+    <div className={clsxMerge("p-32 min-h-screen")}>
+      <h1 className={clsxMerge("text-3xl font-bold mb-8")}>
         {component.title}
       </h1>
       {component.component}

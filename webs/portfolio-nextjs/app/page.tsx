@@ -1,7 +1,5 @@
 "use client";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { bgPrimary } from "@/app/components/themes/default-bg";
-import { textWhite } from "@/app/components/themes/default-text";
 import AdaptiveImage from "./components/images/adaptive-image";
 import { useState } from "react";
 
@@ -13,8 +11,7 @@ export default function Home() {
   return (
     <div
       className={clsxMerge(
-        "relative flex flex-col min-h-screen items-center justify-center overflow-hidden",
-        bgPrimary
+        "relative flex flex-col min-h-screen items-center justify-center overflow-hidden"
       )}
     >
       {/* Background Video with poster */}
@@ -58,8 +55,7 @@ export default function Home() {
         </div>
         <h1
           className={clsxMerge(
-            "font-semibold text-center text-2xl md:text-4xl mt-1",
-            textWhite
+            "font-semibold text-center text-2xl md:text-4xl mt-1"
           )}
         >
           NKM-NHAN

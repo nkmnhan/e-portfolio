@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  DarkThemeToggle,
   Drawer,
   DrawerItems,
   Sidebar,
@@ -19,7 +20,6 @@ import {
   FaAddressCard,
 } from "react-icons/fa";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { bgPrimary } from "@/app/components/themes/default-bg";
 import { NAV_ITEMS } from "./sites";
 import NavButton from "./nav-button";
 import { NavIcon } from "./sites";
@@ -67,7 +67,7 @@ export default function NavBar() {
         id="drawer"
         open={active}
         onClose={() => setActive(!active)}
-        className={clsxMerge("w-1/2 sm:w-60", bgPrimary)}
+        className={clsxMerge("w-1/2 sm:w-60")}
       >
         <DrawerItems>
           <Sidebar
@@ -150,6 +150,7 @@ export default function NavBar() {
                     <span>2025 NKMNHAN</span>
                   </div>
                 </SidebarItemGroup>
+                <DarkThemeToggle className="absolute bottom-2 left-2" />
               </SidebarItems>
             </div>
           </Sidebar>

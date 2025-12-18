@@ -1,8 +1,4 @@
-import {
-  FaHome,
-  FaUserAstronaut,
-} from "react-icons/fa";
-import { textWhite, textPrimary } from "../themes/default-text";
+import { FaHome, FaUserAstronaut } from "react-icons/fa";
 import { clsxMerge } from "../themes/utils";
 import { SiFurrynetwork } from "react-icons/si";
 import { PiMicrosoftOutlookLogoFill } from "react-icons/pi";
@@ -117,15 +113,15 @@ export const getIconClass = (
     case "/":
     case "/hello-world":
     case "/playground/galaxy":
-      return clsxMerge("text-lg font-bold", textWhite);
+      return clsxMerge("text-lg font-bold");
     case "/contact":
       return active
-        ? clsxMerge("text-lg font-bold", textWhite)
-        : clsxMerge("text-lg font-bold", textPrimary);
+        ? clsxMerge("text-lg font-bold")
+        : clsxMerge("text-lg font-bold");
     default:
       return active
-        ? clsxMerge("text-lg font-bold", textWhite)
-        : clsxMerge("text-lg font-bold", textPrimary, "dark:text-white");
+        ? clsxMerge("text-lg font-bold")
+        : clsxMerge("text-lg font-bold", "dark:text-white");
   }
 };
 

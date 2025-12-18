@@ -2,7 +2,6 @@ import { Carousel } from "flowbite-react";
 import { CustomFlowbiteTheme } from "flowbite-react/types";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import { clsxMerge } from "../themes/utils";
-import { textWhite } from "../themes/default-text";
 import AdaptiveImage from "../images/adaptive-image";
 
 export interface BrandGalleryItem {
@@ -97,8 +96,7 @@ export default function BrandGallery({ className, src }: BrandGalleryProps) {
             {item.title && item.description && (
               <div
                 className={clsxMerge(
-                  "absolute bottom-12 left-10 sm:left-16 p-2 sm:p-4 max-w-xs sm:max-w-md",
-                  textWhite
+                  "absolute bottom-12 left-10 sm:left-16 p-2 sm:p-4 max-w-xs sm:max-w-md"
                 )}
               >
                 <h4 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{item.title}</h4>

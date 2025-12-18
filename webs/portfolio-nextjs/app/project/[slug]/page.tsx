@@ -6,13 +6,6 @@ import { useState, useEffect } from "react";
 import { AiFillDownCircle, AiFillUpCircle } from "react-icons/ai";
 import { useProjectContext } from "./layout";
 import { clsxMerge } from "@/app/components/themes/utils";
-import {
-  textPrimary,
-  textBody,
-  textMuted,
-  textWhite,
-} from "@/app/components/themes/default-text";
-import { bgPrimary } from "@/app/components/themes/default-bg";
 import AdaptiveImage, {
   adaptiveImageMaxLandscape,
 } from "@/app/components/images/adaptive-image";
@@ -27,7 +20,7 @@ const posterImage =
   "object-cover rounded-xl transition-all duration-700 shadow-2xl";
 const posterTitle = clsxMerge(
   "mt-6 text-2xl sm:text-3xl font-bold text-center transition-opacity duration-700 z-20 relative",
-  textWhite
+  ""
 );
 const scrollBtn =
   "absolute bottom-8 p-4 left-1/2 bg-black/50 backdrop-blur-sm rounded-full text-white transform -translate-x-1/2 transition-all duration-500 hover:animate-bounce hover:bg-black/70";
@@ -88,14 +81,12 @@ export default function Project({
 
   if (!project) {
     return (
-      <div className={clsxMerge("p-8 text-center", textMuted)}>
-        Project not found.
-      </div>
+      <div className={clsxMerge("p-8 text-center")}>Project not found.</div>
     );
   }
 
   return (
-    <div className={clsxMerge("relative w-full overflow-x-hidden", bgPrimary)}>
+    <div className={clsxMerge("relative w-full overflow-x-hidden")}>
       <BrandGallery
         className="w-[80vw] h-140 m-auto"
         src={BrandGalleryTestData}
@@ -176,27 +167,18 @@ export default function Project({
             <a
               href="/work"
               className={clsxMerge(
-                "inline-flex items-center gap-2 text-sm hover:underline",
-                textPrimary
+                "inline-flex items-center gap-2 text-sm hover:underline"
               )}
             >
               ← Back to Work
             </a>
           </div>
           <div className="text-center space-y-4 sm:space-y-8">
-            <h1
-              className={clsxMerge(
-                "text-2xl sm:text-4xl font-bold px-2",
-                textPrimary
-              )}
-            >
+            <h1 className={clsxMerge("text-2xl sm:text-4xl font-bold px-2")}>
               {project.title}
             </h1>
             <div
-              className={clsxMerge(
-                "text-xs sm:text-sm space-x-2 sm:space-x-4",
-                textMuted
-              )}
+              className={clsxMerge("text-xs sm:text-sm space-x-2 sm:space-x-4")}
             >
               <span>ID: {project.id}</span>
               <span>•</span>
@@ -204,16 +186,14 @@ export default function Project({
             </div>
             <p
               className={clsxMerge(
-                "text-base sm:text-lg leading-relaxed max-w-2xl mx-auto px-2",
-                textBody
+                "text-base sm:text-lg leading-relaxed max-w-2xl mx-auto px-2"
               )}
             >
               {project.description}
             </p>
             <div
               className={clsxMerge(
-                "flex flex-col sm:flex-row justify-center gap-2 sm:gap-8 text-xs sm:text-sm pt-4",
-                textMuted
+                "flex flex-col sm:flex-row justify-center gap-2 sm:gap-8 text-xs sm:text-sm pt-4"
               )}
             >
               <span>Created: {project.createddate}</span>

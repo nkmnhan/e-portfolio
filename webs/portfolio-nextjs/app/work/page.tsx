@@ -8,13 +8,7 @@ import IMAGE_URLS from "./data";
 import ImageCard from "../components/images/image-card";
 import Link from "next/link";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { bgPrimary } from "@/app/components/themes/default-bg";
-import {
-  textPrimary,
-  textSecondary,
-  textBody,
-  textWhite,
-} from "@/app/components/themes/default-text";
+// theme tokens removed
 import { useEffect, useState } from "react";
 import AdaptiveImage from "../components/images/adaptive-image";
 
@@ -88,13 +82,9 @@ export default function Work() {
     if (projects.length === 0) {
       return (
         <div className={STYLES.emptyState}>
-          <div className={clsxMerge(STYLES.emptyIcon, textSecondary)}>📁</div>
-          <h3 className={clsxMerge(STYLES.emptyText, textPrimary)}>
-            No projects found
-          </h3>
-          <p className={clsxMerge(textSecondary)}>
-            Try selecting a different category
-          </p>
+          <div className={clsxMerge(STYLES.emptyIcon)}>📁</div>
+          <h3 className={clsxMerge(STYLES.emptyText)}>No projects found</h3>
+          <p>Try selecting a different category</p>
         </div>
       );
     }
@@ -142,7 +132,7 @@ export default function Work() {
   };
 
   return (
-    <div className={clsxMerge(STYLES.pageContainer, bgPrimary)}>
+    <div className={clsxMerge(STYLES.pageContainer)}>
       <div className={STYLES.contentWrapper}>
         {/* GitHub Profile Section */}
         <div className={STYLES.profileSection}>
@@ -155,10 +145,15 @@ export default function Work() {
             preload
           />
           <div className={STYLES.profileInfo}>
-            <h2 className={clsxMerge(STYLES.profileName, textPrimary)}>
+            <h2 className={clsxMerge(STYLES.profileName)}>
               Tony Nguyen (nkmnhan)
             </h2>
-            <p className={clsxMerge(STYLES.profileBio, textSecondary)}>
+            <p className={clsxMerge(STYLES.profileBio)}>
+              Senior Software Engineer • 12 Open Source Projects • 5 GitHub
+              Stars
+            </p>
+            <h2 className={STYLES.profileName}>Tony Nguyen (nkmnhan)</h2>
+            <p className={STYLES.profileBio}>
               Senior Software Engineer • 12 Open Source Projects • 5 GitHub
               Stars
             </p>
@@ -169,19 +164,16 @@ export default function Work() {
               className={STYLES.githubButton}
             >
               <FaGithub className="text-2xl bg-white rounded-full" />
-              <span className={clsxMerge("font-semibold", textWhite)}>
-                View on GitHub
-              </span>
+              <span className={clsxMerge("font-semibold")}>View on GitHub</span>
+              <span className="font-semibold">View on GitHub</span>
             </Link>
           </div>
         </div>
 
         {/* Header Section */}
         <div className={STYLES.header}>
-          <h1 className={clsxMerge(STYLES.title, textPrimary)}>
-            My Work &amp; Projects
-          </h1>
-          <p className={clsxMerge(STYLES.subtitle, textBody)}>
+          <h1 className={clsxMerge(STYLES.title)}>My Work &amp; Projects</h1>
+          <p className={clsxMerge(STYLES.subtitle)}>
             Explore my open-source contributions on GitHub featuring .NET,
             Vue.js, React, IdentityServer4, Elasticsearch, Docker, and
             innovative developer tools.
@@ -198,12 +190,8 @@ export default function Work() {
                 `bg-linear-to-br ${stat.gradient}`
               )}
             >
-              <div className={clsxMerge(STYLES.statValue, textWhite)}>
-                {stat.value}
-              </div>
-              <div className={clsxMerge(STYLES.statLabel, textWhite)}>
-                {stat.label}
-              </div>
+              <div className={clsxMerge(STYLES.statValue)}>{stat.value}</div>
+              <div className={clsxMerge(STYLES.statLabel)}>{stat.label}</div>
             </div>
           ))}
         </div>
@@ -214,10 +202,10 @@ export default function Work() {
             <TabItem active title="Featured" icon={HiLightningBolt}>
               <div className={STYLES.tabContent}>
                 <div className={STYLES.categoryHeader}>
-                  <h3 className={clsxMerge(STYLES.categoryTitle, textPrimary)}>
+                  <h3 className={clsxMerge(STYLES.categoryTitle)}>
                     ⭐ Featured Projects
                   </h3>
-                  <p className={clsxMerge(STYLES.categoryDesc, textSecondary)}>
+                  <p className={clsxMerge(STYLES.categoryDesc)}>
                     Highlighted open-source projects showcasing my expertise in
                     .NET MAUI, Vue.js, IdentityServer4, Elasticsearch, and
                     modern web development.
@@ -236,10 +224,10 @@ export default function Work() {
             <TabItem title="Enterprise" icon={MdWork}>
               <div className={STYLES.tabContent}>
                 <div className={STYLES.categoryHeader}>
-                  <h3 className={clsxMerge(STYLES.categoryTitle, textPrimary)}>
+                  <h3 className={clsxMerge(STYLES.categoryTitle)}>
                     🏢 Enterprise Solutions
                   </h3>
-                  <p className={clsxMerge(STYLES.categoryDesc, textSecondary)}>
+                  <p className={clsxMerge(STYLES.categoryDesc)}>
                     Authentication & authorization with IdentityServer4,
                     full-text search with Elasticsearch NEST, and
                     enterprise-grade security implementations.
@@ -252,10 +240,10 @@ export default function Work() {
             <TabItem title="Developer Tools" icon={HiCode}>
               <div className={STYLES.tabContent}>
                 <div className={STYLES.categoryHeader}>
-                  <h3 className={clsxMerge(STYLES.categoryTitle, textPrimary)}>
+                  <h3 className={clsxMerge(STYLES.categoryTitle)}>
                     🛠️ Developer Tools
                   </h3>
-                  <p className={clsxMerge(STYLES.categoryDesc, textSecondary)}>
+                  <p className={clsxMerge(STYLES.categoryDesc)}>
                     Productivity tools including SQL Converter, Resource Manager
                     for localization, Docker hot-reload setup for Vue.js, and
                     development utilities.
@@ -268,10 +256,10 @@ export default function Work() {
             <TabItem title="Personal" icon={HiGlobe}>
               <div className={STYLES.tabContent}>
                 <div className={STYLES.categoryHeader}>
-                  <h3 className={clsxMerge(STYLES.categoryTitle, textPrimary)}>
+                  <h3 className={clsxMerge(STYLES.categoryTitle)}>
                     💡 Personal Projects
                   </h3>
-                  <p className={clsxMerge(STYLES.categoryDesc, textSecondary)}>
+                  <p className={clsxMerge(STYLES.categoryDesc)}>
                     Innovative projects including this portfolio, E-Shop
                     platform, MAUI apps with MediatR, Firebase push
                     notifications, calendar components, and hybrid WebView

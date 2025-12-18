@@ -7,7 +7,6 @@ import ImageCard from "@/app/components/images/image-card";
 import IMAGE_URLS from "@/app/work/data";
 import { AiOutlineCaretLeft, AiOutlineCaretRight } from "react-icons/ai";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { bgPrimary } from "@/app/components/themes/default-bg";
 
 interface ProjectContextType {
   projectId: string;
@@ -56,7 +55,7 @@ export default function ProjectLayout({
   const nextProject = IMAGE_URLS[nextIndex];
 
   return (
-    <div className={clsxMerge("relative min-h-screen", bgPrimary)}>
+    <div className={clsxMerge("relative min-h-screen")}>
       {/* Left Arrow - Middle Left */}
       <div
         className={clsxMerge(arrowContainer, "left-4 top-1/2 -translate-y-1/2")}
@@ -67,7 +66,9 @@ export default function ProjectLayout({
           <AiOutlineCaretLeft className={iconClass} />
         </Link>
         {showPrevPreview && (
-          <div className={clsxMerge("ml-2", previewCard, "animate-slide-in-left")}>
+          <div
+            className={clsxMerge("ml-2", previewCard, "animate-slide-in-left")}
+          >
             <ImageCard
               className="w-full"
               style={{ height: 180, position: "relative" }}
@@ -76,7 +77,9 @@ export default function ProjectLayout({
               alt={`Work image ${prevProject.id}`}
               loading="lazy"
               title={prevProject.title || `Project number ${prevProject.id}`}
-              description={prevProject.description || "No description available."}
+              description={
+                prevProject.description || "No description available."
+              }
               forceHover={true}
             />
           </div>
@@ -85,12 +88,17 @@ export default function ProjectLayout({
 
       {/* Right Arrow - Middle Right */}
       <div
-        className={clsxMerge(arrowContainer, "right-4 top-1/2 -translate-y-1/2")}
+        className={clsxMerge(
+          arrowContainer,
+          "right-4 top-1/2 -translate-y-1/2"
+        )}
         onMouseEnter={() => setShowNextPreview(true)}
         onMouseLeave={() => setShowNextPreview(false)}
       >
         {showNextPreview && (
-          <div className={clsxMerge("mr-2", previewCard, "animate-slide-in-right")}>
+          <div
+            className={clsxMerge("mr-2", previewCard, "animate-slide-in-right")}
+          >
             <ImageCard
               className="w-full"
               style={{ height: 180, position: "relative" }}
@@ -99,7 +107,9 @@ export default function ProjectLayout({
               alt={`Work image ${nextProject.id}`}
               loading="lazy"
               title={nextProject.title || `Project number ${nextProject.id}`}
-              description={nextProject.description || "No description available."}
+              description={
+                nextProject.description || "No description available."
+              }
               forceHover={true}
             />
           </div>

@@ -1,12 +1,5 @@
 import { HR } from "flowbite-react";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { bgPrimary } from "@/app/components/themes/default-bg";
-import {
-  textBody,
-  textWhite,
-  textPrimary,
-  textSecondary,
-} from "@/app/components/themes/default-text";
 import AdaptiveImage from "../components/images/adaptive-image";
 
 // Types
@@ -119,18 +112,18 @@ const ABOUT_STORY: Article[] = [
 // Component Helper Functions
 const StatCardComponent = ({ stat }: { stat: StatCard }) => (
   <div className={clsxMerge(STYLES.statCard, stat.gradient)}>
-    <div className={clsxMerge(STYLES.statValue, textWhite)}>{stat.value}</div>
-    <div className={clsxMerge(STYLES.statLabel, textWhite)}>{stat.label}</div>
+    <div className={clsxMerge(STYLES.statValue)}>{stat.value}</div>
+    <div className={clsxMerge(STYLES.statLabel)}>{stat.label}</div>
   </div>
 );
 
 const HighlightCard = ({ highlight }: { highlight: Highlight }) => (
   <div className={clsxMerge(STYLES.highlightCard, highlight.hoverColor)}>
-    <h3 className={clsxMerge(STYLES.highlightTitle, textPrimary)}>
+    <h3 className={clsxMerge(STYLES.highlightTitle)}>
       {highlight.icon} {highlight.title}
     </h3>
     {highlight.lines.map((line, i) => (
-      <p key={i} className={clsxMerge(STYLES.highlightText, textSecondary)}>
+      <p key={i} className={clsxMerge(STYLES.highlightText)}>
         {line}
       </p>
     ))}
@@ -156,10 +149,10 @@ const StoryArticle = ({ article, index }: { article: Article; index: number }) =
       </div>
     </div>
     <div className={STYLES.storyContent}>
-      <h3 className={clsxMerge(STYLES.storyTitle, textPrimary)}>
+      <h3 className={clsxMerge(STYLES.storyTitle)}>
         {article.title}
       </h3>
-      <p className={clsxMerge(STYLES.storyDescription, textBody)}>
+      <p className={clsxMerge(STYLES.storyDescription)}>
         {article.description}
       </p>
     </div>
@@ -168,7 +161,7 @@ const StoryArticle = ({ article, index }: { article: Article; index: number }) =
 
 export default function About() {
   return (
-    <div className={clsxMerge("fixed inset-0", bgPrimary)}>
+    <div className={clsxMerge("fixed inset-0")}>
       <div className={clsxMerge("overflow-y-auto h-full w-full hide-scrollbar")}>
         <div className={STYLES.container}>
           {/* Hero Image */}
@@ -184,7 +177,7 @@ export default function About() {
           <HR />
 
           {/* Overview */}
-          <div className={clsxMerge(STYLES.overviewText, textBody)}>
+          <div className={clsxMerge(STYLES.overviewText)}>
             {overviewText}
           </div>
 
@@ -197,7 +190,7 @@ export default function About() {
 
           {/* Key Highlights */}
           <div className="mb-16">
-            <h2 className={clsxMerge(STYLES.sectionTitle, textPrimary)}>
+            <h2 className={clsxMerge(STYLES.sectionTitle)}>
               Key Highlights
             </h2>
             <div className={STYLES.highlightGrid}>

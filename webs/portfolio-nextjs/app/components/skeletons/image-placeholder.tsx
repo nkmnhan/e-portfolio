@@ -1,5 +1,4 @@
 import { clsxMerge } from "@/app/components/themes/utils";
-import { textMuted } from "../themes/default-text";
 
 interface ImagePlaceholderProps {
   className?: string;
@@ -34,7 +33,7 @@ export default function ImagePlaceholder({
     <div role="status" className={containerClasses}>
       <div className={imageClasses}>
         <svg
-          className={clsxMerge("w-11 h-11", textMuted)}
+          className={clsxMerge("w-11 h-11")}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           width="24"

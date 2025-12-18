@@ -1,5 +1,4 @@
 import { clsxMerge } from "@/app/components/themes/utils";
-import { textMuted } from "../themes/default-text";
 
 interface TestimonialPlaceholderProps {
   className?: string;
@@ -28,7 +27,7 @@ export default function TestimonialPlaceholder({
       {/* Author section */}
       <div className="flex items-center justify-center mt-4">
         <svg
-          className={clsxMerge("w-7 h-7 me-3", textMuted)}
+          className={clsxMerge("w-7 h-7 me-3")}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
