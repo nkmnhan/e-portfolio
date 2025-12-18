@@ -4,7 +4,6 @@ import { PLAY_GROUND_ITEMS } from "@/app/components/nav-bar/sites";
 import { clsxMerge } from "@/app/components/themes/utils";
 import { Reveal } from "../components/transitions";
 
-
 export default function PlaygroundPage() {
   return (
     <div className="pt-20 sm:pt-32 px-4 sm:px-8 max-w-7xl mx-auto">
@@ -21,8 +20,10 @@ export default function PlaygroundPage() {
             <Link
               href={component.href}
               className={clsxMerge(
-                "shadow block no-underline p-4 sm:p-6 border border-gray-200 dark:border-gray-700 rounded-xl min-h-25 sm:min-h-35 max-w-md",
-                  "transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400/30 hover:shadow-xl hover:scale-105 hover:-translate-y-1 hover:bg-indigo-50 hover:border-indigo-300 active:scale-98"
+                "card-lift-on-hover",
+                "p-4 sm:p-6 min-h-25 sm:min-h-35 max-w-md",
+                "border border-gray-200 dark:border-gray-700 hover:border-indigo-300",
+                "shadow block no-underline rounded-xl"
               )}
             >
               <div className="card-content h-full flex flex-col justify-between">

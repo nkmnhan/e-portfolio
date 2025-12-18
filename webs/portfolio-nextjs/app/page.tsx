@@ -41,9 +41,9 @@ export default function Home() {
         }}
       />
       <main className="relative z-20 flex flex-col items-center">
-        <div className="h-20 w-20 md:h-24 md:w-24 lg:h-28 lg:w-28 relative rounded-lg bg-[#00000033]">
+        <div className="h-20 w-20 md:h-24 md:w-24 lg:h-28 lg:w-28 relative rounded-lg bg-[#00000033] dark:bg-[#ffffffd7]">
           <AdaptiveImage
-            className="invert object-cover"
+            className="invert dark:invert-0 object-cover"
             src="/logo.svg"
             alt="Github Porfolio QR Code"
             fill

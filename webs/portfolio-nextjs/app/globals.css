@@ -28,3 +28,18 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.card-lift-on-hover {
+  @apply 
+    transition-all
+    duration-300
+    ease-in-out
+    focus:outline-none 
+    focus-visible:ring-2 
+    focus-visible:ring-offset-2
+    focus-visible:ring-indigo-400/30
+    hover:shadow-xl 
+    hover:scale-105 
+    hover:-translate-y-1
+    active:scale-98;
+}
