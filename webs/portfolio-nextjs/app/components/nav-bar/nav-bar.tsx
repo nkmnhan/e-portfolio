@@ -41,7 +41,7 @@ const astronautClass = clsxMerge(
 );
 
 const sidebarContactClass = clsxMerge(
-  "grid grid-cols-[0.75rem_1fr] gap-x-2 md:gap-x-4 text-3 my-2 md:my-4 text-left"
+  "grid grid-cols-[0.75rem_1fr] gap-x-2 md:gap-x-4 my-2 md:my-4 text-left uppercase text-xs"
 );
 
 const copyrightClass = clsxMerge(
@@ -72,9 +72,7 @@ export default function NavBar() {
         <DrawerItems>
           <Sidebar
             aria-label="Sidebar with multi-level dropdown example"
-            className={clsxMerge(
-              "[&>div]:p-0 text-center w-full"
-            )}
+            className={clsxMerge("[&>div]:bg-transparent [&>div]:p-0 text-center w-full")}
           >
             {/* delegate click handling: if any anchor inside is clicked, close drawer */}
             <div
@@ -114,7 +112,11 @@ export default function NavBar() {
                     </span>
                   </div>
                   {/* Social icons row */}
-                  <div className="flex justify-center gap-2 md:gap-4 my-2 md:my-4">
+                  <div
+                    className={clsxMerge(
+                      "flex justify-center gap-2 md:gap-4 my-2 md:my-4"
+                    )}
+                  >
                     {SOCIAL_LINKS.map(({ icon: Icon, url }) => (
                       <a
                         key={url}
@@ -133,12 +135,12 @@ export default function NavBar() {
                 </SidebarItemGroup>
                 <SidebarItemGroup>
                   <div className={sidebarContactClass}>
-                    <FaEnvelope className="w-full h-4 mt-1" />
-                    <span className="uppercase">nkmnhan@gmail.com</span>
-                    <FaPhone className="w-full h-4 mt-1" />
-                    <span className="uppercase">+84 978 00 43 19</span>
-                    <FaAddressCard className="w-full h-4 self-start mt-1" />
-                    <span className="uppercase">
+                    <FaEnvelope className="w-full h-4" />
+                    <span>nkmnhan@gmail.com</span>
+                    <FaPhone className="w-full h-4" />
+                    <span>+84 978 00 43 19</span>
+                    <FaAddressCard className="w-full h-4 self-start" />
+                    <span>
                       8/15 Phan Huy Ich Street, Quarter 18, Tan Son Ward, Ho Chi
                       Minh City
                     </span>

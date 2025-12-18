@@ -4,6 +4,7 @@ import "./globals.css";
 import { NavBar, AirNav } from "./components/nav-bar";
 import { ThemeModeScript } from "flowbite-react";
 import PerformanceMonitor from "./components/performance-monitor";
+import { clsxMerge } from "./components/themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +44,11 @@ export default function RootLayout({
         <ThemeModeScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={clsxMerge(
+          geistSans.variable,
+          geistMono.variable,
+          "antialiased"
+        )}
         suppressHydrationWarning={true}
       >
         <PerformanceMonitor />
