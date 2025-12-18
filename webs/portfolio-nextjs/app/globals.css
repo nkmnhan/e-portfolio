@@ -4,18 +4,34 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-body, h1, h2, h3, h4, h5, h6, p, span, div, li, a, th, td, svg {
-  color: #111827; /* Tailwind's gray-900 */
+.theme-text {
+  @apply text-gray-900 dark:text-white;
 }
-.dark body,
-.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6,
-.dark p, .dark span, .dark div, .dark li, .dark a, .dark th, .dark td, .dark svg {
-  color: #fff !important;
+
+.theme-bg {
+  @apply bg-white dark:bg-gray-900;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+li,
+a,
+th,
+td,
+svg {
+  @apply text-gray-900 dark:text-white;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  @apply bg-white dark:bg-gray-900;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -23,6 +39,7 @@ body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 /* Hide scrollbar for IE, Edge and Firefox */
 .hide-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */

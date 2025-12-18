@@ -21,7 +21,7 @@ export default function Contact() {
         priority
       />
       <main className={clsxMerge(
-        "w-full max-w-lg rounded-xl shadow-xl p-4 md:p-8 flex flex-col items-center"
+        "w-full max-w-lg rounded-xl shadow-xl p-4 md:p-8 flex flex-col items-center theme-bg",
       )}>
         <h1 className={clsxMerge(
           "text-3xl font-bold mb-8 text-center"

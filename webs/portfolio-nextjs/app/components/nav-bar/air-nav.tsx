@@ -1,6 +1,6 @@
 "use client";
 
-import { Popover } from "flowbite-react";
+import { Card, Popover } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
 import HamburgerIcon from "../hamburger-btn/hamburger-icon";
 import { clsxMerge } from "../themes/utils";
@@ -100,9 +100,8 @@ export default function AirNav() {
         >
           <div
             className={clsxMerge(
-              "h-12 w-12 rounded p-3 shadow-lg border border-gray-300",
-              menuTrigger !== "click" && "animate-bounce",
-              "bg-black"
+              "h-12 w-12 rounded p-3 shadow-lg border border-gray-300 theme-bg",
+              menuTrigger !== "click" && "animate-bounce"
             )}
           >
             {menuTrigger !== "click" && (
@@ -113,7 +112,7 @@ export default function AirNav() {
             )}
             <HamburgerIcon
               active={isMenuOpen}
-              className="pointer-events-none text-white"
+              className="pointer-events-none"
             />
           </div>
         </Popover>

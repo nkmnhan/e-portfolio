@@ -47,7 +47,8 @@ export default function RootLayout({
         className={clsxMerge(
           geistSans.variable,
           geistMono.variable,
-          "antialiased"
+          "antialiased",
+          "bg-white dark:bg-gray-800"
         )}
         suppressHydrationWarning={true}
       >

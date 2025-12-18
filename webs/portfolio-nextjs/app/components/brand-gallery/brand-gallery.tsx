@@ -21,7 +21,7 @@ export interface BrandGalleryProps {
 const slideClass =
   "absolute top-1/2 transform -translate-y-5/8 sm:-translate-y-1/2 flex h-full items-center justify-center px-3 focus:outline-none";
 const iconClass =
-  "w-8 h-8 bg-white rounded-full flex items-center justify-center sm:w-12 sm:h-12";
+  "w-8 h-8 rounded-full flex items-center justify-center sm:w-12 sm:h-12";
 
 const customTheme: CustomFlowbiteTheme["carousel"] = {
   root: {
@@ -31,8 +31,8 @@ const customTheme: CustomFlowbiteTheme["carousel"] = {
   },
   indicators: {
     active: {
-      off: "bg-white",
-      on: "bg-black",
+      off: "",
+      on: "",
     },
     base: "w-2 h-2 rounded-full border border-black",
     wrapper: "absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3 sm:bottom-6",
@@ -45,7 +45,7 @@ const customTheme: CustomFlowbiteTheme["carousel"] = {
     },
   },
   control: {
-    base: "inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-3 group-focus:ring-white sm:h-9 sm:w-9 dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70",
+    base: "inline-flex h-7 w-7 items-center justify-center rounded-full group-focus:outline-none group-focus:ring-3 sm:h-9 sm:w-9",
     icon: "h-4 w-4 text-white sm:h-5 sm:w-5 dark:text-gray-800",
   },
   scrollContainer: {
@@ -84,7 +84,7 @@ export default function BrandGallery({ className, src }: BrandGalleryProps) {
               fill
             />
             {item.logoSrc && (
-              <div className="w-24 h-12 sm:w-48 sm:h-24 absolute bottom-8 sm:bottom-4 right-8 sm:right-28 bg-white rounded flex items-center justify-center shadow-lg">
+              <div className="w-24 h-12 sm:w-48 sm:h-24 absolute bottom-8 sm:bottom-4 right-8 sm:right-28 rounded flex items-center justify-center shadow-lg">
                 <AdaptiveImage
                   src={item.logoSrc}
                   alt={item.logoAlt}
