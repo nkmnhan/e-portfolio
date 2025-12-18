@@ -6,8 +6,6 @@ interface SkeletonProps {
 }
 
 export function Skeleton({ className, variant = "default" }: SkeletonProps) {
-  const baseClasses = "animate-pulse bg-gray-300 dark:bg-gray-700";
-  
   const variantClasses = {
     default: "rounded-full",
     text: "rounded-full h-2",
@@ -18,7 +16,7 @@ export function Skeleton({ className, variant = "default" }: SkeletonProps) {
   return (
     <div
       className={clsxMerge(
-        baseClasses,
+        "animate-pulse bg-gray-300 dark:bg-gray-700",
         variantClasses[variant],
         className
       )}
@@ -37,7 +35,10 @@ interface SkeletonTextProps {
 
 export function SkeletonText({ className, lines = 5 }: SkeletonTextProps) {
   return (
-    <div role="status" className={clsxMerge("max-w-sm animate-pulse", className)}>
+    <div
+      role="status"
+      className={clsxMerge("max-w-sm animate-pulse", className)}
+    >
       <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-48 mb-4"></div>
       {Array.from({ length: lines }).map((_, index) => (
         <div

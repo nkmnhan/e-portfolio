@@ -3,7 +3,6 @@ import { SiFurrynetwork } from "react-icons/si";
 import { PiMicrosoftOutlookLogoFill } from "react-icons/pi";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { BsFillPersonVcardFill } from "react-icons/bs";
-import { clsxMerge } from "../themes";
 
 export interface Site {
   id: string;

@@ -11,7 +11,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import AdaptiveImage from "../components/images/adaptive-image";
 
-
 // GitHub Statistics
 const PROJECT_STATS = [
   {
@@ -23,8 +22,6 @@ const PROJECT_STATS = [
   { value: "8+", label: "Tech Stacks", gradient: "from-orange-500 to-red-600" },
   { value: "5", label: "Stars", gradient: "from-pink-500 to-purple-600" },
 ];
-
-
 
 export default function Work() {
   const [heights, setHeights] = useState<number[]>([]);

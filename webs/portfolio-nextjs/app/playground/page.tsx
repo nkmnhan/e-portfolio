@@ -4,10 +4,6 @@ import { PLAY_GROUND_ITEMS } from "@/app/components/nav-bar/sites";
 import { clsxMerge } from "@/app/components/themes/utils";
 import { Reveal } from "../components/transitions";
 
-const cardDisplay =
-  "shadow block no-underline p-4 sm:p-6 border border-gray-200 dark:border-gray-700 rounded-xl min-h-30 sm:min-h-h35 max-w-md";
-const cardAnimation =
-  "transition-transform transition-shadow transition-colors duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400/30 hover:shadow-xl hover:scale-105 hover:-translate-y-1 hover:bg-indigo-50 hover:border-indigo-300 active:scale-98";
 
 export default function PlaygroundPage() {
   return (
@@ -24,7 +20,10 @@ export default function PlaygroundPage() {
           <Reveal key={component.id} className="block" delay={i * 0.01}>
             <Link
               href={component.href}
-              className={clsxMerge(cardDisplay, cardAnimation)}
+              className={clsxMerge(
+                "shadow block no-underline p-4 sm:p-6 border border-gray-200 dark:border-gray-700 rounded-xl min-h-25 sm:min-h-35 max-w-md",
+                  "transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400/30 hover:shadow-xl hover:scale-105 hover:-translate-y-1 hover:bg-indigo-50 hover:border-indigo-300 active:scale-98"
+              )}
             >
               <div className="card-content h-full flex flex-col justify-between">
                 <h3

@@ -1,4 +1,3 @@
-import { Button } from "flowbite-react";
 import { clsxMerge } from "@/app/components/themes/utils";
 
 export type HamburgerIconProp = {

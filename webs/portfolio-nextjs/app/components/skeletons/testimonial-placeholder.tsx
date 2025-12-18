@@ -17,9 +17,9 @@ export default function TestimonialPlaceholder({
           key={index}
           className={clsxMerge(
             "h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full mx-auto",
-            index === 0 && "max-w-[640px] mb-2.5",
-            index === 1 && "max-w-[540px]",
-            index > 1 && "max-w-[600px] mb-2.5"
+            index === 0 && "max-w-160 mb-2.5",
+            index === 1 && "max-w-135",
+            index > 1 && "max-w-150 mb-2.5"
           )}
         />
       ))}

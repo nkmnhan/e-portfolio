@@ -32,25 +32,6 @@ const SOCIAL_LINKS = [
   { icon: FaEnvelope, url: "mailto:your@email.com" },
 ];
 
-const socialIconClass = clsxMerge(
-  "flex items-center justify-center text-xl transition h-12 w-12"
-);
-
-const astronautClass = clsxMerge(
-  "mx-auto min-w-25 m-4 md:m-8" // responsive margin
-);
-
-const sidebarContactClass = clsxMerge(
-  "grid grid-cols-[0.75rem_1fr] gap-x-2 md:gap-x-4 my-2 md:my-4 text-left uppercase text-xs"
-);
-
-const copyrightClass = clsxMerge(
-  "flex items-center justify-center gap-2 md:gap-4 mt-2 md:mt-4 text-sm"
-);
-
-const navBtnOpen = "top-6 left-1/2 translate-x-2 sm:left-60";
-const navBtnClosed = "top-6 left-6";
-
 export default function NavBar() {
   const [active, setActive] = useState(false);
 
@@ -58,7 +39,9 @@ export default function NavBar() {
     <>
       {/* Nav Button */}
       <NavButton
-        className={clsxMerge(active ? navBtnOpen : navBtnClosed)}
+        className={clsxMerge(
+          active ? "top-6 left-1/2 translate-x-2 sm:left-60" : "top-6 left-6"
+        )}
         active={active}
         onClick={() => setActive(!active)}
       />
@@ -72,7 +55,9 @@ export default function NavBar() {
         <DrawerItems>
           <Sidebar
             aria-label="Sidebar with multi-level dropdown example"
-            className={clsxMerge("[&>div]:bg-transparent [&>div]:p-0 text-center w-full")}
+            className={clsxMerge(
+              "[&>div]:bg-transparent [&>div]:p-0 text-center w-full"
+            )}
           >
             {/* delegate click handling: if any anchor inside is clicked, close drawer */}
             <div
@@ -105,7 +90,7 @@ export default function NavBar() {
                       <AdaptiveImage
                         src="/astronaut.png"
                         alt="Astronaut"
-                        className={astronautClass}
+                        className="mx-auto min-w-25 m-4 md:m-8"
                         width={150}
                         height={100}
                       />
@@ -123,7 +108,7 @@ export default function NavBar() {
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={socialIconClass}
+                        className="flex items-center justify-center text-xl transition h-12 w-12"
                         style={{ position: "relative" }}
                       >
                         <span className="hover:animate-bounce w-full h-full flex items-center justify-center">
@@ -134,7 +119,7 @@ export default function NavBar() {
                   </div>
                 </SidebarItemGroup>
                 <SidebarItemGroup>
-                  <div className={sidebarContactClass}>
+                  <div className="grid grid-cols-[0.75rem_1fr] gap-x-2 md:gap-x-4 my-2 md:my-4 text-left uppercase text-xs">
                     <FaEnvelope className="w-full h-4" />
                     <span>nkmnhan@gmail.com</span>
                     <FaPhone className="w-full h-4" />
@@ -147,7 +132,7 @@ export default function NavBar() {
                   </div>
                 </SidebarItemGroup>
                 <SidebarItemGroup>
-                  <div className={copyrightClass}>
+                  <div className="flex items-center justify-center gap-2 md:gap-4 mt-2 md:mt-4 text-sm">
                     <FaCopyright />
                     <span>2025 NKMNHAN</span>
                   </div>

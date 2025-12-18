@@ -1,5 +1,3 @@
-import { TEST_IMAGE_URLS } from "./downloaded-files";
-
 type ProjectType =
   | "enterprise"
   | "personal"

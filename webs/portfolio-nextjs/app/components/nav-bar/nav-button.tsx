@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { HamburgerBtn } from "../hamburger-btn";
 import { clsxMerge } from "../themes/utils";
 import { NavIcon } from "./sites";
-import { memo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function NavButton({
   className,

@@ -116,7 +116,7 @@ export default function HelloWorld() {
           >
             Why This Portfolio?
           </h2>
-          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 rounded-2xl p-8 md:p-12">
+          <div className="bg-linear-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 rounded-2xl p-8 md:p-12">
             <p className={clsxMerge("text-base md:text-lg leading-relaxed")}>
               This portfolio serves as a showcase of my skills in modern web
               development, demonstrating proficiency in Next.js, TypeScript, and
@@ -141,7 +141,7 @@ export default function HelloWorld() {
             {TECHNOLOGIES.map((tech, idx) => (
               <div
                 key={idx}
-                className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 text-center hover:shadow-lg transition-shadow"
+                className="bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 text-center hover:shadow-lg transition-shadow"
               >
                 <tech.icon className={clsxMerge("w-12 h-12 mx-auto mb-4")} />
                 <h3 className={clsxMerge("font-semibold mb-2")}>{tech.name}</h3>
@@ -163,10 +163,10 @@ export default function HelloWorld() {
           <div className="space-y-6">
             {TIMELINE.map((item, idx) => (
               <div key={idx} className="flex items-center gap-6">
-                <div className="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold min-w-[100px] text-center">
+                <div className="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold min-w-25 text-center">
                   {item.date}
                 </div>
-                <div className="flex-1 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-lg p-4">
+                <div className="flex-1 bg-linear-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-lg p-4">
                   <p>{item.event}</p>
                 </div>
               </div>
@@ -187,7 +187,7 @@ export default function HelloWorld() {
             {TOOLS.map((tool, idx) => (
               <div
                 key={idx}
-                className="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/30 dark:to-teal-900/30 rounded-xl p-6 text-center hover:shadow-lg transition-shadow"
+                className="bg-linear-to-br from-green-50 to-teal-50 dark:from-green-900/30 dark:to-teal-900/30 rounded-xl p-6 text-center hover:shadow-lg transition-shadow"
               >
                 <tool.icon className={clsxMerge("w-12 h-12 mx-auto mb-4")} />
                 <h3 className={clsxMerge("font-semibold mb-2")}>{tool.name}</h3>
@@ -206,7 +206,7 @@ export default function HelloWorld() {
           >
             CI/CD with Vercel
           </h2>
-          <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/20 rounded-2xl p-8 md:p-12">
+          <div className="bg-linear-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/20 rounded-2xl p-8 md:p-12">
             <div className="flex items-center justify-center mb-6">
               <SiVercel className={clsxMerge("w-16 h-16")} />
             </div>
@@ -240,7 +240,7 @@ export default function HelloWorld() {
             {TODO_ACTIONS.map((todo, idx) => (
               <div
                 key={idx}
-                className="bg-gradient-to-r from-orange-500/10 to-red-500/10 dark:from-orange-500/20 dark:to-red-500/20 rounded-xl p-6 border-l-4 border-orange-500"
+                className="bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-500/20 dark:to-red-500/20 rounded-xl p-6 border-l-4 border-orange-500"
               >
                 <div className="flex items-center justify-between mb-3">
                   <span

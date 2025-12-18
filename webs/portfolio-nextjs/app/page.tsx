@@ -3,9 +3,6 @@ import { clsxMerge } from "@/app/components/themes/utils";
 import AdaptiveImage from "./components/images/adaptive-image";
 import { useState } from "react";
 
-const videoClass =
-  "absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500";
-
 export default function Home() {
   const [showPoster, setShowPoster] = useState(false);
   return (
@@ -16,7 +13,7 @@ export default function Home() {
     >
       {/* Background Video with poster */}
       <video
-        className={videoClass}
+        className={"absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500"}
         autoPlay
         loop
         muted
@@ -28,7 +25,7 @@ export default function Home() {
       </video>
       {showPoster && (
         <AdaptiveImage
-          className={videoClass}
+          className={"absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500"}
           fill
           src="/home/poster.jpg"
           alt="Video fallback"
