@@ -33,19 +33,19 @@ const SOCIAL_LINKS = [
 ];
 
 const socialIconClass = clsxMerge(
-  "flex items-center justify-center text-xl text-gray-600 hover:text-cyan-700 transition h-12 w-12"
+  "flex items-center justify-center text-xl transition h-12 w-12"
 );
 
 const astronautClass = clsxMerge(
-  "mx-auto min-w-[100px] m-4 md:m-8" // responsive margin
+  "mx-auto min-w-25 m-4 md:m-8" // responsive margin
 );
 
 const sidebarContactClass = clsxMerge(
-  "grid grid-cols-[0.75rem_1fr] gap-x-2 md:gap-x-4 text-[12px] text-gray-500 my-2 md:my-4 text-left hover:text-cyan-700 transition"
+  "grid grid-cols-[0.75rem_1fr] gap-x-2 md:gap-x-4 text-3 my-2 md:my-4 text-left"
 );
 
 const copyrightClass = clsxMerge(
-  "flex items-center justify-center gap-2 md:gap-4 text-gray-500 mt-2 md:mt-4 text-sm hover:text-cyan-700 transition"
+  "flex items-center justify-center gap-2 md:gap-4 mt-2 md:mt-4 text-sm"
 );
 
 const navBtnOpen = "top-6 left-1/2 translate-x-2 sm:left-60";
@@ -73,7 +73,7 @@ export default function NavBar() {
           <Sidebar
             aria-label="Sidebar with multi-level dropdown example"
             className={clsxMerge(
-              "[&>div]:bg-transparent [&>div]:p-0 text-center w-full"
+              "[&>div]:p-0 text-center w-full"
             )}
           >
             {/* delegate click handling: if any anchor inside is clicked, close drawer */}
@@ -93,7 +93,7 @@ export default function NavBar() {
                   {NAV_ITEMS.map((link, index) => (
                     <SidebarItem id={link.id} key={link.id} href={link.href}>
                       {/* keep content simple; the anchor is rendered by SidebarItem */}
-                      <span className="flex flex-row items-center gap-2 hover:text-cyan-700 transition">
+                      <span className="flex flex-row items-center gap-2 ">
                         <NavIcon className="w-4 h-4" path={link.href} />
                         {link.label}
                       </span>

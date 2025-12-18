@@ -6,40 +6,33 @@ export type HamburgerBtnProp = {
   id?: string;
   className?: string;
   active: boolean;
-  mode?: "light" | "transparent";
+  children?: React.ReactNode;
   onClick: () => void;
 };
-
-const btnSize = "w-12 h-12"; // 48px, multiple of 4
-const defaultClasses = clsxMerge(
-  "group inline-flex",
-  btnSize,
-  "text-slate-800 text-center items-center justify-center rounded transition",
-  "aria-pressed:border-none aria-pressed:text-white aria-pressed:bg-transparent"
-);
 
 export default function HamburgerBtn({
   id,
   className,
   active,
+  children,
   onClick,
-  mode = "light",
 }: HamburgerBtnProp) {
-  const modeClasses =
-    mode === "light"
-      ? defaultClasses
-      : clsxMerge(defaultClasses, "hover:bg-transparent");
-
   return (
     <Button
       id={id}
-      size="xs"
       color="light"
-      className={clsxMerge(modeClasses, className)}
+      size="xs"
+      className={clsxMerge(
+        "group inline-flex",
+        "w-12 h-12",
+        "text-center items-center justify-center rounded transition",
+        className
+      )}
       aria-pressed={active ? "true" : "false"}
       onClick={onClick}
     >
-      <HamburgerIcon active={active} mode={mode} />
+      <HamburgerIcon active={active} />
+      {children}
     </Button>
   );
 }
