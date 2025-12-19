@@ -9,6 +9,7 @@ import {
   VideoPlaceholder,
   TestimonialPlaceholder,
 } from "@/app/components/skeletons";
+import Loading from "@/app/components/skeletons/loading";
 
 export default function SkeletonDemo() {
   return (
@@ -18,6 +19,13 @@ export default function SkeletonDemo() {
           Basic Skeletons
         </h2>
         <div className="space-y-4">
+          <div>
+            <p className="text-sm mb-2 text-gray-600 dark:text-gray-400">
+              Default Loading
+            </p>
+            <Loading className="scale-50"/>
+            <Loading className="scale-100" />
+          </div>
           <div>
             <p className="text-sm mb-2 text-gray-600 dark:text-gray-400">
               Default Skeleton
