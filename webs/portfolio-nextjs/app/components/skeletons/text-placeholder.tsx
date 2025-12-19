@@ -19,6 +19,7 @@ export default function TextPlaceholder({ className, lines = 6 }: TextPlaceholde
     <div
       role="status"
       className={clsxMerge("space-y-2.5 animate-pulse max-w-lg", className)}
+      aria-label="Loading text"
     >
       {Array.from({ length: lines }).map((_, lineIndex) => {
         const config = lineConfigs[lineIndex % lineConfigs.length];

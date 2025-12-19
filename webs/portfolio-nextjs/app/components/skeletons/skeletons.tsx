@@ -21,7 +21,7 @@ export function Skeleton({ className, variant = "default" }: SkeletonProps) {
         className
       )}
       role="status"
-      aria-label="Loading"
+      aria-label="Loading skeleton"
     >
       <span className="sr-only">Loading...</span>
     </div>
@@ -38,6 +38,7 @@ export function SkeletonText({ className, lines = 5 }: SkeletonTextProps) {
     <div
       role="status"
       className={clsxMerge("max-w-sm animate-pulse", className)}
+      aria-label="Loading text skeleton"
     >
       <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-48 mb-4"></div>
       {Array.from({ length: lines }).map((_, index) => (
@@ -68,9 +69,10 @@ export function SkeletonCard({ className }: SkeletonCardProps) {
     <div
       role="status"
       className={clsxMerge(
-        "flex items-center justify-center h-56 max-w-sm bg-gray-300 dark:bg-gray-700 rounded-base animate-pulse",
+        "flex items-center justify-center h-56 max-w-sm bg-gray-300 dark:bg-gray-700 rounded-base animate-pulse text-gray-400 dark:text-gray-600",
         className
       )}
+      aria-label="Loading card skeleton"
     >
       <svg
         className={clsxMerge("w-11 h-11")}

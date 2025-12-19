@@ -28,7 +28,7 @@ export default function ImagePlaceholder({
     >
       <div
         className={clsxMerge(
-          "flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-base",
+          "flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-base text-gray-400 dark:text-gray-600",
           orientation === "horizontal" ? "w-full h-48 sm:w-96" : "w-full h-48",
           imageClassName
         )}

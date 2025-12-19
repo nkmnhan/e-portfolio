@@ -22,7 +22,7 @@ export default function CardPlaceholder({
       {/* Image placeholder */}
       <div
         className={clsxMerge(
-          "flex items-center justify-center max-w-sm bg-gray-300 dark:bg-gray-700 rounded-base animate-pulse mb-4 sm:mb-6",
+          "flex items-center justify-center max-w-sm bg-gray-300 dark:bg-gray-700 rounded-base animate-pulse mb-4 sm:mb-6 text-gray-400 dark:text-gray-600",
           imageHeight
         )}
       >
@@ -46,7 +46,7 @@ export default function CardPlaceholder({
       </div>
 
       {/* Text lines */}
-      <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-48 mb-4"></div>
+      <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-6/10 mb-4"></div>
       <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full mb-2.5"></div>
       <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full mb-2.5"></div>
       <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full"></div>
@@ -55,7 +55,7 @@ export default function CardPlaceholder({
       {withAvatar && (
         <div className="flex items-center mt-4">
           <svg
-            className="w-8 h-8 text-gray-400 dark:text-gray-600 me-3"
+            className="w-8 h-8 text-gray-400 dark:text-gray-500 me-3"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -71,9 +71,9 @@ export default function CardPlaceholder({
               d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
             />
           </svg>
-          <div>
-            <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-32 mb-2"></div>
-            <div className="w-48 h-2 bg-gray-300 dark:bg-gray-700 rounded-full"></div>
+          <div className="w-full">
+            <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-6/10 mb-2"></div>
+            <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full w-8/10"></div>
           </div>
         </div>
       )}

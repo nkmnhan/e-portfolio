@@ -9,9 +9,10 @@ export default function VideoPlaceholder({ className }: VideoPlaceholderProps) {
     <div
       role="status"
       className={clsxMerge(
-        "flex items-center justify-center h-56 max-w-sm bg-gray-300 dark:bg-gray-700 rounded-base animate-pulse",
+        "flex items-center justify-center h-56 max-w-sm bg-gray-300 dark:bg-gray-700 rounded-base animate-pulse text-gray-400 dark:text-gray-600",
         className
       )}
+      aria-label="Loading video"
     >
       <svg
         className={clsxMerge("w-11 h-11")}
