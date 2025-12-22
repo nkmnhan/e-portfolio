@@ -3,6 +3,14 @@ import { SkeletonDemo } from ".";
 
 const meta: Meta = {
   title: "Components/Skeletons",
+  component: SkeletonDemo,
+  decorators: [
+    (Story) => (
+      <div className="p-18">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof SkeletonDemo>;
 
 export default meta;

@@ -25,6 +25,7 @@ import NavButton from "./nav-button";
 import { NavIcon } from "./sites";
 import AdaptiveImage from "../images/adaptive-image";
 import ThemeToggle from "../themes/theme-toggle";
+import PerformanceMonitor from "../performance-monitor";
 
 const SOCIAL_LINKS = [
   { icon: FaFacebook, url: "https://facebook.com" },
@@ -138,10 +139,6 @@ export default function NavBar() {
                     <span>2025 NKMNHAN</span>
                   </div>
                 </SidebarItemGroup>
-                <div className="h-20 relative">
-                  {/* <DarkThemeToggle className="absolute right-1 bottom-0"/> */}
-                  <ThemeToggle className="absolute right-1 bottom-0" size="0.7rem" />
-                </div>
               </SidebarItems>
             </div>
           </Sidebar>

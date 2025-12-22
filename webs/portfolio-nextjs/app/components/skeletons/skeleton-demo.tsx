@@ -9,7 +9,7 @@ import {
   VideoPlaceholder,
   TestimonialPlaceholder,
 } from "@/app/components/skeletons";
-import Loading from "@/app/components/skeletons/loading";
+import Loading from "@/app/components/skeletons/fire-ball";
 
 export default function SkeletonDemo() {
   return (

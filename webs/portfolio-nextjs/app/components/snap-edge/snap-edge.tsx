@@ -37,21 +37,33 @@ const getContainerSize = (
   return { width: 0, height: 0 };
 };
 
-const storePosition = (id: string, position: { horizontal: string; vertical: string }) => {
+const storePosition = (
+  id: string,
+  position: { horizontal: string; vertical: string }
+) => {
   if (typeof window !== "undefined" && id) {
     try {
-      window.localStorage.setItem(`snapedge-pos-${id}`, JSON.stringify(position));
+      window.localStorage.setItem(
+        `snapedge-pos-${id}`,
+        JSON.stringify(position)
+      );
     } catch {}
   }
 };
 
-const getStoredPosition = (id: string): { horizontal: string; vertical: string } | null => {
+const getStoredPosition = (
+  id: string
+): { horizontal: string; vertical: string } | null => {
   if (typeof window !== "undefined" && id) {
     const stored = window.localStorage.getItem(`snapedge-pos-${id}`);
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        if (parsed && typeof parsed.horizontal === 'string' && typeof parsed.vertical === 'string') {
+        if (
+          parsed &&
+          typeof parsed.horizontal === "string" &&
+          typeof parsed.vertical === "string"
+        ) {
           return parsed;
         }
       } catch {}
@@ -75,7 +87,6 @@ export default function SnapEdge({
 }: SnapEdgeProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [isBouncing, setIsBouncing] = useState(false);
   const constraintsRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
 
@@ -85,10 +96,6 @@ export default function SnapEdge({
 
   useEffect(() => {
     setIsMounted(true);
-    setIsBouncing(true);
-    const bounceTimeout = setTimeout(() => {
-      setIsBouncing(false);
-    }, 300);
 
     // Set initial position, restoring from localStorage if available
     const updateInitialPosition = () => {
@@ -122,7 +129,6 @@ export default function SnapEdge({
     window.addEventListener("resize", updateInitialPosition);
     return () => {
       window.removeEventListener("resize", updateInitialPosition);
-      clearTimeout(bounceTimeout);
     };
   }, [x, y, size, defaultHorizontal, defaultVertical, useParent, id]);
 
@@ -173,8 +179,10 @@ export default function SnapEdge({
     }
 
     // Determine stored horizontal and vertical
-    const storedHorizontal = buttonCenterX < containerWidth / 2 ? "left" : "right";
-    const storedVertical = buttonCenterY < containerHeight / 2 ? "top" : "bottom";
+    const storedHorizontal =
+      buttonCenterX < containerWidth / 2 ? "left" : "right";
+    const storedVertical =
+      buttonCenterY < containerHeight / 2 ? "top" : "bottom";
 
     // Animate to target position with spring
     animate(x, targetX, {
@@ -189,7 +197,10 @@ export default function SnapEdge({
     });
 
     // Store the position in localStorage
-    storePosition(id, { horizontal: storedHorizontal, vertical: storedVertical });
+    storePosition(id, {
+      horizontal: storedHorizontal,
+      vertical: storedVertical,
+    });
 
     if (onDragEnd) {
       onDragEnd();
@@ -239,22 +250,6 @@ export default function SnapEdge({
             isDragging && "cursor-grabbing",
             className
           )}
-          animate={{
-            scale: isDragging ? 1.1 : isBouncing ? [1, 1.2, 0.9, 1.1, 1] : 1,
-          }}
-          transition={{
-            scale: isBouncing
-              ? {
-                  duration: 0.3,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                }
-              : {
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 25,
-                },
-          }}
         >
           {children}
         </motion.div>
@@ -292,22 +287,6 @@ export default function SnapEdge({
           isDragging && "cursor-grabbing",
           className
         )}
-        animate={{
-          scale: isDragging ? 1.1 : isBouncing ? [1, 1.2, 0.9, 1.1, 1] : 1,
-        }}
-        transition={{
-          scale: isBouncing
-            ? {
-                duration: 0.6,
-                repeat: Infinity,
-                repeatType: "loop",
-              }
-            : {
-                type: "spring",
-                stiffness: 400,
-                damping: 25,
-              },
-        }}
       >
         {children}
       </motion.div>

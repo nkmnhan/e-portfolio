@@ -1,13 +1,13 @@
 "use client";
 
-import { Card, Popover } from "flowbite-react";
+import { Popover } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
-import HamburgerIcon from "../hamburger-btn/hamburger-icon";
 import { clsxMerge } from "../themes/utils";
 import Link from "next/dist/client/link";
 import { PLAY_GROUND_ITEMS } from "./sites";
 import AdaptiveImage from "../images/adaptive-image";
 import { SnapEdge } from "../snap-edge";
+import { FireBall } from "../skeletons";
 
 export default function AirNav() {
   const [menuTrigger, setMenuTrigger] = useState<"click" | "hover" | undefined>(
@@ -99,7 +99,7 @@ export default function AirNav() {
             </div>
           }
         >
-          <div
+          {/* <div
             className={clsxMerge(
               "h-12 w-12 rounded p-3 shadow-lg border border-gray-300 theme-bg",
               menuTrigger !== "click" && "animate-bounce"
@@ -115,6 +115,15 @@ export default function AirNav() {
               active={isMenuOpen}
               className="pointer-events-none"
             />
+          </div> */}
+          <div
+            className={clsxMerge(
+              "flex items-center justify-center h-12 w-12 rounded-full shadow-lg border border-gray-300 theme-bg overflow-visible",
+              "",
+              menuTrigger !== "click" && "animate-bounce"
+            )}
+          >
+            <FireBall size={0.5} />
           </div>
         </Popover>
       </SnapEdge>
