@@ -58,6 +58,7 @@ export default function AirNav() {
         }}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         onDragEnd={() => setMenuTrigger("click")}
+        useParent={true}
       >
         <Popover
           open={isMenuOpen}
