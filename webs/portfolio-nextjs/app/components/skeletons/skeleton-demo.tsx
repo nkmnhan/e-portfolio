@@ -9,7 +9,7 @@ import {
   VideoPlaceholder,
   TestimonialPlaceholder,
 } from "@/app/components/skeletons";
-import Loading from "@/app/components/skeletons/fire-ball";
+import { FireBall } from "@/app/components/skeletons";
 
 export default function SkeletonDemo() {
   return (
@@ -21,10 +21,12 @@ export default function SkeletonDemo() {
         <div className="space-y-4">
           <div>
             <p className="text-sm mb-2 text-gray-600 dark:text-gray-400">
-              Default Loading
+              Fire Ball Loaders
             </p>
-            <Loading size={0.5}/>
-            <Loading size={1}/>
+            <div className="flex space-x-8">
+              <FireBall size={0.5} />
+              <FireBall size={1} />
+            </div>
           </div>
           <div>
             <p className="text-sm mb-2 text-gray-600 dark:text-gray-400">

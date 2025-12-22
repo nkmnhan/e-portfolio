@@ -24,8 +24,6 @@ import { NAV_ITEMS } from "./sites";
 import NavButton from "./nav-button";
 import { NavIcon } from "./sites";
 import AdaptiveImage from "../images/adaptive-image";
-import ThemeToggle from "../themes/theme-toggle";
-import PerformanceMonitor from "../performance-monitor";
 
 const SOCIAL_LINKS = [
   { icon: FaFacebook, url: "https://facebook.com" },
@@ -36,6 +34,15 @@ const SOCIAL_LINKS = [
 
 export default function NavBar() {
   const [active, setActive] = useState(false);
+
+  const handleClick = useCallback((e: React.MouseEvent) => {
+    const el = e.target as HTMLElement | null;
+    if (!el) return;
+    // if a link (anchor) was clicked anywhere inside the sidebar, close drawer
+    if (el.closest && el.closest("a")) {
+      setActive(false);
+    }
+  }, []);
 
   return (
     <>
@@ -64,14 +71,7 @@ export default function NavBar() {
             {/* delegate click handling: if any anchor inside is clicked, close drawer */}
             <div
               className="flex h-full flex-col justify-between py-2 md:py-4 overflow-y-auto hide-scrollbar"
-              onClick={useCallback((e: React.MouseEvent) => {
-                const el = e.target as HTMLElement | null;
-                if (!el) return;
-                // if a link (anchor) was clicked anywhere inside the sidebar, close drawer
-                if (el.closest && el.closest("a")) {
-                  setActive(false);
-                }
-              }, [])}
+              onClick={handleClick}
             >
               <SidebarItems>
                 <SidebarItemGroup>
