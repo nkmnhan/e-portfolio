@@ -3,6 +3,12 @@
 import { useEffect, useState } from "react";
 import { onCLS, onINP, onFCP, onLCP, onTTFB, Metric } from "web-vitals";
 import { IoIosSpeedometer } from "react-icons/io";
+import { clsxMerge } from "./themes";
+import { Popover } from "flowbite-react/components/Popover";
+
+interface PerformanceMonitorProps {
+  className?: string;
+}
 
 interface PerformanceMetrics {
   cls?: number;
@@ -12,7 +18,9 @@ interface PerformanceMetrics {
   ttfb?: number;
 }
 
-export default function PerformanceMonitor() {
+export default function PerformanceMonitor({
+  className,
+}: PerformanceMonitorProps) {
   const [metrics, setMetrics] = useState<PerformanceMetrics>({});
   const [isVisible, setIsVisible] = useState(false);
 
@@ -67,29 +75,19 @@ export default function PerformanceMonitor() {
           ? "text-yellow-400"
           : "text-red-400";
       default:
-        return "text-white";
+        return "theme-text";
     }
   };
 
   return (
-    <>
-      {/* Toggle Button */}
-      <button
-        onClick={() => setIsVisible(!isVisible)}
-        className="fixed bottom-4 right-4 bg-black/90 backdrop-blur-sm text-white text-xs p-4 rounded-lg font-mono z-50 max-w-sm border border-gray-700"
-        title="Toggle Performance Monitor"
-      >
-        <IoIosSpeedometer />
-      </button>
-
-      {/* Metrics Panel */}
-      {isVisible && (
-        <div className="fixed bottom-16 right-4 bg-black/90 backdrop-blur-sm text-white text-xs p-4 rounded-lg font-mono z-50 max-w-sm border border-gray-700">
+    <Popover
+      content={
+        <div className="backdrop-blur-sm text-xs p-4 rounded-lg font-mono max-w-sm border border-gray-700">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-bold text-sm">Performance Metrics</h3>
             <button
               onClick={() => setIsVisible(false)}
-              className="text-gray-400 hover:text-white text-lg leading-none"
+              className="text-gray-400 text-lg leading-none"
             >
               ×
             </button>
@@ -97,42 +95,42 @@ export default function PerformanceMonitor() {
 
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-gray-300">CLS:</span>
+              <span>CLS:</span>
               <span className={getScoreColor("cls", metrics.cls)}>
                 {formatMetric(metrics.cls, "")}
               </span>
             </div>
 
             <div className="flex justify-between items-center">
-              <span className="text-gray-300">INP:</span>
+              <span>INP:</span>
               <span className={getScoreColor("inp", metrics.inp)}>
                 {formatMetric(metrics.inp, "ms")}
               </span>
             </div>
 
             <div className="flex justify-between items-center">
-              <span className="text-gray-300">FCP:</span>
+              <span>FCP:</span>
               <span className={getScoreColor("fcp", metrics.fcp)}>
                 {formatMetric(metrics.fcp, "ms")}
               </span>
             </div>
 
             <div className="flex justify-between items-center">
-              <span className="text-gray-300">LCP:</span>
+              <span>LCP:</span>
               <span className={getScoreColor("lcp", metrics.lcp)}>
                 {formatMetric(metrics.lcp, "ms")}
               </span>
             </div>
 
             <div className="flex justify-between items-center">
-              <span className="text-gray-300">TTFB:</span>
+              <span>TTFB:</span>
               <span className={getScoreColor("ttfb", metrics.ttfb)}>
                 {formatMetric(metrics.ttfb, "ms")}
               </span>
             </div>
           </div>
 
-          <div className="mt-3 pt-2 border-t border-gray-600 text-xs text-gray-400">
+          <div className="mt-3 pt-2 border-t border-gray-600 text-xs">
             <div className="flex gap-2">
               <span className="flex items-center gap-1">
                 <span className="w-2 h-2 bg-green-400 rounded-full"></span>
@@ -149,7 +147,19 @@ export default function PerformanceMonitor() {
             </div>
           </div>
         </div>
-      )}
-    </>
+      }
+    >
+      {/* Toggle Button */}
+      <button
+        onClick={() => setIsVisible(!isVisible)}
+        className={clsxMerge(
+          "backdrop-blur-sm text-xs p-4 rounded-lg font-mono z-50 max-w-sm border border-gray-700",
+          className
+        )}
+        title="Toggle Performance Monitor"
+      >
+        <IoIosSpeedometer />
+      </button>
+    </Popover>
   );
 }

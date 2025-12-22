@@ -1,25 +1,19 @@
 "use client";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { bgPrimary } from "@/app/components/themes/default-bg";
-import { textWhite } from "@/app/components/themes/default-text";
 import AdaptiveImage from "./components/images/adaptive-image";
 import { useState } from "react";
-
-const videoClass =
-  "absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500";
 
 export default function Home() {
   const [showPoster, setShowPoster] = useState(false);
   return (
     <div
       className={clsxMerge(
-        "relative flex flex-col min-h-screen items-center justify-center overflow-hidden",
-        bgPrimary
+        "relative flex flex-col min-h-screen items-center justify-center overflow-hidden"
       )}
     >
       {/* Background Video with poster */}
       <video
-        className={videoClass}
+        className={"absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500"}
         autoPlay
         loop
         muted
@@ -31,7 +25,7 @@ export default function Home() {
       </video>
       {showPoster && (
         <AdaptiveImage
-          className={videoClass}
+          className={"absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500"}
           fill
           src="/home/poster.jpg"
           alt="Video fallback"
@@ -47,9 +41,9 @@ export default function Home() {
         }}
       />
       <main className="relative z-20 flex flex-col items-center">
-        <div className="h-20 w-20 md:h-24 md:w-24 lg:h-28 lg:w-28 relative rounded-lg bg-[#00000033]">
+        <div className="h-20 w-20 md:h-24 md:w-24 lg:h-28 lg:w-28 relative rounded-lg bg-[#00000033] dark:bg-[#ffffffd7]">
           <AdaptiveImage
-            className="invert object-cover"
+            className="invert dark:invert-0 object-cover"
             src="/logo.svg"
             alt="Github Porfolio QR Code"
             fill
@@ -58,8 +52,7 @@ export default function Home() {
         </div>
         <h1
           className={clsxMerge(
-            "font-semibold text-center text-2xl md:text-4xl mt-1",
-            textWhite
+            "font-semibold text-center text-2xl md:text-4xl mt-1"
           )}
         >
           NKM-NHAN

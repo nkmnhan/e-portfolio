@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import useColorThief, { ColorThiefOutput } from "use-color-thief";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { textWhite } from "@/app/components/themes/default-text";
 import AdaptiveImage from "./adaptive-image";
 
 interface ImageCardProps {
@@ -14,15 +13,6 @@ interface ImageCardProps {
   description?: string;
   forceHover?: boolean;
 }
-
-const posterClass = "object-cover rounded shadow max-w-full";
-
-const descPopupClass = clsxMerge(
-  "absolute bottom-0 left-0 w-full p-2 md:p-4 rounded-b transition-all duration-200 z-10",
-  "h-24 md:h-32",
-  "backdrop-blur-sm",
-  textWhite
-);
 
 export default function ImageCard({
   src,
@@ -80,7 +70,7 @@ export default function ImageCard({
         alt={alt}
         fill
         className={clsxMerge(
-          posterClass,
+          "object-cover rounded shadow max-w-full",
           "group-hover:rounded-b-none",
           forceHover && "rounded-b-none"
         )}
@@ -89,7 +79,10 @@ export default function ImageCard({
       {/* Description Popup */}
       <div
         className={clsxMerge(
-          descPopupClass,
+          "absolute bottom-0 left-0 w-full p-2 md:p-4 rounded-b transition-all duration-200 z-10",
+          "h-24 md:h-32",
+          "backdrop-blur-sm",
+          "text-white",
           "opacity-0",
           forceHover
             ? showDesc

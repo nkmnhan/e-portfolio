@@ -2,30 +2,15 @@
 import Link from "next/link";
 import { PLAY_GROUND_ITEMS } from "@/app/components/nav-bar/sites";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { bgPrimary } from "@/app/components/themes/default-bg";
-import {
-  textPrimary,
-  textSecondary,
-} from "@/app/components/themes/default-text";
 import { Reveal } from "../components/transitions";
-
-const cardDisplay =
-  "shadow block no-underline p-4 sm:p-6 border border-gray-200 dark:border-gray-700 rounded-xl min-h-30 sm:min-h-h35 max-w-md";
-const cardAnimation =
-  "transition-transform transition-shadow transition-colors duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400/30 hover:shadow-xl hover:scale-105 hover:-translate-y-1 hover:bg-indigo-50 hover:border-indigo-300 active:scale-98";
 
 export default function PlaygroundPage() {
   return (
     <div className="pt-20 sm:pt-32 px-4 sm:px-8 max-w-7xl mx-auto">
-      <h1
-        className={clsxMerge(
-          "text-3xl sm:text-4xl font-bold mb-4",
-          textPrimary
-        )}
-      >
+      <h1 className={clsxMerge("text-3xl sm:text-4xl font-bold mb-4")}>
         Component Testing
       </h1>
-      <p className={clsxMerge("text-base sm:text-lg mb-8", textSecondary)}>
+      <p className={clsxMerge("text-base sm:text-lg mb-8")}>
         Open the drawer to navigate between different components
       </p>
 
@@ -35,26 +20,21 @@ export default function PlaygroundPage() {
             <Link
               href={component.href}
               className={clsxMerge(
-                bgPrimary,
-                cardDisplay,
-                cardAnimation
+                "card-lift-on-hover",
+                "p-4 sm:p-6 min-h-25 sm:min-h-35 max-w-md",
+                "border border-gray-200 dark:border-gray-700 hover:border-indigo-300",
+                "shadow block no-underline rounded-xl"
               )}
             >
               <div className="card-content h-full flex flex-col justify-between">
                 <h3
                   className={clsxMerge(
-                    "text-xl sm:text-2xl font-semibold mb-2",
-                    textPrimary
+                    "text-xl sm:text-2xl font-semibold mb-2"
                   )}
                 >
                   {component.label}
                 </h3>
-                <p
-                  className={clsxMerge(
-                    "mt-2 text-sm sm:text-base",
-                    textSecondary
-                  )}
-                >
+                <p className={clsxMerge("mt-2 text-sm sm:text-base")}>
                   Click to view component
                 </p>
               </div>

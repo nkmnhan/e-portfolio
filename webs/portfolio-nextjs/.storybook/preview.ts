@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/nextjs-vite'
+import { withThemeByClassName } from '@storybook/addon-themes';
 
 // Import global CSS styles for Storybook
 // Same as in the main application without unsupported imports
@@ -15,6 +16,15 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    withThemeByClassName({
+      themes: {
+        light: 'light',
+        dark: 'dark',
+      },
+      defaultTheme: 'light',
+    }),
+  ],
 };
 
 export default preview;

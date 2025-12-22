@@ -1,5 +1,4 @@
 import { clsxMerge } from "@/app/components/themes/utils";
-import { textMuted } from "../themes/default-text";
 
 interface ImagePlaceholderProps {
   className?: string;
@@ -16,25 +15,26 @@ export default function ImagePlaceholder({
   textClassName,
   orientation = "horizontal",
 }: ImagePlaceholderProps) {
-  const containerClasses = clsxMerge(
-    "animate-pulse",
-    orientation === "horizontal"
-      ? "space-y-8 md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
-      : "space-y-4",
-    className
-  );
-
-  const imageClasses = clsxMerge(
-    "flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-base",
-    orientation === "horizontal" ? "w-full h-48 sm:w-96" : "w-full h-48",
-    imageClassName
-  );
-
   return (
-    <div role="status" className={containerClasses}>
-      <div className={imageClasses}>
+    <div
+      role="status"
+      className={clsxMerge(
+        "animate-pulse",
+        orientation === "horizontal"
+          ? "space-y-8 md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
+          : "space-y-4",
+        className
+      )}
+    >
+      <div
+        className={clsxMerge(
+          "flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-base text-gray-400 dark:text-gray-600",
+          orientation === "horizontal" ? "w-full h-48 sm:w-96" : "w-full h-48",
+          imageClassName
+        )}
+      >
         <svg
-          className={clsxMerge("w-11 h-11", textMuted)}
+          className={clsxMerge("w-11 h-11")}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           width="24"

@@ -9,6 +9,7 @@ import {
   VideoPlaceholder,
   TestimonialPlaceholder,
 } from "@/app/components/skeletons";
+import { FireBall } from "@/app/components/skeletons";
 
 export default function SkeletonDemo() {
   return (
@@ -18,6 +19,15 @@ export default function SkeletonDemo() {
           Basic Skeletons
         </h2>
         <div className="space-y-4">
+          <div>
+            <p className="text-sm mb-2 text-gray-600 dark:text-gray-400">
+              Fire Ball Loaders
+            </p>
+            <div className="flex space-x-8">
+              <FireBall size={0.5} />
+              <FireBall size={1} />
+            </div>
+          </div>
           <div>
             <p className="text-sm mb-2 text-gray-600 dark:text-gray-400">
               Default Skeleton

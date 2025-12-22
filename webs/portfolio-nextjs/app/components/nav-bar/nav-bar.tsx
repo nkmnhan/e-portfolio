@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  DarkThemeToggle,
   Drawer,
   DrawerItems,
   Sidebar,
@@ -19,46 +20,37 @@ import {
   FaAddressCard,
 } from "react-icons/fa";
 import { clsxMerge } from "@/app/components/themes/utils";
-import { bgPrimary } from "@/app/components/themes/default-bg";
 import { NAV_ITEMS } from "./sites";
 import NavButton from "./nav-button";
 import { NavIcon } from "./sites";
 import AdaptiveImage from "../images/adaptive-image";
 
 const SOCIAL_LINKS = [
-  { icon: FaFacebook, url: "https://facebook.com" },
-  { icon: FaInstagram, url: "https://instagram.com" },
-  { icon: FaYoutube, url: "https://youtube.com" },
-  { icon: FaEnvelope, url: "mailto:your@email.com" },
+  { icon: FaFacebook, url: "https://facebook.com", label: "Facebook" },
+  { icon: FaInstagram, url: "https://instagram.com", label: "Instagram" },
+  { icon: FaYoutube, url: "https://youtube.com", label: "YouTube" },
+  { icon: FaEnvelope, url: "mailto:nkmnhan@gmail.com", label: "Email" },
 ];
-
-const socialIconClass = clsxMerge(
-  "flex items-center justify-center text-xl text-gray-600 hover:text-cyan-700 transition h-12 w-12"
-);
-
-const astronautClass = clsxMerge(
-  "mx-auto min-w-[100px] m-4 md:m-8" // responsive margin
-);
-
-const sidebarContactClass = clsxMerge(
-  "grid grid-cols-[0.75rem_1fr] gap-x-2 md:gap-x-4 text-[12px] text-gray-500 my-2 md:my-4 text-left hover:text-cyan-700 transition"
-);
-
-const copyrightClass = clsxMerge(
-  "flex items-center justify-center gap-2 md:gap-4 text-gray-500 mt-2 md:mt-4 text-sm hover:text-cyan-700 transition"
-);
-
-const navBtnOpen = "top-6 left-1/2 translate-x-2 sm:left-60";
-const navBtnClosed = "top-6 left-6";
 
 export default function NavBar() {
   const [active, setActive] = useState(false);
+
+  const handleClick = useCallback((e: React.MouseEvent) => {
+    const el = e.target as HTMLElement | null;
+    if (!el) return;
+    // if a link (anchor) was clicked anywhere inside the sidebar, close drawer
+    if (el.closest && el.closest("a")) {
+      setActive(false);
+    }
+  }, []);
 
   return (
     <>
       {/* Nav Button */}
       <NavButton
-        className={clsxMerge(active ? navBtnOpen : navBtnClosed)}
+        className={clsxMerge(
+          active ? "top-6 left-1/2 translate-x-2 sm:left-60" : "top-6 left-6"
+        )}
         active={active}
         onClick={() => setActive(!active)}
       />
@@ -67,7 +59,7 @@ export default function NavBar() {
         id="drawer"
         open={active}
         onClose={() => setActive(!active)}
-        className={clsxMerge("w-1/2 sm:w-60", bgPrimary)}
+        className={clsxMerge("w-1/2 sm:w-60")}
       >
         <DrawerItems>
           <Sidebar
@@ -79,21 +71,14 @@ export default function NavBar() {
             {/* delegate click handling: if any anchor inside is clicked, close drawer */}
             <div
               className="flex h-full flex-col justify-between py-2 md:py-4 overflow-y-auto hide-scrollbar"
-              onClick={useCallback((e: React.MouseEvent) => {
-                const el = e.target as HTMLElement | null;
-                if (!el) return;
-                // if a link (anchor) was clicked anywhere inside the sidebar, close drawer
-                if (el.closest && el.closest("a")) {
-                  setActive(false);
-                }
-              }, [])}
+              onClick={handleClick}
             >
               <SidebarItems>
                 <SidebarItemGroup>
                   {NAV_ITEMS.map((link, index) => (
                     <SidebarItem id={link.id} key={link.id} href={link.href}>
                       {/* keep content simple; the anchor is rendered by SidebarItem */}
-                      <span className="flex flex-row items-center gap-2 hover:text-cyan-700 transition">
+                      <span className="flex flex-row items-center gap-2 ">
                         <NavIcon className="w-4 h-4" path={link.href} />
                         {link.label}
                       </span>
@@ -107,21 +92,26 @@ export default function NavBar() {
                       <AdaptiveImage
                         src="/astronaut.png"
                         alt="Astronaut"
-                        className={astronautClass}
+                        className="mx-auto min-w-25 m-4 md:m-8"
                         width={150}
                         height={100}
                       />
                     </span>
                   </div>
                   {/* Social icons row */}
-                  <div className="flex justify-center gap-2 md:gap-4 my-2 md:my-4">
-                    {SOCIAL_LINKS.map(({ icon: Icon, url }) => (
+                  <div
+                    className={clsxMerge(
+                      "flex justify-center gap-2 md:gap-4 my-2 md:my-4"
+                    )}
+                  >
+                    {SOCIAL_LINKS.map(({ icon: Icon, url, label }) => (
                       <a
                         key={url}
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={socialIconClass}
+                        aria-label={label}
+                        className="flex items-center justify-center text-xl transition h-12 w-12"
                         style={{ position: "relative" }}
                       >
                         <span className="hover:animate-bounce w-full h-full flex items-center justify-center">
@@ -132,20 +122,20 @@ export default function NavBar() {
                   </div>
                 </SidebarItemGroup>
                 <SidebarItemGroup>
-                  <div className={sidebarContactClass}>
-                    <FaEnvelope className="w-full h-4 mt-1" />
-                    <span className="uppercase">nkmnhan@gmail.com</span>
-                    <FaPhone className="w-full h-4 mt-1" />
-                    <span className="uppercase">+84 978 00 43 19</span>
-                    <FaAddressCard className="w-full h-4 self-start mt-1" />
-                    <span className="uppercase">
+                  <div className="grid grid-cols-[0.75rem_1fr] gap-x-2 md:gap-x-4 my-2 md:my-4 text-left uppercase text-xs">
+                    <FaEnvelope className="w-full h-4" />
+                    <span>nkmnhan@gmail.com</span>
+                    <FaPhone className="w-full h-4" />
+                    <span>+84 978 00 43 19</span>
+                    <FaAddressCard className="w-full h-4 self-start" />
+                    <span>
                       8/15 Phan Huy Ich Street, Quarter 18, Tan Son Ward, Ho Chi
                       Minh City
                     </span>
                   </div>
                 </SidebarItemGroup>
                 <SidebarItemGroup>
-                  <div className={copyrightClass}>
+                  <div className="flex items-center justify-center gap-2 md:gap-4 mt-2 md:mt-4 text-sm">
                     <FaCopyright />
                     <span>2025 NKMNHAN</span>
                   </div>

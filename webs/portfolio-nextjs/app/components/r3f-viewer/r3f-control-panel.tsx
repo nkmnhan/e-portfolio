@@ -12,11 +12,9 @@ import {
   HiChevronDown,
   HiChevronUp,
   HiQuestionMarkCircle,
-  HiVideoCamera,
   HiRefresh,
   HiLockClosed,
   HiLockOpen,
-  HiPlay,
 } from "react-icons/hi";
 import { MdRestartAlt } from "react-icons/md";
 import { MdOpenInFull, MdCloseFullscreen } from "react-icons/md";

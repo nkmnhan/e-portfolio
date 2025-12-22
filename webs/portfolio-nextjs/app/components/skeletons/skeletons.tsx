@@ -1,5 +1,4 @@
 import { clsxMerge } from "@/app/components/themes/utils";
-import { textMuted } from "../themes/default-text";
 
 interface SkeletonProps {
   className?: string;
@@ -7,8 +6,6 @@ interface SkeletonProps {
 }
 
 export function Skeleton({ className, variant = "default" }: SkeletonProps) {
-  const baseClasses = "animate-pulse bg-gray-300 dark:bg-gray-700";
-  
   const variantClasses = {
     default: "rounded-full",
     text: "rounded-full h-2",
@@ -19,12 +16,12 @@ export function Skeleton({ className, variant = "default" }: SkeletonProps) {
   return (
     <div
       className={clsxMerge(
-        baseClasses,
+        "animate-pulse bg-gray-300 dark:bg-gray-700",
         variantClasses[variant],
         className
       )}
       role="status"
-      aria-label="Loading"
+      aria-label="Loading skeleton"
     >
       <span className="sr-only">Loading...</span>
     </div>
@@ -38,18 +35,22 @@ interface SkeletonTextProps {
 
 export function SkeletonText({ className, lines = 5 }: SkeletonTextProps) {
   return (
-    <div role="status" className={clsxMerge("max-w-sm animate-pulse", className)}>
+    <div
+      role="status"
+      className={clsxMerge("max-w-sm animate-pulse", className)}
+      aria-label="Loading text skeleton"
+    >
       <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-48 mb-4"></div>
       {Array.from({ length: lines }).map((_, index) => (
         <div
           key={index}
           className={clsxMerge(
             "h-2 bg-gray-300 dark:bg-gray-700 rounded-full mb-2.5",
-            index === 0 && "max-w-[360px]",
+            index === 0 && "max-w-90",
             index === 1 && "",
-            index === 2 && "max-w-[330px]",
-            index === 3 && "max-w-[300px]",
-            index === 4 && "max-w-[360px]",
+            index === 2 && "max-w-80",
+            index === 3 && "max-w-75",
+            index === 4 && "max-w-90",
             index === lines - 1 && "mb-0"
           )}
         />
@@ -68,12 +69,13 @@ export function SkeletonCard({ className }: SkeletonCardProps) {
     <div
       role="status"
       className={clsxMerge(
-        "flex items-center justify-center h-56 max-w-sm bg-gray-300 dark:bg-gray-700 rounded-base animate-pulse",
+        "flex items-center justify-center h-56 max-w-sm bg-gray-300 dark:bg-gray-700 rounded-base animate-pulse text-gray-400 dark:text-gray-600",
         className
       )}
+      aria-label="Loading card skeleton"
     >
       <svg
-        className={clsxMerge("w-11 h-11", textMuted)}
+        className={clsxMerge("w-11 h-11")}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"

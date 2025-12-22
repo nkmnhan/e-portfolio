@@ -6,3 +6,5 @@ export { default as CardPlaceholder } from "../../components/skeletons/card-plac
 export { default as WidgetPlaceholder } from "../../components/skeletons/widget-placeholder";
 export { default as ListPlaceholder } from "../../components/skeletons/list-placeholder";
 export { default as TestimonialPlaceholder } from "../../components/skeletons/testimonial-placeholder";
+export { default as FireBall } from "./fire-ball";
+export { default as SkeletonDemo } from "../../components/skeletons/skeleton-demo";

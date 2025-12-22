@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import {
   FaApple,
   FaAndroid,
@@ -39,6 +40,17 @@ import {
 import { clsxMerge } from "@/app/components/themes/utils";
 import AdaptiveImage from "../components/images/adaptive-image";
 import { Galaxy } from "../components/galaxy";
+
+export const metadata: Metadata = {
+  title: "Clients | NKM-NHAN Portfolio",
+  description: "Trusted clients and partners of NKM-NHAN in web development and design.",
+  keywords: ["clients", "partners", "testimonials", "NKM-NHAN"],
+  openGraph: {
+    title: "NKM-NHAN's Clients",
+    description: "See who trusts NKM-NHAN for their web projects.",
+    images: ["/astronaut.png"],
+  },
+};
 
 const ICONS = [
   FaApple,

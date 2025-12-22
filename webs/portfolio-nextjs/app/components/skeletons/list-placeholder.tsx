@@ -22,9 +22,9 @@ export default function ListPlaceholder({ className, items = 5 }: ListPlaceholde
             index === 0 ? "pb-4" : "py-4"
           )}
         >
-          <div>
-            <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-24 mb-2.5"></div>
-            <div className="w-32 h-2 bg-gray-300 dark:bg-gray-700 rounded-full"></div>
+          <div className="w-7/10">
+            <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-7/10 mb-2.5"></div>
+            <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-5/10 mb-2.5"></div>
           </div>
           <div className="h-2.5 bg-gray-300 dark:bg-gray-600 rounded-full w-12"></div>
         </div>

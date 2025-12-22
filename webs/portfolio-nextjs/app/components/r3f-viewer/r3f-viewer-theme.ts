@@ -25,7 +25,7 @@ export const r3fViewerTheme: CustomFlowbiteTheme = createTheme({
       sizes: {
         sm: "h-5 w-9 min-w-9 after:left-0.5 after:top-0.5 after:h-4 after:w-4 rtl:after:right-0.5",
         md: "h-6 w-11 min-w-11 after:left-0.5 after:top-0.5 after:h-5 after:w-5 rtl:after:right-0.5",
-        lg: "h-7 w-[52px] min-w-[52px] after:left-0.5 after:top-0.5 after:h-6 after:w-6 rtl:after:right-0.5",
+        lg: "h-7 w-13 min-w-13 after:left-0.5 after:top-0.5 after:h-6 after:w-6 rtl:after:right-0.5",
       },
     },
   },

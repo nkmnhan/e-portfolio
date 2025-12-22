@@ -1,8 +1,7 @@
-import { Carousel } from "flowbite-react";
+import { Carousel, theme } from "flowbite-react";
 import { CustomFlowbiteTheme } from "flowbite-react/types";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import { clsxMerge } from "../themes/utils";
-import { textWhite } from "../themes/default-text";
 import AdaptiveImage from "../images/adaptive-image";
 
 export interface BrandGalleryItem {
@@ -36,7 +35,8 @@ const customTheme: CustomFlowbiteTheme["carousel"] = {
       on: "bg-black",
     },
     base: "w-2 h-2 rounded-full border border-black",
-    wrapper: "absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3 sm:bottom-6",
+    wrapper:
+      "absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3 sm:bottom-6",
   },
   item: {
     base: "absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2",
@@ -56,13 +56,13 @@ const customTheme: CustomFlowbiteTheme["carousel"] = {
 };
 
 export default function BrandGallery({ className, src }: BrandGalleryProps) {
-  const containerClass = clsxMerge(
-    className,
-    "w-full h-56 sm:h-72 md:h-96 lg:h-[28rem]"
-  );
-
   return (
-    <div className={containerClass}>
+    <div
+      className={clsxMerge(
+        className,
+        "w-full h-56 sm:h-72 md:h-96 lg:h-112"
+      )}
+    >
       <Carousel
         theme={customTheme}
         leftControl={
@@ -98,10 +98,12 @@ export default function BrandGallery({ className, src }: BrandGalleryProps) {
               <div
                 className={clsxMerge(
                   "absolute bottom-12 left-10 sm:left-16 p-2 sm:p-4 max-w-xs sm:max-w-md",
-                  textWhite
+                  "text-white"
                 )}
               >
-                <h4 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{item.title}</h4>
+                <h4 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">
+                  {item.title}
+                </h4>
                 <span className="text-xs sm:text-sm">{item.description}</span>
               </div>
             )}

@@ -1,9 +1,4 @@
-import {
-  FaHome,
-  FaUserAstronaut,
-} from "react-icons/fa";
-import { textWhite, textPrimary } from "../themes/default-text";
-import { clsxMerge } from "../themes/utils";
+import { FaHome, FaUserAstronaut } from "react-icons/fa";
 import { SiFurrynetwork } from "react-icons/si";
 import { PiMicrosoftOutlookLogoFill } from "react-icons/pi";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
@@ -108,26 +103,6 @@ export const NAV_ITEMS: Site[] = [
     navLabel: "Contact",
   },
 ];
-
-export const getIconClass = (
-  active: boolean,
-  path: string | undefined
-): string => {
-  switch (path) {
-    case "/":
-    case "/hello-world":
-    case "/playground/galaxy":
-      return clsxMerge("text-lg font-bold", textWhite);
-    case "/contact":
-      return active
-        ? clsxMerge("text-lg font-bold", textWhite)
-        : clsxMerge("text-lg font-bold", textPrimary);
-    default:
-      return active
-        ? clsxMerge("text-lg font-bold", textWhite)
-        : clsxMerge("text-lg font-bold", textPrimary, "dark:text-white");
-  }
-};
 
 export function NavIcon({
   className,
