@@ -3,6 +3,7 @@
 import "./theme-toggle.css";
 import { useThemeMode } from "flowbite-react";
 import { clsxMerge } from "./utils";
+import { useEffect, useState } from "react";
 export interface ThemeToggleProps {
   className?: string;
   size?: number | string;
@@ -10,8 +11,20 @@ export interface ThemeToggleProps {
 
 export default function ThemeToggle({ className, size }: ThemeToggleProps) {
   const { computedMode, setMode, toggleMode } = useThemeMode();
+  const [isMounted, setIsMounted] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const isDark = computedMode === "dark";
+  useEffect(() => {
+    setIsDarkMode(computedMode === "dark");
+  }, [computedMode]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <>
@@ -31,8 +44,8 @@ export default function ThemeToggle({ className, size }: ThemeToggleProps) {
         <input
           type="checkbox"
           className="theme-switch__checkbox"
-          checked={isDark}
-          onChange={(e) => setMode(e.target.checked ? "dark" : "light")}
+          checked={isDarkMode}
+          onChange={() => toggleMode()}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
