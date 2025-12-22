@@ -46,11 +46,11 @@ export function SkeletonText({ className, lines = 5 }: SkeletonTextProps) {
           key={index}
           className={clsxMerge(
             "h-2 bg-gray-300 dark:bg-gray-700 rounded-full mb-2.5",
-            index === 0 && "max-w-[360px]",
+            index === 0 && "max-w-90",
             index === 1 && "",
             index === 2 && "max-w-[330px]",
             index === 3 && "max-w-[300px]",
-            index === 4 && "max-w-[360px]",
+            index === 4 && "max-w-90",
             index === lines - 1 && "mb-0"
           )}
         />

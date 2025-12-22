@@ -23,8 +23,8 @@ export default function SkeletonDemo() {
             <p className="text-sm mb-2 text-gray-600 dark:text-gray-400">
               Default Loading
             </p>
-            <Loading className="scale-50"/>
-            <Loading className="scale-100" />
+            <Loading size={0.5}/>
+            <Loading size={1}/>
           </div>
           <div>
             <p className="text-sm mb-2 text-gray-600 dark:text-gray-400">

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import { clsxMerge } from "../../components/themes/utils";
 
-const SkeletonDemo = dynamic(() => import("./skeleton-demo"));
+const SkeletonDemo = dynamic(() => import("../../components/skeletons/skeleton-demo"));
 const R3fViewerDemo = dynamic(() => import("./model-viewer-demo"));
 const BrandGalleryDemo = dynamic(() => import("./brand-gallery-demo"));
 const GalaxyDemo = dynamic(() => import("./galaxy-demo"));

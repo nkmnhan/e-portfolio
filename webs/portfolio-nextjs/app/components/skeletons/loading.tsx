@@ -2,17 +2,21 @@ import { clsxMerge } from "../themes";
 import "./loading.css";
 
 export interface LoadingProps {
-  containerClassName?: string;
   className?: string;
+  size: number;
 }
 
-export default function Loading({
-  containerClassName,
-  className,
-}: LoadingProps) {
+export default function Loading({ className, size = 1 }: LoadingProps) {
   return (
-    <div className={clsxMerge("flex", containerClassName)}>
-      <div className={clsxMerge("loader", className)}>
+    <div className={clsxMerge("flex", className)}>
+      <div
+        className="loader"
+        style={
+          {
+            ["--size"]: size,
+          } as React.CSSProperties
+        }
+      >
         <svg width="100" height="100" viewBox="0 0 100 100">
           <defs>
             <mask id="clipping">

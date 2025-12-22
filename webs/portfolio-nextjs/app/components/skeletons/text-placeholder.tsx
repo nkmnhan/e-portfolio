@@ -8,11 +8,11 @@ interface TextPlaceholderProps {
 export default function TextPlaceholder({ className, lines = 6 }: TextPlaceholderProps) {
   const lineConfigs = [
     { maxWidth: "w-full", segments: ["w-32", "w-24", "w-full"] },
-    { maxWidth: "max-w-[480px]", segments: ["w-full", "w-full", "w-24"] },
-    { maxWidth: "max-w-[400px]", segments: ["w-full", "w-80", "w-full"] },
-    { maxWidth: "max-w-[480px]", segments: ["w-full", "w-full", "w-24"] },
-    { maxWidth: "max-w-[440px]", segments: ["w-32", "w-24", "w-full"] },
-    { maxWidth: "max-w-[360px]", segments: ["w-full", "w-80", "w-full"] },
+    { maxWidth: "max-w-120", segments: ["w-full", "w-full", "w-24"] },
+    { maxWidth: "max-w-100", segments: ["w-full", "w-80", "w-full"] },
+    { maxWidth: "max-w-120", segments: ["w-full", "w-full", "w-24"] },
+    { maxWidth: "max-w-110", segments: ["w-32", "w-24", "w-full"] },
+    { maxWidth: "max-w-90", segments: ["w-full", "w-80", "w-full"] },
   ];
 
   return (
