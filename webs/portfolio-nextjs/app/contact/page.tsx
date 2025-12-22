@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import {
   FaUser,
   FaEnvelope,
@@ -8,6 +9,17 @@ import {
 } from "react-icons/fa";
 import { clsxMerge } from "@/app/components/themes/utils";
 import AdaptiveImage from "../components/images/adaptive-image";
+
+export const metadata: Metadata = {
+  title: "Contact | NKM-NHAN Portfolio",
+  description: "Get in touch with NKM-NHAN for web development projects, collaborations, or inquiries.",
+  keywords: ["contact", "web developer", "hire", "NKM-NHAN"],
+  openGraph: {
+    title: "Contact NKM-NHAN",
+    description: "Reach out for your next web development project.",
+    images: ["/astronaut.png"],
+  },
+};
 
 export default function Contact() {
   return (

@@ -26,10 +26,10 @@ import { NavIcon } from "./sites";
 import AdaptiveImage from "../images/adaptive-image";
 
 const SOCIAL_LINKS = [
-  { icon: FaFacebook, url: "https://facebook.com" },
-  { icon: FaInstagram, url: "https://instagram.com" },
-  { icon: FaYoutube, url: "https://youtube.com" },
-  { icon: FaEnvelope, url: "mailto:your@email.com" },
+  { icon: FaFacebook, url: "https://facebook.com", label: "Facebook" },
+  { icon: FaInstagram, url: "https://instagram.com", label: "Instagram" },
+  { icon: FaYoutube, url: "https://youtube.com", label: "YouTube" },
+  { icon: FaEnvelope, url: "mailto:nkmnhan@gmail.com", label: "Email" },
 ];
 
 export default function NavBar() {
@@ -104,12 +104,13 @@ export default function NavBar() {
                       "flex justify-center gap-2 md:gap-4 my-2 md:my-4"
                     )}
                   >
-                    {SOCIAL_LINKS.map(({ icon: Icon, url }) => (
+                    {SOCIAL_LINKS.map(({ icon: Icon, url, label }) => (
                       <a
                         key={url}
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={label}
                         className="flex items-center justify-center text-xl transition h-12 w-12"
                         style={{ position: "relative" }}
                       >

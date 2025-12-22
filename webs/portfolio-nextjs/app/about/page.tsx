@@ -1,5 +1,17 @@
+import { Metadata } from "next";
 import { HR } from "flowbite-react";
 import AdaptiveImage from "../components/images/adaptive-image";
+
+export const metadata: Metadata = {
+  title: "About | NKM-NHAN Portfolio",
+  description: "Learn more about NKM-NHAN, a web developer and designer passionate about creating innovative digital solutions.",
+  keywords: ["about", "web developer", "designer", "NKM-NHAN"],
+  openGraph: {
+    title: "About NKM-NHAN",
+    description: "Discover the story behind NKM-NHAN's portfolio and expertise.",
+    images: ["/astronaut.png"],
+  },
+};
 
 // Types
 type Article = {
