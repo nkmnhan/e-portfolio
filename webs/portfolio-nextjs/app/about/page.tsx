@@ -5,7 +5,7 @@ import AdaptiveImage from "../components/images/adaptive-image";
 export const metadata: Metadata = {
   title: "About | Tony Nguyen Portfolio",
   description: "Learn more about Tony Nguyen (Nguyễn Khoa Minh Nhân), a Senior Software Engineer with 8+ years of experience in .NET Core, JavaScript, and microservices.",
-  keywords: ["about", "Tony Nguyen", "Nguyễn Khoa Minh Nhân", "Tony Wilson", "senior software engineer", "web developer", "designer", ".NET Core", "microservices"],
+  keywords: ["about", "Tony Nguyen", "Nguyễn Khoa Minh Nhân", "Tony Wilson", "nhan", "Nhân", "senior software engineer", "web developer", "designer", ".NET Core", "microservices"],
   openGraph: {
     title: "About Tony Nguyen",
     description: "Discover the story behind Tony Nguyen's portfolio and expertise in software engineering.",

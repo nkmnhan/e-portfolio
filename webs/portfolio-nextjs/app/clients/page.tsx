@@ -44,7 +44,7 @@ import { Galaxy } from "../components/galaxy";
 export const metadata: Metadata = {
   title: "Clients | Tony Nguyen Portfolio",
   description: "Trusted clients and partners of Tony Nguyen (Nguyễn Khoa Minh Nhân) in software engineering and web development.",
-  keywords: ["clients", "partners", "testimonials", "Tony Nguyen", "Nguyễn Khoa Minh Nhân", "Tony Wilson"],
+  keywords: ["clients", "partners", "testimonials", "Tony Nguyen", "Nguyễn Khoa Minh Nhân", "Tony Wilson", "nhan", "Nhân"],
   openGraph: {
     title: "Tony Nguyen's Clients",
     description: "See who trusts Tony Nguyen for their software projects.",

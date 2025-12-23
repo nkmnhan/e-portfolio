@@ -13,7 +13,7 @@ import AdaptiveImage from "../components/images/adaptive-image";
 export const metadata: Metadata = {
   title: "Contact | Tony Nguyen Portfolio",
   description: "Get in touch with Tony Nguyen (Nguyễn Khoa Minh Nhân) for software engineering projects, collaborations, or inquiries.",
-  keywords: ["contact", "senior software engineer", "hire", "Tony Nguyen", "Nguyễn Khoa Minh Nhân", "Tony Wilson"],
+  keywords: ["contact", "senior software engineer", "hire", "Tony Nguyen", "Nguyễn Khoa Minh Nhân", "Tony Wilson", "nhan", "Nhân"],
   openGraph: {
     title: "Contact Tony Nguyen",
     description: "Reach out for your next software development project.",

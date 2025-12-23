@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   title: "Tony Nguyen Portfolio | Senior Software Engineer",
   description:
     "Portfolio of Tony Nguyen (Nguyễn Khoa Minh Nhân), a Senior Software Engineer specializing in .NET Core, React, Next.js, and microservices architecture.",
-  keywords: ["Tony Nguyen", "Nguyễn Khoa Minh Nhân", "Tony Wilson", "Tony", "portfolio", "senior software engineer", ".NET Core", "React", "Next.js", "microservices", "cloud architecture", "web development", "UI/UX design"],
+  keywords: ["Tony Nguyen", "Nguyễn Khoa Minh Nhân", "Tony Wilson", "Tony", "nhan", "Nhân", "portfolio", "senior software engineer", ".NET Core", "React", "Next.js", "microservices", "cloud architecture", "web development", "UI/UX design"],
   authors: [{ name: "Tony Nguyen" }],
   creator: "Tony Nguyen",
   publisher: "Tony Nguyen",
