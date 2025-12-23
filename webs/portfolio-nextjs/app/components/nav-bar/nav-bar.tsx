@@ -137,7 +137,7 @@ export default function NavBar() {
                 <SidebarItemGroup>
                   <div className="flex items-center justify-center gap-2 md:gap-4 mt-2 md:mt-4 text-sm">
                     <FaCopyright />
-                    <span>2025 NKMNHAN</span>
+                    <span className="disney-font">2025 NKMNHAN</span>
                   </div>
                 </SidebarItemGroup>
               </SidebarItems>

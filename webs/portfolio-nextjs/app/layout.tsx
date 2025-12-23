@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import { NavBar, AirNav } from "./components/nav-bar";
 import { ThemeModeScript } from "flowbite-react";
@@ -13,6 +13,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const dancingScript = Dancing_Script({
+  variable: "--font-dancing-script",
   subsets: ["latin"],
 });
 
@@ -58,7 +63,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true,
@@ -115,6 +119,7 @@ export default function RootLayout({
         className={clsxMerge(
           geistSans.variable,
           geistMono.variable,
+          dancingScript.variable,
           "antialiased",
           "bg-white dark:bg-gray-800"
         )}

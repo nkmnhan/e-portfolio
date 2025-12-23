@@ -18,6 +18,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.disney-font {
+  font-family: var(--font-dancing-script), cursive;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
