@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import useColorThief, { ColorThiefOutput } from "use-color-thief";
 import { clsxMerge } from "@/app/components/themes/utils";

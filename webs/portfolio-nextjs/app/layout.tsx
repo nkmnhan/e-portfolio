@@ -127,7 +127,8 @@ export default function RootLayout({
           geistMono.variable,
           waltograph.variable,
           "antialiased",
-          "bg-white dark:bg-gray-800"
+          "bg-white dark:bg-gray-800",
+          "min-h-screen"
         )}
         suppressHydrationWarning={true}
       >
