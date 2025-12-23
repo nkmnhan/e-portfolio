@@ -25,13 +25,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://nkmnhan.com"
   ),
-  title: "Nguyễn Khoa Minh Nhân Portfolio | Senior Software Engineer",
+  title: "Tony Nguyen Portfolio | Senior Software Engineer",
   description:
-    "Portfolio of Nguyễn Khoa Minh Nhân (Tony Wilson), a Senior Software Engineer specializing in .NET Core, React, Next.js, and microservices architecture.",
-  keywords: ["Nguyễn Khoa Minh Nhân", "Nhân", "Tony Wilson", "Tony", "portfolio", "senior software engineer", ".NET Core", "React", "Next.js", "microservices", "cloud architecture", "web development", "UI/UX design"],
-  authors: [{ name: "Nguyễn Khoa Minh Nhân" }],
-  creator: "Nguyễn Khoa Minh Nhân",
-  publisher: "Nguyễn Khoa Minh Nhân",
+    "Portfolio of Tony Nguyen (Nguyễn Khoa Minh Nhân), a Senior Software Engineer specializing in .NET Core, React, Next.js, and microservices architecture.",
+  keywords: ["Tony Nguyen", "Nguyễn Khoa Minh Nhân", "Tony Wilson", "Tony", "portfolio", "senior software engineer", ".NET Core", "React", "Next.js", "microservices", "cloud architecture", "web development", "UI/UX design"],
+  authors: [{ name: "Tony Nguyen" }],
+  creator: "Tony Nguyen",
+  publisher: "Tony Nguyen",
   formatDetection: {
     email: false,
     address: false,

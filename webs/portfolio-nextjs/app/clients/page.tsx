@@ -42,12 +42,12 @@ import AdaptiveImage from "../components/images/adaptive-image";
 import { Galaxy } from "../components/galaxy";
 
 export const metadata: Metadata = {
-  title: "Clients | Nguyễn Khoa Minh Nhân Portfolio",
-  description: "Trusted clients and partners of Nguyễn Khoa Minh Nhân (Tony Wilson) in software engineering and web development.",
-  keywords: ["clients", "partners", "testimonials", "Nguyễn Khoa Minh Nhân", "Tony Wilson"],
+  title: "Clients | Tony Nguyen Portfolio",
+  description: "Trusted clients and partners of Tony Nguyen (Nguyễn Khoa Minh Nhân) in software engineering and web development.",
+  keywords: ["clients", "partners", "testimonials", "Tony Nguyen", "Nguyễn Khoa Minh Nhân", "Tony Wilson"],
   openGraph: {
-    title: "Nguyễn Khoa Minh Nhân's Clients",
-    description: "See who trusts Nguyễn Khoa Minh Nhân for their software projects.",
+    title: "Tony Nguyen's Clients",
+    description: "See who trusts Tony Nguyen for their software projects.",
     images: ["/astronaut.png"],
   },
 };
