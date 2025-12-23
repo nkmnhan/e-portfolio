@@ -78,7 +78,7 @@ export default function NavBar() {
                   {NAV_ITEMS.map((link, index) => (
                     <SidebarItem id={link.id} key={link.id} href={link.href}>
                       {/* keep content simple; the anchor is rendered by SidebarItem */}
-                      <span className="flex flex-row items-center gap-2 ">
+                      <span className="flex flex-row items-center gap-2 walt-disney text-xl pl-2">
                         <NavIcon className="w-4 h-4" path={link.href} />
                         {link.label}
                       </span>
@@ -139,6 +139,7 @@ export default function NavBar() {
                     <FaCopyright />
                     <span>2025 NKMNHAN</span>
                   </div>
+                    <h1 className="walt-disney">Tony F. Wilson</h1>
                 </SidebarItemGroup>
               </SidebarItems>
             </div>
