@@ -1,3 +1,22 @@
 [
-    "https://cdna.iconscout.com/img/life-ring.cfc2974.svg"
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed3bcb191c41dd36090_hero-11.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed366f416b50ef4198f_hero-10.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed36949fb84ec9ed360_hero-09.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed36949fbbe789ed35f_hero-08.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed37a191c368bca9158_hero-07.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed3caead8945493f05f_hero-cloud8.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed39835782b05d9c892_hero-cloud7.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed3e9b474918e176deb_hero-cloud6.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed38defc05f3ac4f408_hero-cloud5.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed3bf9aaf762de4bde4_hero-cloud4.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed336cbb3ecdd8978a8_hero-cloud3.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed3598a9cf952a5d681_hero-cloud2.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed3882c7f5fe64bf2fe_hero-cloud1.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed35158510034bf8a33_hero-06.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed36affc011b052418a_hero-05.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed36affc061a2524188_hero-04.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed37a191cf21fca9159_hero-03.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed3bcb1918d5dd3608d_hero-02.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/639d6ed3598a9c40f9a5d680_hero-01.png",
+    "https://assets.website-files.com/607bec7082b45011f6bea82e/607bec7082b4503ba4bea849_bg-footer.png"
 ]
