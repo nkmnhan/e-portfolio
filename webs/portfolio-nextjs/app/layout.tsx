@@ -85,7 +85,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/logo.svg" type="image/svg+xml" sizes="32x32" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
         <ThemeModeScript />
         <script
           type="application/ld+json"
