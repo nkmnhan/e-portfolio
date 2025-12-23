@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import { clsxMerge } from "../../components/themes/utils";
 
-const SkeletonDemo = dynamic(() => import("../../components/skeletons/skeleton-demo"));
+const SkeletonDemo = dynamic(
+  () => import("../../components/skeletons/skeleton-demo")
+);
 const R3fViewerDemo = dynamic(() => import("./model-viewer-demo"));
 const BrandGalleryDemo = dynamic(() => import("./brand-gallery-demo"));
 const GalaxyDemo = dynamic(() => import("./galaxy-demo"));
@@ -53,7 +55,12 @@ export default async function PlaygroundDetailPage({
 
   return (
     <div className={clsxMerge("p-32 min-h-screen")}>
-      <h1 className={clsxMerge("text-3xl font-bold mb-8")}>
+      <h1
+        className={clsxMerge(
+          "text-3xl font-bold mb-8",
+          component.title === "Galaxy Animation" && "text-white"
+        )}
+      >
         {component.title}
       </h1>
       {component.component}

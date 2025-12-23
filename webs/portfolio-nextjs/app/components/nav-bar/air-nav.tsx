@@ -1,13 +1,13 @@
 "use client";
 
-import { Popover } from "flowbite-react";
+import { Button, Popover } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
 import { clsxMerge } from "../themes/utils";
 import Link from "next/dist/client/link";
 import { PLAY_GROUND_ITEMS } from "./sites";
 import AdaptiveImage from "../images/adaptive-image";
 import { SnapEdge } from "../snap-edge";
-import { FireBall } from "../skeletons";
+import { IoIosShareAlt } from "react-icons/io";
 
 export default function AirNav() {
   const [menuTrigger, setMenuTrigger] = useState<"click" | "hover" | undefined>(
@@ -99,32 +99,15 @@ export default function AirNav() {
             </div>
           }
         >
-          {/* <div
-            className={clsxMerge(
-              "h-12 w-12 rounded p-3 shadow-lg border border-gray-300 theme-bg",
-              menuTrigger !== "click" && "animate-bounce"
-            )}
-          >
-            {menuTrigger !== "click" && (
-              <span className="absolute flex size-3 -top-1 -right-1">
+          <Button className="rounded-full w-12 h-12 p-3 bg-linear-to-br from-pink-500 to-orange-400 text-white hover:bg-linear-to-bl focus:ring-pink-200 dark:focus:ring-pink-800">
+            {menuTrigger === undefined && (
+              <span className="absolute flex size-3 top-0 right-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                <span className="relative inline-flex size-3 rounded-full bg-cyan-700"></span>
+                <span className="relative inline-flex size-3 rounded-full bg-sky-500"></span>
               </span>
             )}
-            <HamburgerIcon
-              active={isMenuOpen}
-              className="pointer-events-none"
-            />
-          </div> */}
-          <div
-            className={clsxMerge(
-              "flex items-center justify-center h-12 w-12 rounded-full shadow-lg border border-gray-300 theme-bg overflow-visible",
-              "",
-              menuTrigger !== "click" && "animate-bounce"
-            )}
-          >
-            <FireBall size={0.5} />
-          </div>
+            <IoIosShareAlt className="h-8 w-8" />
+          </Button>
         </Popover>
       </SnapEdge>
     </div>

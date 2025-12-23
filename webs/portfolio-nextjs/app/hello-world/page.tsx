@@ -83,7 +83,7 @@ export default function HelloWorld() {
   return (
     <div className="fixed inset-0 overflow-y-auto hide-scrollbar bg-white dark:bg-slate-900 cyan700:bg-cyan-700">
       <Galaxy className="absolute inset-0 opacity-30 dark:opacity-50 cyan700:opacity-60" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-12">
+      <div className="relative z-1 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-12">
         {/* Hero Section with Astronaut */}
         <div className="text-center mb-16">
           <div className="relative inline-block mb-8">

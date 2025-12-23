@@ -100,7 +100,7 @@ export default function Clients() {
       <Galaxy className="absolute inset-0" />
       <div
         className={clsxMerge(
-          "relative z-10 mx-auto overflow-x-hidden hide-scrollbar",
+          "relative z-1 mx-auto overflow-x-hidden hide-scrollbar",
           "max-w-[80vw] max-h-[76vh]",
           "grid grid-cols-2 gap-4 md:gap-8", // responsive gap
           "sm:grid-cols-4 md:grid-cols-8 lg:grid-cols-10",

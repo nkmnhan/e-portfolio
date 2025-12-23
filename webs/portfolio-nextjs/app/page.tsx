@@ -14,7 +14,7 @@ export default function Home() {
       {/* Background Video with poster */}
       <video
         className={
-          "absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500 pointer-events-none"
+          "absolute inset-0 w-full h-full object-cover transition-opacity duration-500 pointer-events-none"
         }
         autoPlay
         loop
@@ -28,7 +28,7 @@ export default function Home() {
       {showPoster && (
         <AdaptiveImage
           className={
-            "absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500"
+            "absolute inset-0 w-full h-full object-cover z-1 transition-opacity duration-500"
           }
           fill
           src="/home/poster.jpg"
@@ -37,14 +37,14 @@ export default function Home() {
       )}
       {/* Dot Cover Overlay */}
       <div
-        className="absolute inset-0 w-full h-full z-20 pointer-events-none"
+        className="absolute inset-0 w-full h-full z-2 pointer-events-none"
         style={{
           backgroundImage: "url('/dot.png')",
           backgroundSize: "4px 4px",
           opacity: 1,
         }}
       />
-      <main className="relative z-1 flex flex-col items-center">
+      <main className="relative z-3 flex flex-col items-center">
         <div className="h-24 w-24 md:h-32 md:w-32 lg:h-44 lg:w-44 relative rounded-lg bg-[#00000033]">
           <AdaptiveImage
             className="invert dark:invert-0 object-cover"

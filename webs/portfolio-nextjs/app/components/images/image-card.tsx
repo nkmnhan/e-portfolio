@@ -79,7 +79,7 @@ export default function ImageCard({
       {/* Description Popup */}
       <div
         className={clsxMerge(
-          "absolute bottom-0 left-0 w-full p-2 md:p-4 rounded-b transition-all duration-200 z-10",
+          "absolute bottom-0 left-0 w-full p-2 md:p-4 rounded-b transition-all duration-200 z-1",
           "h-24 md:h-32",
           "backdrop-blur-sm",
           "text-white",

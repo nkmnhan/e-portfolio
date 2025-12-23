@@ -75,17 +75,17 @@ export default function R3fViewerControlPanel({
     };
 
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && open) {
+      if (event.key === "Escape" && open) {
         setOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEscape);
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
     };
   }, [open]);
 
@@ -95,14 +95,14 @@ export default function R3fViewerControlPanel({
       <div
         ref={gadgetBarRef}
         className={clsxMerge(
-          "absolute bottom-4 right-4 z-40 flex flex-row-reverse items-center gap-1.5 p-1.5 bg-gray-900/80 border border-cyan-700/50 rounded-lg shadow-xl backdrop-blur-md",
+          "absolute bottom-4 right-4 z-1 flex flex-row-reverse items-center gap-1.5 p-1.5 bg-gray-900/80 border border-cyan-700/50 rounded-lg shadow-xl backdrop-blur-md",
           "w-fit"
         )}
         style={{ touchAction: "manipulation" }}
       >
         <button
           type="button"
-          className="rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-700/70 active:scale-95 hover:bg-cyan-700/30 p-1.5 z-10 bg-gray-800/60 transition-all"
+          className="rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-700/70 active:scale-95 hover:bg-cyan-700/30 p-1.5 bg-gray-800/60 transition-all"
           onClick={() => setOpen(true)}
           aria-label="Open 3D Viewer Controls"
         >
@@ -112,7 +112,9 @@ export default function R3fViewerControlPanel({
           type="button"
           className="rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-700/70 active:scale-95 hover:bg-cyan-700/30 p-1.5 transition-all"
           onClick={() => handleChange("lockControls", !settings.lockControls)}
-          aria-label={settings.lockControls ? "Unlock Controls" : "Lock Controls"}
+          aria-label={
+            settings.lockControls ? "Unlock Controls" : "Lock Controls"
+          }
         >
           {settings.lockControls ? (
             <HiLockClosed className="w-5 h-5 text-cyan-400" />
@@ -124,7 +126,9 @@ export default function R3fViewerControlPanel({
           type="button"
           className="rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-700/70 active:scale-95 hover:bg-cyan-700/30 p-1.5 transition-all"
           onClick={() => handleChange("autoRotate", !settings.autoRotate)}
-          aria-label={settings.autoRotate ? "Disable Auto Rotate" : "Enable Auto Rotate"}
+          aria-label={
+            settings.autoRotate ? "Disable Auto Rotate" : "Enable Auto Rotate"
+          }
         >
           <HiRefresh
             className={clsxMerge(
@@ -155,17 +159,17 @@ export default function R3fViewerControlPanel({
         </button>
       </div>
 
-      {/* The control panel - Absolute sidebar */}    
+      {/* The control panel - Absolute sidebar */}
       <div
         ref={panelRef}
         className={clsxMerge(
-          "absolute top-0 right-0 h-full w-80 bg-gray-900/90 backdrop-blur-xl border-l-2 border-cyan-700/50 shadow-2xl z-40 transition-transform duration-300 ease-in-out overflow-y-auto",
+          "absolute top-0 right-0 h-full w-80 bg-gray-900/90 backdrop-blur-xl border-l-2 border-cyan-700/50 shadow-2xl z-2 transition-transform duration-300 ease-in-out overflow-y-auto",
           open ? "translate-x-0" : "translate-x-full",
           "max-md:w-full max-md:h-[85vh] max-md:top-auto max-md:bottom-0 max-md:rounded-t-3xl max-md:border-l-0 max-md:border-t-2"
         )}
       >
         {/* Header */}
-        <div className="sticky top-0 bg-gray-900/80 backdrop-blur-md border-b-2 border-cyan-700/40 p-4 z-10">
+        <div className="sticky top-0 bg-gray-900/80 backdrop-blur-md border-b-2 border-cyan-700/40 p-4 z-1">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <HiCog className="w-5 h-5 text-cyan-400" />
@@ -176,8 +180,18 @@ export default function R3fViewerControlPanel({
               className="p-1 rounded-lg hover:bg-cyan-700/20 transition-colors"
               aria-label="Close panel"
             >
-              <svg className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="w-5 h-5 text-cyan-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
@@ -517,7 +531,7 @@ export default function R3fViewerControlPanel({
       {/* Help Modal */}
       {showHelp && (
         <div
-          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center"
+          className="absolute inset-0 z-2 bg-black/50 backdrop-blur-sm flex items-center justify-center"
           onClick={() => setShowHelp(false)}
         >
           <div
@@ -542,7 +556,10 @@ export default function R3fViewerControlPanel({
               </li>
               <li>Click the expand icon to enter full screen mode.</li>
               <li>UV Checker shows a grid texture to visualize UV mapping.</li>
-              <li>UV Overlay colors the model by its UV coordinates for live UV debugging.</li>
+              <li>
+                UV Overlay colors the model by its UV coordinates for live UV
+                debugging.
+              </li>
               <li>
                 Matcap applies a spherical material capture for fast preview.
               </li>
@@ -560,4 +577,3 @@ export default function R3fViewerControlPanel({
     </ThemeProvider>
   );
 }
-
