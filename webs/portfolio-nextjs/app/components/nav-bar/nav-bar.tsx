@@ -135,11 +135,11 @@ export default function NavBar() {
                   </div>
                 </SidebarItemGroup>
                 <SidebarItemGroup>
+                  <h1 className="walt-disney text-4xl mt-2">Tony F. Wilson</h1>
                   <div className="flex items-center justify-center gap-2 md:gap-4 mt-2 md:mt-4 text-sm">
                     <FaCopyright />
                     <span>2025 NKMNHAN</span>
                   </div>
-                    <h1 className="walt-disney">Tony F. Wilson</h1>
                 </SidebarItemGroup>
               </SidebarItems>
             </div>
