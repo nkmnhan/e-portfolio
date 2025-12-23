@@ -4,6 +4,21 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Waltograph Disney-style font */
+@font-face {
+  font-family: 'Waltograph';
+  src: url('/fonts/waltograph.regular.otf') format('opentype'),
+       url('/fonts/waltograph.regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Waltograph Disney-style font class */
+.walt-disney {
+  font-family: var(--font-waltograph), cursive;
+}
+
 .theme-text {
   @apply text-gray-900 dark:text-white;
 }
