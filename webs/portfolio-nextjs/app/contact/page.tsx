@@ -11,12 +11,12 @@ import { clsxMerge } from "@/app/components/themes/utils";
 import AdaptiveImage from "../components/images/adaptive-image";
 
 export const metadata: Metadata = {
-  title: "Contact | NKM-NHAN Portfolio",
-  description: "Get in touch with NKM-NHAN for web development projects, collaborations, or inquiries.",
-  keywords: ["contact", "web developer", "hire", "NKM-NHAN"],
+  title: "Contact | Nguyễn Khoa Minh Nhân Portfolio",
+  description: "Get in touch with Nguyễn Khoa Minh Nhân (Tony Wilson) for software engineering projects, collaborations, or inquiries.",
+  keywords: ["contact", "senior software engineer", "hire", "Nguyễn Khoa Minh Nhân", "Tony Wilson"],
   openGraph: {
-    title: "Contact NKM-NHAN",
-    description: "Reach out for your next web development project.",
+    title: "Contact Nguyễn Khoa Minh Nhân",
+    description: "Reach out for your next software development project.",
     images: ["/astronaut.png"],
   },
 };

@@ -3,12 +3,12 @@ import { HR } from "flowbite-react";
 import AdaptiveImage from "../components/images/adaptive-image";
 
 export const metadata: Metadata = {
-  title: "About | NKM-NHAN Portfolio",
-  description: "Learn more about NKM-NHAN, a web developer and designer passionate about creating innovative digital solutions.",
-  keywords: ["about", "web developer", "designer", "NKM-NHAN"],
+  title: "About | Nguyễn Khoa Minh Nhân Portfolio",
+  description: "Learn more about Nguyễn Khoa Minh Nhân (Tony Wilson), a Senior Software Engineer with 8+ years of experience in .NET Core, JavaScript, and microservices.",
+  keywords: ["about", "Nguyễn Khoa Minh Nhân", "Tony Wilson", "senior software engineer", "web developer", "designer", ".NET Core", "microservices"],
   openGraph: {
-    title: "About NKM-NHAN",
-    description: "Discover the story behind NKM-NHAN's portfolio and expertise.",
+    title: "About Nguyễn Khoa Minh Nhân",
+    description: "Discover the story behind Nguyễn Khoa Minh Nhân's portfolio and expertise in software engineering.",
     images: ["/astronaut.png"],
   },
 };
