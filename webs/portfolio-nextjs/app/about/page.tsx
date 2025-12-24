@@ -85,7 +85,7 @@ export default function About() {
       )}
 
       <div className="relative flex overflow-hidden w-full h-auto mx-auto flex-row justify-center items-start text-center">
-        <div className="relative flex overflow-hidden w-full h-screen mx-auto justify-center items-center">
+        <div className="relative flex overflow-hidden w-full h-[80vh] mx-auto justify-center items-center">
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[19].x),
@@ -98,7 +98,7 @@ export default function About() {
               src="/about/hero-11.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto translate-y-0.5 object-cover object-bottom"
+              className="w-full h-auto translate-y-0.5 object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -113,7 +113,7 @@ export default function About() {
               src="/about/hero-10.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -128,7 +128,7 @@ export default function About() {
               src="/about/hero-09.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -143,7 +143,7 @@ export default function About() {
               src="/about/hero-08.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -158,7 +158,7 @@ export default function About() {
               src="/about/hero-07.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -174,7 +174,7 @@ export default function About() {
               src="/about/hero-cloud8.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -190,7 +190,7 @@ export default function About() {
               src="/about/hero-cloud7.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -206,7 +206,7 @@ export default function About() {
               src="/about/hero-cloud6.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -222,7 +222,7 @@ export default function About() {
               src="/about/hero-cloud5.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -238,7 +238,7 @@ export default function About() {
               src="/about/hero-cloud4.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -254,7 +254,7 @@ export default function About() {
               src="/about/hero-cloud3.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -270,7 +270,7 @@ export default function About() {
               src="/about/hero-cloud2.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -286,7 +286,7 @@ export default function About() {
               src="/about/hero-cloud1.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -301,7 +301,7 @@ export default function About() {
               src="/about/hero-06.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -316,7 +316,7 @@ export default function About() {
               src="/about/hero-05.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -331,7 +331,7 @@ export default function About() {
               src="/about/hero-04.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -346,7 +346,7 @@ export default function About() {
               src="/about/hero-03.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -361,7 +361,7 @@ export default function About() {
               src="/about/hero-02.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
           <motion.div
@@ -376,7 +376,7 @@ export default function About() {
               src="/about/hero-01.png"
               sizes="100vw"
               alt=""
-              className="w-full h-auto object-cover object-bottom"
+              className="w-full h-auto object-cover overflow-visible"
             />
           </motion.div>
         </div>
@@ -671,7 +671,7 @@ export default function About() {
             src="/about/bg-footer.png"
             sizes="100vw"
             alt=""
-            className="object-bottom"
+            className="object-top"
           />
         </div>
         <div className="z-1 flex w-full h-full max-w-7xl mx-auto pt-8 pb-8 flex-col justify-between items-center text-center">

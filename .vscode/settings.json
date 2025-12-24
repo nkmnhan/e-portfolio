@@ -1,14 +1,17 @@
 {
     "files.exclude": {
         "**/node_modules": true,
-        "**/storybook-static": true
+        "**/storybook-static": true,
+        "**/.next": true
     },
     "search.exclude": {
         "**/node_modules": true,
-        "**/storybook-static": true
+        "**/storybook-static": true,
+        "**/.next": true
     },
     "files.watcherExclude": {
         "**/node_modules": true,
-        "**/storybook-static": true
+        "**/storybook-static": true,
+        "**/.next": true
     }
 }
