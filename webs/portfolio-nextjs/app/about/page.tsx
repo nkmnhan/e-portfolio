@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { clsxMerge } from "../components/themes";
 import AboutLogo from "./about-logo";
 import {
@@ -19,6 +20,30 @@ export default function About() {
     }, 3000);
     return () => clearTimeout(timer);
   }, []);
+
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll();
+  const speeds = {
+    19: { x: ["0%", "0%", "0%"], y: ["0%", "0%", "0%"] }, // hero-11
+    18: { x: ["0%", "0%", "0%"], y: ["0%", "4.3516%", "9.9969%"] }, // hero-10
+    17: { x: ["0%", "0%", "0%"], y: ["0%", "6.5274%", "14.9954%"] }, // hero-09
+    16: { x: ["0%", "0%", "0%"], y: ["0%", "8.7032%", "19.9938%"] }, // hero-08
+    15: { x: ["0%", "0%", "0%"], y: ["0%", "10.879%", "24.9922%"] }, // hero-07
+    14: { x: ["0%", "6.0752%", "11.7174%"], y: ["0%", "21.758%", "49.9845%"] }, // cloud8
+    13: { x: ["0%", "5.3158%", "10.2528%"], y: ["0%", "21.758%", "49.9845%"] }, // cloud7
+    12: { x: ["0%", "4.5564%", "8.78808%"], y: ["0%", "19.5822%", "44.986%"] }, // cloud6
+    11: { x: ["0%", "3.797%", "7.3234%"], y: ["0%", "17.4064%", "39.9876%"] }, // cloud5
+    10: { x: ["0%", "3.0376%", "5.85872%"], y: ["0%", "15.2306%", "34.9892%"] }, // cloud4
+    9: { x: ["0%", "2.2782%", "4.39404%"], y: ["0%", "13.0548%", "29.9907%"] }, // cloud3
+    8: { x: ["0%", "1.5188%", "2.92936%"], y: ["0%", "10.879%", "24.9922%"] }, // cloud2
+    7: { x: ["0%", "0%", "0%"], y: ["0%", "0%", "0%"] }, // cloud1, assume 0
+    6: { x: ["0%", "0%", "0%"], y: ["0%", "0%", "0%"] }, // hero-06, assume 0
+    5: { x: ["0%", "0%", "0%"], y: ["0%", "0%", "0%"] }, // hero-05
+    4: { x: ["0%", "0%", "0%"], y: ["0%", "0%", "0%"] }, // hero-04
+    3: { x: ["0%", "0%", "0%"], y: ["0%", "0%", "0%"] }, // hero-03
+    2: { x: ["0%", "0%", "0%"], y: ["0%", "0%", "0%"] }, // hero-02
+    1: { x: ["0%", "0%", "0%"], y: ["0%", "0%", "0%"] }, // hero-01
+  };
 
   return (
     <div
@@ -62,139 +87,299 @@ export default function About() {
 
       <div className="relative flex overflow-hidden w-full h-auto mx-auto flex-row justify-center items-start text-center">
         <div className="relative flex overflow-hidden w-full h-screen mx-auto justify-center items-center">
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-11.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-19 w-full h-auto translate-y-0.5 object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-10.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-18 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-09.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-17 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-08.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-16 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-07.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-15 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-cloud8.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-14 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-cloud7.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-13 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-cloud6.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-12 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-cloud5.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-11 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-cloud4.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-10 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-cloud3.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-9 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-cloud2.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-8 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-cloud1.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-7 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-06.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-6 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-05.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-5 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-04.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-4 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-03.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-3 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-02.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-2 w-full h-auto object-cover object-top"
-          />
-          <AdaptiveImage fill
-            preload
-            src="/about/hero-01.png"
-            sizes="100vw"
-            alt=""
-            className="absolute inset-0 z-1 w-full h-auto object-cover object-top"
-          />
+          <motion.div
+            style={{
+              x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[19].x),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[19].y)
+            }}
+            className="absolute inset-0 z-19 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-11.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto translate-y-0.5 object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            style={{
+              x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[18].x),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[18].y)
+            }}
+            className="absolute inset-0 z-18 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-10.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            style={{
+              x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[17].x),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[17].y)
+            }}
+            className="absolute inset-0 z-17 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-09.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            style={{
+              x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[16].x),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[16].y)
+            }}
+            className="absolute inset-0 z-16 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-08.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            style={{
+              x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[15].x),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[15].y)
+            }}
+            className="absolute inset-0 z-15 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-07.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ x: ["0%", "-30%", "0%"] }}
+            transition={{ duration: 120, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[14].y)
+            }}
+            className="absolute inset-0 z-14 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-cloud8.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ x: ["0%", "-25%", "0%"] }}
+            transition={{ duration: 140, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[13].y)
+            }}
+            className="absolute inset-0 z-13 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-cloud7.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ x: ["0%", "-25%", "0%"] }}
+            transition={{ duration: 140, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[12].y)
+            }}
+            className="absolute inset-0 z-12 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-cloud6.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ x: ["0%", "-20%", "0%"] }}
+            transition={{ duration: 160, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[11].y)
+            }}
+            className="absolute inset-0 z-11 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-cloud5.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ x: ["0%", "-20%", "0%"] }}
+            transition={{ duration: 160, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[10].y)
+            }}
+            className="absolute inset-0 z-10 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-cloud4.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ x: ["0%", "-30%", "0%"] }}
+            transition={{ duration: 120, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[9].y)
+            }}
+            className="absolute inset-0 z-9 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-cloud3.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ x: ["0%", "-30%", "0%"] }}
+            transition={{ duration: 120, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[8].y)
+            }}
+            className="absolute inset-0 z-8 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-cloud2.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ x: ["0%", "-20%", "0%"] }}
+            transition={{ duration: 160, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[7].y)
+            }}
+            className="absolute inset-0 z-7 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-cloud1.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            style={{
+              x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[6].x),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[6].y)
+            }}
+            className="absolute inset-0 z-6 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-06.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            style={{
+              x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[5].x),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[5].y)
+            }}
+            className="absolute inset-0 z-5 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-05.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            style={{
+              x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[4].x),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[4].y)
+            }}
+            className="absolute inset-0 z-4 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-04.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            style={{
+              x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[3].x),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[3].y)
+            }}
+            className="absolute inset-0 z-3 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-03.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            style={{
+              x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[2].x),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[2].y)
+            }}
+            className="absolute inset-0 z-2 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-02.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
+          <motion.div
+            style={{
+              x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[1].x),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[1].y)
+            }}
+            className="absolute inset-0 z-1 w-full h-auto"
+          >
+            <AdaptiveImage fill
+              preload
+              src="/about/hero-01.png"
+              sizes="100vw"
+              alt=""
+              className="w-full h-auto object-cover object-top"
+            />
+          </motion.div>
         </div>
       </div>
       <div className="z-1 flex w-full h-auto pt-16 pb-16 flex-col justify-start items-center bg-linear-to-b from-[#2f122e] to-[#020016]">
