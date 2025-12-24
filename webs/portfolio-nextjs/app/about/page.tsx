@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { clsxMerge } from "../components/themes";
-import Image from "next/image";
 import AboutLogo from "./about-logo";
 import {
   FaBehance,
@@ -9,6 +8,7 @@ import {
   FaFacebookF,
   FaLinkedinIn,
 } from "react-icons/fa";
+import { AdaptiveImage } from "../components/images";
 
 export default function About() {
   const [isLoading, setIsLoading] = useState(true);
@@ -61,167 +61,148 @@ export default function About() {
       )}
 
       <div className="relative flex overflow-hidden w-full h-auto mx-auto flex-row justify-center items-start text-center">
-        <div className="relative flex overflow-hidden w-full h-[80vh] max-w-480 mx-auto justify-center items-center">
-          <Image
-            fill
-            priority
+        <div className="relative flex overflow-hidden w-full h-screen mx-auto justify-center items-center">
+          <AdaptiveImage fill
+            preload
             src="/about/hero-11.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-19 w-full h-auto translate-y-0.5 object-cover"
+            className="absolute inset-0 z-19 w-full h-auto translate-y-0.5 object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-10.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-18 w-full h-auto object-cover"
+            className="absolute inset-0 z-18 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-09.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-17 w-full h-auto object-cover"
+            className="absolute inset-0 z-17 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-08.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-16 w-full h-auto object-cover"
+            className="absolute inset-0 z-16 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-07.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-15 w-full h-auto object-cover"
+            className="absolute inset-0 z-15 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-cloud8.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-14 w-full h-auto object-cover"
+            className="absolute inset-0 z-14 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-cloud7.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-13 w-full h-auto object-cover"
+            className="absolute inset-0 z-13 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-cloud6.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-12 w-full h-auto object-cover"
+            className="absolute inset-0 z-12 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-cloud5.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-11 w-full h-auto object-cover"
+            className="absolute inset-0 z-11 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-cloud4.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-10 w-full h-auto object-cover"
+            className="absolute inset-0 z-10 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-cloud3.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-9 w-full h-auto object-cover"
+            className="absolute inset-0 z-9 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-cloud2.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-8 w-full h-auto object-cover"
+            className="absolute inset-0 z-8 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-cloud1.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-7 w-full h-auto object-cover"
+            className="absolute inset-0 z-7 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-06.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-6 w-full h-auto object-cover"
+            className="absolute inset-0 z-6 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-05.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-5 w-full h-auto object-cover"
+            className="absolute inset-0 z-5 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-04.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-4 w-full h-auto object-cover"
+            className="absolute inset-0 z-4 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-03.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-3 w-full h-auto object-cover"
+            className="absolute inset-0 z-3 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-02.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-2 w-full h-auto object-cover"
+            className="absolute inset-0 z-2 w-full h-auto object-cover object-top"
           />
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/hero-01.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="absolute inset-0 z-1 w-full h-auto object-cover"
+            className="absolute inset-0 z-1 w-full h-auto object-cover object-top"
           />
         </div>
       </div>
       <div className="z-1 flex w-full h-auto pt-16 pb-16 flex-col justify-start items-center bg-linear-to-b from-[#2f122e] to-[#020016]">
         <div className="w-full h-auto max-w-7xl mx-auto px-8 flex flex-col justify-start items-center">
           <div className="flex flex-col justify-start items-center text-center uppercase">
-            <h1 className="mb-0 text-6xl leading-16 ">Jerome bergamaschi</h1>
+            <h1 className="mb-0 text-4xl md:text-6xl leading-12 md:leading-16 ">Jerome bergamaschi</h1>
             <h2
-              className="mb-0 text-8xl leading-24 font-bold"
+              className="mb-0 text-4xl md:text-8xl leading-14 md:leading-24 font-bold"
               style={{
                 backgroundImage: "url(/about/bg.png)",
                 backgroundPosition: "50% 0%",
@@ -233,14 +214,14 @@ export default function About() {
                 color: "transparent",
               }}
             >
-              webdesigner
+              web designer
               <br />
               freelance
             </h2>
           </div>
           <div className="p-8"></div>
           <div className="flex flex-col justify-start items-start text-left">
-            <div className="grid grid-cols-2 gap-32 w-full h-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-32 w-full h-auto">
               <div
                 id="w-node-_23bd48a8-76c4-6967-d4f5-c897902a16ca-8fbea82d"
                 className="flex flex-col justify-start items-start text-left"
@@ -353,23 +334,22 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className="relative flex overflow-hidden w-full h-auto mx-auto flex-col justify-between items-center bg-[#020016] pb-8">
+      <div className="relative flex overflow-hidden w-full h-auto mx-auto flex-col justify-between items-center bg-[rgb(2,0,22)] px-16 pb-24">
         <div className="absolute z-0 flex w-full h-100 max-w-480 mx-auto flex-col justify-end items-center">
-          <Image
-            fill
-            priority
+          <AdaptiveImage fill
+            preload
             src="/about/bg-footer.png"
-            sizes="(max-width: 1920px) 100vw, 1920px"
+            sizes="100vw"
             alt=""
-            className="object-cover"
+            className="object-scale-down"
           />
         </div>
         <div className="z-1 flex w-full h-full max-w-7xl mx-auto pt-8 pb-8 flex-col justify-between items-center text-center">
           <div className="flex flex-col justify-start items-center text-center">
-            <h2 className="mb-0 text-4xl leading-10 font-bold text-white">
+            <h2 className="mb-0 text-2xl md:text-4xl leading-8 md:leading-10 font-bold text-white">
               Available for amazing projects!
             </h2>
-            <div className="mb-0 text-2xl leading-8 text-white">
+            <div className="mb-0 text-lg md:text-2xl leading-6 md:leading-8 text-white">
               Contact me and let's talk.
             </div>
             <div className="p-4" />
