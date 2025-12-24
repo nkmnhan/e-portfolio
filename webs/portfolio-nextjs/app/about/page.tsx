@@ -382,7 +382,7 @@ export default function About() {
         </div>
       </div>
       <motion.div 
-        className="z-1 flex w-full h-auto pt-16 pb-16 flex-col justify-start items-center bg-linear-to-b from-[#2f122e] to-[#020016]"
+        className="overflow-hidden z-1 flex w-full h-auto pt-16 pb-16 flex-col justify-start items-center bg-linear-to-b from-[#2f122e] to-[#020016]"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -671,7 +671,8 @@ export default function About() {
             src="/about/bg-footer.png"
             sizes="100vw"
             alt=""
-            className="object-top"
+            containerClass="relative w-full h-full"
+            className="object-cover p-8 sm:p-0"
           />
         </div>
         <div className="z-1 flex w-full h-full max-w-7xl mx-auto pt-8 pb-8 flex-col justify-between items-center text-center">

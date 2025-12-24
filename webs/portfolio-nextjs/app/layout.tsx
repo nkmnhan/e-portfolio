@@ -128,7 +128,7 @@ export default function RootLayout({
           waltograph.variable,
           "antialiased",
           "bg-white dark:bg-gray-800",
-          "min-h-screen"
+          "min-h-screen min-w-screen"
         )}
         suppressHydrationWarning={true}
       >
