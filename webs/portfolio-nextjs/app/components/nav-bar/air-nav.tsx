@@ -58,7 +58,6 @@ export default function AirNav() {
         }}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         onDragEnd={() => setMenuTrigger("click")}
-        useParent={true}
       >
         <Popover
           open={isMenuOpen}
@@ -99,11 +98,11 @@ export default function AirNav() {
             </div>
           }
         >
-          <Button className="rounded-full w-12 h-12 p-3 bg-linear-to-br from-pink-500 to-orange-400 text-white hover:bg-linear-to-bl focus:ring-pink-200 dark:focus:ring-pink-800">
-            {menuTrigger === undefined && (
+          <Button className="rounded-full w-10 h-10 p-2 bg-linear-to-br from-pink-500 to-orange-400 text-white hover:bg-linear-to-bl focus:ring-pink-200 dark:focus:ring-pink-800">
+            {menuTrigger !== undefined && (
               <span className="absolute flex size-3 top-0 right-0">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                <span className="relative inline-flex size-3 rounded-full bg-sky-500"></span>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-600 opacity-75"></span>
+                <span className="relative inline-flex size-3 rounded-full bg-red-500"></span>
               </span>
             )}
             <IoIosShareAlt className="h-8 w-8" />
