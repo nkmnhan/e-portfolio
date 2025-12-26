@@ -2,7 +2,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { clsxMerge } from "../components/themes";
-import Logo from "./logo";
 import {
   FaBehance,
   FaDribbble,
@@ -10,6 +9,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { AdaptiveImage } from "../components/images";
+import Image from "next/image";
 
 export default function About() {
   const [isLoading, setIsLoading] = useState(true);
@@ -67,7 +67,7 @@ export default function About() {
             )}
           >
             <div className="w-60 flex flex-col items-center gap-6">
-              <Logo />
+              <Image src="/about/logo.svg" alt="Logo" width={96} height={114} />
               <div className="w-full">
                 <div className="relative h-1 w-full overflow-hidden rounded bg-gray-200">
                   <div
@@ -89,11 +89,12 @@ export default function About() {
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[19].x),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[19].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[19].y),
             }}
             className="absolute inset-0 z-19 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-11.png"
               sizes="100vw"
@@ -104,11 +105,12 @@ export default function About() {
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[18].x),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[18].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[18].y),
             }}
             className="absolute inset-0 z-18 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-10.png"
               sizes="100vw"
@@ -119,11 +121,12 @@ export default function About() {
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[17].x),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[17].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[17].y),
             }}
             className="absolute inset-0 z-17 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-09.png"
               sizes="100vw"
@@ -134,11 +137,12 @@ export default function About() {
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[16].x),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[16].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[16].y),
             }}
             className="absolute inset-0 z-16 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-08.png"
               sizes="100vw"
@@ -149,11 +153,12 @@ export default function About() {
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[15].x),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[15].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[15].y),
             }}
             className="absolute inset-0 z-15 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-07.png"
               sizes="100vw"
@@ -165,11 +170,12 @@ export default function About() {
             animate={{ x: ["0%", "-30%", "0%"] }}
             transition={{ duration: 120, repeat: Infinity, ease: "easeInOut" }}
             style={{
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[14].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[14].y),
             }}
             className="absolute inset-0 z-14 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-cloud8.png"
               sizes="100vw"
@@ -181,11 +187,12 @@ export default function About() {
             animate={{ x: ["0%", "-25%", "0%"] }}
             transition={{ duration: 140, repeat: Infinity, ease: "easeInOut" }}
             style={{
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[13].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[13].y),
             }}
             className="absolute inset-0 z-13 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-cloud7.png"
               sizes="100vw"
@@ -197,11 +204,12 @@ export default function About() {
             animate={{ x: ["0%", "-25%", "0%"] }}
             transition={{ duration: 140, repeat: Infinity, ease: "easeInOut" }}
             style={{
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[12].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[12].y),
             }}
             className="absolute inset-0 z-12 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-cloud6.png"
               sizes="100vw"
@@ -213,11 +221,12 @@ export default function About() {
             animate={{ x: ["0%", "-20%", "0%"] }}
             transition={{ duration: 160, repeat: Infinity, ease: "easeInOut" }}
             style={{
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[11].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[11].y),
             }}
             className="absolute inset-0 z-11 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-cloud5.png"
               sizes="100vw"
@@ -229,11 +238,12 @@ export default function About() {
             animate={{ x: ["0%", "-20%", "0%"] }}
             transition={{ duration: 160, repeat: Infinity, ease: "easeInOut" }}
             style={{
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[10].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[10].y),
             }}
             className="absolute inset-0 z-10 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-cloud4.png"
               sizes="100vw"
@@ -245,11 +255,12 @@ export default function About() {
             animate={{ x: ["0%", "-30%", "0%"] }}
             transition={{ duration: 120, repeat: Infinity, ease: "easeInOut" }}
             style={{
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[9].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[9].y),
             }}
             className="absolute inset-0 z-9 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-cloud3.png"
               sizes="100vw"
@@ -261,11 +272,12 @@ export default function About() {
             animate={{ x: ["0%", "-30%", "0%"] }}
             transition={{ duration: 120, repeat: Infinity, ease: "easeInOut" }}
             style={{
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[8].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[8].y),
             }}
             className="absolute inset-0 z-8 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-cloud2.png"
               sizes="100vw"
@@ -277,11 +289,12 @@ export default function About() {
             animate={{ x: ["0%", "-20%", "0%"] }}
             transition={{ duration: 160, repeat: Infinity, ease: "easeInOut" }}
             style={{
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[7].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[7].y),
             }}
             className="absolute inset-0 z-7 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-cloud1.png"
               sizes="100vw"
@@ -292,11 +305,12 @@ export default function About() {
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[6].x),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[6].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[6].y),
             }}
             className="absolute inset-0 z-6 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-06.png"
               sizes="100vw"
@@ -307,11 +321,12 @@ export default function About() {
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[5].x),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[5].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[5].y),
             }}
             className="absolute inset-0 z-5 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-05.png"
               sizes="100vw"
@@ -322,11 +337,12 @@ export default function About() {
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[4].x),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[4].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[4].y),
             }}
             className="absolute inset-0 z-4 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-04.png"
               sizes="100vw"
@@ -337,11 +353,12 @@ export default function About() {
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[3].x),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[3].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[3].y),
             }}
             className="absolute inset-0 z-3 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-03.png"
               sizes="100vw"
@@ -352,11 +369,12 @@ export default function About() {
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[2].x),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[2].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[2].y),
             }}
             className="absolute inset-0 z-2 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-02.png"
               sizes="100vw"
@@ -367,11 +385,12 @@ export default function About() {
           <motion.div
             style={{
               x: useTransform(scrollYProgress, [0, 0.5, 1], speeds[1].x),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[1].y)
+              y: useTransform(scrollYProgress, [0, 0.5, 1], speeds[1].y),
             }}
             className="absolute inset-0 z-1 w-full h-auto"
           >
-            <AdaptiveImage fill
+            <AdaptiveImage
+              fill
               preload
               src="/about/hero-01.png"
               sizes="100vw"
@@ -381,7 +400,7 @@ export default function About() {
           </motion.div>
         </div>
       </div>
-      <motion.div 
+      <motion.div
         className="overflow-hidden z-1 flex w-full h-auto pt-16 pb-16 flex-col justify-start items-center bg-linear-to-b from-[#2f122e] to-[#020016]"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -389,14 +408,16 @@ export default function About() {
         viewport={{ once: true }}
       >
         <div className="w-full h-auto max-w-7xl mx-auto px-8 flex flex-col justify-start items-center">
-          <motion.div 
+          <motion.div
             className="flex flex-col justify-start items-center text-center uppercase"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h1 className="mb-0 text-4xl md:text-6xl leading-12 md:leading-16 ">Jerome bergamaschi</h1>
+            <h1 className="mb-0 text-4xl md:text-6xl leading-12 md:leading-16 ">
+              Jerome bergamaschi
+            </h1>
             <motion.h2
               className="mb-0 text-4xl md:text-8xl leading-14 md:leading-24 font-bold"
               style={{
@@ -420,7 +441,7 @@ export default function About() {
             </motion.h2>
           </motion.div>
           <div className="p-8"></div>
-          <motion.div 
+          <motion.div
             className="flex flex-col justify-start items-start text-left"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -448,7 +469,7 @@ export default function About() {
                   different areas of design, digital and print.
                 </p>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="flex flex-col justify-start items-start"
                 initial={{ x: 50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
@@ -459,7 +480,7 @@ export default function About() {
                   Skills
                 </h3>
                 <div className="flex w-full h-auto flex-wrap items-center gap-2">
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -468,7 +489,7 @@ export default function About() {
                   >
                     art direction
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -477,7 +498,7 @@ export default function About() {
                   >
                     ui
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -486,7 +507,7 @@ export default function About() {
                   >
                     ux
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -495,7 +516,7 @@ export default function About() {
                   >
                     webdesign
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -504,7 +525,7 @@ export default function About() {
                   >
                     prototyping
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -513,7 +534,7 @@ export default function About() {
                   >
                     brand identity
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -522,7 +543,7 @@ export default function About() {
                   >
                     display
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -531,7 +552,7 @@ export default function About() {
                   >
                     crm
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -540,7 +561,7 @@ export default function About() {
                   >
                     2d animations
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -553,7 +574,7 @@ export default function About() {
                 <div className="p-4"></div>
                 <h3 className="mt-0 mb-4 text-xl leading-8 font-bold">Tools</h3>
                 <div className="flex w-full h-auto flex-wrap items-center gap-2">
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -562,7 +583,7 @@ export default function About() {
                   >
                     figma
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -571,7 +592,7 @@ export default function About() {
                   >
                     adobe xd
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -580,7 +601,7 @@ export default function About() {
                   >
                     photoshop
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -589,7 +610,7 @@ export default function About() {
                   >
                     illustrator
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -598,7 +619,7 @@ export default function About() {
                   >
                     after effect
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -609,7 +630,7 @@ export default function About() {
                   </motion.div>
                 </div>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="flex flex-col justify-start items-start"
                 initial={{ x: 50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
@@ -630,7 +651,7 @@ export default function About() {
                   CMO - Leia Inc.
                 </p>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="flex flex-col justify-start items-start"
                 initial={{ x: -50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
@@ -658,7 +679,7 @@ export default function About() {
           </motion.div>
         </div>
       </motion.div>
-      <motion.div 
+      <motion.div
         className="relative flex overflow-hidden w-full h-auto mx-auto flex-col justify-between items-center bg-[rgb(2,0,22)] px-16 pb-24"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -666,7 +687,8 @@ export default function About() {
         viewport={{ once: true }}
       >
         <div className="absolute z-0 flex w-full h-100 max-w-480 mx-auto flex-col justify-end items-center">
-          <AdaptiveImage fill
+          <AdaptiveImage
+            fill
             preload
             src="/about/bg-footer.png"
             sizes="100vw"
@@ -676,7 +698,7 @@ export default function About() {
           />
         </div>
         <div className="z-1 flex w-full h-full max-w-7xl mx-auto pt-8 pb-8 flex-col justify-between items-center text-center">
-          <motion.div 
+          <motion.div
             className="flex flex-col justify-start items-center text-center"
             initial={{ y: -30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -691,7 +713,7 @@ export default function About() {
             </div>
             <div className="p-4" />
           </motion.div>
-          <motion.div 
+          <motion.div
             className="relative"
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
@@ -712,7 +734,7 @@ export default function About() {
           </motion.div>
         </div>
         <div className="p-8"></div>
-        <motion.div 
+        <motion.div
           className="flex flex-col justify-start items-center text-center"
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -720,7 +742,7 @@ export default function About() {
           viewport={{ once: true }}
         >
           <div className="z-6 flex flex-row justify-center flex-wrap items-center gap-4">
-            <motion.div 
+            <motion.div
               className="relative flex justify-center items-center font-['Fa brands 400'] text-[#e4b3a3] text-[1.2rem] leading-none"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
@@ -738,7 +760,7 @@ export default function About() {
                 <div className="absolute z-1 w-12 h-12 rounded-full bg-[#531431]"></div>
               </a>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="relative flex justify-center items-center font-['Fa brands 400'] text-[#e4b3a3] text-[1.2rem] leading-none"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
@@ -756,7 +778,7 @@ export default function About() {
                 <div className="absolute z-1 w-12 h-12 rounded-full bg-[#531431]"></div>
               </a>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="relative flex justify-center items-center font-['Fa brands 400'] text-[#e4b3a3] text-[1.2rem] leading-none"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
@@ -774,7 +796,7 @@ export default function About() {
                 <div className="absolute z-1 w-12 h-12 rounded-full bg-[#531431]"></div>
               </a>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="relative flex justify-center items-center font-['Fa brands 400'] text-[#e4b3a3] text-[1.2rem] leading-none"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}

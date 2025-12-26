@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Logo from "./logo";
 import { clsxMerge } from "../components/themes";
+import Image from "next/image";
 
 export default function Cover() {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +26,7 @@ export default function Cover() {
           )}
         >
           <div className="w-60 flex flex-col items-center gap-6">
-            <Logo />
+            <Image src="/about/logo.svg" alt="Logo" width={96} height={114} />
             <div className="w-full">
               <div className="relative h-1 w-full overflow-hidden rounded bg-gray-200">
                 <div
