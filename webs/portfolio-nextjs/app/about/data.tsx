@@ -60,18 +60,25 @@ const ABOUT_STORY = [
     title: "My Journey",
     description:
       "Starting as a Software Engineer at Hitachi Consulting Vietnam in 2016, I worked on semiconductor manufacturing systems and enterprise solutions. In 2019, I advanced to Senior Software Engineer, leading microservices development for European and Singaporean clients at NASH TECH and Orient Software. My career has evolved from backend systems to building innovative digital learning platforms and mobile applications using .NET MAUI, Angular, and AWS.",
-    textContent: [
-      "2016 - Software Engineer",
-      "Hitachi Consulting Vietnam",
-      "Semiconductor Systems",
-      "━━━━━━━━━━",
-      "2018 - Senior Software Engineer",
-      "NASH TECH / Orient Software",
-      "Microservices Leadership",
-      "━━━━━━━━━━",
-      "2024 - Present",
-      "Full-Stack Development",
-      ".NET MAUI, Angular, AWS",
+    timeline: [
+      {
+        period: "2016 - 2018",
+        company: "Hitachi Consulting Vietnam",
+        description: "Semiconductor Systems",
+        title: "Software Engineer"
+      },
+      {
+        period: "2018 - 2024",
+        company: "NASH TECH / Orient Software",
+        description: "Microservices Leadership",
+        title: "Senior Software Engineer"
+      },
+      {
+        period: "2024 - Present",
+        company: "Full-Stack Development",
+        description: ".NET MAUI, Angular, AWS",
+        title: "Full-Stack Developer"
+      }
     ],
   },
   {
