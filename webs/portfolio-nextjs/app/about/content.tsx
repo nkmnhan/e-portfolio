@@ -10,6 +10,7 @@ import {
 } from "flowbite-react";
 import { ImNewTab } from "react-icons/im";
 import { HERO_INFO, HERO_OVERVIEW, KEY_HIGHLIGHTS } from "./data";
+import { MasonryLayout } from "../components/masonry-layout";
 
 // Section data constants (raw data, not from ABOUT_STORY)
 const SKILLS = [
@@ -129,15 +130,14 @@ export default function Content() {
             {HERO_INFO.title}
           </motion.h2>
         </motion.div>
-        <div className="p-8"></div>
         <motion.div
-          className="flex flex-col justify-start items-start text-left"
+          className="flex flex-col justify-start items-start text-left mt-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 w-full h-auto">
+          <MasonryLayout className="w-full h-auto gap-8 md:gap-10 lg:columns-2 xl:columns-2 2xl:columns-2">
             {/* About Overview */}
             <motion.div
               className="flex flex-col justify-start items-start text-left"
@@ -319,7 +319,7 @@ export default function Content() {
               initial={{ x: 50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 2.6 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
             >
               <h4 className="text-2xl font-bold mb-2 text-[#e4b3a3]">Github</h4>
               <p className="text-[#f2e5d9] text-base mb-4">
@@ -341,7 +341,7 @@ export default function Content() {
                 .
               </p>
             </motion.div>
-          </div>
+          </MasonryLayout>
         </motion.div>
       </div>
     </motion.div>

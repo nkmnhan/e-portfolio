@@ -1,16 +1,21 @@
 import React from "react";
+import { clsxMerge } from "../themes";
 
-export default function MasonryLayout({ children }: { children: React.ReactNode }) {
+interface MasonryLayoutProps {
+  className?: string;
+  children: React.ReactNode;
+}
+
+export default function MasonryLayout({
+  className,
+  children,
+}: MasonryLayoutProps) {
   return (
     <div
-      className="
-        columns-1
-        sm:columns-2
-        md:columns-3
-        lg:columns-4
-        gap-4
-        w-full
-      "
+      className={clsxMerge(
+        "columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 gap-4",
+        className
+      )}
     >
       {/* Each child should have break-inside-avoid to prevent breaking */}
       {React.Children.map(children, (child, idx) => (
