@@ -321,8 +321,8 @@ export default function Hero({ containerRef: containerRef }: HeroProps) {
           key={layer.zIndex}
           animate={layer.motion.animate}
           transition={layer.motion.transition as Transition}
-          style={layer.motion.style}
-          className={`absolute inset-0 z-${layer.zIndex}`}
+          style={{ ...layer.motion.style, zIndex: layer.zIndex }}
+          className="absolute inset-0"
         >
           <Image
             fill
