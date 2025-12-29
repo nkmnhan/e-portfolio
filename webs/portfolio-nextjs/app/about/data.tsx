@@ -1,11 +1,11 @@
 const HERO_INFO = {
   name: "Tony Nguyen",
-  title: "Senior Software Engineer",
+  title: "Software Engineer",
   experience: "8+ Years Experience",
   technologies: [".NET Core", "Microservices", "Cloud Architecture"],
 };
 
-const HERO_OVERVIEW = `Hi, I'm Tony Nguyen (Nhan), a Senior Software Engineer with 8+ years of experience specializing in .NET Core, JavaScript frameworks, and microservices architecture. I'm passionate about building scalable, maintainable solutions and driving technical excellence in cross-functional teams. With a strong foundation in Agile/Scrum methodologies, I thrive on creating innovative web and mobile applications that solve real-world problems. My journey in tech has been driven by curiosity, continuous learning, and a commitment to clean code and system performance. Let's collaborate to bring your vision to life!`;
+const HERO_OVERVIEW = `Hi, I'm Tony Nguyen (Nhan), a Software Engineer with 8+ years of experience specializing in .NET Core, JavaScript frameworks, and microservices architecture. I'm passionate about building scalable, maintainable solutions and driving technical excellence in cross-functional teams. With a strong foundation in Agile/Scrum methodologies, I thrive on creating innovative web and mobile applications that solve real-world problems. My journey in tech has been driven by curiosity, continuous learning, and a commitment to clean code and system performance. Let's collaborate to bring your vision to life!`;
 
 const SUMMARY_STATS = [
   {
