@@ -1,13 +1,6 @@
-import { motion } from "framer-motion";
 
-// Personal info (from HERO_INFO and overviewText)
-const HERO_INFO = {
-  name: "Tony Nguyen",
-  title: "Senior Software Engineer",
-  experience: "8+ Years Experience",
-  technologies: [".NET Core", "Microservices", "Cloud Architecture"],
-};
-const overviewText = `Hi, I'm Tony Nguyen (Nhan), a Senior Software Engineer with 8+ years of experience specializing in .NET Core, JavaScript frameworks, and microservices architecture. I'm passionate about building scalable, maintainable solutions and driving technical excellence in cross-functional teams. With a strong foundation in Agile/Scrum methodologies, I thrive on creating innovative web and mobile applications that solve real-world problems. My journey in tech has been driven by curiosity, continuous learning, and a commitment to clean code and system performance. Let's collaborate to bring your vision to life!`;
+import { motion } from "framer-motion";
+import { HERO_INFO, HERO_OVERVIEW, SUMMARY_STATS, KEY_HIGHLIGHTS, ABOUT_STORY }  from "./data";
 
 export default function Content() {
   return (
@@ -26,9 +19,7 @@ export default function Content() {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <h1 className="mb-0 text-4xl md:text-6xl leading-12 md:leading-16 ">
-            Jerome bergamaschi
-          </h1>
+          <h1 className="mb-0 text-4xl md:text-6xl leading-12 md:leading-16 ">{HERO_INFO.name}</h1>
           <motion.h2
             className="mb-0 text-4xl md:text-8xl leading-14 md:leading-24 font-bold"
             style={{
@@ -46,9 +37,7 @@ export default function Content() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            web designer
-            <br />
-            freelance
+            {HERO_INFO.title}
           </motion.h2>
         </motion.div>
         <div className="p-8"></div>
@@ -69,15 +58,8 @@ export default function Content() {
               viewport={{ once: true }}
             >
               <p className="mb-0 text-lg leading-6">
-                UX/UI Designer and Artistic Director based in Aix-en-Provence,
-                France.
-                <br />
-                <br />
-                Passionate about the design of User Interface, linking
-                interactivity and user experience. I had the privilege of
-                working with major brands, agencies and remarkable people for
-                more than 20 years and thus be able to broaden my skills in
-                different areas of design, digital and print.
+                {HERO_INFO.title}.<br /><br />
+                {HERO_OVERVIEW}
               </p>
             </motion.div>
             <motion.div
@@ -87,203 +69,74 @@ export default function Content() {
               transition={{ duration: 0.8, delay: 1.0 }}
               viewport={{ once: true }}
             >
-              <h3 className="mt-0 mb-4 text-xl leading-8 font-bold">Skills</h3>
+              <h3 className="mt-0 mb-4 text-xl leading-8 font-bold">Core Skills</h3>
               <div className="flex w-full h-auto flex-wrap items-center gap-2">
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.2 }}
-                  viewport={{ once: true }}
-                >
-                  art direction
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.25 }}
-                  viewport={{ once: true }}
-                >
-                  ui
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.3 }}
-                  viewport={{ once: true }}
-                >
-                  ux
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.35 }}
-                  viewport={{ once: true }}
-                >
-                  webdesign
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.4 }}
-                  viewport={{ once: true }}
-                >
-                  prototyping
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.45 }}
-                  viewport={{ once: true }}
-                >
-                  brand identity
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.5 }}
-                  viewport={{ once: true }}
-                >
-                  display
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.55 }}
-                  viewport={{ once: true }}
-                >
-                  crm
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.6 }}
-                  viewport={{ once: true }}
-                >
-                  2d animations
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.65 }}
-                  viewport={{ once: true }}
-                >
-                  print
-                </motion.div>
+                {ABOUT_STORY.find((s) => s.title === "Skills & Expertise")?.textContent.map((skill, idx) => (
+                  <motion.div
+                    key={skill}
+                    className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: 1.2 + idx * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    {skill}
+                  </motion.div>
+                ))}
               </div>
               <div className="p-4"></div>
-              <h3 className="mt-0 mb-4 text-xl leading-8 font-bold">Tools</h3>
+              <h3 className="mt-0 mb-4 text-xl leading-8 font-bold">Keys</h3>
               <div className="flex w-full h-auto flex-wrap items-center gap-2">
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.7 }}
-                  viewport={{ once: true }}
-                >
-                  figma
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.75 }}
-                  viewport={{ once: true }}
-                >
-                  adobe xd
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.8 }}
-                  viewport={{ once: true }}
-                >
-                  photoshop
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.85 }}
-                  viewport={{ once: true }}
-                >
-                  illustrator
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.9 }}
-                  viewport={{ once: true }}
-                >
-                  after effect
-                </motion.div>
-                <motion.div
-                  className="px-2 py-1 rounded bg-[#531431] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider uppercase cursor-pointer hover:bg-[#702d4c] hover:text-[#f2e5d9]"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.95 }}
-                  viewport={{ once: true }}
-                >
-                  webflow
-                </motion.div>
+                {KEY_HIGHLIGHTS.map((highlight, idx) => (
+                  <motion.div
+                    key={highlight.title}
+                    className="flex flex-col items-start px-3 py-2 rounded bg-[#2f122e] text-[#e4b3a3] text-sm leading-5 font-medium tracking-wider mb-2 shadow-md min-w-[220px]"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: 1.7 + idx * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-lg">{highlight.icon}</span>
+                      <span className="font-bold uppercase text-[#f2e5d9]">{highlight.title}</span>
+                    </div>
+                    <ul className="list-disc pl-5">
+                      {highlight.lines.map((line, lidx) => (
+                        <li key={lidx} className="mb-0.5 text-[#e4b3a3]">{line}</li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
-            <motion.div
-              className="flex flex-col justify-start items-start"
-              initial={{ x: 50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 2.0 }}
-              viewport={{ once: true }}
-            >
-              <p className="mb-0 text-sm leading-5 italic">
-                I have known Jerome for over 20 years and the results have
-                always been top notch. A senior designer as we rarely see, and
-                above all very responsive.
-              </p>
-              <div className="p-2"></div>
-              <p className="mb-0 text-sm leading-5">
-                <span className="font-semibold">
-                  David Sitbon
-                  <br />
-                </span>
-                CMO - Leia Inc.
-              </p>
-            </motion.div>
-            <motion.div
-              className="flex flex-col justify-start items-start"
-              initial={{ x: -50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 2.2 }}
-              viewport={{ once: true }}
-            >
-              <p className="mb-0 text-sm leading-5 italic">
-                Jerome is a talented designer with whom I have been fortunate
-                enough to work for over 15 years now. Its ability to reinvent
-                itself in a constantly evolving universe, in order to follow new
-                trends, styles, or use new tools, will always continue to amaze
-                me. He's also an efficient and loyal person on who you can count
-                on, in all situation.
-              </p>
-              <div className="p-2"></div>
-              <p className="mb-0 text-sm leading-5">
-                <span className="font-semibold">
-                  Romain Braban
-                  <br />
-                </span>
-                Founder &amp; CEO - SEO Buddy
-              </p>
-            </motion.div>
+              {(() => {
+                const journey = ABOUT_STORY.find((s) => s.title === "My Journey");
+                if (!journey) return null;
+                return (
+                  <motion.div
+                    className="flex flex-col justify-start items-start bg-[#1a0d1a] rounded-lg p-6 shadow-lg w-full"
+                    initial={{ x: 50, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 2.0 }}
+                    viewport={{ once: true }}
+                  >
+                    <h4 className="text-2xl font-bold mb-2 text-[#e4b3a3]">{journey.title}</h4>
+                    <p className="mb-4 text-base text-[#f2e5d9]">{journey.description}</p>
+                    <ul className="list-none pl-0">
+                      {journey.textContent.map((item, idx) => (
+                        item.startsWith("━━") ? (
+                          <li key={idx} className="my-2 border-b border-[#702d4c] w-full"></li>
+                        ) : (
+                          <li key={idx} className="mb-1 text-[#e4b3a3] flex items-center">
+                            <span className="mr-2">•</span>
+                            <span>{item}</span>
+                          </li>
+                        )
+                      ))}
+                    </ul>
+                  </motion.div>
+                );
+              })()}
           </div>
         </motion.div>
       </div>
