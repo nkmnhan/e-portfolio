@@ -1,4 +1,4 @@
-import { clsxMerge } from "./themes/utils";
+import { clsxMerge } from "../themes/utils";
 
 interface LogoProps {
   color?: string;
