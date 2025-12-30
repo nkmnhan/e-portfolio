@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { RefObject } from "react";
+import { NSerifLogo } from "../components/logos";
 
 interface HeroProps {
   containerRef?: RefObject<HTMLElement>;
@@ -30,7 +31,7 @@ export default function Hero({ containerRef: containerRef }: HeroProps) {
 
   const layers: Layer[] = [
     {
-      src: "/about/hero-11.png",
+      src: "/about/hero-12.png",
       alt: "",
       zIndex: 19,
       motion: {
@@ -316,6 +317,17 @@ export default function Hero({ containerRef: containerRef }: HeroProps) {
 
   return (
     <div className="relative w-full aspect-video flex items-center overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 2.8 }}
+        viewport={{ once: true }}
+        key={20}
+        style={{ zIndex: 20 }}
+        className="absolute inset-0 w-full h-full flex items-center justify-center"
+      >
+        <NSerifLogo className="text-[#2E122E] md:scale-[2] lg:scale-[4]" />
+      </motion.div>
       {layers.map((layer) => (
         <motion.div
           key={layer.zIndex}

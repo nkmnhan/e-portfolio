@@ -37,7 +37,7 @@ export default function MonogramLogo({
               Tony F. Wilson
             </span>
           </div>
-          z{/* Diagonal line */}
+          {/* Diagonal line */}
           <div
             className={clsxMerge(
               "absolute left-1/2 -top-1/4 -rotate-38",
