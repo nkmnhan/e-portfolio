@@ -8,6 +8,7 @@
   --animate-shrink-out: shrink-out 2000ms ease-in-out;
   --animate-fade-out: fade-out 300ms linear forwards;
   --animate-loading-bar: loading-bar 1s linear infinite;
+  --font-waltograph: 'Waltograph';
 
   @keyframes shrink-out {
     0% {
