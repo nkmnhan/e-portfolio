@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from "@storybook/nextjs-vite";
-import Logo2 from "./logo2";
-import Logo from "./logo";
+import MonogramLogo from "./monogram-logo";
+import NSerifLogo from "./n-serif-logo";
 
 const meta: Meta = {
   title: "Components/Logos",
-  component: Logo,
+  component: NSerifLogo,
   tags: ["autodocs"],
 };
 
@@ -12,12 +12,12 @@ export default meta;
 
 // Stories for Log
 export const LogoDefault: StoryObj = {
-  render: () => <Logo />,
+  render: () => <NSerifLogo />,
   name: "Log Default",
 };
 
-// Stories for Logo2
-export const Logo2Default: StoryObj = {
-  render: () => <Logo2 />,
-  name: "Logo2 Default",
+// Stories for MonogramLogo
+export const MonogramLogoDefault: StoryObj = {
+  render: () => <MonogramLogo />,
+  name: "MonogramLogo Default",
 };

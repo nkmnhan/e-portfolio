@@ -1,11 +1,11 @@
 import { clsxMerge } from "../themes/utils";
 
-interface LogoProps {
+interface NSerifLogoProps {
   color?: string;
   size?: number;
 }
 
-export default function Logo() {
+export default function NSerifLogo() {
   return (
     <div className={clsxMerge("flex flex-row items-center theme-text")}>
       {/* N letter in 80s newspaper style */}

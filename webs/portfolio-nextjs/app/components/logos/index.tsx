@@ -1,2 +1,2 @@
-export {default as Logo} from './logo';
-export {default as Logo2} from './logo2';
+export {default as NSerifLogo} from './n-serif-logo';
+export {default as MonogramLogo} from './monogram-logo';
