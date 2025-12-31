@@ -4,9 +4,7 @@ import NSerifLogo from "./n-serif-logo";
 import NetFlixLogo from "./netflix-logo";
 
 const meta: Meta = {
-  title: "Components/Logos",
-  component: NSerifLogo,
-  tags: ["autodocs"],
+  title: "Components/Logos"
 };
 
 export default meta;
@@ -14,6 +12,13 @@ export default meta;
 // Stories for Log
 export const LogoDefault: StoryObj = {
   render: () => <NSerifLogo />,
+  decorators: [
+    (Story) => (
+      <div className="flex items-center justify-center h-64 w-64 bg-gray-100">
+        <Story />
+      </div>
+    ),
+  ],
   name: "Log Default",
 };
 
