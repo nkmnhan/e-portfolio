@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { clsxMerge } from "../components/themes";
 import Image from "next/image";
-import { MonogramLogo } from "../components/logos";
+import { MonogramLogo, NetFlixLogo } from "../components/logos";
 
 export default function Cover() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,16 +27,17 @@ export default function Cover() {
           )}
         >
           <div className="w-60 flex flex-col items-center gap-6">
-            <MonogramLogo 
+            {/* <MonogramLogo 
             leftLineClassName="bg-[#cb7f65]"
             diagonalClassName="bg-linear-to-b from-[#cb7f65] via-[#cb7f65] to-transparent"
-            rightLineClassName="bg-linear-to-b from-[#cb7f65] to-transparent"/>
-            <div className="w-full">
+            rightLineClassName="bg-linear-to-b from-[#cb7f65] to-transparent"/> */}
+            <NetFlixLogo />
+            <div className="w-full mt-10">
               <div className="relative h-1 w-full overflow-hidden rounded bg-gray-200">
                 <div
                   className={clsxMerge(
                     "absolute left-0 top-0 h-1 w-1/3",
-                    "bg-[#cb7f65]",
+                    "bg-red-800",
                     "animate-loading-bar"
                   )}
                 ></div>

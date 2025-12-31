@@ -4,32 +4,28 @@ import "./netflix-logo.css";
 export default function NetFlixLogo() {
   return (
     <>
-      {/* <div className="n-logo-container">
-        <div className="n-logo"></div>
-      </div> */}
-      <div className="relative flex items-start justify-center">
-        <div className="h-60 w-12 bg-red-800" />
-        <div
-          className={clsxMerge(
-            // Layout / size
-            "h-60 w-12",
+      <div className="relative flex items-start justify-center h-60">
+        {/* left vertical stroke */}
+        <div className="relative w-12 h-full n-col">
+          <div className="n-fill n-fill--left" />
+        </div>
 
-            "before:block",
-            "before:h-[140%]",
-            "before:w-full",
-            "before:translate-x-5",
-            "before:bg-red-600",
-            "before:transform before:skew-x-[21.5deg]",
-            "before:shadow-[0_0_30px_black]"
-          )}
-        />
-        <div
-          className={clsxMerge(
-            "h-60 w-12 pt-4 flex justify-start items-center bg-red-800",
-            "walt-disney text-xl text-white font-bold [writing-mode:vertical-rl]",
-          )}
-        >
-          <span>Tony F. Wilson</span>
+        {/* diagonal stroke (middle) */}
+        <div className="relative w-12 h-full n-diagonal">
+          <div className="n-fill n-fill--middle" />
+        </div>
+
+        {/* right vertical stroke + vertical label */}
+        <div className="relative w-12 h-full n-col">
+          <div className="n-fill n-fill--right" />
+          <div
+            className={clsxMerge(
+              "n-label h-full w-full pt-4 flex justify-start items-center bg-transparent",
+              "walt-disney text-xl text-white font-bold [writing-mode:vertical-rl]"
+            )}
+          >
+            <span>Tony F. Wilson</span>
+          </div>
         </div>
       </div>
     </>

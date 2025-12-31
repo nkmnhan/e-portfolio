@@ -1,39 +1,125 @@
 .n-log-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0;
-	margin: 0;
-	height: 100vh;
-	background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  background-color: #000;
 }
 
- .n-logo {
-	border-left: 48px solid #b1060f;
-	border-right: 48px solid #b1060f;
-	animation: animate 4s infinite ease-in-out;
-	height: 240px;
-	width: 144px;
-}
-
-.n-logo:before {
-	width: 100%;
-	height: 100%;
-	background: #e50913;
-	display: block;
-	content: '';
+.n-logo {
+  border-left: 48px solid #b1060f;
+  border-right: 48px solid #b1060f;
+  animation: animate 4s infinite ease-in-out;
+  height: 240px;
+  width: 144px;
 }
 
 .n-logo:before {
-	transform: skewX(21.5deg);
-	box-shadow: 0 0 30px black;
+  width: 100%;
+  height: 100%;
+  background: #e50913;
+  display: block;
+  content: "";
+}
+
+.n-logo:before {
+  transform: skewX(21.5deg);
+  box-shadow: 0 0 30px black;
 }
 
 @keyframes animate {
-	0%, 100% {
-		transform: scale(1);
-	}
-	50% {
-		transform: scale(1.10);
-	}
-} 
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* container cols */
+.n-col {
+  position: relative;
+  overflow: hidden;
+}
+
+/* visible diagonal needs extra vertical room so it can span between top and bottom */
+.n-diagonal {
+  position: relative;
+  overflow: visible;
+  display: block;
+  z-index: 10;
+}
+
+/* animated fill that draws each stroke by scaling on Y */
+.n-fill {
+  position: absolute;
+  inset: 0;
+  background: #b91c1c; /* red-800 base */
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation-fill-mode: forwards;
+  animation-duration: 600ms;
+  animation-timing-function: ease-out;
+  z-index: 1;
+}
+
+/* left stroke: grow bottom -> top */
+.n-fill--left {
+  transform-origin: bottom;
+  animation-name: draw-up;
+  animation-delay: 0s;
+}
+
+/* middle diagonal: we skew the rectangle and animate scaleY from the top (so it appears top -> bottom) */
+.n-fill--middle {
+  /* extend beyond container to reach top/bottom corners */
+  top: 0%;
+  bottom: -20%;
+  left: -100%;
+  right: 100%;
+  background: #991b1b; /* slightly different tone for middle */
+  transform-origin: top;
+  /* keep skew in transform so animation interpolates properly */
+  transform: skewX(21.5deg) scaleY(0);
+  animation-name: draw-diag;
+  animation-delay: 0.6s;
+  animation-duration: 600ms;
+  animation-timing-function: ease-out;
+  z-index: 1;
+}
+
+/* right stroke: grow bottom -> top (delayed to run after middle) */
+.n-fill--right {
+  transform-origin: bottom;
+  animation-name: draw-up;
+  animation-delay: 1.2s;
+}
+
+/* keep label above the animated fills */
+.n-label {
+  position: relative;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* keyframes */
+@keyframes draw-up {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes draw-diag {
+  from {
+    transform: skewX(21.5deg) scaleY(0);
+  }
+  to {
+    transform: skewX(21.5deg) scaleY(1);
+  }
+}
