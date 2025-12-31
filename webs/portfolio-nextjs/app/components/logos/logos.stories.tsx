@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import MonogramLogo from "./monogram-logo";
 import NSerifLogo from "./n-serif-logo";
+import NetFlixLogo from "./netflix-logo";
 
 const meta: Meta = {
   title: "Components/Logos",
@@ -20,4 +21,11 @@ export const LogoDefault: StoryObj = {
 export const MonogramLogoDefault: StoryObj = {
   render: () => <MonogramLogo />,
   name: "MonogramLogo Default",
+};
+
+
+// Stories for NetFlixLogo
+export const NetFlixLogoDefault: StoryObj = {
+  render: () => <NetFlixLogo />,
+  name: "NetFlixLogo Default",
 };
