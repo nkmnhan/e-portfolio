@@ -13,7 +13,7 @@ export default function NetFlixLogo() {
         className={clsxMerge(
           "relative z-10 h-60 w-12 draw-diagonal -left-12",
           "before:block",
-          "before:h-[140%]",
+          "before:h-[120%]",
           "before:w-full",
           "before:bg-red-600",
           "before:shadow-[0_0_30px_black]"
