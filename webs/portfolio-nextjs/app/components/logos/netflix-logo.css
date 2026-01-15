@@ -1,0 +1,37 @@
+.scale-up {
+  transform-origin: bottom;
+  transform: scaleY(0);
+  animation-name: scale-y;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.draw-diagonal::before {
+  transform-origin: top left;
+  transform: skewX(21.5deg) scaleY(0);
+  animation-name: draw-diag;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+}
+
+/* keyframes */
+@keyframes scale-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes draw-diag {
+  from {
+    transform: skewX(21.5deg) scaleY(0);
+  }
+  to {
+    transform: skewX(21.5deg) scaleY(1);
+  }
+}

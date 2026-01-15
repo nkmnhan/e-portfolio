@@ -1,10 +1,12 @@
 import { Metadata } from "next";
-import { Geist, Geist_Mono, Dancing_Script } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { NavBar, AirNav } from "./components/nav-bar";
 import { ThemeModeScript } from "flowbite-react";
 import PerformanceMonitor from "./components/performance-monitor";
 import { clsxMerge, ThemeToggle } from "./components/themes";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,9 +18,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const dancingScript = Dancing_Script({
-  variable: "--font-dancing-script",
-  subsets: ["latin"],
+const waltograph = localFont({
+  variable: "--font-waltograph",
+  src: [
+    { path: "../public/fonts/waltograph.regular.otf", weight: "400", style: "normal" },
+    { path: "../public/fonts/waltograph.regular.ttf", weight: "400", style: "normal" },
+  ],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -85,7 +91,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/logo.svg" type="image/svg+xml" sizes="32x32" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
         <ThemeModeScript />
         <script
           type="application/ld+json"
@@ -119,15 +125,16 @@ export default function RootLayout({
         className={clsxMerge(
           geistSans.variable,
           geistMono.variable,
-          dancingScript.variable,
+          waltograph.variable,
           "antialiased",
-          "bg-white dark:bg-gray-800"
+          "bg-white dark:bg-gray-800",
+          "min-h-screen min-w-screen"
         )}
         suppressHydrationWarning={true}
       >
         <PerformanceMonitor className="fixed right-4 bottom-12" />
         <ThemeToggle
-          className="absolute right-4 bottom-4 z-100"
+          className="fixed right-4 bottom-4 z-100"
           size="0.7rem"
         />
         {/* Floating Menu Button with Popover */}

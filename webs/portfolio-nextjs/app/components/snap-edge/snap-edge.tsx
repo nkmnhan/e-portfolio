@@ -245,7 +245,7 @@ export default function SnapEdge({
           onDragEnd={handleDragEnd}
           onClick={handleClick}
           className={clsxMerge(
-            "absolute pointer-events-auto z-999",
+            "absolute pointer-events-auto z-200",
             "flex items-center justify-center",
             isDragging && "cursor-grabbing",
             className
@@ -262,7 +262,7 @@ export default function SnapEdge({
       {/* Constraints container */}
       <div
         ref={constraintsRef}
-        className="fixed inset-0 pointer-events-none z-40"
+        className="fixed inset-0 pointer-events-none z-200"
       />
 
       {/* Floating draggable container */}
@@ -282,7 +282,7 @@ export default function SnapEdge({
         onDragEnd={handleDragEnd}
         onClick={handleClick}
         className={clsxMerge(
-          "fixed z-999",
+          "fixed z-201",
           "flex items-center justify-center",
           isDragging && "cursor-grabbing",
           className

@@ -4,6 +4,58 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --animate-shrink-out: shrink-out 2000ms ease-in-out;
+  --animate-fade-out: fade-out 300ms linear forwards;
+  --animate-loading-bar: loading-bar 1s linear infinite;
+
+  @keyframes shrink-out {
+    0% {
+      transform: scaleY(1);
+      opacity: 1;
+      background-color: #020016;
+    }
+    100% {
+      transform: scaleY(0);
+      opacity: 0;
+      background-color: #531431;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes loading-bar {
+    0% {
+      left: -33%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+}
+
+/* Waltograph Disney-style font */
+@font-face {
+  font-family: 'Waltograph';
+  src: url('/fonts/waltograph.regular.otf') format('opentype'),
+       url('/fonts/waltograph.regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Waltograph Disney-style font class */
+.walt-disney {
+  font-family: var(--font-waltograph), cursive;
+}
+
 .theme-text {
   @apply text-gray-900 dark:text-white;
 }
@@ -16,10 +68,6 @@ body {
   @apply text-gray-900 dark:text-white;
   @apply bg-white dark:bg-gray-900;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.disney-font {
-  font-family: var(--font-dancing-script), cursive;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -46,4 +94,43 @@ body {
     hover:scale-105 
     hover:-translate-y-1
     active:scale-98;
+}
+
+@layer utilities {
+  .animation-delay-75 {
+    animation-delay: 75ms;
+  }
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-150 {
+    animation-delay: 150ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+  .animation-delay-1500 {
+    animation-delay: 1.5s;
+  }
+  .animation-delay-1750 {
+    animation-delay: 1.75s;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-3000 {
+    animation-delay: 3s;
+  }
 }

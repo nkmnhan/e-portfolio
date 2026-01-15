@@ -30,7 +30,7 @@ export default function Contact() {
         src="/contact/bg.jpg"
         alt="cover"
         fill
-        className={clsxMerge("absolute inset-0 object-cover -z-10")}
+        className={clsxMerge("absolute inset-0 object-cover -z-1")}
         preload
       />
       <main

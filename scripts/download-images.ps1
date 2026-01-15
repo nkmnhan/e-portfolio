@@ -3,10 +3,10 @@ param(
     [string]$urlsFile = "urls.txt",
     
     [Parameter(Mandatory=$false)]
-    [string]$destFolder = "..\webs\portfolio-nextjs\public\temp-images",
+    [string]$destFolder = "..\webs\portfolio-nextjs\public\about",
     
     [Parameter(Mandatory=$false)]
-    [string]$codeFolder = "..\webs\portfolio-nextjs\app\work"
+    [string]$codeFolder = "..\webs\portfolio-nextjs\app\about"
 )
 
 # Create the destination folder if it doesn't exist
@@ -36,7 +36,7 @@ Write-Host "`nDownloaded $downloadedCount new files"
 $fileNames = Get-ChildItem -Path $destFolder -File | Select-Object -ExpandProperty Name
 
 # Path to the TSX file to save
-$tsxFile = Join-Path $codefolder "downloaded-files.tsx"
+$tsxFile = Join-Path $codeFolder "downloaded-files.tsx"
 # Create the .tsx array content (each URL as a quoted string)
 # Spaces for indentation
 $urlsArrayString = $fileNames | ForEach-Object { '  "' + ($_.Trim()) + '"' }
