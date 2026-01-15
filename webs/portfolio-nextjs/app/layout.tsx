@@ -80,6 +80,10 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || "SHrjJvYZy8wkjeAIO_cr5DN4XGJuNnnlPWTCWd9PzvQ",
+    // Add your Bing verification code from Bing Webmaster Tools
+    other: {
+      "msvalidate.01": process.env.BING_SITE_VERIFICATION || "",
+    },
   },
 };
 
@@ -93,30 +97,98 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
         <ThemeModeScript />
+        {/* WebSite Schema - Enables sitelinks in search results */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Tony Nguyen Portfolio",
+              "alternateName": ["NKM-NHAN", "nkmnhan"],
+              "url": "https://nkmnhan.com",
+              "description": "Portfolio of Tony Nguyen - Senior Software Engineer specializing in .NET, React, and cloud architecture",
+              "publisher": {
+                "@type": "Person",
+                "name": "Tony Nguyen"
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://nkmnhan.com/work?q={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              }
+            }),
+          }}
+        />
+        {/* Person Schema - Professional profile */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              "name": "NKM-NHAN",
-              "jobTitle": "Web Developer & Designer",
+              "name": "Tony Nguyen",
+              "alternateName": ["NKM-NHAN", "Nguyễn Khoa Minh Nhân"],
+              "jobTitle": "Senior Software Engineer",
               "url": "https://nkmnhan.com",
               "sameAs": [
-                "https://facebook.com",
-                "https://instagram.com",
-                "https://youtube.com"
+                "https://github.com/nkmnhan",
+                "https://www.linkedin.com/in/nhan-nguyen-813494167/",
+                "https://www.facebook.com/nkmnhan"
               ],
               "email": "mailto:nkmnhan@gmail.com",
-              "telephone": "+84 978 00 43 19",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "8/15 Phan Huy Ich Street, Quarter 18, Tan Son Ward",
-                "addressLocality": "Ho Chi Minh City",
-                "addressCountry": "VN"
-              },
-              "image": "https://nkmnhan.com/astronaut.png",
-              "description": "Portfolio of NKM-NHAN showcasing web development projects, UI/UX design, and creative solutions"
+              "image": "https://avatars.githubusercontent.com/u/49507410?v=4",
+              "description": "Senior Software Engineer with 8+ years of experience in .NET, React, Angular, AWS, and enterprise solutions",
+              "knowsAbout": [
+                ".NET Core", "React", "Angular", "Next.js", "AWS", "Azure",
+                "Microservices", "TypeScript", "PostgreSQL", "Docker"
+              ],
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Freelance"
+              }
+            }),
+          }}
+        />
+        {/* SiteNavigationElement - Helps Google understand site structure for sitelinks */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "itemListElement": [
+                {
+                  "@type": "SiteNavigationElement",
+                  "position": 1,
+                  "name": "Home",
+                  "url": "https://nkmnhan.com"
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "position": 2,
+                  "name": "About",
+                  "description": "Learn about Tony Nguyen's experience and skills",
+                  "url": "https://nkmnhan.com/about"
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "position": 3,
+                  "name": "Work & Projects",
+                  "description": "Open source projects and portfolio",
+                  "url": "https://nkmnhan.com/work"
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "position": 4,
+                  "name": "Contact",
+                  "description": "Get in touch with Tony Nguyen",
+                  "url": "https://nkmnhan.com/contact"
+                }
+              ]
             }),
           }}
         />
