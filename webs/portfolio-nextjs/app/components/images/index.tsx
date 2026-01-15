@@ -13,6 +13,8 @@ import {
 
 export { default as ImageCard } from "./image-card";
 export { default as AdaptiveImage } from "./adaptive-image";
+export { default as ImageLightbox } from "./image-lightbox";
+export type { LightboxImage } from "./image-lightbox";
 
 export {
   adaptiveImageContainerClass,

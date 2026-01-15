@@ -9,6 +9,8 @@ import ImageCard from "../components/images/image-card";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import AdaptiveImage from "../components/images/adaptive-image";
+import { CardPlaceholder } from "../components/skeletons";
+import { Breadcrumbs } from "../components/breadcrumbs";
 
 const PROJECT_STATS = [
   {
@@ -21,11 +23,17 @@ const PROJECT_STATS = [
   { value: "5", label: "Stars", icon: "💫" },
 ];
 
+const SKELETON_HEIGHTS = ["h-64", "h-72", "h-80", "h-96"];
+
 export default function WorkGallery() {
   const [heights, setHeights] = useState<number[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setHeights(IMAGE_URLS.map(() => 320 + Math.floor(Math.random() * 52) * 4));
+    // Small delay to ensure smooth transition
+    const timer = setTimeout(() => setIsLoading(false), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   const featuredProjects = IMAGE_URLS.filter((p) => p.featured);
@@ -35,7 +43,24 @@ export default function WorkGallery() {
     (p) => p.type === "personal" || p.type === "ecommerce"
   );
 
+  const renderSkeletonGrid = (count: number) => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {Array.from({ length: count }).map((_, idx) => (
+        <CardPlaceholder
+          key={idx}
+          className="w-full"
+          imageHeight={SKELETON_HEIGHTS[idx % SKELETON_HEIGHTS.length]}
+          withAvatar={false}
+        />
+      ))}
+    </div>
+  );
+
   const renderProjectGrid = (projects: typeof IMAGE_URLS) => {
+    if (isLoading) {
+      return renderSkeletonGrid(Math.min(projects.length, 6));
+    }
+
     if (projects.length === 0) {
       return (
         <div className="text-center py-20">
@@ -89,6 +114,12 @@ export default function WorkGallery() {
   return (
     <div className="fixed inset-0 overflow-y-auto hide-scrollbar theme-bg">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-12">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumbs
+          items={[{ label: "Work & Projects" }]}
+          className="mb-6"
+        />
+
         {/* GitHub Profile Section */}
         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 mb-12 p-8 md:p-10 rounded-2xl border-2 border-blue-200 dark:border-blue-800 cyan700:border-cyan-500 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 cyan700:from-cyan-600 cyan700:to-cyan-700 shadow-lg hover:shadow-xl transition-shadow duration-300">
           <AdaptiveImage
