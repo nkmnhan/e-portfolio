@@ -1,6 +1,6 @@
 # Plan: Reduce "use client" for SEO Optimization
 
-## 📊 Overall Progress: 75%
+## 📊 Overall Progress: 85%
 
 | Phase | Status | Progress |
 |-------|--------|----------|
@@ -8,6 +8,7 @@
 | Phase 2: SEO Infrastructure | ✅ Complete | **100%** |
 | Phase 3: Structured Data | ✅ Complete | **100%** |
 | Phase 4: Search Engine Submission | 🟡 In Progress | **0%** |
+| Phase 5: UX Improvements | ✅ Complete | **100%** |
 
 > **WARNING: ANIMATION PRESERVATION**
 >
@@ -1058,8 +1059,45 @@ curl https://nkmnhan.com/robots.txt
 
 *Plan created: January 2026*
 *Last updated: January 15, 2026*
-*Focus: SEO optimization for Google & Bing*
+*Focus: SEO optimization for Google & Bing + UX improvements*
 *Priority: CRITICAL for search visibility*
+
+---
+
+### Phase 5: UX Improvements (100% Complete ✅)
+
+#### Task 5.1: ImageLightbox Component ✅
+- [x] Created fullscreen image lightbox (`app/components/images/image-lightbox.tsx`)
+- [x] Close button (X) always visible
+- [x] Navigation arrows (prev/next) for multiple images
+- [x] Keyboard navigation: ESC to close, Arrow keys to navigate
+- [x] Dot indicators for image position
+- [x] Framer Motion animations for smooth transitions
+- [x] Portal-based rendering for proper z-index
+- [x] ARIA accessibility attributes
+- [x] Storybook story created
+
+#### Task 5.2: Breadcrumbs Component ✅
+- [x] Created reusable breadcrumbs (`app/components/breadcrumbs/`)
+- [x] Uses Flowbite-React Breadcrumb component (follows new guidelines)
+- [x] Theme prop customization (not className overrides)
+- [x] Dark mode support
+- [x] Added to Work page for navigation context
+- [x] Storybook story created
+
+#### Task 5.3: Loading States ✅
+- [x] Added skeleton loading to Work gallery
+- [x] Uses existing CardPlaceholder component
+- [x] Smooth transition from loading to content
+
+#### Task 5.4: Developer Guidelines Updated ✅
+- [x] Added Rule 1: Mobile-First Responsive Design
+- [x] Added Rule 2: Flowbite-React First
+- [x] Added Flowbite-React Guidelines section
+- [x] Added Responsive Design Guidelines with breakpoints
+- [x] Added responsive component checklist
+
+---
 
 ## Changelog
 
@@ -1067,3 +1105,4 @@ curl https://nkmnhan.com/robots.txt
 |------|----------|---------|
 | Jan 15, 2026 | 45% | Phase 1 completed: Converted 3 critical pages to server components with metadata |
 | Jan 15, 2026 | 75% | Phase 2-3 completed: Added structured data (WebSite, Person, SiteNavigationElement schemas), Bing verification support, social profile links |
+| Jan 15, 2026 | 85% | Phase 5 completed: Added ImageLightbox, Breadcrumbs components, skeleton loading states, updated CLAUDE.md with Flowbite-React and responsive design guidelines |
