@@ -1,13 +1,13 @@
 # E-Portfolio Design System Plan
 
-## 📊 Overall Progress: 0%
+## Overall Progress: 0%
 
 | Phase | Status | Progress |
 |-------|--------|----------|
-| Phase 1: Design Tokens | ⏳ Not Started | **0%** |
-| Phase 2: Component Library | ⏳ Not Started | **0%** |
-| Phase 3: Theme Harmonization | ⏳ Not Started | **0%** |
-| Phase 4: Page Implementation | ⏳ Not Started | **0%** |
+| Phase 1: Design Tokens | Not Started | **0%** |
+| Phase 2: Component Library | Not Started | **0%** |
+| Phase 3: Theme Harmonization | Not Started | **0%** |
+| Phase 4: Page Implementation | Not Started | **0%** |
 
 ---
 
@@ -25,6 +25,53 @@ This plan addresses design inconsistencies found in the e-portfolio website, est
 | 6 border-radius values | Visual inconsistency | Components |
 | 4+ button patterns | No component reuse | Multiple pages |
 | Invalid CSS classes | Broken styling | work-gallery.tsx |
+
+---
+
+## MCP Server Integration
+
+This design system leverages four MCP servers for enhanced workflow automation:
+
+| MCP Server | Purpose | Integration Points |
+|------------|---------|-------------------|
+| **Figma MCP** | Design-to-code sync | Token extraction, component specs |
+| **Storybook MCP** | Component documentation | Stories, variants, states |
+| **Playwright MCP** | Visual regression testing | Screenshot comparison |
+| **A11y MCP** | Accessibility audits | WCAG compliance verification |
+
+### Workflow Diagram
+
+```
+┌─────────────┐    ┌──────────────┐    ┌───────────────┐    ┌──────────────┐
+│ Figma Design│───▶│Extract Tokens│───▶│Implement Code │───▶│Storybook Story│
+└─────────────┘    └──────────────┘    └───────────────┘    └──────────────┘
+                                              │
+                                              ▼
+                                    ┌──────────────────┐
+                                    │Playwright Visual │
+                                    │     Test         │
+                                    └──────────────────┘
+                                              │
+                                              ▼
+                                    ┌──────────────────┐
+                                    │  A11y Audit      │
+                                    └──────────────────┘
+                                              │
+                                              ▼
+                                    ┌──────────────────┐
+                                    │Quality Gate Pass │
+                                    └──────────────────┘
+```
+
+### MCP Setup Commands
+
+```bash
+# Already configured in this project:
+claude mcp add --transport http figma https://mcp.figma.com/mcp
+claude mcp add storybook-mcp --transport http http://localhost:6006/mcp
+claude mcp add playwright -- npx -y @playwright/mcp@latest
+claude mcp add a11y -- npx -y a11y-mcp-server
+```
 
 ---
 
@@ -247,7 +294,7 @@ This plan addresses design inconsistencies found in the e-portfolio website, est
 │  radius-xl     16px        rounded-2xl    Feature cards         │
 │  radius-full   9999px      rounded-full   Avatars, badges       │
 │                                                                 │
-│  ⚠️  REMOVE: rounded-base (non-standard)                        │
+│  REMOVE: rounded-base (non-standard)                            │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -269,7 +316,7 @@ This plan addresses design inconsistencies found in the e-portfolio website, est
 │  5        shadow-xl     Modals, dialogs                         │
 │  6        shadow-2xl    Feature highlights                      │
 │                                                                 │
-│  Hover Pattern: shadow-md → shadow-lg (one level up)            │
+│  Hover Pattern: shadow-md -> shadow-lg (one level up)           │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -330,7 +377,7 @@ This plan addresses design inconsistencies found in the e-portfolio website, est
 │  │  └───────────────────────────────────────────────────┘  │    │
 │  │                                                         │    │
 │  │  Card Title                                             │    │
-│  │  Card description text goes here with               │    │
+│  │  Card description text goes here with                   │    │
 │  │  supporting information.                                │    │
 │  │                                                         │    │
 │  │  [Action Button]                                        │    │
@@ -346,9 +393,9 @@ This plan addresses design inconsistencies found in the e-portfolio website, est
 │                                                                 │
 │  STAT CARD                                                      │
 │  ┌─────────────────────┐                                        │
-│  │        🚀          │                                        │
-│  │        12          │  text-3xl font-bold                    │
-│  │   Open Source      │  text-sm text-muted                    │
+│  │        [icon]       │                                        │
+│  │        12           │  text-3xl font-bold                    │
+│  │   Open Source       │  text-sm text-muted                    │
 │  └─────────────────────┘                                        │
 │                                                                 │
 │  Styling:                                                       │
@@ -395,7 +442,7 @@ This plan addresses design inconsistencies found in the e-portfolio website, est
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  🍔 Menu                                    [Theme Toggle] 🌙   │
+│  [Menu]                                   [Theme Toggle]        │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │                         ░░░░░░░░░░░░░░                          │
@@ -426,16 +473,16 @@ Color Tokens Used:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  🍔                                         [Theme Toggle] 🌙   │
+│  [Menu]                                   [Theme Toggle]        │
 ├─────────────────────────────────────────────────────────────────┤
 │  Home > Work & Projects                     (Breadcrumb)        │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ┌────────────────────────────────────────────────────────────┐ │
-│  │  👤  Tony Nguyen (nkmnhan)                                 │ │
-│  │      Senior Software Engineer • 12 Projects • 5 Stars      │ │
+│  │  [Avatar]  Tony Nguyen (nkmnhan)                           │ │
+│  │            Senior Software Engineer - 12 Projects - 5 Stars│ │
 │  │                                                            │ │
-│  │      [ View on GitHub ]                                    │ │
+│  │            [ View on GitHub ]                              │ │
 │  └────────────────────────────────────────────────────────────┘ │
 │                                                                 │
 │              My Work & Projects                                 │
@@ -449,10 +496,8 @@ Color Tokens Used:
 │  [ Featured ] [ All ] [ Enterprise ] [ Tools ] [ Personal ]    │
 │                                                                 │
 │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐               │
-│  │             │ │             │ │             │               │
 │  │   Project   │ │   Project   │ │   Project   │               │
 │  │    Card     │ │    Card     │ │    Card     │               │
-│  │             │ │             │ │             │               │
 │  │─────────────│ │─────────────│ │─────────────│               │
 │  │ Title       │ │ Title       │ │ Title       │               │
 │  │ Description │ │ Description │ │ Description │               │
@@ -462,7 +507,7 @@ Color Tokens Used:
 
 Color Tokens Used:
 - Background: --color-bg (white/gray-950)
-- Profile Card: gradient blue-50 → purple-50 / gray-800 → gray-900
+- Profile Card: gradient blue-50 -> purple-50 / gray-800 -> gray-900
 - Stat Cards: --color-surface with border
 - Tabs: Flowbite default theme
 - Project Cards: --color-surface, --shadow-md
@@ -472,7 +517,7 @@ Color Tokens Used:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  🍔                                         [Theme Toggle] 🌙   │
+│  [Menu]                                   [Theme Toggle]        │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
@@ -497,9 +542,9 @@ Color Tokens Used:
 │  │                             │  │                         │  │
 │  │  My Journey                 │  │  Projects               │  │
 │  │  ───────────────────────    │  │                         │  │
-│  │  2024 ── Full-Stack Dev     │  │  MOE Platform           │  │
-│  │  2018 ── Senior Engineer    │  │  Lowell Microservices   │  │
-│  │  2016 ── Software Engineer  │  │  Open Create            │  │
+│  │  2024 -- Full-Stack Dev     │  │  MOE Platform           │  │
+│  │  2018 -- Senior Engineer    │  │  Lowell Microservices   │  │
+│  │  2016 -- Software Engineer  │  │  Open Create            │  │
 │  │                             │  │                         │  │
 │  └─────────────────────────────┘  └─────────────────────────┘  │
 │                                                                 │
@@ -518,7 +563,7 @@ Color Tokens Used (Cinematic Palette):
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  🍔                                         [Theme Toggle] 🌙   │
+│  [Menu]                                   [Theme Toggle]        │
 ├─────────────────────────────────────────────────────────────────┤
 │  Home > Contact                             (Breadcrumb)        │
 ├─────────────────────────────────────────────────────────────────┤
@@ -540,7 +585,6 @@ Color Tokens Used (Cinematic Palette):
 │  │                                                         │    │
 │  │  Message                                                │    │
 │  │  ┌─────────────────────────────────────────────────┐    │    │
-│  │  │                                                 │    │    │
 │  │  │                                                 │    │    │
 │  │  │                                                 │    │    │
 │  │  └─────────────────────────────────────────────────┘    │    │
@@ -652,7 +696,7 @@ Color Tokens Used:
 - `app/globals.css` - Add CSS custom properties
 - `tailwind.config.ts` - Extend theme with design tokens
 
-**Tasks:**
+**Core Tasks:**
 - [ ] Add color tokens to `:root`
 - [ ] Add dark mode tokens to `.dark`
 - [ ] Add cinematic theme tokens
@@ -660,7 +704,28 @@ Color Tokens Used:
 - [ ] Add typography tokens
 - [ ] Test token application
 
-**Estimated effort:** 2-3 hours
+**Figma MCP Tasks:**
+- [ ] Authenticate Figma MCP (`/mcp` -> figma -> Authenticate)
+- [ ] Extract color tokens from Figma design file
+- [ ] Extract typography scale from Figma text styles
+- [ ] Export spacing values from Figma auto-layout
+- [ ] Compare extracted tokens with implemented CSS variables
+- [ ] Document token mapping (Figma style -> CSS variable)
+
+**A11y MCP Tasks - Color Contrast Validation:**
+- [ ] Run A11y audit on all color combinations
+- [ ] Verify primary/background contrast >= 4.5:1
+- [ ] Verify text/muted on dark background >= 4.5:1
+- [ ] Verify cinematic theme palette accessibility
+
+| Combination | Required Ratio | Status |
+|-------------|----------------|--------|
+| --color-text on --color-bg | 4.5:1 | Pending |
+| --color-text-muted on --color-bg | 4.5:1 | Pending |
+| --cinematic-text on --cinematic-bg-deep | 4.5:1 | Pending |
+| --color-primary on white | 3:1 (UI) | Pending |
+
+**Estimated effort:** 4-5 hours
 
 ---
 
@@ -673,15 +738,59 @@ Color Tokens Used:
 - `app/components/ui/badge.tsx`
 - `app/components/ui/index.tsx`
 
-**Tasks:**
+**Core Tasks:**
 - [ ] Create Button component with variants
 - [ ] Create Card component
 - [ ] Create Input component
 - [ ] Create Badge component
-- [ ] Add Storybook stories for each
 - [ ] Document usage patterns
 
-**Estimated effort:** 4-6 hours
+**Storybook MCP Tasks - Component Stories:**
+
+| Component | Stories Required | Status |
+|-----------|-----------------|--------|
+| Button | primary, secondary, ghost, sizes, states, loading, icons | Pending |
+| Card | default, stat, hover, dark mode, cinematic | Pending |
+| Input | text, email, textarea, states (focus, error, disabled) | Pending |
+| Badge | colors, sizes, dismissable | Pending |
+
+```tsx
+// Example: button.stories.tsx
+export default { title: 'UI/Button', component: Button };
+
+export const AllVariants = () => (
+  <div className="flex gap-4">
+    <Button variant="primary">Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="ghost">Ghost</Button>
+  </div>
+);
+
+export const AllSizes = () => (
+  <div className="flex items-center gap-4">
+    <Button size="sm">Small</Button>
+    <Button size="md">Medium</Button>
+    <Button size="lg">Large</Button>
+  </div>
+);
+```
+
+**Playwright MCP Tasks - Visual Regression:**
+- [ ] Button: 12 visual snapshots (3 variants x 4 states)
+- [ ] Card: 8 visual snapshots (2 variants x 4 themes)
+- [ ] Input: 8 visual snapshots (2 types x 4 states)
+- [ ] Badge: 6 visual snapshots (6 color variants)
+
+**A11y MCP Tasks - Component Accessibility:**
+
+| Component | A11y Requirements | Status |
+|-----------|------------------|--------|
+| Button | Focus indicator >= 2px, touch target >= 44px, aria-disabled | Pending |
+| Card | Descriptive link text, alt text on images, logical focus order | Pending |
+| Input | Label association, aria-describedby for errors, aria-required | Pending |
+| Badge | Sufficient color contrast, not color-only meaning | Pending |
+
+**Estimated effort:** 8-10 hours
 
 ---
 
@@ -693,14 +802,44 @@ Color Tokens Used:
 - `app/layout.tsx`
 - Remove invalid `cyan700:` classes
 
-**Tasks:**
+**Core Tasks:**
 - [ ] Decide on About page approach (keep cinematic or unify)
 - [ ] Apply design tokens throughout
 - [ ] Fix background inconsistencies (gray-800 vs gray-900)
 - [ ] Remove/fix invalid Tailwind classes
 - [ ] Test dark/light mode transitions
 
-**Estimated effort:** 3-4 hours
+**Figma MCP Tasks - Theme Sync:**
+- [ ] Export light theme from Figma
+- [ ] Export dark theme from Figma
+- [ ] Export cinematic theme from Figma
+- [ ] Verify all themes use consistent token structure
+
+**Playwright MCP Tasks - Theme Visual Tests:**
+
+```typescript
+test.describe('Theme Transitions', () => {
+  test('light to dark mode transition', async ({ page }) => {
+    await page.goto('/');
+    await expect(page).toHaveScreenshot('home-light.png');
+    await page.click('[data-testid="theme-toggle"]');
+    await expect(page).toHaveScreenshot('home-dark.png');
+  });
+
+  test('about page cinematic theme', async ({ page }) => {
+    await page.goto('/about');
+    await expect(page).toHaveScreenshot('about-cinematic.png');
+  });
+});
+```
+
+**A11y MCP Tasks - Multi-Theme Accessibility:**
+- [ ] Light mode full page audit
+- [ ] Dark mode full page audit
+- [ ] Cinematic theme full page audit
+- [ ] Verify focus indicators visible in all themes
+
+**Estimated effort:** 5-6 hours
 
 ---
 
@@ -712,7 +851,7 @@ Color Tokens Used:
 - `app/work/*.tsx`
 - `app/contact/page.tsx`
 
-**Tasks:**
+**Core Tasks:**
 - [ ] Apply consistent typography scale
 - [ ] Apply consistent spacing
 - [ ] Apply consistent card styling
@@ -720,27 +859,131 @@ Color Tokens Used:
 - [ ] Test responsive behavior
 - [ ] Test accessibility
 
-**Estimated effort:** 4-6 hours
+**Storybook MCP Tasks - Page Stories:**
+- [ ] Homepage (mobile, tablet, desktop)
+- [ ] Work Gallery (mobile, tablet, desktop)
+- [ ] About Page (mobile, tablet, desktop)
+- [ ] Contact Page (mobile, tablet, desktop)
+- [ ] 404 Page
+- [ ] Loading states for each page
+
+**Playwright MCP Tasks - Full Page Visual Regression:**
+
+| Page | Mobile | Tablet | Desktop | Dark Mode |
+|------|--------|--------|---------|-----------|
+| Homepage | Pending | Pending | Pending | Pending |
+| Work Gallery | Pending | Pending | Pending | Pending |
+| About | Pending | Pending | Pending | N/A |
+| Contact | Pending | Pending | Pending | Pending |
+
+**A11y MCP Tasks - Site-Wide Accessibility:**
+
+| Requirement | Home | Work | About | Contact |
+|-------------|------|------|-------|---------|
+| Heading hierarchy (h1 > h2 > h3) | Pending | Pending | Pending | Pending |
+| Skip to content link | Pending | Pending | Pending | Pending |
+| Landmark regions | Pending | Pending | Pending | Pending |
+| Keyboard navigation | Pending | Pending | Pending | Pending |
+| Focus management | Pending | Pending | Pending | Pending |
+
+**Estimated effort:** 8-10 hours
+
+---
+
+## Quality Gates
+
+Each phase must pass these automated quality gates before proceeding:
+
+### Phase 1 Quality Gate
+
+| Check | Tool | Threshold | Required |
+|-------|------|-----------|----------|
+| Token extraction complete | Figma MCP | 100% | Yes |
+| Color contrast passes | A11y MCP | WCAG AA | Yes |
+| CSS variables valid | Build | No errors | Yes |
+| Tailwind config valid | Build | No errors | Yes |
+
+### Phase 2 Quality Gate
+
+| Check | Tool | Threshold | Required |
+|-------|------|-----------|----------|
+| All component stories exist | Storybook MCP | 100% | Yes |
+| Visual regression passes | Playwright MCP | 0 diffs | Yes |
+| Component a11y passes | A11y MCP | 0 critical | Yes |
+| Storybook builds | Build | No errors | Yes |
+
+### Phase 3 Quality Gate
+
+| Check | Tool | Threshold | Required |
+|-------|------|-----------|----------|
+| Theme tokens synced | Figma MCP | 100% match | Yes |
+| All themes pass contrast | A11y MCP | WCAG AA | Yes |
+| Theme transition visual tests | Playwright MCP | 0 diffs | Yes |
+| No invalid CSS classes | Build | 0 warnings | Yes |
+
+### Phase 4 Quality Gate
+
+| Check | Tool | Threshold | Required |
+|-------|------|-----------|----------|
+| Page stories complete | Storybook MCP | All pages | Yes |
+| Full visual regression | Playwright MCP | 0 diffs | Yes |
+| Site-wide a11y audit | A11y MCP | 0 critical, <5 serious | Yes |
+| Lighthouse performance | CI | >90 | Yes |
+| Lighthouse accessibility | CI | >90 | Yes |
 
 ---
 
 ## Success Criteria
 
-### Visual Consistency
-- [ ] All pages use design tokens
-- [ ] Consistent typography hierarchy
-- [ ] Consistent spacing rhythm
-- [ ] Consistent component styling
+### Visual Consistency (Figma MCP Verified)
+- [ ] All pages use design tokens (Figma sync 100%)
+- [ ] Consistent typography hierarchy (Figma style match)
+- [ ] Consistent spacing rhythm (Figma auto-layout match)
+- [ ] Consistent component styling (Figma component match)
+- [ ] Design-to-code drift < 2% per page
 
-### Technical Quality
+### Technical Quality (Storybook MCP Verified)
 - [ ] No hard-coded colors outside tokens
 - [ ] No invalid CSS classes
-- [ ] All components documented in Storybook
+- [ ] All components documented in Storybook (100% coverage)
+- [ ] All component variants have stories
+- [ ] All component states documented
 - [ ] Dark/light mode works consistently
 
+### Visual Regression (Playwright MCP Verified)
+- [ ] All component visual tests pass (0 diffs)
+- [ ] All page visual tests pass (0 diffs)
+- [ ] All responsive breakpoints tested
+- [ ] All theme variants tested
+- [ ] Visual baseline established and maintained
+
+### Accessibility (A11y MCP Verified)
+- [ ] WCAG 2.1 AA compliance (0 critical violations)
+- [ ] Color contrast >= 4.5:1 for all text
+- [ ] Color contrast >= 3:1 for UI elements
+- [ ] All interactive elements keyboard accessible
+- [ ] All images have alt text
+- [ ] Proper heading hierarchy on all pages
+- [ ] Focus indicators visible in all themes
+- [ ] Screen reader compatible
+
 ### Performance
-- [ ] Lighthouse score > 90
+- [ ] Lighthouse score > 90 (performance)
+- [ ] Lighthouse score > 90 (accessibility)
 - [ ] No layout shifts from styling
+- [ ] Animations perform at 60fps
+
+---
+
+## Effort Summary
+
+| Phase | Original | With MCP Integration | Notes |
+|-------|----------|---------------------|-------|
+| Phase 1 | 2-3 hours | 4-5 hours | +Figma sync, +A11y contrast |
+| Phase 2 | 4-6 hours | 8-10 hours | +Storybook, +Visual tests, +A11y |
+| Phase 3 | 3-4 hours | 5-6 hours | +Theme sync, +Visual regression |
+| Phase 4 | 4-6 hours | 8-10 hours | +Page stories, +Full visual suite |
+| **Total** | **13-19 hours** | **25-31 hours** | Quality automation ROI |
 
 ---
 
@@ -749,9 +992,12 @@ Color Tokens Used:
 | Date | Progress | Changes |
 |------|----------|---------|
 | Jan 15, 2026 | 0% | Design system plan created |
+| Jan 15, 2026 | 0% | Added MCP integration (Figma, Storybook, Playwright, A11y) |
+| Jan 15, 2026 | 0% | Added Quality Gates and enhanced Success Criteria |
 
 ---
 
 *Plan created: January 15, 2026*
+*Enhanced: January 15, 2026 with MCP Integration*
 *Author: UI/UX Designer Agent*
-*Focus: Design consistency and visual harmony*
+*Focus: Design consistency, visual harmony, and automated quality assurance*

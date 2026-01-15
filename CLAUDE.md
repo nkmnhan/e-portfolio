@@ -181,9 +181,24 @@ pnpm storybook    # Component preview
 
 ## MCP Servers
 
+### Development Tools
 | Server | Purpose |
 |--------|---------|
 | `context7` | Docs for Next.js, Tailwind, Flowbite |
 | `sequential-thinking` | Complex problem-solving |
 | `github` | Issues, PRs, repos (needs `GITHUB_TOKEN`) |
 | `next-devtools` | Next.js routing, components, build analysis |
+
+### UI/UX Design Tools
+| Server | Purpose | Setup |
+|--------|---------|-------|
+| `figma` | Read Figma designs, tokens, layouts | Needs OAuth: type `/mcp` → Authenticate |
+| `storybook-mcp` | Component stories, screenshots | Run `pnpm storybook` first |
+| `playwright` | Visual testing, browser automation | Auto-starts on demand |
+| `a11y` | Accessibility audits (axe-core) | Auto-starts on demand |
+
+### Figma Workflow
+1. Create designs in Figma
+2. Authenticate: `/mcp` → select `figma` → Authenticate
+3. Share Figma frame link in prompt
+4. AI reads exact design tokens, spacing, colors

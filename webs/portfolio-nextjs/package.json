@@ -29,6 +29,7 @@
     "web-vitals": "^5.1.0"
   },
   "devDependencies": {
+    "@storybook/addon-mcp": "^0.1.8",
     "@storybook/addon-themes": "^10.1.10",
     "@storybook/nextjs-vite": "^10.1.10",
     "@tailwindcss/postcss": "^4.1.18",
