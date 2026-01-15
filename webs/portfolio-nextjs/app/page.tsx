@@ -1,69 +1,28 @@
-"use client";
-import { clsxMerge } from "@/app/components/themes/utils";
-import AdaptiveImage from "./components/images/adaptive-image";
-import { useState } from "react";
+import type { Metadata } from "next";
+import HeroSection from "./components/hero-section";
+
+export const metadata: Metadata = {
+  title: "NKM-NHAN | Senior Full-Stack Developer Portfolio",
+  description:
+    "Portfolio of NKM-NHAN - Senior Full-Stack Developer specializing in .NET, React, Angular, AWS, and enterprise solutions. Building scalable applications for global clients.",
+  keywords: [
+    "portfolio",
+    "full-stack developer",
+    "software engineer",
+    ".NET",
+    "React",
+    "Angular",
+    "AWS",
+    "TypeScript",
+  ],
+  openGraph: {
+    title: "NKM-NHAN | Senior Full-Stack Developer Portfolio",
+    description:
+      "Portfolio of NKM-NHAN - Senior Full-Stack Developer specializing in .NET, React, Angular, and AWS.",
+    type: "website",
+  },
+};
 
 export default function Home() {
-  const [showPoster, setShowPoster] = useState(false);
-  return (
-    <div
-      className={clsxMerge(
-        "relative flex flex-col min-h-screen items-center justify-center overflow-hidden"
-      )}
-    >
-      {/* Background Video with poster */}
-      <video
-        className={
-          "absolute inset-0 w-full h-full object-cover transition-opacity duration-500 pointer-events-none"
-        }
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="/home/poster.jpg"
-        onError={() => setShowPoster(true)}
-      >
-        <source src="/home/bg.mp4" type="video/mp4" />
-      </video>
-      {showPoster && (
-        <AdaptiveImage
-          className={
-            "absolute inset-0 w-full h-full object-cover z-1 transition-opacity duration-500"
-          }
-          fill
-          src="/home/poster.jpg"
-          alt="Video fallback"
-        />
-      )}
-      {/* Dot Cover Overlay */}
-      <div
-        className="absolute inset-0 w-full h-full z-2 pointer-events-none"
-        style={{
-          backgroundImage: "url('/dot.png')",
-          backgroundSize: "4px 4px",
-          opacity: 1,
-        }}
-      />
-      <main className="relative z-3 flex flex-col items-center">
-        <div className="h-24 w-24 md:h-32 md:w-32 lg:h-44 lg:w-44 relative rounded-lg bg-[#00000033]">
-          <AdaptiveImage
-            className="invert dark:invert-0 object-cover"
-            src="/logo.svg"
-            alt="Github Porfolio QR Code"
-            fill
-            draggable={false}
-            preload
-          />
-        </div>
-        <h1
-          className={clsxMerge(
-            "font-semibold text-center text-2xl md:text-5xl mt-1",
-            "text-white walt-disney"
-          )}
-        >
-          NKM-NHAN
-        </h1>
-      </main>
-    </div>
-  );
+  return <HeroSection />;
 }
