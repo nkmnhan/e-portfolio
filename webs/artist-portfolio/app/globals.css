@@ -56,7 +56,8 @@
 
   /* Spacing */
   --container-max: 1400px;
-  --section-padding: 6rem;
+  --section-padding: 5rem;
+  --section-padding-sm: 3rem;
 
   /* Animation */
   --transition-fast: 150ms ease;
@@ -181,19 +182,38 @@ img {
 .container-custom {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .container-custom {
     padding: 0 2rem;
   }
 }
 
+@media (min-width: 768px) {
+  .container-custom {
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding: 0 4rem;
+  }
+}
+
 /* Section spacing */
 .section-padding {
-  padding-top: var(--section-padding);
-  padding-bottom: var(--section-padding);
+  padding-top: var(--section-padding-sm);
+  padding-bottom: var(--section-padding-sm);
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+  }
 }
 
 /* Masonry grid for artwork gallery */

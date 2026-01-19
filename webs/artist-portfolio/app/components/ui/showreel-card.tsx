@@ -1,25 +1,25 @@
 import Image from "next/image";
 import { clsxMerge } from "@/lib/utils";
-import type { Showreel, Artist } from "@/lib/data";
-import { HiPlay, HiClock } from "react-icons/hi";
+import type { Showreel } from "@/lib/data";
+import { HiPlay } from "react-icons/hi";
 
 interface ShowreelCardProps {
   showreel: Showreel;
-  artist: Artist;
   priority?: boolean;
 }
 
-export function ShowreelCard({ showreel, artist, priority = false }: ShowreelCardProps) {
+export function ShowreelCard({ showreel, priority = false }: ShowreelCardProps) {
   return (
     <div
       className={clsxMerge(
         "group relative overflow-hidden rounded-xl",
         "bg-[var(--color-surface)]",
         "border border-[var(--color-border)]",
-        "card-hover"
+        "hover:border-[var(--color-border-hover)]",
+        "transition-all duration-300"
       )}
     >
-      {/* Thumbnail with play overlay */}
+      {/* Thumbnail */}
       <div className="relative aspect-video overflow-hidden">
         <Image
           src={showreel.thumbnail}
@@ -30,69 +30,90 @@ export function ShowreelCard({ showreel, artist, priority = false }: ShowreelCar
           priority={priority}
         />
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
-
-        {/* Play button */}
+        {/* Overlay */}
         <div
           className={clsxMerge(
-            "absolute inset-0 flex items-center justify-center"
+            "absolute inset-0",
+            "bg-gradient-to-t from-black/80 via-black/20 to-transparent",
+            "opacity-60 group-hover:opacity-80",
+            "transition-opacity duration-300"
           )}
-        >
+        />
+
+        {/* Play Button */}
+        <div className="absolute inset-0 flex items-center justify-center">
           <div
             className={clsxMerge(
               "p-4 rounded-full",
               "bg-[var(--color-primary)] text-white",
-              "transform group-hover:scale-110 transition-transform",
-              "shadow-lg"
+              "transform group-hover:scale-110",
+              "transition-transform duration-300",
+              "shadow-lg shadow-[var(--color-primary)]/30"
             )}
           >
             <HiPlay className="w-8 h-8 ml-1" />
           </div>
         </div>
 
-        {/* Duration badge */}
+        {/* Duration */}
         <div
           className={clsxMerge(
             "absolute bottom-3 right-3",
-            "flex items-center gap-1 px-2 py-1 rounded",
-            "bg-black/70 text-white text-sm"
+            "px-2 py-1 rounded",
+            "bg-black/80 text-white text-sm font-medium"
           )}
         >
-          <HiClock className="w-4 h-4" />
-          <span>{showreel.duration}</span>
+          {showreel.duration}
+        </div>
+
+        {/* Year Badge */}
+        <div
+          className={clsxMerge(
+            "absolute top-3 left-3",
+            "px-2 py-1 rounded",
+            "bg-[var(--color-primary)]/20 backdrop-blur-sm",
+            "text-[var(--color-primary)] text-sm font-medium"
+          )}
+        >
+          {showreel.year}
         </div>
       </div>
 
-      {/* Content */}
-      <div className="p-4">
-        <div className="flex items-start gap-3">
-          {/* Artist avatar */}
-          <Image
-            src={artist.avatar}
-            alt={artist.name}
-            width={40}
-            height={40}
-            className="rounded-full object-cover flex-shrink-0"
-          />
-
-          <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-[var(--color-text)] truncate">
-              {showreel.title}
-            </h3>
-            <p className="text-sm text-[var(--color-text-muted)]">
-              {artist.name}
-            </p>
-          </div>
-        </div>
-
-        <p className="mt-3 text-sm text-[var(--color-text-secondary)] line-clamp-2">
+      {/* Info */}
+      <div className="p-5">
+        <h3 className="font-semibold text-lg mb-2 group-hover:text-[var(--color-primary)] transition-colors">
+          {showreel.title}
+        </h3>
+        <p className="text-sm text-[var(--color-text-muted)] line-clamp-2 leading-relaxed">
           {showreel.description}
         </p>
 
-        <div className="mt-3 text-xs text-[var(--color-text-muted)]">
-          {showreel.year}
-        </div>
+        {/* Breakdown Preview */}
+        {showreel.breakdown && showreel.breakdown.length > 0 && (
+          <div className="mt-4 pt-4 border-t border-[var(--color-border)]">
+            <p className="text-xs text-[var(--color-text-muted)] mb-2">
+              {showreel.breakdown.length} clips included
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {showreel.breakdown.slice(0, 3).map((item, index) => (
+                <span
+                  key={index}
+                  className={clsxMerge(
+                    "px-2.5 py-1 rounded text-xs",
+                    "bg-[var(--color-bg)] text-[var(--color-text-secondary)]"
+                  )}
+                >
+                  {item.role}
+                </span>
+              ))}
+              {showreel.breakdown.length > 3 && (
+                <span className="px-2 py-1 text-xs text-[var(--color-text-muted)]">
+                  +{showreel.breakdown.length - 3} more
+                </span>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

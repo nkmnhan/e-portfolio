@@ -3,9 +3,10 @@ import { clsxMerge } from "@/lib/utils";
 import { FaArtstation, FaLinkedin, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const footerLinks = [
-  { href: "/artists", label: "Artists" },
-  { href: "/gallery", label: "Gallery" },
+  { href: "/projects", label: "Projects" },
   { href: "/showreels", label: "Showreels" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const socialLinks = [
@@ -18,16 +19,16 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)]">
-      <div className="container-custom py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="container-custom py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div>
             <Link href="/" className="text-xl font-bold text-gradient">
               ArtFolio
             </Link>
-            <p className="mt-3 text-[var(--color-text-muted)] text-sm max-w-xs">
-              Showcase platform for 3D Artists, Animators, and Concept Artists.
-              Your artwork deserves to be seen.
+            <p className="mt-4 text-[var(--color-text-muted)] text-sm max-w-xs leading-relaxed">
+              Personal portfolio showcasing 3D art, animation, and concept work.
+              Creating visual stories that inspire.
             </p>
           </div>
 
@@ -83,10 +84,10 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-6 border-t border-[var(--color-border)]">
+        <div className="mt-14 pt-8 border-t border-[var(--color-border)]">
           <p className="text-center text-[var(--color-text-muted)] text-sm">
-            &copy; {new Date().getFullYear()} ArtFolio. Crafted for visual
-            storytellers.
+            &copy; {new Date().getFullYear()} ArtFolio. Crafted with passion for
+            visual storytelling.
           </p>
         </div>
       </div>

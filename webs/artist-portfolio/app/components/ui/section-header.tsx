@@ -20,7 +20,7 @@ export function SectionHeader({
   return (
     <div
       className={clsxMerge(
-        "flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8",
+        "flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10",
         className
       )}
     >
@@ -29,7 +29,7 @@ export function SectionHeader({
           {title}
         </h2>
         {subtitle && (
-          <p className="mt-2 text-[var(--color-text-muted)]">{subtitle}</p>
+          <p className="mt-3 text-[var(--color-text-muted)]">{subtitle}</p>
         )}
       </div>
 
