@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { FaLinkedinIn, FaFacebookF, FaGithub } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
