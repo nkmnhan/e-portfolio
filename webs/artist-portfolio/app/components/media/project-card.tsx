@@ -8,16 +8,28 @@ import type { Project } from "@/lib/data";
 import { HiPlay, HiOutlineEye } from "react-icons/hi";
 import { Badge } from "@/app/components/ui/badge";
 
+export type AspectRatio = "4/3" | "16/9" | "1/1" | "3/4" | "auto";
+
 interface ProjectCardProps {
   project: Project;
   priority?: boolean;
   showCategory?: boolean;
+  aspectRatio?: AspectRatio;
 }
+
+const aspectRatioClasses: Record<AspectRatio, string> = {
+  "4/3": "aspect-[4/3]",
+  "16/9": "aspect-video",
+  "1/1": "aspect-square",
+  "3/4": "aspect-[3/4]",
+  "auto": "", // No fixed aspect ratio - for masonry
+};
 
 export function ProjectCard({
   project,
   priority = false,
   showCategory = true,
+  aspectRatio = "4/3",
 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -41,6 +53,14 @@ export function ProjectCard({
 
   const hasVideo = project.thumbnailType === "video" && project.thumbnailVideo;
 
+  // For "auto" aspect ratio, calculate padding-bottom from project's thumbnailAspectRatio
+  // Default to 4:3 (1.33) if not specified
+  const autoAspectStyle = aspectRatio === "auto" && project.thumbnailAspectRatio
+    ? { paddingBottom: `${(1 / project.thumbnailAspectRatio) * 100}%` }
+    : aspectRatio === "auto"
+    ? { paddingBottom: "75%" } // Default to 4:3 if no ratio specified
+    : undefined;
+
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -55,7 +75,13 @@ export function ProjectCard({
       onMouseLeave={handleMouseLeave}
     >
       {/* Media Container */}
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <div
+        className={clsxMerge(
+          "relative overflow-hidden",
+          aspectRatioClasses[aspectRatio]
+        )}
+        style={autoAspectStyle}
+      >
         {/* Static Thumbnail Image */}
         <Image
           src={project.thumbnail}

@@ -39,3 +39,7 @@ export { Breadcrumb, type BreadcrumbProps, type BreadcrumbItem } from "./breadcr
 export { Hero } from "./hero";
 export { SectionHeader } from "./section-header";
 export { ShowreelCard } from "./showreel-card";
+
+// Filters & Toggles
+export { CategoryFilter } from "./category-filter";
+export { LayoutToggle } from "./layout-toggle";

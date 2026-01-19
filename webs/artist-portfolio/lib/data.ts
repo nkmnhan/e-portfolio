@@ -75,6 +75,7 @@ export interface Project {
   thumbnail: string;
   thumbnailType: "image" | "video"; // For hover autoplay
   thumbnailVideo?: string; // Video URL for hover autoplay
+  thumbnailAspectRatio?: number; // Width/Height ratio (e.g., 1.33 for 4:3, 0.75 for 3:4) - for masonry grids
   media: MediaItem[];
   tools: string[];
   tags: string[];
@@ -274,6 +275,7 @@ The design process started with quick sketches, moved to a detailed concept, and
     thumbnail: "https://images.unsplash.com/photo-1635322966219-b75ed372eb01?w=600&h=800&fit=crop",
     thumbnailType: "video",
     thumbnailVideo: "https://cdn.coverr.co/videos/coverr-3d-abstract-shapes-7954/1080p.mp4",
+    thumbnailAspectRatio: 0.75, // Portrait 3:4
     media: [
       {
         type: "carousel",
@@ -328,6 +330,7 @@ The design process started with quick sketches, moved to a detailed concept, and
     longDescription: `The Forest Spirit was designed for an indie animated short exploring themes of nature and technology. The character needed to feel ancient yet alive, with bioluminescent elements that would animate beautifully.`,
     thumbnail: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&h=800&fit=crop",
     thumbnailType: "image",
+    thumbnailAspectRatio: 0.75, // Portrait 3:4
     media: [
       {
         type: "carousel",
@@ -366,6 +369,7 @@ The design process started with quick sketches, moved to a detailed concept, and
     thumbnail: "https://images.unsplash.com/photo-1577493340887-b7bfff550145?w=600&h=400&fit=crop",
     thumbnailType: "video",
     thumbnailVideo: "https://cdn.coverr.co/videos/coverr-birds-flying-over-the-water-3593/1080p.mp4",
+    thumbnailAspectRatio: 1.5, // Landscape 3:2
     media: [
       {
         type: "video",
@@ -442,6 +446,7 @@ The design process started with quick sketches, moved to a detailed concept, and
     longDescription: `A series of environment concepts exploring the discovery of Atlantis. The goal was to blend ancient Greek architecture with bioluminescent deep-sea elements, creating a sense of wonder and mystery.`,
     thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=400&fit=crop",
     thumbnailType: "image",
+    thumbnailAspectRatio: 1.78, // Cinematic 16:9
     media: [
       {
         type: "carousel",
@@ -474,8 +479,9 @@ The design process started with quick sketches, moved to a detailed concept, and
     slug: "mech-warriors",
     category: "concept-art",
     description: "Industrial mech designs for a sci-fi strategy game with functional silhouettes.",
-    thumbnail: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=600&fit=crop",
     thumbnailType: "image",
+    thumbnailAspectRatio: 1.0, // Square 1:1
     media: [
       {
         type: "carousel",
