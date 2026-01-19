@@ -45,7 +45,7 @@ export function ShowreelCard({ showreel, priority = false }: ShowreelCardProps) 
         <div className="absolute inset-0 flex items-center justify-center">
           <div
             className={clsxMerge(
-              "p-4 rounded-full",
+              "rounded-full",
               "bg-[var(--color-primary)] text-white",
               "transform group-hover:scale-110",
               "transition-transform duration-300",

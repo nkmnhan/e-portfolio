@@ -101,9 +101,10 @@ export function ProjectCard({
           <div
             className={clsxMerge(
               "absolute top-3 right-3",
-              "p-2 rounded-full",
-              "bg-black/60 backdrop-blur-sm",
-              "text-[var(--color-primary)]",
+              "rounded-full",
+              "bg-[var(--color-primary)] text-white",
+              // "bg-black/60 backdrop-blur-sm",
+              // "text-[var(--color-primary)]",
               "transition-all duration-300",
               isHovered ? "scale-110" : "scale-100"
             )}
