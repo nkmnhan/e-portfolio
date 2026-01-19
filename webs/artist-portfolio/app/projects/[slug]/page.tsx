@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { getProjectBySlug, projects, profile } from "@/lib/data";
 import { MediaRenderer } from "@/app/components/media/media-renderer";
 import { clsxMerge } from "@/lib/utils";
@@ -11,6 +10,7 @@ import {
   HiOutlineOfficeBuilding,
   HiOutlineTag,
 } from "react-icons/hi";
+import { Badge, Card, Breadcrumb, Button } from "@/app/components/ui";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -56,47 +56,26 @@ export default async function ProjectDetailPage({ params }: Props) {
       <section className="py-12 md:py-16 bg-[var(--color-bg-secondary)]">
         <div className="container-custom">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-[var(--color-text-muted)] mb-8">
-            <Link
-              href="/"
-              className="hover:text-[var(--color-primary)] transition-colors"
-            >
-              Home
-            </Link>
-            <span>/</span>
-            <Link
-              href="/projects"
-              className="hover:text-[var(--color-primary)] transition-colors"
-            >
-              Projects
-            </Link>
-            <span>/</span>
-            <span className="text-[var(--color-text)]">{project.title}</span>
-          </nav>
+          <Breadcrumb
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Projects", href: "/projects" },
+              { label: project.title },
+            ]}
+            className="mb-8"
+          />
 
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
             {/* Title & Meta */}
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-4">
-                <span
-                  className={clsxMerge(
-                    "px-4 py-1.5 rounded-full",
-                    "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
-                    "text-sm font-medium capitalize"
-                  )}
-                >
+                <Badge variant="primary" size="lg" className="capitalize">
                   {project.category.replace("-", " ")}
-                </span>
+                </Badge>
                 {project.featured && (
-                  <span
-                    className={clsxMerge(
-                      "px-4 py-1.5 rounded-full",
-                      "bg-yellow-500/10 text-yellow-500",
-                      "text-sm font-medium"
-                    )}
-                  >
+                  <Badge variant="warning" size="lg">
                     Featured
-                  </span>
+                  </Badge>
                 )}
               </div>
 
@@ -110,11 +89,11 @@ export default async function ProjectDetailPage({ params }: Props) {
             </div>
 
             {/* Quick Info */}
-            <div
+            <Card
+              padding="sm"
               className={clsxMerge(
-                "flex flex-wrap lg:flex-col gap-4 lg:gap-4",
-                "lg:min-w-56 lg:p-5 lg:rounded-xl",
-                "lg:bg-[var(--color-surface)] lg:border lg:border-[var(--color-border)]"
+                "flex flex-wrap lg:flex-col gap-4",
+                "lg:min-w-56"
               )}
             >
               <div className="flex items-center gap-2 text-sm">
@@ -129,7 +108,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   {project.year}
                 </span>
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -177,16 +156,9 @@ export default async function ProjectDetailPage({ params }: Props) {
               </h3>
               <div className="flex flex-wrap gap-3">
                 {project.tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className={clsxMerge(
-                      "px-4 py-2.5 rounded-lg",
-                      "bg-[var(--color-surface)] border border-[var(--color-border)]",
-                      "text-sm text-[var(--color-text-secondary)]"
-                    )}
-                  >
+                  <Badge key={tool} variant="surface" size="lg" rounded="lg">
                     {tool}
-                  </span>
+                  </Badge>
                 ))}
               </div>
             </div>
@@ -199,16 +171,9 @@ export default async function ProjectDetailPage({ params }: Props) {
               </h3>
               <div className="flex flex-wrap gap-2.5">
                 {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className={clsxMerge(
-                      "px-4 py-2 rounded-full",
-                      "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
-                      "text-sm"
-                    )}
-                  >
+                  <Badge key={tag} variant="primary" size="lg">
                     #{tag}
-                  </span>
+                  </Badge>
                 ))}
               </div>
             </div>
@@ -242,18 +207,9 @@ export default async function ProjectDetailPage({ params }: Props) {
               <div />
             )}
 
-            <Link
-              href="/projects"
-              className={clsxMerge(
-                "px-4 py-2 rounded-lg",
-                "bg-[var(--color-surface)] border border-[var(--color-border)]",
-                "text-sm text-[var(--color-text-secondary)]",
-                "hover:text-[var(--color-text)] hover:border-[var(--color-border-hover)]",
-                "transition-colors"
-              )}
-            >
+            <Button href="/projects" variant="secondary" size="sm">
               All Projects
-            </Link>
+            </Button>
 
             {nextProject ? (
               <Link

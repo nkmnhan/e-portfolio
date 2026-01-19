@@ -2,6 +2,7 @@ import Image from "next/image";
 import { clsxMerge } from "@/lib/utils";
 import type { Showreel } from "@/lib/data";
 import { HiPlay } from "react-icons/hi";
+import { Badge } from "./badge";
 
 interface ShowreelCardProps {
   showreel: Showreel;
@@ -56,27 +57,24 @@ export function ShowreelCard({ showreel, priority = false }: ShowreelCardProps) 
         </div>
 
         {/* Duration */}
-        <div
-          className={clsxMerge(
-            "absolute bottom-3 right-3",
-            "px-2 py-1 rounded",
-            "bg-black/80 text-white text-sm font-medium"
-          )}
+        <Badge
+          variant="dark"
+          size="sm"
+          rounded="md"
+          className="absolute bottom-3 right-3"
         >
           {showreel.duration}
-        </div>
+        </Badge>
 
         {/* Year Badge */}
-        <div
-          className={clsxMerge(
-            "absolute top-3 left-3",
-            "px-2 py-1 rounded",
-            "bg-[var(--color-primary)]/20 backdrop-blur-sm",
-            "text-[var(--color-primary)] text-sm font-medium"
-          )}
+        <Badge
+          variant="primary"
+          size="sm"
+          rounded="md"
+          className="absolute top-3 left-3 backdrop-blur-sm"
         >
           {showreel.year}
-        </div>
+        </Badge>
       </div>
 
       {/* Info */}
@@ -96,15 +94,9 @@ export function ShowreelCard({ showreel, priority = false }: ShowreelCardProps) 
             </p>
             <div className="flex flex-wrap gap-1.5">
               {showreel.breakdown.slice(0, 3).map((item, index) => (
-                <span
-                  key={index}
-                  className={clsxMerge(
-                    "px-2.5 py-1 rounded text-xs",
-                    "bg-[var(--color-bg)] text-[var(--color-text-secondary)]"
-                  )}
-                >
+                <Badge key={index} variant="surface" size="sm" rounded="md">
                   {item.role}
-                </span>
+                </Badge>
               ))}
               {showreel.breakdown.length > 3 && (
                 <span className="px-2 py-1 text-xs text-[var(--color-text-muted)]">

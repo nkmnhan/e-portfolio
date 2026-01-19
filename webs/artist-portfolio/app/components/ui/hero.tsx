@@ -1,34 +1,12 @@
-import Link from "next/link";
 import Image from "next/image";
 import { clsxMerge } from "@/lib/utils";
 import { profile } from "@/lib/data";
-import {
-  HiArrowRight,
-  HiPlay,
-  HiOutlineMail,
-  HiOutlineLocationMarker,
-} from "react-icons/hi";
-import {
-  SiArtstation,
-  SiLinkedin,
-  SiInstagram,
-  SiYoutube,
-  SiVimeo,
-} from "react-icons/si";
-
-const socialIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  artstation: SiArtstation,
-  linkedin: SiLinkedin,
-  instagram: SiInstagram,
-  youtube: SiYoutube,
-  vimeo: SiVimeo,
-};
+import { HiPlay, HiOutlineMail, HiOutlineLocationMarker } from "react-icons/hi";
+import { Badge } from "./badge";
+import { Button, ButtonGroup } from "./button";
+import { SocialLinks } from "./social-links";
 
 export function Hero() {
-  const socialLinks = Object.entries(profile.socialLinks).filter(
-    ([, url]) => url
-  );
-
   return (
     <section className="relative overflow-hidden">
       {/* Cover Image Background */}
@@ -72,16 +50,13 @@ export function Hero() {
               />
               {/* Availability indicator */}
               {profile.availableForWork && (
-                <div
-                  className={clsxMerge(
-                    "absolute -bottom-2 left-1/2 -translate-x-1/2",
-                    "px-3 py-1 rounded-full",
-                    "bg-[var(--color-success)] text-white text-xs font-medium",
-                    "whitespace-nowrap"
-                  )}
+                <Badge
+                  variant="success"
+                  size="sm"
+                  className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap"
                 >
                   Open to Work
-                </div>
+                </Badge>
               )}
             </div>
 
@@ -90,16 +65,9 @@ export function Hero() {
               {/* Specializations */}
               <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
                 {profile.specializations.map((spec) => (
-                  <span
-                    key={spec}
-                    className={clsxMerge(
-                      "px-3 py-1 rounded-full",
-                      "bg-[var(--color-surface)] border border-[var(--color-border)]",
-                      "text-xs font-medium text-[var(--color-text-secondary)] capitalize"
-                    )}
-                  >
+                  <Badge key={spec} variant="surface" size="md" className="capitalize">
                     {spec.replace("-", " ")}
-                  </span>
+                  </Badge>
                 ))}
               </div>
 
@@ -134,60 +102,27 @@ export function Hero() {
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mb-6">
-                <Link
-                  href="/projects"
-                  className={clsxMerge(
-                    "inline-flex items-center gap-2 px-6 py-3 rounded-lg",
-                    "bg-[var(--color-primary)] text-white font-medium",
-                    "hover:bg-[var(--color-primary-hover)]",
-                    "transition-colors group"
-                  )}
-                >
-                  <span>View Projects</span>
-                  <HiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-
-                <Link
+              <ButtonGroup className="justify-center md:justify-start mb-6">
+                <Button href="/projects" size="lg" withArrow>
+                  View Projects
+                </Button>
+                <Button
                   href="/showreels"
-                  className={clsxMerge(
-                    "inline-flex items-center gap-2 px-6 py-3 rounded-lg",
-                    "bg-[var(--color-surface)] text-[var(--color-text)]",
-                    "border border-[var(--color-border)]",
-                    "hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]",
-                    "transition-colors group"
-                  )}
+                  variant="secondary"
+                  size="lg"
+                  leftIcon={<HiPlay className="w-5 h-5" />}
                 >
-                  <HiPlay className="w-5 h-5" />
-                  <span>Watch Showreels</span>
-                </Link>
-              </div>
+                  Watch Showreels
+                </Button>
+              </ButtonGroup>
 
               {/* Social Links */}
-              <div className="flex items-center justify-center md:justify-start gap-3">
-                {socialLinks.map(([platform, url]) => {
-                  const Icon = socialIcons[platform];
-                  if (!Icon) return null;
-                  return (
-                    <a
-                      key={platform}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={clsxMerge(
-                        "p-2.5 rounded-lg",
-                        "bg-[var(--color-surface)]",
-                        "text-[var(--color-text-secondary)]",
-                        "hover:text-[var(--color-primary)] hover:bg-[var(--color-surface-hover)]",
-                        "transition-all duration-200"
-                      )}
-                      aria-label={platform}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </a>
-                  );
-                })}
-              </div>
+              <SocialLinks
+                links={profile.socialLinks}
+                variant="icon"
+                size="md"
+                className="justify-center md:justify-start"
+              />
             </div>
           </div>
         </div>

@@ -10,6 +10,7 @@ import {
   HiOutlineMail,
   HiArrowRight,
 } from "react-icons/hi";
+import { Button, NavLink } from "../ui";
 
 const navItems = [
   { href: "/", label: "Home", icon: HiOutlineHome },
@@ -68,69 +69,47 @@ export function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
-              <Link
+              <NavLink
                 key={item.href}
                 href={item.href}
-                className={clsxMerge(
-                  "flex items-center gap-2 px-4 py-2 rounded-lg",
-                  "text-[var(--color-text-secondary)]",
-                  "hover:text-[var(--color-text)] hover:bg-[var(--color-surface)]",
-                  "transition-all duration-200"
-                )}
+                icon={<item.icon className="w-5 h-5" />}
               >
-                <item.icon className="w-5 h-5" />
-                <span>{item.label}</span>
-              </Link>
+                {item.label}
+              </NavLink>
             ))}
           </div>
 
           {/* CTA + Mobile Nav */}
           <div className="flex items-center gap-3">
             {/* CTA Button - Desktop */}
-            <Link
+            <Button
               href="/contact"
-              className={clsxMerge(
-                "hidden lg:flex items-center gap-2",
-                "px-5 py-2 rounded-lg",
-                "bg-[var(--color-primary)] text-white",
-                "hover:bg-[var(--color-primary-hover)]",
-                "transition-colors font-medium text-sm group"
-              )}
+              leftIcon={<HiOutlineMail className="w-4 h-4" />}
+              withArrow
+              className="hidden lg:flex"
             >
-              <HiOutlineMail className="w-4 h-4" />
-              <span>Let&apos;s Talk</span>
-              <HiArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </Link>
+              Let&apos;s Talk
+            </Button>
 
             {/* Mobile Navigation */}
             <div className="flex md:hidden items-center gap-1">
               {navItems.map((item) => (
-                <Link
+                <NavLink
                   key={item.href}
                   href={item.href}
-                  className={clsxMerge(
-                    "p-3 rounded-lg",
-                    "text-[var(--color-text-secondary)]",
-                    "hover:text-[var(--color-text)] hover:bg-[var(--color-surface)]",
-                    "transition-all duration-200"
-                  )}
+                  icon={<item.icon className="w-5 h-5" />}
+                  iconOnly
                   aria-label={item.label}
-                >
-                  <item.icon className="w-5 h-5" />
-                </Link>
+                />
               ))}
               {/* Contact icon for mobile */}
-              <Link
+              <Button
                 href="/contact"
-                className={clsxMerge(
-                  "p-3 rounded-lg",
-                  "bg-[var(--color-primary)] text-white",
-                  "transition-all duration-200"
-                )}
+                variant="icon"
                 aria-label="Contact"
               >
                 <HiOutlineMail className="w-5 h-5" />
-              </Link>
+              </Button>
             </div>
           </div>
         </div>

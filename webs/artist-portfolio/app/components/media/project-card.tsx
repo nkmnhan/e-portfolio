@@ -6,6 +6,7 @@ import { useState, useRef } from "react";
 import { clsxMerge } from "@/lib/utils";
 import type { Project } from "@/lib/data";
 import { HiPlay, HiOutlineEye } from "react-icons/hi";
+import { Badge } from "@/app/components/ui/badge";
 
 interface ProjectCardProps {
   project: Project;
@@ -113,16 +114,13 @@ export function ProjectCard({
 
         {/* Category Badge */}
         {showCategory && (
-          <div
-            className={clsxMerge(
-              "absolute top-3 left-3",
-              "px-3 py-1 rounded-full",
-              "bg-black/60 backdrop-blur-sm",
-              "text-xs font-medium text-white capitalize"
-            )}
+          <Badge
+            variant="dark"
+            size="sm"
+            className="absolute top-3 left-3 capitalize"
           >
             {project.category.replace("-", " ")}
-          </div>
+          </Badge>
         )}
 
         {/* Hover Content */}
@@ -144,15 +142,9 @@ export function ProjectCard({
           {/* Tools */}
           <div className="flex flex-wrap gap-1">
             {project.tools.slice(0, 3).map((tool) => (
-              <span
-                key={tool}
-                className={clsxMerge(
-                  "px-2 py-0.5 text-xs rounded-full",
-                  "bg-[var(--color-primary)]/20 text-[var(--color-primary)]"
-                )}
-              >
+              <Badge key={tool} variant="primary" size="sm">
                 {tool}
-              </span>
+              </Badge>
             ))}
             {project.tools.length > 3 && (
               <span className="px-2 py-0.5 text-xs text-white/60">

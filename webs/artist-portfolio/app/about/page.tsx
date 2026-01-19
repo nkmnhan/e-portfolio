@@ -1,33 +1,23 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { profile } from "@/lib/data";
 import { clsxMerge } from "@/lib/utils";
 import {
   HiOutlineBriefcase,
   HiOutlineAcademicCap,
   HiOutlineStar,
-  HiArrowRight,
 } from "react-icons/hi";
 import {
-  SiArtstation,
-  SiLinkedin,
-  SiInstagram,
-  SiYoutube,
-  SiVimeo,
-} from "react-icons/si";
+  Card,
+  Badge,
+  Button,
+  SocialLinks,
+  ResponsiveGrid,
+} from "../components/ui";
 
 export const metadata: Metadata = {
   title: `About | ${profile.name}`,
   description: profile.shortBio,
-};
-
-const socialIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  artstation: SiArtstation,
-  linkedin: SiLinkedin,
-  instagram: SiInstagram,
-  youtube: SiYoutube,
-  vimeo: SiVimeo,
 };
 
 const skillCategoryNames: Record<string, string> = {
@@ -39,10 +29,6 @@ const skillCategoryNames: Record<string, string> = {
 };
 
 export default function AboutPage() {
-  const socialLinks = Object.entries(profile.socialLinks).filter(
-    ([, url]) => url
-  );
-
   // Group skills by category
   const skillsByCategory = profile.skills.reduce(
     (acc, skill) => {
@@ -114,15 +100,9 @@ export default function AboutPage() {
             Skills & Tools
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ResponsiveGrid columns={3}>
             {Object.entries(skillsByCategory).map(([category, skills]) => (
-              <div
-                key={category}
-                className={clsxMerge(
-                  "p-7 rounded-xl",
-                  "bg-[var(--color-surface)] border border-[var(--color-border)]"
-                )}
-              >
+              <Card key={category}>
                 <h3 className="font-semibold mb-5 text-[var(--color-text-secondary)]">
                   {skillCategoryNames[category] || category}
                 </h3>
@@ -130,25 +110,25 @@ export default function AboutPage() {
                   {skills.map((skill) => (
                     <div key={skill.name} className="flex items-center justify-between">
                       <span className="text-[var(--color-text)]">{skill.name}</span>
-                      <span
-                        className={clsxMerge(
-                          "px-2 py-0.5 rounded text-xs font-medium",
-                          skill.level === "expert" &&
-                            "bg-[var(--color-primary)]/20 text-[var(--color-primary)]",
-                          skill.level === "advanced" &&
-                            "bg-[var(--color-accent)]/20 text-[var(--color-accent)]",
-                          skill.level === "intermediate" &&
-                            "bg-[var(--color-text-muted)]/20 text-[var(--color-text-muted)]"
-                        )}
+                      <Badge
+                        variant={
+                          skill.level === "expert"
+                            ? "primary"
+                            : skill.level === "advanced"
+                              ? "accent"
+                              : "muted"
+                        }
+                        size="sm"
+                        rounded="md"
                       >
                         {skill.level}
-                      </span>
+                      </Badge>
                     </div>
                   ))}
                 </div>
-              </div>
+              </Card>
             ))}
-          </div>
+          </ResponsiveGrid>
         </div>
       </section>
 
@@ -179,12 +159,7 @@ export default function AboutPage() {
                   )}
                 />
 
-                <div
-                  className={clsxMerge(
-                    "p-6 rounded-xl",
-                    "bg-[var(--color-surface)] border border-[var(--color-border)]"
-                  )}
-                >
+                <Card padding="md">
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                     <div>
                       <h3 className="font-semibold text-lg">{exp.role}</h3>
@@ -197,7 +172,7 @@ export default function AboutPage() {
                   <p className="text-[var(--color-text-secondary)] leading-relaxed">
                     {exp.description}
                   </p>
-                </div>
+                </Card>
               </div>
             ))}
           </div>
@@ -207,7 +182,7 @@ export default function AboutPage() {
       {/* Education & Awards */}
       <section className="section-padding bg-[var(--color-bg-secondary)]">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <ResponsiveGrid columns={2} gap="lg">
             {/* Education */}
             <div>
               <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
@@ -216,17 +191,11 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-5">
                 {profile.education.map((edu, index) => (
-                  <div
-                    key={index}
-                    className={clsxMerge(
-                      "p-6 rounded-xl",
-                      "bg-[var(--color-surface)] border border-[var(--color-border)]"
-                    )}
-                  >
+                  <Card key={index} padding="md">
                     <h3 className="font-semibold mb-1">{edu.school}</h3>
                     <p className="text-[var(--color-text-secondary)]">{edu.degree}</p>
                     <p className="text-sm text-[var(--color-text-muted)] mt-2">{edu.year}</p>
-                  </div>
+                  </Card>
                 ))}
               </div>
             </div>
@@ -239,21 +208,15 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-5">
                 {profile.awards.map((award, index) => (
-                  <div
-                    key={index}
-                    className={clsxMerge(
-                      "p-6 rounded-xl",
-                      "bg-[var(--color-surface)] border border-[var(--color-border)]"
-                    )}
-                  >
+                  <Card key={index} padding="md">
                     <h3 className="font-semibold mb-1">{award.title}</h3>
                     <p className="text-[var(--color-text-secondary)]">{award.category}</p>
                     <p className="text-sm text-[var(--color-text-muted)] mt-2">{award.year}</p>
-                  </div>
+                  </Card>
                 ))}
               </div>
             </div>
-          </div>
+          </ResponsiveGrid>
         </div>
       </section>
 
@@ -266,43 +229,16 @@ export default function AboutPage() {
           </p>
 
           {/* Social Links */}
-          <div className="flex items-center justify-center gap-5 mb-10">
-            {socialLinks.map(([platform, url]) => {
-              const Icon = socialIcons[platform];
-              if (!Icon) return null;
-              return (
-                <a
-                  key={platform}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={clsxMerge(
-                    "p-5 rounded-xl",
-                    "bg-[var(--color-surface)] border border-[var(--color-border)]",
-                    "text-[var(--color-text-secondary)]",
-                    "hover:text-[var(--color-primary)] hover:border-[var(--color-primary)]",
-                    "transition-all duration-200"
-                  )}
-                  aria-label={platform}
-                >
-                  <Icon className="w-6 h-6" />
-                </a>
-              );
-            })}
-          </div>
+          <SocialLinks
+            links={profile.socialLinks}
+            variant="icon"
+            size="lg"
+            className="justify-center mb-10"
+          />
 
-          <Link
-            href="/contact"
-            className={clsxMerge(
-              "inline-flex items-center gap-2 px-6 py-3 rounded-lg",
-              "bg-[var(--color-primary)] text-white font-medium",
-              "hover:bg-[var(--color-primary-hover)]",
-              "transition-colors"
-            )}
-          >
+          <Button href="/contact" size="lg" withArrow>
             Get in Touch
-            <HiArrowRight className="w-4 h-4" />
-          </Link>
+          </Button>
         </div>
       </section>
     </>
