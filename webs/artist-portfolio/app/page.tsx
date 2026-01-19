@@ -2,7 +2,7 @@ import { Hero } from "./components/ui/hero";
 import { SectionHeader } from "./components/ui/section-header";
 import { ProjectGrid } from "./components/media/project-grid";
 import { ShowreelCard } from "./components/ui/showreel-card";
-import { getFeaturedProjects, getFeaturedShowreels, profile } from "@/lib/data";
+import { getProfile, getFeaturedProjects, getFeaturedShowreels } from "@/lib/services";
 import Link from "next/link";
 import {
   HiArrowRight,
@@ -19,6 +19,7 @@ import {
 } from "./components/ui";
 
 export default function HomePage() {
+  const profile = getProfile();
   const featuredProjects = getFeaturedProjects();
   const featuredShowreels = getFeaturedShowreels();
 

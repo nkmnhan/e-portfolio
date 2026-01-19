@@ -1,7 +1,10 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import { profile } from "@/lib/data";
+import { getProfile } from "@/lib/services";
 import { clsxMerge } from "@/lib/utils";
+
+// Get profile for static metadata generation
+const profile = getProfile();
 import {
   HiOutlineBriefcase,
   HiOutlineAcademicCap,

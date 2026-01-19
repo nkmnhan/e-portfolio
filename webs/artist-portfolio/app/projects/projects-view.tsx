@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { ProjectGrid, type LayoutMode } from "@/app/components/media/project-grid";
 import { CategoryFilter, LayoutToggle } from "@/app/components/ui";
-import type { Project, ProjectCategory } from "@/lib/data";
+import type { Project, ProjectCategory } from "@/lib/types";
 
 interface CategoryData {
   id: ProjectCategory;

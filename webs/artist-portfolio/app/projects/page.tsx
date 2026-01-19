@@ -1,4 +1,4 @@
-import { projects, categories } from "@/lib/data";
+import { getProjects, getCategories } from "@/lib/services";
 import { PageHeader } from "../components/ui";
 import { ProjectsView } from "./projects-view";
 
@@ -8,6 +8,9 @@ export const metadata = {
 };
 
 export default function ProjectsPage() {
+  const projects = getProjects();
+  const categories = getCategories();
+
   return (
     <>
       <PageHeader
