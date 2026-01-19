@@ -4,6 +4,91 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* =============================================================================
+   DESIGN TOKENS
+   ============================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------------
+     PRIMARY COLORS
+     --------------------------------------------------------------------------- */
+  --color-primary: #3B82F6;
+  --color-primary-hover: #2563EB;
+  --color-primary-active: #1D4ED8;
+  --color-primary-light: #DBEAFE;
+
+  --color-secondary: #8B5CF6;
+  --color-secondary-hover: #7C3AED;
+
+  --color-accent: #06B6D4;
+  --color-accent-hover: #0891B2;
+
+  /* ---------------------------------------------------------------------------
+     NEUTRAL COLORS (Light Mode)
+     --------------------------------------------------------------------------- */
+  --color-bg: #FFFFFF;
+  --color-bg-subtle: #F9FAFB;
+  --color-surface: #F3F4F6;
+  --color-surface-hover: #E5E7EB;
+  --color-border: #E5E7EB;
+  --color-border-strong: #D1D5DB;
+
+  --color-text: #111827;
+  --color-text-secondary: #374151;
+  --color-text-muted: #6B7280;
+  --color-text-subtle: #9CA3AF;
+
+  /* ---------------------------------------------------------------------------
+     SEMANTIC COLORS
+     --------------------------------------------------------------------------- */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+
+  /* ---------------------------------------------------------------------------
+     SPACING, RADIUS, SHADOWS
+     --------------------------------------------------------------------------- */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 200ms ease;
+}
+
+/* Dark Mode Tokens */
+.dark {
+  --color-bg: #030712;
+  --color-bg-subtle: #111827;
+  --color-surface: #1F2937;
+  --color-surface-hover: #374151;
+  --color-border: #374151;
+  --color-border-strong: #4B5563;
+
+  --color-text: #F9FAFB;
+  --color-text-secondary: #E5E7EB;
+  --color-text-muted: #9CA3AF;
+  --color-text-subtle: #6B7280;
+}
+
+/* Cinematic Theme (About Page) */
+.theme-cinematic {
+  --color-bg: #020016;
+  --color-surface: #1A0D1A;
+  --color-border: #531431;
+  --color-text: #F2E5D9;
+  --color-text-muted: #E4B3A3;
+  --color-accent: #E4B3A3;
+}
+
 @theme {
   --animate-shrink-out: shrink-out 2000ms ease-in-out;
   --animate-fade-out: fade-out 300ms linear forwards;
