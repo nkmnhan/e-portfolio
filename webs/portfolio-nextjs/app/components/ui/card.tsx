@@ -112,3 +112,83 @@ export const CardFooter = forwardRef<HTMLDivElement, CardSectionProps>(
 );
 
 CardFooter.displayName = "CardFooter";
+
+// =============================================================================
+// STAT CARD
+// A specialized card for displaying statistics/metrics
+// =============================================================================
+
+export interface StatCardProps extends HTMLAttributes<HTMLDivElement> {
+  value: string | number;
+  label: string;
+  icon?: ReactNode;
+  trend?: {
+    value: number;
+    direction: "up" | "down" | "neutral";
+  };
+  hoverable?: boolean;
+}
+
+export function StatCard({
+  value,
+  label,
+  icon,
+  trend,
+  hoverable = true,
+  className,
+  ...props
+}: StatCardProps) {
+  const trendColors = {
+    up: "text-[var(--color-success)]",
+    down: "text-[var(--color-error)]",
+    neutral: "text-[var(--color-text-muted)]",
+  };
+
+  const trendIcons = {
+    up: "↑",
+    down: "↓",
+    neutral: "→",
+  };
+
+  return (
+    <div
+      className={clsxMerge(
+        // Layout
+        "flex flex-col items-center justify-center text-center",
+        // Sizing
+        "p-6",
+        // Shape
+        "rounded-xl",
+        // Colors
+        "bg-[var(--color-bg)] border border-[var(--color-border)]",
+        // Transitions
+        "transition-all duration-200",
+        // Hover
+        hoverable && "hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 cursor-pointer",
+        className
+      )}
+      {...props}
+    >
+      {icon && (
+        <div className="mb-3 text-[var(--color-primary)]">
+          {icon}
+        </div>
+      )}
+      <div className="flex items-baseline gap-2">
+        <span className="text-3xl font-bold text-[var(--color-text)]">
+          {value}
+        </span>
+        {trend && (
+          <span className={clsxMerge("text-sm font-medium", trendColors[trend.direction])}>
+            {trendIcons[trend.direction]} {Math.abs(trend.value)}%
+          </span>
+        )}
+      </div>
+      <span className="mt-1 text-sm text-[var(--color-text-muted)]">
+        {label}
+      </span>
+    </div>
+  );
+}
+
+StatCard.displayName = "StatCard";

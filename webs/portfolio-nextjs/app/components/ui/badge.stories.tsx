@@ -11,7 +11,7 @@ const meta: Meta<typeof Badge> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "primary", "secondary", "success", "warning", "error"],
+      options: ["default", "primary", "secondary", "success", "warning", "error", "info"],
     },
     size: {
       control: "select",
@@ -45,6 +45,7 @@ export const AllVariants: Story = {
       <Badge variant="success">Success</Badge>
       <Badge variant="warning">Warning</Badge>
       <Badge variant="error">Error</Badge>
+      <Badge variant="info">Info</Badge>
     </div>
   ),
 };

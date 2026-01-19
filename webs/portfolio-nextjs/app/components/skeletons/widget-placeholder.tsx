@@ -15,14 +15,14 @@ export default function WidgetPlaceholder({
     <div
       role="status"
       className={clsxMerge(
-        "max-w-sm p-4 border border-gray-200 dark:border-gray-700 rounded-base shadow-sm animate-pulse md:p-6",
+        "max-w-sm p-4 border border-[var(--color-border)] rounded-md shadow-sm animate-pulse md:p-6",
         className
       )}
       aria-label="Loading widget"
     >
       {/* Header */}
-      <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-6/10 mb-2.5"></div>
-      <div className="h-2 mb-10 bg-gray-300 dark:bg-gray-700 rounded-full w-full"></div>
+      <div className="h-2.5 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full w-6/10 mb-2.5"></div>
+      <div className="h-2 mb-10 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full w-full"></div>
 
       {/* Chart bars */}
       <div className="flex items-baseline mt-4 overflow-hidden">
@@ -30,7 +30,7 @@ export default function WidgetPlaceholder({
           <div
             key={index}
             className={clsxMerge(
-              "w-full min-w-8 bg-gray-300 dark:bg-gray-700 rounded-t-full",
+              "w-full min-w-8 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-t-full",
               barHeights[index % barHeights.length],
               index > 0 && "ms-0 sm:ms-6"
             )}

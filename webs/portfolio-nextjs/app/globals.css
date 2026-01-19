@@ -5,10 +5,69 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* =============================================================================
-   DESIGN TOKENS
+   DESIGN TOKENS - Phase 1: Foundation
+   E-Portfolio Design System v1.0
    ============================================================================= */
 
 :root {
+  /* ---------------------------------------------------------------------------
+     FONT FAMILIES
+     --------------------------------------------------------------------------- */
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-waltograph), cursive;
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY SCALE
+     Mobile-first: Base sizes, scale up with responsive utilities
+     --------------------------------------------------------------------------- */
+  /* Display - Hero headings, page titles */
+  --text-display-xl: 2.25rem;      /* 36px - Mobile hero */
+  --text-display-lg: 1.875rem;     /* 30px - Mobile page title */
+  --text-display-md: 1.5rem;       /* 24px - Mobile section head */
+
+  /* Headings - Content hierarchy */
+  --text-heading-lg: 1.25rem;      /* 20px - Card titles */
+  --text-heading-md: 1.125rem;     /* 18px - Subsections */
+  --text-heading-sm: 1rem;         /* 16px - Small headings */
+
+  /* Body - Content text */
+  --text-body-lg: 1rem;            /* 16px - Lead paragraphs */
+  --text-body-md: 0.875rem;        /* 14px - Body text */
+  --text-body-sm: 0.75rem;         /* 12px - Captions */
+
+  /* Labels & Captions */
+  --text-label: 0.875rem;          /* 14px - Form labels */
+  --text-caption: 0.75rem;         /* 12px - Metadata */
+
+  /* Line Heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* Font Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* ---------------------------------------------------------------------------
+     SPACING SCALE (4px base unit)
+     --------------------------------------------------------------------------- */
+  --space-0: 0;
+  --space-1: 0.25rem;    /* 4px  - Tight: icon padding */
+  --space-2: 0.5rem;     /* 8px  - Compact: badge padding */
+  --space-3: 0.75rem;    /* 12px - Small: button padding */
+  --space-4: 1rem;       /* 16px - Medium: card padding */
+  --space-5: 1.25rem;    /* 20px */
+  --space-6: 1.5rem;     /* 24px - Large: section padding */
+  --space-8: 2rem;       /* 32px - XL: page margins */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px - 2XL: section margins */
+  --space-16: 4rem;      /* 64px - 3XL: hero padding */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+
   /* ---------------------------------------------------------------------------
      PRIMARY COLORS
      --------------------------------------------------------------------------- */
@@ -16,12 +75,17 @@
   --color-primary-hover: #2563EB;
   --color-primary-active: #1D4ED8;
   --color-primary-light: #DBEAFE;
+  --color-primary-dark: #1E40AF;
 
   --color-secondary: #8B5CF6;
   --color-secondary-hover: #7C3AED;
+  --color-secondary-active: #6D28D9;
+  --color-secondary-light: #EDE9FE;
 
   --color-accent: #06B6D4;
   --color-accent-hover: #0891B2;
+  --color-accent-active: #0E7490;
+  --color-accent-light: #CFFAFE;
 
   /* ---------------------------------------------------------------------------
      NEUTRAL COLORS (Light Mode)
@@ -37,34 +101,75 @@
   --color-text-secondary: #374151;
   --color-text-muted: #6B7280;
   --color-text-subtle: #9CA3AF;
+  --color-text-inverted: #FFFFFF;
 
   /* ---------------------------------------------------------------------------
      SEMANTIC COLORS
      --------------------------------------------------------------------------- */
   --color-success: #10B981;
+  --color-success-light: #D1FAE5;
+  --color-success-dark: #047857;
+
   --color-warning: #F59E0B;
+  --color-warning-light: #FEF3C7;
+  --color-warning-dark: #B45309;
+
   --color-error: #EF4444;
+  --color-error-light: #FEE2E2;
+  --color-error-dark: #B91C1C;
+
   --color-info: #3B82F6;
+  --color-info-light: #DBEAFE;
+  --color-info-dark: #1D4ED8;
 
   /* ---------------------------------------------------------------------------
-     SPACING, RADIUS, SHADOWS
+     BORDER RADIUS
      --------------------------------------------------------------------------- */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
+  --radius-none: 0;
+  --radius-sm: 0.25rem;    /* 4px  - Buttons, inputs */
+  --radius-md: 0.5rem;     /* 8px  - Cards, dropdowns */
+  --radius-lg: 0.75rem;    /* 12px - Modals, panels */
+  --radius-xl: 1rem;       /* 16px - Feature cards */
+  --radius-2xl: 1.5rem;    /* 24px - Large containers */
+  --radius-full: 9999px;   /* Avatars, badges */
 
+  /* ---------------------------------------------------------------------------
+     SHADOWS
+     --------------------------------------------------------------------------- */
+  --shadow-none: none;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
 
+  /* ---------------------------------------------------------------------------
+     TRANSITIONS
+     --------------------------------------------------------------------------- */
   --transition-fast: 150ms ease;
   --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+  --transition-slower: 500ms ease;
+
+  /* ---------------------------------------------------------------------------
+     Z-INDEX SCALE
+     --------------------------------------------------------------------------- */
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-tooltip: 70;
+  --z-toast: 80;
+  --z-max: 100;
 }
 
-/* Dark Mode Tokens */
+/* =============================================================================
+   DARK MODE TOKENS
+   ============================================================================= */
 .dark {
   --color-bg: #030712;
   --color-bg-subtle: #111827;
@@ -77,19 +182,174 @@
   --color-text-secondary: #E5E7EB;
   --color-text-muted: #9CA3AF;
   --color-text-subtle: #6B7280;
+  --color-text-inverted: #111827;
+
+  /* Adjusted shadows for dark mode */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
 }
 
-/* Cinematic Theme (About Page) */
+/* =============================================================================
+   CINEMATIC THEME (About Page / Immersive Sections)
+   ============================================================================= */
 .theme-cinematic {
+  /* Background layers */
   --color-bg: #020016;
+  --color-bg-subtle: #0A0520;
   --color-surface: #1A0D1A;
+  --color-surface-hover: #2F122E;
+
+  /* Borders */
   --color-border: #531431;
+  --color-border-strong: #702D4C;
+
+  /* Text */
   --color-text: #F2E5D9;
-  --color-text-muted: #E4B3A3;
+  --color-text-secondary: #E4B3A3;
+  --color-text-muted: #C49A8A;
+  --color-text-subtle: #8B6B5E;
+
+  /* Accent colors */
   --color-accent: #E4B3A3;
+  --color-accent-hover: #F2C5B5;
+  --color-highlight: #531431;
+  --color-highlight-hover: #702D4C;
+
+  /* Cinematic-specific colors */
+  --cinematic-rose: #E4B3A3;
+  --cinematic-burgundy: #531431;
+  --cinematic-deep-purple: #2F122E;
+  --cinematic-midnight: #020016;
+  --cinematic-gold: #D4A574;
+
+  /* Shadows for cinematic */
+  --shadow-glow: 0 0 20px rgb(83 20 49 / 0.3);
+  --shadow-glow-strong: 0 0 40px rgb(83 20 49 / 0.5);
 }
 
+/* =============================================================================
+   TAILWIND THEME EXTENSION
+   Maps CSS variables to Tailwind utilities
+   ============================================================================= */
 @theme {
+  /* ---------------------------------------------------------------------------
+     COLORS - Available as bg-*, text-*, border-* utilities
+     --------------------------------------------------------------------------- */
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-active: var(--color-primary-active);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-dark: var(--color-primary-dark);
+
+  --color-secondary: var(--color-secondary);
+  --color-secondary-hover: var(--color-secondary-hover);
+  --color-secondary-active: var(--color-secondary-active);
+  --color-secondary-light: var(--color-secondary-light);
+
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-active: var(--color-accent-active);
+  --color-accent-light: var(--color-accent-light);
+
+  --color-bg: var(--color-bg);
+  --color-bg-subtle: var(--color-bg-subtle);
+  --color-surface: var(--color-surface);
+  --color-surface-hover: var(--color-surface-hover);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-subtle: var(--color-text-subtle);
+  --color-text-inverted: var(--color-text-inverted);
+
+  --color-success: var(--color-success);
+  --color-success-light: var(--color-success-light);
+  --color-success-dark: var(--color-success-dark);
+  --color-warning: var(--color-warning);
+  --color-warning-light: var(--color-warning-light);
+  --color-warning-dark: var(--color-warning-dark);
+  --color-error: var(--color-error);
+  --color-error-light: var(--color-error-light);
+  --color-error-dark: var(--color-error-dark);
+  --color-info: var(--color-info);
+  --color-info-light: var(--color-info-light);
+  --color-info-dark: var(--color-info-dark);
+
+  /* Cinematic colors */
+  --color-cinematic-rose: var(--cinematic-rose);
+  --color-cinematic-burgundy: var(--cinematic-burgundy);
+  --color-cinematic-deep-purple: var(--cinematic-deep-purple);
+  --color-cinematic-midnight: var(--cinematic-midnight);
+  --color-cinematic-gold: var(--cinematic-gold);
+
+  /* ---------------------------------------------------------------------------
+     FONT FAMILIES
+     --------------------------------------------------------------------------- */
+  --font-family-sans: var(--font-sans);
+  --font-family-mono: var(--font-mono);
+  --font-family-display: var(--font-display);
+
+  /* ---------------------------------------------------------------------------
+     FONT SIZES - Available as text-* utilities
+     --------------------------------------------------------------------------- */
+  --font-size-display-xl: var(--text-display-xl);
+  --font-size-display-lg: var(--text-display-lg);
+  --font-size-display-md: var(--text-display-md);
+  --font-size-heading-lg: var(--text-heading-lg);
+  --font-size-heading-md: var(--text-heading-md);
+  --font-size-heading-sm: var(--text-heading-sm);
+  --font-size-body-lg: var(--text-body-lg);
+  --font-size-body-md: var(--text-body-md);
+  --font-size-body-sm: var(--text-body-sm);
+  --font-size-label: var(--text-label);
+  --font-size-caption: var(--text-caption);
+
+  /* ---------------------------------------------------------------------------
+     SPACING - Available as p-*, m-*, gap-* utilities
+     --------------------------------------------------------------------------- */
+  --spacing-0: var(--space-0);
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-5: var(--space-5);
+  --spacing-6: var(--space-6);
+  --spacing-8: var(--space-8);
+  --spacing-10: var(--space-10);
+  --spacing-12: var(--space-12);
+  --spacing-16: var(--space-16);
+  --spacing-20: var(--space-20);
+  --spacing-24: var(--space-24);
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS - Available as rounded-* utilities
+     --------------------------------------------------------------------------- */
+  --radius-none: var(--radius-none);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS - Available as shadow-* utilities
+     --------------------------------------------------------------------------- */
+  --shadow-none: var(--shadow-none);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+  --shadow-inner: var(--shadow-inner);
+
+  /* ---------------------------------------------------------------------------
+     ANIMATIONS
+     --------------------------------------------------------------------------- */
   --animate-shrink-out: shrink-out 2000ms ease-in-out;
   --animate-fade-out: fade-out 300ms linear forwards;
   --animate-loading-bar: loading-bar 1s linear infinite;
@@ -138,21 +398,151 @@
 
 /* Waltograph Disney-style font class */
 .walt-disney {
-  font-family: var(--font-waltograph), cursive;
+  font-family: var(--font-display);
 }
 
+/* =============================================================================
+   TYPOGRAPHY UTILITY CLASSES
+   Semantic typography classes that use design tokens
+   ============================================================================= */
+
+/* Display - For hero sections and page titles */
+.text-display-xl {
+  font-size: var(--text-display-xl);
+  line-height: var(--leading-tight);
+  font-weight: var(--font-bold);
+}
+
+.text-display-lg {
+  font-size: var(--text-display-lg);
+  line-height: var(--leading-tight);
+  font-weight: var(--font-bold);
+}
+
+.text-display-md {
+  font-size: var(--text-display-md);
+  line-height: var(--leading-tight);
+  font-weight: var(--font-semibold);
+}
+
+/* Headings - For content hierarchy */
+.text-heading-lg {
+  font-size: var(--text-heading-lg);
+  line-height: var(--leading-normal);
+  font-weight: var(--font-semibold);
+}
+
+.text-heading-md {
+  font-size: var(--text-heading-md);
+  line-height: var(--leading-normal);
+  font-weight: var(--font-medium);
+}
+
+.text-heading-sm {
+  font-size: var(--text-heading-sm);
+  line-height: var(--leading-normal);
+  font-weight: var(--font-medium);
+}
+
+/* Body - For content text */
+.text-body-lg {
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.text-body-md {
+  font-size: var(--text-body-md);
+  line-height: var(--leading-normal);
+}
+
+.text-body-sm {
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-normal);
+}
+
+/* Labels & Captions */
+.text-label {
+  font-size: var(--text-label);
+  line-height: var(--leading-normal);
+  font-weight: var(--font-medium);
+}
+
+.text-caption {
+  font-size: var(--text-caption);
+  line-height: var(--leading-normal);
+  color: var(--color-text-muted);
+}
+
+/* Responsive typography - Desktop sizes */
+@media (min-width: 768px) {
+  .text-display-xl {
+    font-size: 3.75rem;  /* 60px on desktop */
+  }
+
+  .text-display-lg {
+    font-size: 3rem;     /* 48px on desktop */
+  }
+
+  .text-display-md {
+    font-size: 2.25rem;  /* 36px on desktop */
+  }
+
+  .text-heading-lg {
+    font-size: 1.5rem;   /* 24px on desktop */
+  }
+
+  .text-heading-md {
+    font-size: 1.25rem;  /* 20px on desktop */
+  }
+
+  .text-heading-sm {
+    font-size: 1.125rem; /* 18px on desktop */
+  }
+
+  .text-body-lg {
+    font-size: 1.125rem; /* 18px on desktop */
+  }
+
+  .text-body-md {
+    font-size: 1rem;     /* 16px on desktop */
+  }
+
+  .text-body-sm {
+    font-size: 0.875rem; /* 14px on desktop */
+  }
+}
+
+/* =============================================================================
+   THEME UTILITY CLASSES
+   ============================================================================= */
+
+/* Legacy theme classes - use design tokens */
 .theme-text {
-  @apply text-gray-900 dark:text-white;
+  color: var(--color-text);
 }
 
 .theme-bg {
-  @apply bg-white dark:bg-gray-900;
+  background-color: var(--color-bg);
 }
 
+/* Surface utilities */
+.surface {
+  background-color: var(--color-surface);
+}
+
+.surface-hover {
+  background-color: var(--color-surface-hover);
+}
+
+/* =============================================================================
+   BASE STYLES
+   ============================================================================= */
 body {
-  @apply text-gray-900 dark:text-white;
-  @apply bg-white dark:bg-gray-900;
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: var(--text-body-md);
+  line-height: var(--leading-normal);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

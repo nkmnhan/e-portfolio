@@ -30,7 +30,7 @@ export default function Breadcrumbs({
           icon={HiHome}
           theme={{
             href: {
-              on: "flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white",
+              on: "flex items-center text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]",
             },
             icon: "mr-2 h-4 w-4",
           }}
@@ -49,10 +49,10 @@ export default function Breadcrumbs({
                 on: clsxMerge(
                   "flex items-center text-sm font-medium",
                   isLast
-                    ? "text-gray-500 dark:text-gray-400 cursor-default"
-                    : "text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+                    ? "text-[var(--color-text-muted)] cursor-default"
+                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]"
                 ),
-                off: "flex items-center text-sm font-medium text-gray-500 dark:text-gray-400",
+                off: "flex items-center text-sm font-medium text-[var(--color-text-muted)]",
               },
             }}
           >

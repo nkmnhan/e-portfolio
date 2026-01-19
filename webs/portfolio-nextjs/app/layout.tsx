@@ -199,11 +199,18 @@ export default function RootLayout({
           geistMono.variable,
           waltograph.variable,
           "antialiased",
-          "bg-white dark:bg-gray-800",
+          "bg-[var(--color-bg)] text-[var(--color-text)]",
           "min-h-screen min-w-screen"
         )}
         suppressHydrationWarning={true}
       >
+        {/* Skip to main content link for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--color-primary)] focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)]"
+        >
+          Skip to main content
+        </a>
         <PerformanceMonitor className="fixed right-4 bottom-12" />
         <ThemeToggle
           className="fixed right-4 bottom-4 z-100"
@@ -214,7 +221,7 @@ export default function RootLayout({
         <div>
           {/* Menu drawer */}
           <NavBar />
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
         </div>
       </body>
     </html>
