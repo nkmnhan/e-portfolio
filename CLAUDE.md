@@ -1,6 +1,18 @@
 # E-Portfolio Project
 
-Portfolio for **Concept Artists** and **Film Animation Developers**.
+Portfolio platform for **3D Artists**, **Animation Artists**, and **Concept Artists**.
+
+## Target Users
+- **3D Artists** - Showcase 3D models, renders, sculpts, environments, character designs
+- **Animation Artists** - Display animation reels, character rigs, motion graphics, VFX work
+- **Concept Artists** - Present concept art, storyboards, character designs, environment concepts
+
+## Design Philosophy
+- Visual-first presentation - artwork is the hero
+- Dark/cinematic themes to make artwork pop
+- High-quality image/video display
+- Mobile responsive (industry professionals browse on tablets)
+- Fast loading for image-heavy portfolios
 
 ## Tech Stack
 - Next.js 14+ (App Router), TypeScript, Tailwind CSS, Flowbite-React, R3F
