@@ -97,7 +97,7 @@ export function EmbedPlayer({ media, aspectRatio = "video" }: EmbedPlayerProps) 
             >
               <div
                 className={clsxMerge(
-                  "p-5 rounded-full text-white",
+                  "p-4 rounded-full text-white",
                   "transform hover:scale-110",
                   "transition-transform duration-300",
                   "shadow-lg",

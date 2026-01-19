@@ -52,7 +52,7 @@ export function ShowreelCard({ showreel, priority = false }: ShowreelCardProps) 
               "shadow-lg shadow-[var(--color-primary)]/30"
             )}
           >
-            <HiPlay className="w-8 h-8 ml-1" />
+            <HiPlay className="w-8 h-8" />
           </div>
         </div>
 

@@ -101,14 +101,14 @@ export function VideoPlayer({
           >
             <div
               className={clsxMerge(
-                "p-5 rounded-full",
+                "p-4 rounded-full",
                 "bg-[var(--color-primary)] text-white",
                 "transform hover:scale-110",
                 "transition-transform duration-300",
                 "shadow-lg shadow-[var(--color-primary)]/30"
               )}
             >
-              <HiPlay className="w-8 h-8 ml-1" />
+              <HiPlay className="w-8 h-8" />
             </div>
           </button>
         )}

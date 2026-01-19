@@ -76,7 +76,7 @@ export function Model3DViewer({ media }: Model3DViewerProps) {
             >
               <div
                 className={clsxMerge(
-                  "p-5 rounded-full",
+                  "p-4 rounded-full",
                   "bg-[var(--color-accent)] text-white",
                   "transform hover:scale-110",
                   "transition-transform duration-300",
