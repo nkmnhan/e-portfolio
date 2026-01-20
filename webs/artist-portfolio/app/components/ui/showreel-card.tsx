@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { clsxMerge } from "@/lib/utils";
 import type { Showreel } from "@/lib/types";
 import { Badge } from "./badge";
@@ -23,6 +24,11 @@ interface ShowreelCardProps {
  */
 export function ShowreelCard({ showreel, priority = false }: Readonly<ShowreelCardProps>) {
   const [isActive, setIsActive] = useState(false);
+  const router = useRouter();
+
+  const navigateToDetail = () => {
+    router.push(`/showreels/${showreel.id}`);
+  };
 
   return (
     <div
@@ -33,14 +39,13 @@ export function ShowreelCard({ showreel, priority = false }: Readonly<ShowreelCa
         "hover:border-[var(--color-border-hover)]",
         "transition-all duration-300 cursor-pointer"
       )}
-      onClick={() => {
-        window.location.href = `/showreels/${showreel.id}`;
-      }}
+      onClick={navigateToDetail}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
-          window.location.href = `/showreels/${showreel.id}`;
+          e.preventDefault();
+          navigateToDetail();
         }
       }}
     >

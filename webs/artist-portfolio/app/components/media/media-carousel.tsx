@@ -26,6 +26,7 @@ export function MediaCarousel({
   const isTouchDevice = useTouchDevice();
   const autoPlayTimerRef = useRef<NodeJS.Timeout | null>(null);
   const countdownIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const interactionResumeTimerRef = useRef<NodeJS.Timeout | null>(null);
   const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const longPressTimerRef = useRef<NodeJS.Timeout | null>(null);
   const touchStartXRef = useRef<number>(0);
@@ -144,6 +145,7 @@ export function MediaCarousel({
       if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
       if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
       if (longPressTimerRef.current) clearTimeout(longPressTimerRef.current);
+      if (interactionResumeTimerRef.current) clearTimeout(interactionResumeTimerRef.current);
     };
   }, []);
 
@@ -154,28 +156,62 @@ export function MediaCarousel({
     });
   }, []);
 
+  // Handle user interaction - pause auto-play and resume after 10s
+  const handleUserInteraction = useCallback(() => {
+    // Clear any existing resume timer
+    if (interactionResumeTimerRef.current) {
+      clearTimeout(interactionResumeTimerRef.current);
+    }
+
+    setHasUserInteracted(true);
+    setShowCountdownWarning(false);
+
+    // Resume auto-play after 10 seconds of inactivity
+    interactionResumeTimerRef.current = setTimeout(() => {
+      setHasUserInteracted(false);
+    }, 10000);
+  }, []);
+
   const goToPrevious = useCallback(() => {
     if (items.length <= 1) return; // Ignore if only one item
     setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
-    setHasUserInteracted(true);
-    setShowCountdownWarning(false);
+    handleUserInteraction();
     pauseAllVideos();
-  }, [items.length, pauseAllVideos]);
+  }, [items.length, handleUserInteraction, pauseAllVideos]);
 
   const goToNext = useCallback(() => {
     if (items.length <= 1) return; // Ignore if only one item
     setCurrentIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
-    setHasUserInteracted(true);
-    setShowCountdownWarning(false);
+    handleUserInteraction();
     pauseAllVideos();
-  }, [items.length, pauseAllVideos]);
+  }, [items.length, handleUserInteraction, pauseAllVideos]);
 
   const goToSlide = useCallback((index: number) => {
     setCurrentIndex(index);
-    setHasUserInteracted(true);
-    setShowCountdownWarning(false);
+    handleUserInteraction();
     pauseAllVideos();
-  }, [pauseAllVideos]);
+  }, [handleUserInteraction, pauseAllVideos]);
+
+  // Keyboard navigation (arrow keys)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Only handle if not inside an input/textarea
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        goToPrevious();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        goToNext();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [goToPrevious, goToNext]);
 
   // Touch/Swipe gesture handling
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
@@ -185,13 +221,13 @@ export function MediaCarousel({
     // Long press for pause (500ms)
     longPressTimerRef.current = setTimeout(() => {
       setIsAutoPlaying(false);
-      setHasUserInteracted(true);
+      handleUserInteraction();
       // Haptic feedback
       if (navigator.vibrate) {
         navigator.vibrate(50);
       }
     }, 500);
-  }, []);
+  }, [handleUserInteraction]);
 
   const handleTouchMove = useCallback(() => {
     // Cancel long press if user moves finger
@@ -236,9 +272,9 @@ export function MediaCarousel({
   const handleEmbedInteraction = useCallback(() => {
     if (isAutoPlaying) {
       setIsAutoPlaying(false);
-      setHasUserInteracted(true);
+      handleUserInteraction();
     }
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, handleUserInteraction]);
 
   // Get media type label
   const getMediaTypeLabel = (type: MediaCarouselItem["type"]): string => {
@@ -430,7 +466,7 @@ export function MediaCarousel({
 
       {/* Thumbnail Strip - Swipeable on mobile, always visible */}
       {items.length > 1 && (
-        <div 
+        <div
           className={clsxMerge(
             "flex gap-2 mt-4 px-4 py-2 overflow-x-auto",
             "scrollbar-thin",
@@ -462,22 +498,54 @@ export function MediaCarousel({
           ))}
         </div>
       )}
+
+      {/* ARIA Live Region for Screen Readers */}
+      <div aria-live="polite" aria-atomic="true" className="sr-only">
+        Slide {currentIndex + 1} of {items.length}
+        {currentItem.caption && `: ${currentItem.caption}`}
+        {currentItem.type !== "image" && ` (${getMediaTypeLabel(currentItem.type)})`}
+      </div>
     </div>
   );
 }
 
 // Memoized slide renderer
-const MediaSlide = memo(({ 
-  item, 
+const MediaSlide = memo(({
+  item,
   isActive,
   videoRef,
   onEmbedInteraction
-}: { 
-  item: MediaCarouselItem; 
+}: {
+  item: MediaCarouselItem;
   isActive: boolean;
   videoRef?: (el: HTMLVideoElement | null) => void;
   onEmbedInteraction?: () => void;
 }) => {
+  // Internal ref for video auto-play
+  const internalVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  // Auto-play video when slide becomes active
+  useEffect(() => {
+    if (item.type === "video" && internalVideoRef.current) {
+      if (isActive) {
+        // Auto-play muted when slide becomes active
+        internalVideoRef.current.play().catch(() => {
+          // Ignore autoplay errors (browser policy)
+        });
+      } else {
+        // Pause and reset when slide becomes inactive
+        internalVideoRef.current.pause();
+        internalVideoRef.current.currentTime = 0;
+      }
+    }
+  }, [isActive, item.type]);
+
+  // Combined ref callback
+  const handleVideoRef = useCallback((el: HTMLVideoElement | null) => {
+    internalVideoRef.current = el;
+    videoRef?.(el);
+  }, [videoRef]);
+
   switch (item.type) {
     case "image":
       return (
@@ -494,7 +562,7 @@ const MediaSlide = memo(({
     case "video":
       return (
         <video
-          ref={videoRef}
+          ref={handleVideoRef}
           src={item.videoUrl}
           poster={item.poster}
           loop={item.loop ?? false}

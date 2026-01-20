@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getShowreelById, getShowreels, getProfile } from "@/lib/services";
 import { clsxMerge } from "@/lib/utils";
 import {
@@ -196,10 +197,12 @@ export default async function ShowreelDetailPage({ params }: Readonly<Props>) {
                 >
                   <div className="overflow-hidden rounded-lg border border-[var(--color-border)] hover:border-[var(--color-border-hover)] transition-all">
                     <div className="relative aspect-video overflow-hidden">
-                      <img
+                      <Image
                         src={reel.thumbnail}
                         alt={reel.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-3 left-3 right-3">
