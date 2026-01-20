@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
 import { clsxMerge } from "@/lib/utils";
-import type { Project } from "@/lib/data";
+import type { Project } from "@/lib/types";
 import { HiPlay, HiOutlineEye } from "react-icons/hi";
 import { Badge } from "@/app/components/ui/badge";
 

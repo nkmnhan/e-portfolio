@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getProjectBySlug, projects, profile } from "@/lib/data";
+import { getProjectBySlug, getProjects, getProfile, getAdjacentProjects, getAllProjectSlugs } from "@/lib/services";
 import { MediaRenderer } from "@/app/components/media/media-renderer";
 import { clsxMerge } from "@/lib/utils";
 import {
@@ -17,14 +17,15 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
+  return getAllProjectSlugs().map((slug) => ({
+    slug,
   }));
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
+  const profile = getProfile();
 
   if (!project) {
     return { title: "Project Not Found" };
@@ -44,11 +45,8 @@ export default async function ProjectDetailPage({ params }: Props) {
     notFound();
   }
 
-  // Find prev/next projects
-  const currentIndex = projects.findIndex((p) => p.slug === slug);
-  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
-  const nextProject =
-    currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+  // Find prev/next projects using service
+  const { prev: prevProject, next: nextProject } = getAdjacentProjects(slug);
 
   return (
     <>

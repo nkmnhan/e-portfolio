@@ -1,5 +1,5 @@
 import { clsxMerge } from "@/lib/utils";
-import type { Project } from "@/lib/data";
+import type { Project } from "@/lib/types";
 import { ProjectCard, type AspectRatio } from "./project-card";
 
 export type LayoutMode = "grid" | "masonry";

@@ -6,7 +6,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, useGLTF, Center, PresentationControls } from "@react-three/drei";
 import { clsxMerge } from "@/lib/utils";
 import { HiCube, HiRefresh, HiZoomIn, HiZoomOut } from "react-icons/hi";
-import type { Model3DMedia } from "@/lib/data";
+import type { Model3DMedia } from "@/lib/types";
 
 interface Model3DViewerProps {
   media: Model3DMedia;

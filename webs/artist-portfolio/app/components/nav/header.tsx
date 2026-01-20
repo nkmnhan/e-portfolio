@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { clsxMerge } from "@/lib/utils";
-import { profile } from "@/lib/data";
+import { getProfile } from "@/lib/services";
 import {
   HiOutlineHome,
   HiOutlineUser,
@@ -20,6 +20,8 @@ const navItems = [
 ];
 
 export function Header() {
+  const profile = getProfile();
+
   return (
     <header
       className={clsxMerge(

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { clsxMerge } from "@/lib/utils";
 import { HiPlay, HiExternalLink } from "react-icons/hi";
 import { SiYoutube, SiVimeo, SiSketchfab } from "react-icons/si";
-import type { EmbedMedia } from "@/lib/data";
+import type { EmbedMedia } from "@/lib/types";
 
 interface EmbedPlayerProps {
   media: EmbedMedia;

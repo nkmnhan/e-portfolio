@@ -1,5 +1,5 @@
 import { clsxMerge } from "@/lib/utils";
-import { SocialLinks as SocialLinksType } from "@/lib/data";
+import type { SocialLinks as SocialLinksType } from "@/lib/types";
 import {
   SiArtstation,
   SiLinkedin,

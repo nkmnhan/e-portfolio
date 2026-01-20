@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { profile } from "@/lib/data";
+import { getProfile } from "@/lib/services";
 import { HiOutlineMail, HiOutlineLocationMarker, HiOutlineClock } from "react-icons/hi";
 import {
   Card,
@@ -11,6 +11,8 @@ import {
   FormSelect,
   Button,
 } from "../components/ui";
+
+const profile = getProfile();
 
 export const metadata: Metadata = {
   title: `Contact | ${profile.name}`,

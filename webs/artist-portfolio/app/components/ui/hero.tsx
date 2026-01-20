@@ -1,12 +1,14 @@
 import Image from "next/image";
 import { clsxMerge } from "@/lib/utils";
-import { profile } from "@/lib/data";
+import { getProfile } from "@/lib/services";
 import { HiPlay, HiOutlineMail, HiOutlineLocationMarker } from "react-icons/hi";
 import { Badge } from "./badge";
 import { Button, ButtonGroup } from "./button";
 import { SocialLinks } from "./social-links";
 
 export function Hero() {
+  const profile = getProfile();
+
   return (
     <section className="relative overflow-hidden">
       {/* Cover Image Background */}

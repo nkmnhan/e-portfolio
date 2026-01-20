@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import type { MediaItem } from "@/lib/data";
+import type { MediaItem } from "@/lib/types";
 import { ImageViewer } from "./image-viewer";
 import { VideoPlayer } from "./video-player";
 import { ImageCarousel } from "./image-carousel";

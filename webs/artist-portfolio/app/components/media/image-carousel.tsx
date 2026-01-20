@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { clsxMerge } from "@/lib/utils";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
-import type { CarouselMedia } from "@/lib/data";
+import type { CarouselMedia } from "@/lib/types";
 
 interface ImageCarouselProps {
   media: CarouselMedia;

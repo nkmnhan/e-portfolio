@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { clsxMerge } from "@/lib/utils";
-import type { Showreel } from "@/lib/data";
+import type { Showreel } from "@/lib/types";
 import { HiPlay } from "react-icons/hi";
 import { Badge } from "./badge";
 

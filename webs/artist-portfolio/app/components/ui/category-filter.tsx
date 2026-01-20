@@ -1,7 +1,7 @@
 "use client";
 
 import { clsxMerge } from "@/lib/utils";
-import type { ProjectCategory } from "@/lib/data";
+import type { ProjectCategory } from "@/lib/types";
 
 interface CategoryCount {
   id: ProjectCategory | "all";

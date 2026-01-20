@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import { ShowreelCard } from "../components/ui/showreel-card";
-import { showreels, profile } from "@/lib/data";
+import { getShowreels, getProfile } from "@/lib/services";
+
+const profile = getProfile();
+const showreels = getShowreels();
 
 export const metadata: Metadata = {
   title: `Showreels | ${profile.name}`,

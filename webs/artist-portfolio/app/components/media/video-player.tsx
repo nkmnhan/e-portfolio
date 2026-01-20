@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { clsxMerge } from "@/lib/utils";
 import { HiPlay, HiPause, HiVolumeUp, HiVolumeOff } from "react-icons/hi";
-import type { VideoMedia } from "@/lib/data";
+import type { VideoMedia } from "@/lib/types";
 
 interface VideoPlayerProps {
   media: VideoMedia;
