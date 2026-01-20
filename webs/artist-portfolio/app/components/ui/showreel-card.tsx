@@ -18,8 +18,10 @@ interface ShowreelCardProps {
  * - Video thumbnail with hover/autoplay support (via VideoThumbnail)
  * - Duration and year badges
  * - Breakdown preview
+ * - Clickable to showreel detail page
+ * - Video play button for mobile (non-blocking)
  */
-export function ShowreelCard({ showreel, priority = false }: ShowreelCardProps) {
+export function ShowreelCard({ showreel, priority = false }: Readonly<ShowreelCardProps>) {
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -29,8 +31,18 @@ export function ShowreelCard({ showreel, priority = false }: ShowreelCardProps) 
         "bg-[var(--color-surface)]",
         "border border-[var(--color-border)]",
         "hover:border-[var(--color-border-hover)]",
-        "transition-all duration-300"
+        "transition-all duration-300 cursor-pointer"
       )}
+      onClick={() => {
+        window.location.href = `/showreels/${showreel.id}`;
+      }}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          window.location.href = `/showreels/${showreel.id}`;
+        }
+      }}
     >
       {/* Thumbnail with Video Preview */}
       <VideoThumbnail

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useRef, useEffect, useCallback, memo } from "react";
 import { clsxMerge } from "@/lib/utils";
-import { HiChevronLeft, HiChevronRight, HiPause, HiPlay } from "react-icons/hi";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import type { MediaCarouselMedia, MediaCarouselItem } from "@/lib/types";
 import { useTouchDevice } from "./hooks/use-touch-device";
 
@@ -150,10 +150,12 @@ export function MediaCarousel({
   const pauseAllVideos = useCallback(() => {
     videoRefs.current.forEach((video) => {
       video.pause();
+      video.currentTime = 0; // Reset to beginning
     });
   }, []);
 
   const goToPrevious = useCallback(() => {
+    if (items.length <= 1) return; // Ignore if only one item
     setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
     setHasUserInteracted(true);
     setShowCountdownWarning(false);
@@ -161,6 +163,7 @@ export function MediaCarousel({
   }, [items.length, pauseAllVideos]);
 
   const goToNext = useCallback(() => {
+    if (items.length <= 1) return; // Ignore if only one item
     setCurrentIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
     setHasUserInteracted(true);
     setShowCountdownWarning(false);
@@ -173,11 +176,6 @@ export function MediaCarousel({
     setShowCountdownWarning(false);
     pauseAllVideos();
   }, [pauseAllVideos]);
-
-  const toggleAutoPlay = useCallback(() => {
-    setIsAutoPlaying((prev: boolean) => !prev);
-    setHasUserInteracted(true);
-  }, []);
 
   // Touch/Swipe gesture handling
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
@@ -234,6 +232,26 @@ export function MediaCarousel({
     goToSlide(Math.min(targetIndex, items.length - 1));
   }, [items.length, goToSlide]);
 
+  // Pause auto-play when interacting with embeds
+  const handleEmbedInteraction = useCallback(() => {
+    if (isAutoPlaying) {
+      setIsAutoPlaying(false);
+      setHasUserInteracted(true);
+    }
+  }, [isAutoPlaying]);
+
+  // Get media type label
+  const getMediaTypeLabel = (type: MediaCarouselItem["type"]): string => {
+    switch (type) {
+      case "image": return "Image";
+      case "video": return "Video";
+      case "youtube": return "YouTube";
+      case "vimeo": return "Vimeo";
+      case "sketchfab": return "3D Model";
+      default: return "Media";
+    }
+  };
+
   return (
     <div className="relative group">
       {/* Main Carousel Container */}
@@ -261,6 +279,7 @@ export function MediaCarousel({
                 if (el) videoRefs.current.set(index, el);
                 else videoRefs.current.delete(index);
               }}
+              onEmbedInteraction={handleEmbedInteraction}
             />
           </div>
         ))}
@@ -324,29 +343,6 @@ export function MediaCarousel({
             </div>
           </div>
         )}
-
-        {/* Play/Pause Button */}
-        <button
-          onClick={toggleAutoPlay}
-          className={clsxMerge(
-            "absolute top-2 md:top-4 right-2 md:right-4 z-10",
-            "w-11 h-11 min-w-11 min-h-11 p-0 rounded-full",
-            "bg-black/60 backdrop-blur-sm",
-            "text-white hover:bg-black/80",
-            "flex items-center justify-center",
-            "transition-all duration-300",
-            "focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]",
-            "[@media(hover:none)]:opacity-60",
-            "[@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100"
-          )}
-          aria-label={isAutoPlaying ? "Pause auto-play" : "Resume auto-play"}
-        >
-          {isAutoPlaying ? (
-            <HiPause className="w-5 h-5" />
-          ) : (
-            <HiPlay className="w-5 h-5" />
-          )}
-        </button>
 
         {/* Slide Counter */}
         <div
@@ -436,7 +432,7 @@ export function MediaCarousel({
       {items.length > 1 && (
         <div 
           className={clsxMerge(
-            "flex gap-2 mt-4 overflow-x-auto pb-2",
+            "flex gap-2 mt-4 px-4 py-2 overflow-x-auto",
             "scrollbar-thin",
             "[@media(hover:none)]:snap-x [@media(hover:none)]:snap-mandatory"
           )}
@@ -456,6 +452,12 @@ export function MediaCarousel({
               aria-label={`Go to slide ${index + 1}`}
             >
               <ThumbnailPreview item={item} />
+              {/* Media Type Badge */}
+              <div className="absolute bottom-1 left-1 z-10">
+                <span className="inline-block px-1.5 py-0.5 rounded text-[10px] font-medium bg-black/70 backdrop-blur-sm text-white">
+                  {getMediaTypeLabel(item.type)}
+                </span>
+              </div>
             </button>
           ))}
         </div>
@@ -468,11 +470,13 @@ export function MediaCarousel({
 const MediaSlide = memo(({ 
   item, 
   isActive,
-  videoRef 
+  videoRef,
+  onEmbedInteraction
 }: { 
   item: MediaCarouselItem; 
   isActive: boolean;
   videoRef?: (el: HTMLVideoElement | null) => void;
+  onEmbedInteraction?: () => void;
 }) => {
   switch (item.type) {
     case "image":
@@ -505,36 +509,63 @@ const MediaSlide = memo(({
       );
 
     case "youtube":
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       return (
-        <iframe
-          src={`https://www.youtube.com/embed/${item.embedId}?autoplay=0`}
+        <section
+          onMouseEnter={onEmbedInteraction}
+          onMouseLeave={onEmbedInteraction}
+          onClick={onEmbedInteraction}
+          aria-label="YouTube video player"
           className="w-full h-full"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="YouTube video"
-        />
+        >
+          <iframe
+            src={`https://www.youtube.com/embed/${item.embedId}?autoplay=0`}
+            className="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="YouTube video"
+          />
+        </section>
       );
 
     case "vimeo":
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       return (
-        <iframe
-          src={`https://player.vimeo.com/video/${item.embedId}?autoplay=0`}
+        <section
+          onMouseEnter={onEmbedInteraction}
+          onMouseLeave={onEmbedInteraction}
+          onClick={onEmbedInteraction}
+          aria-label="Vimeo video player"
           className="w-full h-full"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          title="Vimeo video"
-        />
+        >
+          <iframe
+            src={`https://player.vimeo.com/video/${item.embedId}?autoplay=0`}
+            className="w-full h-full"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            title="Vimeo video"
+          />
+        </section>
       );
 
     case "sketchfab":
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       return (
-        <iframe
-          src={`https://sketchfab.com/models/${item.embedId}/embed?autostart=0&ui_controls=1&ui_infos=0`}
+        <section
+          onMouseEnter={onEmbedInteraction}
+          onMouseLeave={onEmbedInteraction}
+          onClick={onEmbedInteraction}
+          aria-label="Sketchfab 3D model viewer"
           className="w-full h-full"
-          allow="autoplay; fullscreen; xr-spatial-tracking"
-          allowFullScreen
-          title="Sketchfab 3D model"
-        />
+        >
+          <iframe
+            src={`https://sketchfab.com/models/${item.embedId}/embed?autostart=0&ui_controls=1&ui_infos=0`}
+            className="w-full h-full"
+            allow="autoplay; fullscreen; xr-spatial-tracking"
+            allowFullScreen
+            title="Sketchfab 3D model"
+          />
+        </section>
       );
 
     default:
