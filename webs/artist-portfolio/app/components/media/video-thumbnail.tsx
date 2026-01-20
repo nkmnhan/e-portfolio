@@ -30,6 +30,8 @@ interface VideoThumbnailProps {
   onHoverChange?: (isHovered: boolean) => void;
   /** Callback when playing state changes */
   onPlayingChange?: (isPlaying: boolean) => void;
+  /** Video buffering timeout in ms (default: 5000) for slow connections */
+  videoBufferTimeout?: number;
 }
 
 const aspectRatioClasses: Record<AspectRatio, string> = {
@@ -61,19 +63,22 @@ export function VideoThumbnail({
   children,
   onHoverChange,
   onPlayingChange,
-}: VideoThumbnailProps) {
+  videoBufferTimeout = 5000,
+}: Readonly<VideoThumbnailProps>) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [isBuffering, setIsBuffering] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLFieldSetElement>(null);
+  const bufferTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const hasVideo = Boolean(video);
 
   // Detect if device lacks hover capability (true mobile/tablet)
   useEffect(() => {
-    const hoverQuery = window.matchMedia("(hover: hover)");
+    const hoverQuery = globalThis.matchMedia("(hover: hover)");
 
     const checkHoverCapability = () => {
       setIsTouchDevice(!hoverQuery.matches);
@@ -120,6 +125,39 @@ export function VideoThumbnail({
     }
   }, [isInView, hasVideo, isTouchDevice, onPlayingChange]);
 
+  // Video readiness and buffering detection
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!hasVideo || !video) return;
+
+    const handleWaiting = () => {
+      bufferTimeoutRef.current = setTimeout(() => {
+        setIsBuffering(true);
+      }, videoBufferTimeout);
+    };
+
+    const handleCanPlay = () => {
+      if (bufferTimeoutRef.current) {
+        clearTimeout(bufferTimeoutRef.current);
+        bufferTimeoutRef.current = null;
+      }
+      setIsBuffering(false);
+    };
+
+    video.addEventListener("waiting", handleWaiting);
+    video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("playing", handleCanPlay);
+
+    return () => {
+      video.removeEventListener("waiting", handleWaiting);
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("playing", handleCanPlay);
+      if (bufferTimeoutRef.current) {
+        clearTimeout(bufferTimeoutRef.current);
+      }
+    };
+  }, [hasVideo, videoBufferTimeout]);
+
   // Desktop hover handlers
   const handleMouseEnter = () => {
     if (isTouchDevice) return;
@@ -165,26 +203,33 @@ export function VideoThumbnail({
   );
 
   // For "auto" aspect ratio, calculate padding-bottom from customAspectRatio
-  const autoAspectStyle =
-    aspectRatio === "auto" && customAspectRatio
-      ? { paddingBottom: `${(1 / customAspectRatio) * 100}%` }
-      : aspectRatio === "auto"
-        ? { paddingBottom: "75%" } // Default to 4:3 if no ratio specified
-        : undefined;
+  const getAutoAspectStyle = () => {
+    if (aspectRatio === "auto" && customAspectRatio) {
+      return { paddingBottom: `${(1 / customAspectRatio) * 100}%` };
+    }
+    if (aspectRatio === "auto") {
+      return { paddingBottom: "75%" }; // Default to 4:3 if no ratio specified
+    }
+    return undefined;
+  };
+
+  const autoAspectStyle = getAutoAspectStyle();
 
   const showVideo = isHovered || isPlaying;
 
   return (
-    <div
+    <fieldset
       ref={containerRef}
       className={clsxMerge(
         "relative overflow-hidden",
         aspectRatioClasses[aspectRatio],
-        className
+        className,
+        "border-none p-0 m-0"
       )}
       style={autoAspectStyle}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      title={alt}
     >
       {/* Static Thumbnail Image */}
       <Image
@@ -200,7 +245,7 @@ export function VideoThumbnail({
         priority={priority}
       />
 
-      {/* Video */}
+      {/* Video - only render if it's being shown or preloading */}
       {hasVideo && (
         <video
           ref={videoRef}
@@ -208,12 +253,23 @@ export function VideoThumbnail({
           muted
           loop
           playsInline
+          preload="metadata"
           className={clsxMerge(
             "absolute inset-0 w-full h-full object-cover",
             "transition-opacity duration-300",
             showVideo ? "opacity-100" : "opacity-0"
           )}
         />
+      )}
+
+      {/* Buffering Indicator - shows during video load/buffering */}
+      {hasVideo && isBuffering && showVideo && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+          <div className="flex flex-col items-center gap-2">
+            <div className="w-8 h-8 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+            <p className="text-xs text-white/70">Loading...</p>
+          </div>
+        </div>
       )}
 
       {/* Mobile Play/Pause Button */}
@@ -231,33 +287,39 @@ export function VideoThumbnail({
             "min-w-11 min-h-11"
           )}
           aria-label={isPlaying ? "Pause video" : "Play video"}
+          disabled={isBuffering && !isPlaying}
         >
-          {isPlaying ? (
-            <HiPause className="w-5 h-5" />
-          ) : (
-            <HiPlay className="w-5 h-5" />
-          )}
+          {isPlaying ? <HiPause className="w-5 h-5" /> : null}
+          {!isPlaying && isBuffering ? (
+            <div className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+          ) : null}
+          {!isPlaying && !isBuffering ? <HiPlay className="w-5 h-5" /> : null}
         </button>
       )}
 
-      {/* Desktop Video Indicator (non-touch only) */}
+      {/* Desktop Video Indicator (non-touch only) - shows even if buffering */}
       {hasVideo && !isTouchDevice && (
-        <div
+        <output
           className={clsxMerge(
             "absolute top-3 right-3",
             "w-8 h-8 rounded-full",
             "flex items-center justify-center",
             "bg-[var(--color-primary)] text-white",
             "transition-all duration-300",
-            isHovered ? "scale-110" : "scale-100"
+            isHovered && !isBuffering ? "scale-110" : "scale-100"
           )}
+          aria-label={isBuffering ? "Video loading" : "Video available"}
         >
-          <HiPlay className="w-4 h-4" />
-        </div>
+          {isBuffering ? (
+            <div className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+          ) : (
+            <HiPlay className="w-4 h-4" />
+          )}
+        </output>
       )}
 
       {/* Children (badges, overlays, etc.) */}
       {children}
-    </div>
+    </fieldset>
   );
 }

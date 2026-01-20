@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { clsxMerge } from "@/lib/utils";
 import { HiPlay, HiPause, HiVolumeUp, HiVolumeOff } from "react-icons/hi";
@@ -9,22 +9,59 @@ import type { VideoMedia } from "@/lib/types";
 interface VideoPlayerProps {
   media: VideoMedia;
   aspectRatio?: "video" | "square" | "portrait";
+  videoBufferTimeout?: number;
 }
 
 export function VideoPlayer({
   media,
   aspectRatio = "video",
-}: VideoPlayerProps) {
+  videoBufferTimeout = 5000,
+}: Readonly<VideoPlayerProps>) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(media.muted ?? true);
   const [showPoster, setShowPoster] = useState(true);
+  const [isBuffering, setIsBuffering] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const bufferTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const aspectClasses = {
     video: "aspect-video",
     square: "aspect-square",
     portrait: "aspect-[3/4]",
   };
+
+  // Video buffering detection
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleWaiting = () => {
+      bufferTimeoutRef.current = setTimeout(() => {
+        setIsBuffering(true);
+      }, videoBufferTimeout);
+    };
+
+    const handleBufferingComplete = () => {
+      if (bufferTimeoutRef.current) {
+        clearTimeout(bufferTimeoutRef.current);
+        bufferTimeoutRef.current = null;
+      }
+      setIsBuffering(false);
+    };
+
+    video.addEventListener("waiting", handleWaiting);
+    video.addEventListener("canplay", handleBufferingComplete);
+    video.addEventListener("playing", handleBufferingComplete);
+
+    return () => {
+      video.removeEventListener("waiting", handleWaiting);
+      video.removeEventListener("canplay", handleBufferingComplete);
+      video.removeEventListener("playing", handleBufferingComplete);
+      if (bufferTimeoutRef.current) {
+        clearTimeout(bufferTimeoutRef.current);
+      }
+    };
+  }, [videoBufferTimeout]);
 
   const handlePlay = () => {
     if (videoRef.current) {
@@ -73,7 +110,9 @@ export function VideoPlayer({
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
           onEnded={() => !media.loop && setIsPlaying(false)}
-        />
+        >
+          <track kind="captions" />
+        </video>
 
         {/* Poster Overlay */}
         {showPoster && (
@@ -90,7 +129,7 @@ export function VideoPlayer({
         )}
 
         {/* Play Button (centered, visible when not playing) */}
-        {!isPlaying && (
+        {!isPlaying && !isBuffering && (
           <button
             onClick={handlePlay}
             className={clsxMerge(
@@ -111,6 +150,16 @@ export function VideoPlayer({
               <HiPlay className="w-8 h-8" />
             </div>
           </button>
+        )}
+
+        {/* Buffering Indicator */}
+        {isBuffering && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-12 h-12 rounded-full border-3 border-white/30 border-t-white animate-spin" />
+              <p className="text-white text-sm font-medium">Loading video...</p>
+            </div>
+          </div>
         )}
 
         {/* Controls Bar */}
