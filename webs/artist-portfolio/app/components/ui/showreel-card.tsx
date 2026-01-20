@@ -1,15 +1,27 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 import { clsxMerge } from "@/lib/utils";
 import type { Showreel } from "@/lib/types";
-import { HiPlay } from "react-icons/hi";
 import { Badge } from "./badge";
+import { VideoThumbnail } from "@/app/components/media/video-thumbnail";
 
 interface ShowreelCardProps {
   showreel: Showreel;
   priority?: boolean;
 }
 
+/**
+ * ShowreelCard - Card component for displaying showreel previews
+ *
+ * Features:
+ * - Video thumbnail with hover/autoplay support (via VideoThumbnail)
+ * - Duration and year badges
+ * - Breakdown preview
+ */
 export function ShowreelCard({ showreel, priority = false }: ShowreelCardProps) {
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <div
       className={clsxMerge(
@@ -20,43 +32,27 @@ export function ShowreelCard({ showreel, priority = false }: ShowreelCardProps) 
         "transition-all duration-300"
       )}
     >
-      {/* Thumbnail */}
-      <div className="relative aspect-video overflow-hidden">
-        <Image
-          src={showreel.thumbnail}
-          alt={showreel.title}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          priority={priority}
-        />
-
-        {/* Overlay */}
+      {/* Thumbnail with Video Preview */}
+      <VideoThumbnail
+        thumbnail={showreel.thumbnail}
+        alt={showreel.title}
+        video={showreel.videoUrl}
+        aspectRatio="16/9"
+        priority={priority}
+        onHoverChange={setIsActive}
+        onPlayingChange={setIsActive}
+      >
+        {/* Overlay - pointer-events-none to allow play button clicks */}
         <div
           className={clsxMerge(
-            "absolute inset-0",
+            "absolute inset-0 pointer-events-none",
             "bg-gradient-to-t from-black/80 via-black/20 to-transparent",
-            "opacity-60 group-hover:opacity-80",
-            "transition-opacity duration-300"
+            "transition-opacity duration-300",
+            isActive ? "opacity-80" : "opacity-60"
           )}
         />
 
-        {/* Play Button */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div
-            className={clsxMerge(
-              "rounded-full",
-              "bg-[var(--color-primary)] text-white",
-              "transform group-hover:scale-110",
-              "transition-transform duration-300",
-              "shadow-lg shadow-[var(--color-primary)]/30"
-            )}
-          >
-            <HiPlay className="w-8 h-8" />
-          </div>
-        </div>
-
-        {/* Duration */}
+        {/* Duration Badge */}
         <Badge
           variant="dark"
           size="sm"
@@ -75,7 +71,7 @@ export function ShowreelCard({ showreel, priority = false }: ShowreelCardProps) 
         >
           {showreel.year}
         </Badge>
-      </div>
+      </VideoThumbnail>
 
       {/* Info */}
       <div className="p-5">

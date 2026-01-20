@@ -1,5 +1,6 @@
 // Media Components - Rich media type rendering for projects
 
+export { VideoThumbnail } from "./video-thumbnail";
 export { ProjectCard } from "./project-card";
 export { ProjectGrid } from "./project-grid";
 export { ImageViewer } from "./image-viewer";
