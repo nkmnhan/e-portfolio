@@ -2,6 +2,7 @@
 // Edit this file to update your demo reels
 
 import type { Showreel } from "@/lib/types";
+import { SAMPLE_VIDEOS } from "./videos";
 
 export const showreels: Showreel[] = [
   {
@@ -9,7 +10,7 @@ export const showreels: Showreel[] = [
     title: "Character Art Reel 2024",
     description: "Compilation of 3D character work from games and personal projects.",
     thumbnail: "https://images.unsplash.com/photo-1635322966219-b75ed372eb01?w=800&h=450&fit=crop",
-    videoUrl: "https://cdn.coverr.co/videos/coverr-3d-abstract-shapes-7954/1080p.mp4",
+    videoUrl: SAMPLE_VIDEOS.abstract3d,
     duration: "2:30",
     year: 2024,
     featured: true,
@@ -26,7 +27,7 @@ export const showreels: Showreel[] = [
     title: "Animation Demo Reel 2024",
     description: "Character and creature animation work from film and games.",
     thumbnail: "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&h=450&fit=crop",
-    videoUrl: "https://cdn.coverr.co/videos/coverr-birds-flying-over-the-water-3593/1080p.mp4",
+    videoUrl: SAMPLE_VIDEOS.nature,
     duration: "3:00",
     year: 2024,
     featured: true,
@@ -42,7 +43,7 @@ export const showreels: Showreel[] = [
     title: "Environment & VFX Reel",
     description: "Environment art and visual effects work.",
     thumbnail: "https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?w=800&h=450&fit=crop",
-    videoUrl: "https://cdn.coverr.co/videos/coverr-night-city-traffic-1853/1080p.mp4",
+    videoUrl: SAMPLE_VIDEOS.action,
     duration: "2:00",
     year: 2024,
     featured: false,
