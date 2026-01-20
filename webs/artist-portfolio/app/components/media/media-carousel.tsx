@@ -380,18 +380,6 @@ export function MediaCarousel({
           </div>
         )}
 
-        {/* Slide Counter */}
-        <div
-          className={clsxMerge(
-            "absolute top-2 md:top-4 left-2 md:left-4 z-10",
-            "px-3 py-1 rounded-full",
-            "bg-black/60 backdrop-blur-sm",
-            "text-sm text-white"
-          )}
-        >
-          {currentIndex + 1} / {items.length}
-        </div>
-
         {/* Edge Gradient Indicators (Mobile) - Show when more content exists */}
         {isTouchDevice && items.length > 1 && currentIndex > 0 && (
           <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-black/20 to-transparent pointer-events-none" />
@@ -408,58 +396,66 @@ export function MediaCarousel({
         </p>
       )}
 
-      {/* Progress Bar - Responsive height & clickable */}
+      {/* Slide Counter + Progress Bar */}
       {items.length > 1 && (
-        <div
-          className="mt-4 relative cursor-pointer group/progress"
-          onClick={handleProgressBarClick}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              handleProgressBarClick(e as unknown as React.MouseEvent<HTMLDivElement>);
-            }
-          }}
-          tabIndex={0}
-          role="slider"
-          aria-label="Carousel progress"
-          aria-valuenow={currentIndex + 1}
-          aria-valuemin={1}
-          aria-valuemax={items.length}
-        >
-          {/* Touch target area - 32px tall */}
-          <div className="absolute inset-0 -top-3 -bottom-3" />
-          
-          <div className="relative h-1.5 md:h-1 bg-[var(--color-border)] rounded-full overflow-hidden">
-            {items.map((_: MediaCarouselItem, index: number) => {
-              const segmentWidth = 100 / items.length;
-              const isActive = index === currentIndex;
-              const isPast = index < currentIndex;
-              
-              return (
-                <div
-                  key={`progress-${index}`}
-                  className="absolute top-0 h-full transition-colors duration-300"
-                  style={{
-                    left: `${index * segmentWidth}%`,
-                    width: `${segmentWidth}%`,
-                  }}
-                >
+        <div className="mt-4 flex items-center gap-3">
+          {/* Slide Counter */}
+          <span className="flex-shrink-0 text-sm text-[var(--color-text-muted)] tabular-nums">
+            {currentIndex + 1}/{items.length}
+          </span>
+
+          {/* Progress Bar - Responsive height & clickable */}
+          <div
+            className="flex-1 relative cursor-pointer group/progress"
+            onClick={handleProgressBarClick}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleProgressBarClick(e as unknown as React.MouseEvent<HTMLDivElement>);
+              }
+            }}
+            tabIndex={0}
+            role="slider"
+            aria-label="Carousel progress"
+            aria-valuenow={currentIndex + 1}
+            aria-valuemin={1}
+            aria-valuemax={items.length}
+          >
+            {/* Touch target area - 32px tall */}
+            <div className="absolute inset-0 -top-3 -bottom-3" />
+
+            <div className="relative h-1.5 md:h-1 bg-[var(--color-border)] rounded-full overflow-hidden">
+              {items.map((_: MediaCarouselItem, index: number) => {
+                const segmentWidth = 100 / items.length;
+                const isActive = index === currentIndex;
+                const isPast = index < currentIndex;
+
+                return (
                   <div
-                    className={clsxMerge(
-                      "h-full transition-all duration-300",
-                      isPast && "bg-[var(--color-primary)]",
-                      isActive && isAutoPlaying && "bg-[var(--color-primary)] animate-progress",
-                      !isPast && !isActive && "bg-transparent"
-                    )}
-                    style={
-                      isActive && isAutoPlaying
-                        ? { animationDuration: `${getCurrentDuration()}ms` }
-                        : undefined
-                    }
-                  />
-                </div>
-              );
-            })}
+                    key={`progress-${index}`}
+                    className="absolute top-0 h-full transition-colors duration-300"
+                    style={{
+                      left: `${index * segmentWidth}%`,
+                      width: `${segmentWidth}%`,
+                    }}
+                  >
+                    <div
+                      className={clsxMerge(
+                        "h-full transition-all duration-300",
+                        isPast && "bg-[var(--color-primary)]",
+                        isActive && isAutoPlaying && "bg-[var(--color-primary)] animate-progress",
+                        !isPast && !isActive && "bg-transparent"
+                      )}
+                      style={
+                        isActive && isAutoPlaying
+                          ? { animationDuration: `${getCurrentDuration()}ms` }
+                          : undefined
+                      }
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       )}
