@@ -6,6 +6,7 @@ import { ImageViewer } from "./image-viewer";
 import { VideoPlayer } from "./video-player";
 import { ImageCarousel } from "./image-carousel";
 import { EmbedPlayer } from "./embed-player";
+import { MediaCarousel } from "./media-carousel";
 
 // Dynamically import 3D viewer to avoid SSR issues
 const Model3DViewer = dynamic(() => import("./model-3d-viewer").then(mod => mod.Model3DViewer), {
@@ -22,7 +23,7 @@ interface MediaRendererProps {
   priority?: boolean;
 }
 
-export function MediaRenderer({ media, priority = false }: MediaRendererProps) {
+export function MediaRenderer({ media, priority = false }: Readonly<MediaRendererProps>) {
   switch (media.type) {
     case "image":
       return <ImageViewer media={media} priority={priority} />;
@@ -32,6 +33,9 @@ export function MediaRenderer({ media, priority = false }: MediaRendererProps) {
 
     case "carousel":
       return <ImageCarousel media={media} />;
+
+    case "media-carousel":
+      return <MediaCarousel media={media} />;
 
     case "embed":
       return <EmbedPlayer media={media} />;

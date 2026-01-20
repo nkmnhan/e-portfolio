@@ -21,6 +21,8 @@ export type {
   ImageMedia,
   VideoMedia,
   CarouselMedia,
+  MediaCarouselItem,
+  MediaCarouselMedia,
   Model3DMedia,
   EmbedMedia,
 } from "./project";

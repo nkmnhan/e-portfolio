@@ -7,6 +7,7 @@ export { ImageViewer } from "./image-viewer";
 export { ImageCarousel } from "./image-carousel";
 export { VideoPlayer } from "./video-player";
 export { EmbedPlayer } from "./embed-player";
+export { MediaCarousel } from "./media-carousel";
 export { MediaRenderer } from "./media-renderer";
 
 // 3D Viewer is exported separately due to dynamic import

@@ -60,12 +60,38 @@ export interface EmbedMedia {
   caption?: string;
 }
 
+// Enhanced Media Carousel - Unified multi-media carousel with auto-play
+export interface MediaCarouselItem {
+  type: "image" | "video" | "youtube" | "vimeo" | "sketchfab";
+  // Image fields
+  url?: string;
+  alt?: string;
+  // Video fields
+  videoUrl?: string;
+  poster?: string;
+  loop?: boolean;
+  // Embed fields (youtube, vimeo, sketchfab)
+  embedId?: string;
+  // Common fields
+  caption?: string;
+  duration?: number; // Custom duration for auto-advance (seconds)
+}
+
+export interface MediaCarouselMedia {
+  type: "media-carousel";
+  items: MediaCarouselItem[];
+  autoplay?: boolean; // Default: true
+  interval?: number; // Auto-advance interval in seconds (default: 5s images, 10s videos)
+  caption?: string;
+}
+
 export type MediaItem =
   | ImageMedia
   | VideoMedia
   | CarouselMedia
   | Model3DMedia
-  | EmbedMedia;
+  | EmbedMedia
+  | MediaCarouselMedia;
 
 export interface Project {
   id: string;

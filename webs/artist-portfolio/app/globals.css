@@ -280,3 +280,72 @@ img {
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background: var(--color-border-hover);
 }
+
+/* ============================================
+   MEDIA CAROUSEL ANIMATIONS
+   ============================================ */
+
+/* Progress bar animation for auto-advance */
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-progress {
+  animation: progress linear forwards;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Swipe hint bounce animations */
+@keyframes bounce-x {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+@keyframes bounce-x-reverse {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-8px);
+  }
+}
+
+.animate-bounce-x {
+  animation: bounce-x 1s ease-in-out infinite;
+}
+
+.animate-bounce-x-reverse {
+  animation: bounce-x-reverse 1s ease-in-out infinite;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-progress,
+  .animate-fadeIn,
+  .animate-bounce-x,
+  .animate-bounce-x-reverse {
+    animation: none;
+  }
+}
