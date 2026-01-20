@@ -246,3 +246,37 @@ img {
   break-inside: avoid;
   margin-bottom: 1rem;
 }
+
+/* Hide scrollbar utility for horizontal scroll filters */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Thin scrollbar utility - 4px height for horizontal scroll */
+.scrollbar-thin {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--color-border) transparent; /* Firefox */
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  height: 4px; /* Thin horizontal scrollbar */
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}

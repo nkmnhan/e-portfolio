@@ -17,9 +17,10 @@ interface CategoryFilterProps {
 }
 
 /**
- * CategoryFilter - ArtStation-style horizontal pill filter tabs
+ * CategoryFilter - ArtStation-style filter tabs
  *
- * Shows category counts and provides visual active state
+ * Mobile: Horizontal scroll (saves vertical space)
+ * Desktop: Centered flex-wrap
  */
 export function CategoryFilter({
   categories,
@@ -30,7 +31,14 @@ export function CategoryFilter({
   return (
     <div
       className={clsxMerge(
-        "flex flex-wrap justify-center gap-2",
+        // Mobile: horizontal scroll with thin 4px scrollbar
+        "flex gap-2 overflow-x-auto scrollbar-thin",
+        "pb-2 lg:pb-0", // Space for scrollbar on mobile
+        "snap-x snap-mandatory",
+        // Desktop: centered wrap
+        "lg:flex-wrap lg:justify-center lg:overflow-visible",
+        // Full width on mobile
+        "w-full lg:w-auto",
         className
       )}
     >
@@ -42,11 +50,14 @@ export function CategoryFilter({
             key={category.id}
             onClick={() => onCategoryChange(category.id)}
             className={clsxMerge(
-              // Base styles
-              "px-4 py-2 rounded-full",
-              "text-sm font-medium",
+              // Base styles - smaller on mobile
+              "px-3 py-1.5 lg:px-4 lg:py-2 rounded-full",
+              "text-xs lg:text-sm font-medium",
               "transition-all duration-200",
-              "flex items-center gap-2",
+              "flex items-center gap-1.5 lg:gap-2",
+              // Prevent shrinking on mobile
+              "flex-shrink-0",
+              "snap-start",
               // Active state
               isActive
                 ? "bg-[var(--color-primary)] text-white shadow-lg shadow-[var(--color-primary)]/20"
@@ -58,7 +69,7 @@ export function CategoryFilter({
             <span>{category.name}</span>
             <span
               className={clsxMerge(
-                "px-1.5 py-0.5 rounded-full text-xs",
+                "px-1 py-0.5 lg:px-1.5 rounded-full text-xs",
                 isActive
                   ? "bg-white/20 text-white"
                   : "bg-[var(--color-bg)] text-[var(--color-text-muted)]"

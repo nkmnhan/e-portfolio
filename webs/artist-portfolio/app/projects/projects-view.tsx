@@ -55,21 +55,25 @@ export function ProjectsView({ projects, categories }: ProjectsViewProps) {
   return (
     <>
       {/* Filter Bar */}
-      <section className="py-6 border-b border-[var(--color-border)] sticky top-16 z-40 bg-[var(--color-bg)]/95 backdrop-blur-md">
+      <section className="py-2 lg:py-6 border-b border-[var(--color-border)] sticky top-16 z-40 bg-[var(--color-bg)]/95 backdrop-blur-md">
         <div className="container-custom">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            {/* Category Filter */}
-            <CategoryFilter
-              categories={categoriesWithCounts}
-              activeCategory={activeCategory}
-              onCategoryChange={setActiveCategory}
-            />
+          <div className="flex items-center gap-3">
+            {/* Category Filter - takes remaining space on mobile */}
+            <div className="flex-1 min-w-0">
+              <CategoryFilter
+                categories={categoriesWithCounts}
+                activeCategory={activeCategory}
+                onCategoryChange={setActiveCategory}
+              />
+            </div>
 
-            {/* Layout Toggle */}
-            <LayoutToggle
-              layout={layout}
-              onLayoutChange={setLayout}
-            />
+            {/* Layout Toggle - fixed width, hidden on small mobile */}
+            <div className="hidden sm:block flex-shrink-0">
+              <LayoutToggle
+                layout={layout}
+                onLayoutChange={setLayout}
+              />
+            </div>
           </div>
         </div>
       </section>
