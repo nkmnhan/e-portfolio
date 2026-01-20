@@ -71,7 +71,7 @@ export function VideoThumbnail({
   const [isInView, setIsInView] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLFieldSetElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const bufferTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const hasVideo = Boolean(video);
@@ -131,6 +131,10 @@ export function VideoThumbnail({
     if (!hasVideo || !video) return;
 
     const handleWaiting = () => {
+      // Clear existing timeout to prevent stacking
+      if (bufferTimeoutRef.current) {
+        clearTimeout(bufferTimeoutRef.current);
+      }
       bufferTimeoutRef.current = setTimeout(() => {
         setIsBuffering(true);
       }, videoBufferTimeout);
@@ -218,13 +222,12 @@ export function VideoThumbnail({
   const showVideo = isHovered || isPlaying;
 
   return (
-    <fieldset
+    <div
       ref={containerRef}
       className={clsxMerge(
         "relative overflow-hidden",
         aspectRatioClasses[aspectRatio],
-        className,
-        "border-none p-0 m-0"
+        className
       )}
       style={autoAspectStyle}
       onMouseEnter={handleMouseEnter}
@@ -297,9 +300,9 @@ export function VideoThumbnail({
         </button>
       )}
 
-      {/* Desktop Video Indicator (non-touch only) - shows even if buffering */}
+      {/* Desktop Video Indicator (non-touch only) */}
       {hasVideo && !isTouchDevice && (
-        <output
+        <div
           className={clsxMerge(
             "absolute top-3 right-3",
             "w-8 h-8 rounded-full",
@@ -315,11 +318,11 @@ export function VideoThumbnail({
           ) : (
             <HiPlay className="w-4 h-4" />
           )}
-        </output>
+        </div>
       )}
 
       {/* Children (badges, overlays, etc.) */}
       {children}
-    </fieldset>
+    </div>
   );
 }

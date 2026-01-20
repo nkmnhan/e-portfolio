@@ -36,6 +36,10 @@ export function VideoPlayer({
     if (!video) return;
 
     const handleWaiting = () => {
+      // Clear existing timeout to prevent stacking
+      if (bufferTimeoutRef.current) {
+        clearTimeout(bufferTimeoutRef.current);
+      }
       bufferTimeoutRef.current = setTimeout(() => {
         setIsBuffering(true);
       }, videoBufferTimeout);
@@ -65,7 +69,9 @@ export function VideoPlayer({
 
   const handlePlay = () => {
     if (videoRef.current) {
-      videoRef.current.play();
+      videoRef.current.play().catch(() => {
+        // Autoplay may be blocked by browser
+      });
       setIsPlaying(true);
       setShowPoster(false);
     }
@@ -108,6 +114,7 @@ export function VideoPlayer({
           loop={media.loop}
           muted={isMuted}
           playsInline
+          preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
           onEnded={() => !media.loop && setIsPlaying(false)}
         >
@@ -156,7 +163,7 @@ export function VideoPlayer({
         {isBuffering && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/40">
             <div className="flex flex-col items-center gap-3">
-              <div className="w-12 h-12 rounded-full border-3 border-white/30 border-t-white animate-spin" />
+              <div className="w-12 h-12 rounded-full border-2 border-white/30 border-t-white animate-spin" />
               <p className="text-white text-sm font-medium">Loading video...</p>
             </div>
           </div>
