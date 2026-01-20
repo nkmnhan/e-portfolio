@@ -55,7 +55,7 @@ export function ProjectsView({ projects, categories }: ProjectsViewProps) {
   return (
     <>
       {/* Filter Bar */}
-      <section className="py-2 lg:py-6 border-b border-[var(--color-border)] sticky top-16 z-40 bg-[var(--color-bg)]/95 backdrop-blur-md">
+      <section className="py-2 lg:py-6 border-b border-[var(--color-border)] sticky top-16 z-40 bg-[var(--color-bg)] backdrop-blur">
         <div className="container-custom">
           <div className="flex items-center gap-3">
             {/* Category Filter - takes remaining space on mobile */}

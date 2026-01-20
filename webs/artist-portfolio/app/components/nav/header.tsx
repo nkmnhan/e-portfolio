@@ -26,7 +26,7 @@ export function Header() {
     <header
       className={clsxMerge(
         "sticky top-0 z-50",
-        "bg-[var(--color-bg)]/80 backdrop-blur-md",
+        "bg-[var(--color-bg)] backdrop-blur",
         "border-b border-[var(--color-border)]"
       )}
     >
