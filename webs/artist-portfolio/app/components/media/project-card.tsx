@@ -40,17 +40,24 @@ export function ProjectCard({
 
   const hasVideo = project.thumbnailType === "video" && project.thumbnailVideo;
 
-  // Detect touch/mobile device on mount
+  // Detect if device lacks hover capability (true mobile/tablet)
+  // Using (hover: none) is more reliable than touch detection
+  // because laptops with touchscreens still have hover capability
   useEffect(() => {
-    const checkMobile = () => {
-      const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-      const isNarrowScreen = window.innerWidth < 1024; // lg breakpoint
-      setIsTouchDevice(hasTouch || isNarrowScreen);
+    const hoverQuery = window.matchMedia("(hover: hover)");
+
+    const checkHoverCapability = () => {
+      // If device supports hover (mouse/trackpad), use hover behavior
+      // If not (phone/tablet), use intersection observer for autoplay
+      setIsTouchDevice(!hoverQuery.matches);
     };
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    checkHoverCapability();
+    hoverQuery.addEventListener("change", checkHoverCapability);
+
+    return () => {
+      hoverQuery.removeEventListener("change", checkHoverCapability);
+    };
   }, []);
 
   // Intersection Observer for auto-play on scroll (mobile)
