@@ -10,13 +10,13 @@ export function Skeleton({ className, variant = "default" }: SkeletonProps) {
     default: "rounded-full",
     text: "rounded-full h-2",
     circular: "rounded-full",
-    rectangular: "rounded-base",
+    rectangular: "rounded-md",
   };
 
   return (
     <div
       className={clsxMerge(
-        "animate-pulse bg-gray-300 dark:bg-gray-700",
+        "animate-pulse bg-[var(--color-border)] dark:bg-[var(--color-border)]",
         variantClasses[variant],
         className
       )}
@@ -40,12 +40,12 @@ export function SkeletonText({ className, lines = 5 }: SkeletonTextProps) {
       className={clsxMerge("max-w-sm animate-pulse", className)}
       aria-label="Loading text skeleton"
     >
-      <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-48 mb-4"></div>
+      <div className="h-2.5 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full w-48 mb-4"></div>
       {Array.from({ length: lines }).map((_, index) => (
         <div
           key={index}
           className={clsxMerge(
-            "h-2 bg-gray-300 dark:bg-gray-700 rounded-full mb-2.5",
+            "h-2 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full mb-2.5",
             index === 0 && "max-w-90",
             index === 1 && "",
             index === 2 && "max-w-80",
@@ -69,7 +69,7 @@ export function SkeletonCard({ className }: SkeletonCardProps) {
     <div
       role="status"
       className={clsxMerge(
-        "flex items-center justify-center h-56 max-w-sm bg-gray-300 dark:bg-gray-700 rounded-base animate-pulse text-gray-400 dark:text-gray-600",
+        "flex items-center justify-center h-56 max-w-sm bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-md animate-pulse text-[var(--color-text-muted)]",
         className
       )}
       aria-label="Loading card skeleton"

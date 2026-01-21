@@ -10,7 +10,7 @@ export default function ListPlaceholder({ className, items = 5 }: ListPlaceholde
     <div
       role="status"
       className={clsxMerge(
-        "max-w-md p-4 border border-gray-200 dark:border-gray-700 divide-y divide-gray-200 dark:divide-gray-700 rounded-base shadow-sm animate-pulse md:p-6",
+        "max-w-md p-4 border border-[var(--color-border)] divide-y divide-gray-200 dark:divide-gray-700 rounded-md shadow-sm animate-pulse md:p-6",
         className
       )}
     >
@@ -23,10 +23,10 @@ export default function ListPlaceholder({ className, items = 5 }: ListPlaceholde
           )}
         >
           <div className="w-7/10">
-            <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-7/10 mb-2.5"></div>
-            <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-5/10 mb-2.5"></div>
+            <div className="h-2.5 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full w-7/10 mb-2.5"></div>
+            <div className="h-2.5 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full w-5/10 mb-2.5"></div>
           </div>
-          <div className="h-2.5 bg-gray-300 dark:bg-gray-600 rounded-full w-12"></div>
+          <div className="h-2.5 bg-[var(--color-border)] rounded-full w-12"></div>
         </div>
       ))}
       <span className="sr-only">Loading...</span>

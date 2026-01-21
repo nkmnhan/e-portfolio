@@ -28,7 +28,7 @@ export default function ImagePlaceholder({
     >
       <div
         className={clsxMerge(
-          "flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-base text-gray-400 dark:text-gray-600",
+          "flex items-center justify-center bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-md text-[var(--color-text-muted)]",
           orientation === "horizontal" ? "w-full h-48 sm:w-96" : "w-full h-48",
           imageClassName
         )}
@@ -53,12 +53,12 @@ export default function ImagePlaceholder({
       </div>
       {withText && (
         <div className={clsxMerge("w-full", textClassName)}>
-          <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full max-w-4/10 mb-4"></div>
-          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-9/10 mb-2.5"></div>
-          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full mb-2.5"></div>
-          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-7/10 mb-2.5"></div>
-          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-9/10 mb-2.5"></div>
-          <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full max-w-6/10"></div>
+          <div className="h-2.5 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full max-w-4/10 mb-4"></div>
+          <div className="h-2 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full max-w-9/10 mb-2.5"></div>
+          <div className="h-2 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full mb-2.5"></div>
+          <div className="h-2 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full max-w-7/10 mb-2.5"></div>
+          <div className="h-2 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full max-w-9/10 mb-2.5"></div>
+          <div className="h-2 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full max-w-6/10"></div>
         </div>
       )}
       <span className="sr-only">Loading...</span>

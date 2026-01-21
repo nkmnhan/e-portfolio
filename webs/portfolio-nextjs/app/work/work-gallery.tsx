@@ -121,13 +121,13 @@ export default function WorkGallery() {
         />
 
         {/* GitHub Profile Section */}
-        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 mb-12 p-8 md:p-10 rounded-2xl border-2 border-blue-200 dark:border-blue-800 cyan700:border-cyan-500 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 cyan700:from-cyan-600 cyan700:to-cyan-700 shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 mb-12 p-8 md:p-10 rounded-2xl border-2 border-[var(--color-border)] bg-gradient-to-r from-[var(--color-primary-light)] to-[var(--color-accent-light)] dark:from-[var(--color-surface)] dark:to-[var(--color-surface)] shadow-lg hover:shadow-xl transition-shadow duration-300">
           <AdaptiveImage
             src="https://avatars.githubusercontent.com/u/49507410?v=4"
             alt="nkmnhan GitHub Avatar"
             width={128}
             height={128}
-            className="w-28 h-28 md:w-36 md:h-36 rounded-full border-4 border-blue-500 dark:border-blue-400 cyan700:border-cyan-300 shadow-2xl"
+            className="w-28 h-28 md:w-36 md:h-36 rounded-full border-4 border-[var(--color-primary)] shadow-2xl"
             preload
           />
           <div className="flex-1 text-center md:text-left space-y-4">
@@ -137,7 +137,7 @@ export default function WorkGallery() {
               href="https://github.com/nkmnhan"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 cyan700:bg-cyan-500 cyan700:hover:bg-cyan-400 text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl border border-blue-700 dark:border-blue-600 cyan700:border-cyan-400"
+              className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-lg bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl border border-[var(--color-primary-dark)]"
             >
               <FaGithub className="text-2xl" />
               <span>View on GitHub</span>
@@ -158,7 +158,7 @@ export default function WorkGallery() {
           {PROJECT_STATS.map((stat, idx) => (
             <div
               key={idx}
-              className="text-center p-4 md:p-6 rounded-xl bg-white dark:bg-gray-800 cyan700:bg-cyan-600 border border-gray-200 dark:border-gray-700 cyan700:border-cyan-500 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+              className="text-center p-4 md:p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1"
             >
               <div className="text-3xl mb-2">{stat.icon}</div>
               <div className="text-3xl md:text-4xl font-bold mb-1 theme-text">{stat.value}</div>
@@ -172,7 +172,7 @@ export default function WorkGallery() {
           <Tabs aria-label="Project categories" variant="underline">
             <TabItem active title="Featured" icon={HiLightningBolt}>
               <div className="h-full mb-12">
-                <div className="mb-8 p-6 md:p-8 rounded-xl border border-blue-200 dark:border-blue-800 cyan700:border-cyan-500 bg-blue-50 dark:bg-gray-800 cyan700:bg-cyan-600">
+                <div className="mb-8 p-6 md:p-8 rounded-xl border border-[var(--color-primary)]/30 bg-[var(--color-primary-light)] dark:bg-[var(--color-primary)]/10">
                   <h3 className="text-2xl md:text-3xl font-bold mb-4 theme-text">⭐ Featured Projects</h3>
                   <p className="text-base md:text-lg leading-relaxed theme-text opacity-90">
                     Highlighted open-source projects showcasing my expertise in .NET MAUI, Vue.js, IdentityServer4, Elasticsearch, and modern web development.
@@ -190,7 +190,7 @@ export default function WorkGallery() {
 
             <TabItem title="Enterprise" icon={MdWork}>
               <div className="h-full mb-12">
-                <div className="mb-8 p-6 md:p-8 rounded-xl border border-purple-200 dark:border-purple-800 cyan700:border-cyan-500 bg-purple-50 dark:bg-gray-800 cyan700:bg-cyan-600">
+                <div className="mb-8 p-6 md:p-8 rounded-xl border border-[var(--color-accent)]/30 bg-[var(--color-accent-light)] dark:bg-[var(--color-accent)]/10">
                   <h3 className="text-2xl md:text-3xl font-bold mb-4 theme-text">🏢 Enterprise Solutions</h3>
                   <p className="text-base md:text-lg leading-relaxed theme-text opacity-90">
                     Authentication & authorization with IdentityServer4, full-text search with Elasticsearch NEST, and enterprise-grade security implementations.
@@ -202,7 +202,7 @@ export default function WorkGallery() {
 
             <TabItem title="Developer Tools" icon={HiCode}>
               <div className="h-full mb-12">
-                <div className="mb-8 p-6 md:p-8 rounded-xl border border-green-200 dark:border-green-800 cyan700:border-cyan-500 bg-green-50 dark:bg-gray-800 cyan700:bg-cyan-600">
+                <div className="mb-8 p-6 md:p-8 rounded-xl border border-[var(--color-success)]/30 bg-[var(--color-success-light)] dark:bg-[var(--color-success)]/10">
                   <h3 className="text-2xl md:text-3xl font-bold mb-4 theme-text">🛠️ Developer Tools</h3>
                   <p className="text-base md:text-lg leading-relaxed theme-text opacity-90">
                     Productivity tools including SQL Converter, Resource Manager for localization, Docker hot-reload setup for Vue.js, and development utilities.
@@ -214,7 +214,7 @@ export default function WorkGallery() {
 
             <TabItem title="Personal" icon={HiGlobe}>
               <div className="h-full mb-12">
-                <div className="mb-8 p-6 md:p-8 rounded-xl border border-orange-200 dark:border-orange-800 cyan700:border-cyan-500 bg-orange-50 dark:bg-gray-800 cyan700:bg-cyan-600">
+                <div className="mb-8 p-6 md:p-8 rounded-xl border border-[var(--color-warning)]/30 bg-[var(--color-warning-light)] dark:bg-[var(--color-warning)]/10">
                   <h3 className="text-2xl md:text-3xl font-bold mb-4 theme-text">💡 Personal Projects</h3>
                   <p className="text-base md:text-lg leading-relaxed theme-text opacity-90">
                     Innovative projects including this portfolio, E-Shop platform, MAUI apps with MediatR, Firebase push notifications, calendar components, and hybrid WebView experiments.

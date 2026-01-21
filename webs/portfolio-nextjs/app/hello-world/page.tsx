@@ -81,8 +81,8 @@ const TOOLS = [
 
 export default function HelloWorld() {
   return (
-    <div className="fixed inset-0 overflow-y-auto hide-scrollbar bg-white dark:bg-slate-900 cyan700:bg-cyan-700">
-      <Galaxy className="absolute inset-0 opacity-30 dark:opacity-50 cyan700:opacity-60" />
+    <div className="fixed inset-0 overflow-y-auto hide-scrollbar bg-[var(--color-bg)] dark:bg-[var(--color-bg)]">
+      <Galaxy className="absolute inset-0 opacity-30 dark:opacity-50" />
       <div className="relative z-1 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-12">
         {/* Hero Section with Astronaut */}
         <div className="text-center mb-16">
@@ -112,7 +112,7 @@ export default function HelloWorld() {
           <h2 className={clsxMerge("text-3xl md:text-4xl font-bold mb-8 text-center theme-text drop-shadow-md")}>
             Why This Portfolio?
           </h2>
-          <div className="bg-white/80 dark:bg-slate-800/80 cyan700:bg-cyan-500/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-blue-200 dark:border-blue-800 cyan700:border-cyan-400 shadow-xl hover:shadow-2xl transition-shadow">
+          <div className="bg-[var(--color-surface)]/80 dark:bg-[var(--color-surface)]/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[var(--color-border)] shadow-xl hover:shadow-2xl transition-shadow">
             <p className={clsxMerge("text-base md:text-lg leading-relaxed theme-text")}>
               This portfolio serves as a showcase of my skills in modern web
               development, demonstrating proficiency in Next.js, TypeScript, and
@@ -133,7 +133,7 @@ export default function HelloWorld() {
             {TECHNOLOGIES.map((tech, idx) => (
               <div
                 key={idx}
-                className="bg-white/85 dark:bg-slate-800/85 cyan700:bg-cyan-500/85 backdrop-blur-sm rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700 cyan700:border-cyan-400"
+                className="bg-[var(--color-surface)]/85 dark:bg-[var(--color-surface)]/85 backdrop-blur-sm rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border border-[var(--color-border)]"
               >
                 <tech.icon className={clsxMerge("w-12 h-12 mx-auto mb-4 theme-text")} />
                 <h3 className={clsxMerge("font-semibold mb-2 theme-text")}>{tech.name}</h3>
@@ -151,10 +151,10 @@ export default function HelloWorld() {
           <div className="space-y-6">
             {TIMELINE.map((item, idx) => (
               <div key={idx} className="flex items-center gap-6">
-                <div className="bg-blue-600 dark:bg-blue-700 cyan700:bg-cyan-400 text-white dark:text-white cyan700:text-slate-900 px-4 py-2 rounded-lg font-semibold min-w-25 text-center shadow-lg">
+                <div className="bg-[var(--color-primary)] text-white px-4 py-2 rounded-lg font-semibold min-w-25 text-center shadow-lg">
                   {item.date}
                 </div>
-                <div className="flex-1 bg-white/80 dark:bg-slate-800/80 cyan700:bg-cyan-500/80 backdrop-blur-sm rounded-lg p-4 border border-blue-200 dark:border-blue-800 cyan700:border-cyan-400 shadow-md hover:shadow-lg transition-shadow theme-text">
+                <div className="flex-1 bg-[var(--color-surface)]/80 dark:bg-[var(--color-surface)]/80 backdrop-blur-sm rounded-lg p-4 border border-[var(--color-border)] shadow-md hover:shadow-lg transition-shadow theme-text">
                   <p>{item.event}</p>
                 </div>
               </div>
@@ -171,7 +171,7 @@ export default function HelloWorld() {
             {TOOLS.map((tool, idx) => (
               <div
                 key={idx}
-                className="bg-green-50/80 dark:bg-green-900/40 cyan700:bg-green-500/80 backdrop-blur-sm rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border border-green-200 dark:border-green-700 cyan700:border-green-400"
+                className="bg-[var(--color-success-light)]/80 dark:bg-[var(--color-success)]/20 backdrop-blur-sm rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border border-[var(--color-success)]/30"
               >
                 <tool.icon className={clsxMerge("w-12 h-12 mx-auto mb-4 theme-text")} />
                 <h3 className={clsxMerge("font-semibold mb-2 theme-text")}>{tool.name}</h3>
@@ -186,7 +186,7 @@ export default function HelloWorld() {
           <h2 className={clsxMerge("text-3xl md:text-4xl font-bold mb-8 text-center theme-text drop-shadow-md")}>
             CI/CD with Vercel
           </h2>
-          <div className="bg-purple-50/80 dark:bg-purple-900/40 cyan700:bg-purple-500/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-purple-200 dark:border-purple-800 cyan700:border-purple-400 shadow-xl hover:shadow-2xl transition-shadow">
+          <div className="bg-[var(--color-accent-light)]/80 dark:bg-[var(--color-accent)]/20 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[var(--color-accent)]/30 shadow-xl hover:shadow-2xl transition-shadow">
             <div className="flex items-center justify-center mb-6">
               <SiVercel className={clsxMerge("w-16 h-16 theme-text")} />
             </div>
@@ -212,17 +212,17 @@ export default function HelloWorld() {
             {TODO_ACTIONS.map((todo, idx) => (
               <div
                 key={idx}
-                className="bg-orange-50/80 dark:bg-orange-900/40 cyan700:bg-orange-500/80 backdrop-blur-sm rounded-xl p-6 border-l-4 border-orange-500 dark:border-orange-400 cyan700:border-orange-300 shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-[var(--color-warning-light)]/80 dark:bg-[var(--color-warning)]/20 backdrop-blur-sm rounded-xl p-6 border-l-4 border-[var(--color-warning)] shadow-lg hover:shadow-xl transition-shadow"
               >
                 <div className="flex items-center justify-between mb-3">
                   <span
                     className={clsxMerge(
                       "px-3 py-1 rounded-full text-xs font-semibold shadow-md",
                       todo.priority === "High"
-                        ? "bg-red-500 text-white dark:bg-red-600 cyan700:bg-red-400 cyan700:text-slate-900"
+                        ? "bg-[var(--color-error)] text-white"
                         : todo.priority === "Medium"
-                        ? "bg-yellow-500 text-black dark:bg-yellow-600 cyan700:bg-yellow-400"
-                        : "bg-green-500 text-white dark:bg-green-600 cyan700:bg-green-400 cyan700:text-slate-900"
+                        ? "bg-[var(--color-warning)] text-black"
+                        : "bg-[var(--color-success)] text-white"
                     )}
                   >
                     {todo.priority}

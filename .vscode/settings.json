@@ -13,5 +13,26 @@
         "**/node_modules": true,
         "**/storybook-static": true,
         "**/.next": true
-    }
+    },
+
+    // ========================================
+    // AI TOOLS CONFIGURATION
+    // Primary: Claude Code (CLI) - use in terminal
+    // Backup: GitHub Copilot - use in VS Code when quota runs out
+    // ========================================
+
+    // GitHub Copilot Settings (Backup AI)
+    // Instructions file: .github/copilot-instructions.md (auto-detected by Copilot)
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false
+    },
+    "github.copilot.editor.enableAutoCompletions": true,
+    "github.copilot.chat.localeOverride": "en",
+
+    // Copilot Chat Settings
+    "chat.commandCenter.enabled": true,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true
 }

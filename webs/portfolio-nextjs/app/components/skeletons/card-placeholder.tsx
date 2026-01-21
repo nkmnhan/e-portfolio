@@ -15,14 +15,14 @@ export default function CardPlaceholder({
     <div
       role="status"
       className={clsxMerge(
-        "max-w-sm p-4 border border-gray-200 dark:border-gray-700 rounded-base shadow-sm animate-pulse md:p-6",
+        "max-w-sm p-4 border border-[var(--color-border)] rounded-md shadow-sm animate-pulse md:p-6",
         className
       )}
     >
       {/* Image placeholder */}
       <div
         className={clsxMerge(
-          "flex items-center justify-center max-w-sm bg-gray-300 dark:bg-gray-700 rounded-base animate-pulse mb-4 sm:mb-6 text-gray-400 dark:text-gray-600",
+          "flex items-center justify-center max-w-sm bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-md animate-pulse mb-4 sm:mb-6 text-[var(--color-text-muted)]",
           imageHeight
         )}
       >
@@ -46,16 +46,16 @@ export default function CardPlaceholder({
       </div>
 
       {/* Text lines */}
-      <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-6/10 mb-4"></div>
-      <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full mb-2.5"></div>
-      <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full mb-2.5"></div>
-      <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full"></div>
+      <div className="h-2.5 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full w-6/10 mb-4"></div>
+      <div className="h-2 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full mb-2.5"></div>
+      <div className="h-2 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full mb-2.5"></div>
+      <div className="h-2 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full"></div>
 
       {/* Avatar section */}
       {withAvatar && (
         <div className="flex items-center mt-4">
           <svg
-            className="w-8 h-8 text-gray-400 dark:text-gray-500 me-3"
+            className="w-8 h-8 text-[var(--color-text-muted)] me-3"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -72,8 +72,8 @@ export default function CardPlaceholder({
             />
           </svg>
           <div className="w-full">
-            <div className="h-2.5 bg-gray-300 dark:bg-gray-700 rounded-full w-6/10 mb-2"></div>
-            <div className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full w-8/10"></div>
+            <div className="h-2.5 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full w-6/10 mb-2"></div>
+            <div className="h-2 bg-[var(--color-border)] dark:bg-[var(--color-border)] rounded-full w-8/10"></div>
           </div>
         </div>
       )}
