@@ -70,9 +70,9 @@ export function VideoThumbnail({
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const bufferTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const hasVideo = Boolean(video);
 
@@ -107,6 +107,11 @@ export function VideoThumbnail({
     return () => observer.disconnect();
   }, [hasVideo, isTouchDevice]);
 
+  // Reset video readiness when video URL changes
+  useEffect(() => {
+    setVideoReady(false);
+  }, [video]);
+
   // Auto-play/pause based on viewport visibility (mobile only)
   useEffect(() => {
     if (!hasVideo || !videoRef.current || !isTouchDevice) return;
@@ -125,42 +130,58 @@ export function VideoThumbnail({
     }
   }, [isInView, hasVideo, isTouchDevice, onPlayingChange]);
 
-  // Video readiness and buffering detection
+  // Video readiness, preload, and buffering detection
   useEffect(() => {
     const video = videoRef.current;
     if (!hasVideo || !video) return;
 
-    const handleWaiting = () => {
-      // Clear existing timeout to prevent stacking
-      if (bufferTimeoutRef.current) {
-        clearTimeout(bufferTimeoutRef.current);
-      }
-      bufferTimeoutRef.current = setTimeout(() => {
-        setIsBuffering(true);
-      }, videoBufferTimeout);
-    };
-
-    const handleCanPlay = () => {
-      if (bufferTimeoutRef.current) {
-        clearTimeout(bufferTimeoutRef.current);
-        bufferTimeoutRef.current = null;
-      }
+    // First frame is available - safe to show video
+    const handleLoadedData = () => {
+      setVideoReady(true);
       setIsBuffering(false);
     };
 
-    video.addEventListener("waiting", handleWaiting);
+    // Video can play (additional safety check)
+    const handleCanPlay = () => {
+      setVideoReady(true);
+      setIsBuffering(false);
+    };
+
+    // Video is buffering mid-playback (not initial load)
+    const handleWaiting = () => {
+      setIsBuffering(true);
+    };
+
+    // Video is playing - clear buffering indicator
+    const handlePlaying = () => {
+      setIsBuffering(false);
+    };
+
+    // Video failed to load - keep thumbnail visible
+    const handleError = () => {
+      setVideoReady(false);
+      setIsBuffering(false);
+    };
+
+    video.addEventListener("loadeddata", handleLoadedData);
     video.addEventListener("canplay", handleCanPlay);
-    video.addEventListener("playing", handleCanPlay);
+    video.addEventListener("waiting", handleWaiting);
+    video.addEventListener("playing", handlePlaying);
+    video.addEventListener("error", handleError);
+
+    // Check if already ready (cached video)
+    if (video.readyState >= 2) {
+      setVideoReady(true);
+    }
 
     return () => {
-      video.removeEventListener("waiting", handleWaiting);
+      video.removeEventListener("loadeddata", handleLoadedData);
       video.removeEventListener("canplay", handleCanPlay);
-      video.removeEventListener("playing", handleCanPlay);
-      if (bufferTimeoutRef.current) {
-        clearTimeout(bufferTimeoutRef.current);
-      }
+      video.removeEventListener("waiting", handleWaiting);
+      video.removeEventListener("playing", handlePlaying);
+      video.removeEventListener("error", handleError);
     };
-  }, [hasVideo, videoBufferTimeout]);
+  }, [hasVideo]);
 
   // Desktop hover handlers
   const handleMouseEnter = () => {
@@ -219,7 +240,9 @@ export function VideoThumbnail({
 
   const autoAspectStyle = getAutoAspectStyle();
 
-  const showVideo = isHovered || isPlaying;
+  // Video should only be shown when it's actually ready
+  const wantsVideo = isHovered || isPlaying;
+  const showVideo = videoReady && wantsVideo;
 
   return (
     <div
@@ -235,6 +258,7 @@ export function VideoThumbnail({
       title={alt}
     >
       {/* Static Thumbnail Image */}
+      {/* Stays visible until video is ready, then fades when video can play */}
       <Image
         src={thumbnail}
         alt={alt}
@@ -248,7 +272,7 @@ export function VideoThumbnail({
         priority={priority}
       />
 
-      {/* Video - only render if it's being shown or preloading */}
+      {/* Video - preloads in background, only shown when ready */}
       {hasVideo && (
         <video
           ref={videoRef}
@@ -265,8 +289,9 @@ export function VideoThumbnail({
         />
       )}
 
-      {/* Buffering Indicator - shows during video load/buffering */}
-      {hasVideo && isBuffering && showVideo && (
+      {/* Buffering Indicator - shows immediately when video is requested but not ready yet */}
+      {/* This prevents black screen by showing spinner while video preloads */}
+      {hasVideo && wantsVideo && !videoReady && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/40">
           <div className="flex flex-col items-center gap-2">
             <div className="w-8 h-8 rounded-full border-2 border-white/30 border-t-white animate-spin" />
@@ -290,7 +315,7 @@ export function VideoThumbnail({
             "min-w-11 min-h-11"
           )}
           aria-label={isPlaying ? "Pause video" : "Play video"}
-          disabled={isBuffering && !isPlaying}
+          disabled={!videoReady && !isPlaying}
         >
           {isPlaying ? <HiPause className="w-5 h-5" /> : null}
           {!isPlaying && isBuffering ? (
