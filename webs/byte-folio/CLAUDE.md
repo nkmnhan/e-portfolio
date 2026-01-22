@@ -165,6 +165,22 @@ pnpm start        # Start production server
 
 **Design:** [Space-themed portfolio - Community](https://www.figma.com/design/6I4oIyPZUvyABHzi1lZWhk/Space-themed-portfolio--Community-?node-id=0-1)
 
+**Current Frame:** [Hero Section](https://www.figma.com/design/6I4oIyPZUvyABHzi1lZWhk/Space-themed-portfolio--Community-?node-id=21-4058&t=UPAvnXdQpSuLEQZb-0)
+
+### Design Notes (extracted from Figma SVG exports)
+
+| Element | Color | CSS Variable |
+|---------|-------|--------------|
+| Background | `#090909` | `--color-space-dark` |
+| Purple gradient | `#4C009F` → `#19002A` | `--gradient-space` |
+| Cyan (primary) | `#43E0F7` | `--color-neon-cyan` |
+| Stars | `#439FC2` | `--color-star` |
+| Pink glow | `#D10057` | `--color-neon-pink` |
+| Purple orb | `#8657E8`, `#42218E` | `--color-neon-purple`, `--color-accent-dark` |
+| Earth blue | `#00B1FF`, `#004361` | `--color-neon-blue`, `--gradient-earth` |
+| Gold accent | `#FFB400` | `--color-gold` |
+| Mountain blues | `#3744B5`, `#330995`, `#142187` | `--color-mountain-*` |
+
 ## Commands
 
 | Command | Usage |

@@ -5,6 +5,7 @@ import { defaultMetadata } from "@/lib/seo";
 import { JsonLd } from "@/app/components/seo/JsonLd";
 import { Header } from "@/app/components/layout/Header";
 import { ScrollObserver } from "@/app/components/ui/ScrollObserver";
+import { SpaceBackground } from "@/app/components/background/SpaceBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,6 +54,9 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+
+        {/* Space Background - CSS-only stars and cosmic elements */}
+        <SpaceBackground />
 
         {/* Header - Client Component for scroll state */}
         <Header />

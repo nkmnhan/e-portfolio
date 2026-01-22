@@ -2,6 +2,12 @@ import { portfolioData, summaryStats } from "@/lib/data";
 import { Skills } from "@/app/components/sections/Skills";
 import { Projects } from "@/app/components/sections/Projects";
 import { Experience } from "@/app/components/sections/Experience";
+import {
+  PlanetEarth,
+  Astronaut,
+  UFO,
+  Moon,
+} from "@/app/components/background/SpaceBackground";
 
 export default function HomePage() {
   return (
@@ -11,11 +17,27 @@ export default function HomePage() {
         id="hero"
         className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-16 md:pt-20"
       >
-        {/* Background gradient overlay */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[var(--color-space-mid)] to-[var(--color-space-dark)]" />
+        {/* Cosmic decorations */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          {/* UFOs */}
+          <UFO className="ufo-1" />
+          <UFO className="ufo-2" />
+
+          {/* Moons */}
+          <Moon className="moon-1" />
+          <Moon className="moon-2" />
+
+          {/* Astronaut - positioned on the right */}
+          <div className="absolute right-[10%] top-[30%] hidden lg:block">
+            <Astronaut />
+          </div>
+        </div>
+
+        {/* Planet Earth - large foreground element */}
+        <PlanetEarth />
 
         {/* Content */}
-        <div className="relative z-10 text-center">
+        <div className="hero-content relative z-10 text-center">
           {/* Subtitle */}
           <p className="mb-2 text-sm tracking-widest text-[var(--color-text-muted)] md:text-base">
             {portfolioData.subtitle}
@@ -58,7 +80,7 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
           <a
             href="#skills"
             className="flex flex-col items-center gap-2 text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-neon-cyan)]"
