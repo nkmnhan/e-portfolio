@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { defaultMetadata } from "@/lib/seo";
 import { JsonLd } from "@/app/components/seo/JsonLd";
+import { Header } from "@/app/components/layout/Header";
+import { ScrollObserver } from "@/app/components/ui/ScrollObserver";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,6 +53,12 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+
+        {/* Header - Client Component for scroll state */}
+        <Header />
+
+        {/* ScrollObserver - Client Component for fade-in animations */}
+        <ScrollObserver />
 
         {/* Main content */}
         <main id="main-content">{children}</main>

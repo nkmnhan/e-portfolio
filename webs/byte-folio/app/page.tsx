@@ -1,10 +1,16 @@
 import { portfolioData, summaryStats } from "@/lib/data";
+import { Skills } from "@/app/components/sections/Skills";
+import { Projects } from "@/app/components/sections/Projects";
+import { Experience } from "@/app/components/sections/Experience";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4">
+      <section
+        id="hero"
+        className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-16 md:pt-20"
+      >
         {/* Background gradient overlay */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[var(--color-space-mid)] to-[var(--color-space-dark)]" />
 
@@ -53,7 +59,11 @@ export default function HomePage() {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <div className="flex flex-col items-center gap-2 text-[var(--color-text-muted)]">
+          <a
+            href="#skills"
+            className="flex flex-col items-center gap-2 text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-neon-cyan)]"
+            aria-label="Scroll to skills section"
+          >
             <span className="text-xs tracking-widest">SCROLL</span>
             <div className="animate-bounce-down">
               <svg
@@ -70,37 +80,42 @@ export default function HomePage() {
                 />
               </svg>
             </div>
-          </div>
+          </a>
         </div>
       </section>
 
-      {/* Placeholder sections - to be implemented */}
-      <section className="section-padding container-custom">
-        <h2 className="text-glow mb-8 text-center text-3xl font-bold text-[var(--color-neon-cyan)]">
-          MY SKILLS
-        </h2>
-        <p className="text-center text-[var(--color-text-muted)]">
-          Skills section coming soon...
-        </p>
+      {/* Skills Section */}
+      <Skills />
+
+      {/* Projects Section */}
+      <Projects />
+
+      {/* Experience Section */}
+      <Experience />
+
+      {/* Footer CTA */}
+      <section className="section-padding container-custom text-center">
+        <div className="card-glow mx-auto max-w-2xl p-8 md:p-12">
+          <h2 className="text-glow mb-4 text-2xl font-bold text-[var(--color-neon-cyan)] md:text-3xl">
+            LET&apos;S WORK TOGETHER
+          </h2>
+          <p className="mb-6 text-[var(--color-text-secondary)]">
+            Interested in collaborating or have a project in mind? I&apos;d love to hear from you.
+          </p>
+          <a href="/contact" className="btn-glow inline-block">
+            GET IN TOUCH
+          </a>
+        </div>
       </section>
 
-      <section className="section-padding container-custom">
-        <h2 className="text-glow mb-8 text-center text-3xl font-bold text-[var(--color-neon-cyan)]">
-          MY PROJECTS
-        </h2>
-        <p className="text-center text-[var(--color-text-muted)]">
-          Projects section coming soon...
-        </p>
-      </section>
-
-      <section className="section-padding container-custom">
-        <h2 className="text-glow mb-8 text-center text-3xl font-bold text-[var(--color-neon-cyan)]">
-          MY WORK EXPERIENCE
-        </h2>
-        <p className="text-center text-[var(--color-text-muted)]">
-          Experience section coming soon...
-        </p>
-      </section>
+      {/* Footer */}
+      <footer className="border-t border-[var(--color-border)] py-8">
+        <div className="container-custom text-center">
+          <p className="text-sm text-[var(--color-text-muted)]">
+            &copy; {new Date().getFullYear()} Tony Nguyen. Built with Next.js &amp; Tailwind CSS.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
