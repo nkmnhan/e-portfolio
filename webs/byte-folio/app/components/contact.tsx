@@ -13,13 +13,17 @@ const contactSocials = getSocialLinksFor("contact");
 const inputClassName =
   "w-full px-3 py-2 rounded-lg bg-surface text-text border border-border focus:border-primary focus:outline-none transition-colors text-sm";
 
+type SubmitStatus = "idle" | "sending" | "success" | "error";
+
 export function Contact() {
   const [formName, setFormName] = useState("");
   const [formEmail, setFormEmail] = useState("");
   const [formMessage, setFormMessage] = useState("");
-  const [isToastVisible, setIsToastVisible] = useState(false);
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [toastMessage, setToastMessage] = useState("");
   const toastTimerRef = useRef<ReturnType<typeof setTimeout>>(null);
   const { ref: formRef, isInView: formInView } = useInView();
+  const isToastVisible = status === "success" || status === "error";
   const { shouldRender: toastShouldRender, isVisible: toastIsVisible } = useAnimatedPresence(isToastVisible);
 
   useEffect(() => {
@@ -28,20 +32,43 @@ export function Contact() {
     };
   }, []);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setStatus("sending");
 
-    const subject = encodeURIComponent(`Portfolio contact from ${formName}`);
-    const body = encodeURIComponent(
-      `Name: ${formName}\nEmail: ${formEmail}\n\n${formMessage}`
-    );
-    const mailtoUrl = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          name: formName,
+          email: formEmail,
+          message: formMessage,
+          subject: `Portfolio contact from ${formName}`,
+          from_name: "Byte-Folio Contact Form",
+        }),
+      });
 
-    window.open(mailtoUrl, "_blank");
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus("success");
+        setToastMessage("Message sent successfully!");
+        setFormName("");
+        setFormEmail("");
+        setFormMessage("");
+      } else {
+        setStatus("error");
+        setToastMessage("Failed to send. Please try again.");
+      }
+    } catch {
+      setStatus("error");
+      setToastMessage("Network error. Please try again.");
+    }
 
     if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-    setIsToastVisible(true);
-    toastTimerRef.current = setTimeout(() => setIsToastVisible(false), 4000);
+    toastTimerRef.current = setTimeout(() => setStatus("idle"), 4000);
   }
 
   return (
@@ -111,11 +138,15 @@ export function Contact() {
               />
             </div>
 
+            {/* Honeypot for spam bots */}
+            <input type="checkbox" name="botcheck" className="hidden" />
+
             <button
               type="submit"
-              className="w-full px-4 py-2.5 bg-primary text-bg font-semibold rounded-lg glow-primary hover:brightness-110 transition-[filter] duration-200 text-sm"
+              disabled={status === "sending"}
+              className="w-full px-4 py-2.5 bg-primary text-bg font-semibold rounded-lg glow-primary hover:brightness-110 transition-[filter] duration-200 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
+              {status === "sending" ? "Sending..." : "Send Message"}
             </button>
           </form>
 
@@ -129,10 +160,10 @@ export function Contact() {
 
       {toastShouldRender && (
         <div
-          className={`fixed bottom-6 right-6 glass rounded-lg px-4 py-3 text-sm text-primary z-50 presence-fade ${toastIsVisible ? "presence-visible" : ""}`}
+          className={`fixed bottom-6 right-6 glass rounded-lg px-4 py-3 text-sm z-50 presence-fade ${toastIsVisible ? "presence-visible" : ""} ${status === "success" ? "text-primary" : "text-error"}`}
           style={{ transform: toastIsVisible ? "translateY(0)" : "translateY(20px)" }}
         >
-          Message prepared — check your email client.
+          {toastMessage}
         </div>
       )}
     </SectionWrapper>
