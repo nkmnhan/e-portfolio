@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { heroData } from "@/lib/data/hero";
@@ -10,31 +10,22 @@ import { SocialLinkItem } from "./social-link-item";
 
 const StarfieldR3F = dynamic(
   () => import("./starfield").then((mod) => ({ default: mod.Starfield })),
-  { ssr: false }
+  { ssr: false, loading: () => <StarfieldCSS /> }
 );
 
-interface StarfieldConfig {
-  isWebGL: boolean;
-  starCount: number;
-}
-
-function detectStarfieldCapability(): StarfieldConfig {
-  if (typeof window === "undefined") {
-    return { isWebGL: false, starCount: 2000 };
-  }
-  const hasPower = (navigator.hardwareConcurrency ?? 1) >= 4;
-  const isDesktop = window.innerWidth >= 768;
-  return {
-    isWebGL: hasPower && isDesktop,
-    starCount: window.innerWidth >= 1280 ? 2000 : 800,
-  };
-}
-
 function HeroBackground() {
-  const [config] = useState<StarfieldConfig>(detectStarfieldCapability);
+  const [webgl, setWebgl] = useState<{ enabled: false } | { enabled: true; starCount: number }>({ enabled: false });
 
-  if (config.isWebGL) {
-    return <StarfieldR3F count={config.starCount} />;
+  useEffect(() => {
+    const hasPower = (navigator.hardwareConcurrency ?? 1) >= 4;
+    const isDesktop = window.innerWidth >= 768;
+    if (hasPower && isDesktop) {
+      setWebgl({ enabled: true, starCount: window.innerWidth >= 1280 ? 2000 : 800 });
+    }
+  }, []);
+
+  if (webgl.enabled) {
+    return <StarfieldR3F count={webgl.starCount} />;
   }
 
   return <StarfieldCSS />;
