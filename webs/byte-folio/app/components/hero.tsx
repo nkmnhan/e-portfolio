@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { heroData } from "@/lib/data/hero";
@@ -13,19 +13,28 @@ const StarfieldR3F = dynamic(
   { ssr: false }
 );
 
+interface StarfieldConfig {
+  isWebGL: boolean;
+  starCount: number;
+}
+
+function detectStarfieldCapability(): StarfieldConfig {
+  if (typeof window === "undefined") {
+    return { isWebGL: false, starCount: 2000 };
+  }
+  const hasPower = (navigator.hardwareConcurrency ?? 1) >= 4;
+  const isDesktop = window.innerWidth >= 768;
+  return {
+    isWebGL: hasPower && isDesktop,
+    starCount: window.innerWidth >= 1280 ? 2000 : 800,
+  };
+}
+
 function HeroBackground() {
-  const [useWebGL, setUseWebGL] = useState(false);
-  const [starCount, setStarCount] = useState(2000);
+  const [config] = useState<StarfieldConfig>(detectStarfieldCapability);
 
-  useEffect(() => {
-    const hasPower = (navigator.hardwareConcurrency ?? 1) >= 4;
-    const isDesktop = window.innerWidth >= 768;
-    setUseWebGL(hasPower && isDesktop);
-    setStarCount(window.innerWidth >= 1280 ? 2000 : 800);
-  }, []);
-
-  if (useWebGL) {
-    return <StarfieldR3F count={starCount} />;
+  if (config.isWebGL) {
+    return <StarfieldR3F count={config.starCount} />;
   }
 
   return <StarfieldCSS />;
