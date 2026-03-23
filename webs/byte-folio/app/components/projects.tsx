@@ -24,7 +24,7 @@ export function Projects() {
       <TerminalHeading command="ls ~/projects --featured" />
 
       {/* Featured: Deep Space Transmission cards */}
-      <div className="flex flex-col gap-8 mb-12">
+      <div className="flex flex-col gap-5 md:gap-8 mb-8 md:mb-12">
         {featuredProjects.map((project, index) => (
           <FeaturedProjectCard key={project.id} project={project} index={index} />
         ))}

@@ -25,7 +25,7 @@ export function Experience() {
       <TerminalHeading command="career --timeline" />
       <div className="relative">
         <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-border" />
-        <div className="space-y-12">
+        <div className="space-y-8 md:space-y-12">
           {experienceData.map((entry, index) => (
             <motion.div key={entry.period} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.15 }} className="relative md:flex md:justify-center">
               <div className="ml-6 text-sm font-[family-name:var(--font-mono)] text-text-muted mb-2 md:ml-0 md:absolute md:top-0 md:-translate-y-8 md:left-1/2 md:-translate-x-1/2 md:whitespace-nowrap">

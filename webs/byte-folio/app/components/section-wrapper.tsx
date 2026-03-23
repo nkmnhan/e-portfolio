@@ -6,7 +6,7 @@ interface SectionWrapperProps {
 
 export function SectionWrapper({ id, children, className = "" }: SectionWrapperProps) {
   return (
-    <section id={id} className={`py-20 md:py-24 px-5 md:px-8 ${className}`}>
+    <section id={id} className={`py-12 md:py-20 lg:py-24 px-5 md:px-8 ${className}`}>
       <div className="mx-auto max-w-5xl">{children}</div>
     </section>
   );
