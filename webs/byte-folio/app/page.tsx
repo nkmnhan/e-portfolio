@@ -4,6 +4,9 @@ import { Experience } from "@/app/components/experience";
 import { Projects } from "@/app/components/projects";
 import { Skills } from "@/app/components/skills";
 import { Contact } from "@/app/components/contact";
+import { NavDots } from "@/app/components/nav-dots";
+import { NavMobile } from "@/app/components/nav-mobile";
+import { SocialFloat } from "@/app/components/social-float";
 
 export default function Home() {
   return (
@@ -14,6 +17,9 @@ export default function Home() {
       <Projects />
       <Skills />
       <Contact />
+      <NavDots />
+      <NavMobile />
+      <SocialFloat />
     </main>
   );
 }
