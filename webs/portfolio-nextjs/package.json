@@ -12,6 +12,9 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@eportfolio/ui": "workspace:*",
+    "@eportfolio/theme": "workspace:*",
+    "@eportfolio/storybook-config": "workspace:*",
     "@next/bundle-analyzer": "^16.1.0",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.2",

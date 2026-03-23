@@ -1,0 +1,153 @@
+/* @eportfolio/theme — Base CSS Token Contract
+   All token names + defaults. Override via presets or runtime derivation. */
+
+:root {
+  /* --- Background / Surface --- */
+  --color-bg: 0 0% 100%;
+  --color-bg-subtle: 0 0% 98%;
+  --color-surface: 0 0% 96%;
+  --color-surface-hover: 0 0% 93%;
+
+  /* --- Text --- */
+  --color-text: 0 0% 9%;
+  --color-text-secondary: 0 0% 37%;
+  --color-text-muted: 0 0% 56%;
+  --color-text-subtle: 0 0% 65%;
+  --color-text-inverted: 0 0% 95%;
+
+  /* --- Primary --- */
+  --color-primary: 187 92% 42%;
+  --color-primary-hover: 187 92% 52%;
+  --color-primary-50: 187 30% 97%;
+  --color-primary-100: 187 30% 94%;
+  --color-primary-200: 187 50% 88%;
+  --color-primary-300: 187 60% 78%;
+  --color-primary-400: 187 70% 65%;
+  --color-primary-500: 187 92% 42%;
+  --color-primary-600: 187 80% 40%;
+  --color-primary-700: 187 70% 32%;
+  --color-primary-800: 187 60% 24%;
+  --color-primary-900: 187 50% 18%;
+  --color-primary-950: 187 40% 10%;
+
+  /* --- Secondary --- */
+  --color-secondary: 271 81% 65%;
+  --color-secondary-50: 271 30% 97%;
+  --color-secondary-100: 271 30% 94%;
+  --color-secondary-200: 271 50% 88%;
+  --color-secondary-300: 271 60% 78%;
+  --color-secondary-400: 271 70% 65%;
+  --color-secondary-500: 271 81% 65%;
+  --color-secondary-600: 271 70% 40%;
+  --color-secondary-700: 271 60% 32%;
+  --color-secondary-800: 271 50% 24%;
+  --color-secondary-900: 271 40% 18%;
+  --color-secondary-950: 271 30% 10%;
+
+  /* --- Accent --- */
+  --color-accent: 25 95% 53%;
+  --color-accent-50: 25 30% 97%;
+  --color-accent-100: 25 30% 94%;
+  --color-accent-200: 25 50% 88%;
+  --color-accent-300: 25 60% 78%;
+  --color-accent-400: 25 70% 65%;
+  --color-accent-500: 25 95% 53%;
+  --color-accent-600: 25 80% 40%;
+  --color-accent-700: 25 70% 32%;
+  --color-accent-800: 25 60% 24%;
+  --color-accent-900: 25 50% 18%;
+  --color-accent-950: 25 40% 10%;
+
+  /* --- Semantic --- */
+  --color-success: 142 70% 45%;
+  --color-success-light: 142 70% 60%;
+  --color-success-dark: 142 70% 35%;
+  --color-warning: 38 90% 50%;
+  --color-warning-light: 38 90% 65%;
+  --color-warning-dark: 38 90% 40%;
+  --color-error: 0 72% 50%;
+  --color-error-light: 0 72% 65%;
+  --color-error-dark: 0 72% 40%;
+  --color-info: 210 70% 50%;
+  --color-info-light: 210 70% 65%;
+  --color-info-dark: 210 70% 40%;
+
+  /* --- Borders --- */
+  --color-border: 0 0% 85%;
+  --color-border-hover: 0 0% 75%;
+
+  /* --- Gradients --- */
+  --gradient-primary: linear-gradient(135deg, hsl(187 92% 42%), hsl(271 81% 65%));
+  --gradient-surface: linear-gradient(180deg, hsl(0 0% 96%), hsl(0 0% 100%));
+
+  /* --- Typography --- */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-7xl: 4.5rem;
+  --font-size-8xl: 6rem;
+  --font-size-9xl: 8rem;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* --- Spacing (4px base) --- */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+
+  /* --- Border Radius --- */
+  --radius-none: 0;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  /* --- Z-Index --- */
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-tooltip: 70;
+
+  /* --- Transitions --- */
+  --transition-fast: 150ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+  --transition-slower: 500ms ease;
+}

@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  transpilePackages: ["@eportfolio/ui", "@eportfolio/theme"],
   images: {
     remotePatterns: [
       {

@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 import withFlowbiteReact from "flowbite-react/plugin/nextjs";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['three'],
+  transpilePackages: ['three', '@eportfolio/ui', '@eportfolio/theme'],
   outputFileTracingRoot: __dirname,
   turbopack: {
     root: __dirname,

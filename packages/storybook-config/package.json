@@ -1,0 +1,16 @@
+{
+  "name": "@eportfolio/storybook-config",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./main-base": "./src/main-base.ts",
+    "./preview-base": "./src/preview-base.ts"
+  },
+  "peerDependencies": {
+    "storybook": "^10.0.0",
+    "@storybook/addon-themes": "^10.0.0",
+    "@storybook/nextjs-vite": "^10.0.0"
+  }
+}

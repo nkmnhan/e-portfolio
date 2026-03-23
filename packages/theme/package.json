@@ -1,0 +1,14 @@
+{
+  "name": "@eportfolio/theme",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tokens/base.css": "./src/tokens/base.css",
+    "./tokens/presets/*": "./src/tokens/presets/*.css"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}
