@@ -796,7 +796,106 @@ export const metadata: Metadata = {
 
 ---
 
-## 10. What Stays Out of Scope (YAGNI)
+## 10. Future: GitHub Traffic Dashboard (TODO)
+
+> **Status:** Designed, not yet implemented. Requires a fine-grained PAT with `Administration: Read-only` permission stored as `GITHUB_TOKEN` Vercel server-side env var.
+
+### 10.1 Token Setup
+
+| Setting | Value |
+|---------|-------|
+| Token type | Fine-grained PAT |
+| Scope | Only `nkmnhan/*` repos needed |
+| Permissions | `Metadata: Read` (repo content) + `Administration: Read-only` (traffic) |
+| Storage | Vercel env var `GITHUB_TOKEN` (no `NEXT_PUBLIC_` prefix) |
+| Expiration | 90 days, rotate via reminder |
+
+### 10.2 Data Persistence (traffic is 14-day rolling window)
+
+GitHub only keeps 14 days of traffic data. To build long-term charts:
+
+```
+webs/byte-folio/
+├── lib/services/
+│   └── github.ts          # fetchRepoTraffic(), fetchRepoContent()
+├── app/api/
+│   └── cron/
+│       └── traffic/
+│           └── route.ts   # Vercel Cron (daily) → poll traffic → persist
+```
+
+**Storage options (pick one at implementation time):**
+- **Vercel KV / Redis** — simplest, native to Vercel
+- **JSON in private repo** — free, git-backed history
+- **Vercel Postgres** — if byte-folio grows to need a DB
+
+### 10.3 API Endpoints to Poll
+
+```typescript
+// All require Authorization: Bearer ${GITHUB_TOKEN}
+// All return 14-day rolling data only
+
+GET /repos/nkmnhan/{repo}/traffic/views?per=day
+// → { count, uniques, views: [{ timestamp, count, uniques }] }
+
+GET /repos/nkmnhan/{repo}/traffic/clones?per=day
+// → { count, uniques, clones: [{ timestamp, count, uniques }] }
+
+GET /repos/nkmnhan/{repo}/traffic/popular/referrers
+// → [{ referrer, count, uniques }]  (top 10)
+
+GET /repos/nkmnhan/{repo}/traffic/popular/paths
+// → [{ path, title, count, uniques }]  (top 10)
+```
+
+### 10.4 Display Options
+
+**Option A — Private dashboard route** (`/dashboard`, behind simple auth):
+- Total views/clones across all repos (sparkline chart)
+- Per-repo breakdown table
+- Top referrers
+- Trend over time (from persisted snapshots)
+
+**Option B — Public stats on project cards** (subtle, only if numbers are good):
+- "142 views this week" badge on featured projects
+- Only show if views > threshold (e.g., 50/week)
+
+### 10.5 Types
+
+```typescript
+export interface RepoTrafficSnapshot {
+  repo: string;
+  date: string;               // ISO date (YYYY-MM-DD)
+  views: { count: number; uniques: number };
+  clones: { count: number; uniques: number };
+  referrers: Array<{ referrer: string; count: number; uniques: number }>;
+}
+
+export interface TrafficDashboardData {
+  lastUpdated: string;
+  snapshots: RepoTrafficSnapshot[];
+  totalViews: number;
+  totalClones: number;
+}
+```
+
+### 10.6 Vercel Cron Config
+
+```json
+// vercel.json
+{
+  "crons": [
+    {
+      "path": "/api/cron/traffic",
+      "schedule": "0 6 * * *"
+    }
+  ]
+}
+```
+
+---
+
+## 11. What Stays Out of Scope (YAGNI)
 
 | Feature | Why Not Now |
 |---------|-----------|
@@ -807,12 +906,12 @@ export const metadata: Metadata = {
 | i18n | Single language for now |
 | Analytics | Add post-launch (Vercel Analytics or Plausible) |
 | Contact form backend | Frontend-only initially — mailto: fallback |
-| GitHub API integration | Optional enhancement — hardcoded data works first |
+| GitHub traffic dashboard | Designed in §10 — implement when token is provided |
 | PWA | Not needed for a portfolio |
 
 ---
 
-## 11. File Map
+## 12. File Map
 
 | File | Action | Purpose |
 |------|--------|---------|
