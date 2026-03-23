@@ -26,10 +26,10 @@ export const projectsData: Project[] = [
     highlights: [
       "Toggle services via JSON — no rebuilds, no code changes",
       "Infrastructure persistence — databases survive Aspire restarts",
-      "Supports .NET, Node.js, Python, and custom dev servers",
+      "Supports .NET, Node.js, and custom dev servers",
       "Automatic pre-build, dependency install, and HTTPS setup",
     ],
-    techStack: [".NET 10", "Aspire", "Docker", "Node.js", "Python"],
+    techStack: [".NET 10", "Aspire", "Docker", "Node.js"],
     githubUrl: "https://github.com/nkmnhan/Aspire.Nexus",
     docsUrl: "https://learn.microsoft.com/en-us/dotnet/aspire/",
     isFeatured: true,
