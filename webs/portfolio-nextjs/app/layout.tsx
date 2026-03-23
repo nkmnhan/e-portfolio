@@ -31,11 +31,20 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://nkmnhan.com"
   ),
-  title: "Tony Nguyen Portfolio | Senior Software Engineer",
+  title: "Tony Nguyen Portfolio | Senior Fullstack Developer | nkmnhan",
   description:
-    "Portfolio of Tony Nguyen (Nguyễn Khoa Minh Nhân), a Senior Software Engineer specializing in .NET Core, React, Next.js, and microservices architecture.",
-  keywords: ["Tony Nguyen", "Nguyễn Khoa Minh Nhân", "Tony Wilson", "Tony", "nhan", "Nhân", "portfolio", "senior software engineer", ".NET Core", "React", "Next.js", "microservices", "cloud architecture", "web development", "UI/UX design"],
-  authors: [{ name: "Tony Nguyen" }],
+    "Portfolio of Tony Nguyen (Nhan Nguyen / nkmnhan) — Senior Fullstack Developer with 9+ years experience in .NET Core, React, Angular, Next.js, microservices, AWS & Azure. Building scalable systems across Singapore, Europe, and Vietnam.",
+  keywords: [
+    "Tony Nguyen", "Nhan Nguyen", "nkmnhan", "@nkmnhan", "Tony F. Wilson", "Nguyễn Khoa Minh Nhân",
+    "nkmnhan github", "nkmnhan developer", "nkmnhan portfolio",
+    "Nhan dev", "Nhan developer", "Nhan fullstack developer",
+    "Tony dev", "Tony developer", "Tony fullstack developer",
+    "senior software engineer", "senior fullstack developer",
+    ".NET Core", "React", "Next.js", "Angular", "TypeScript",
+    "microservices", "cloud architecture", "AWS", "Azure", "Docker",
+    "web development", "software engineer Vietnam", "developer portfolio",
+  ],
+  authors: [{ name: "Tony Nguyen", url: "https://nkmnhan.com" }],
   creator: "Tony Nguyen",
   publisher: "Tony Nguyen",
   formatDetection: {
@@ -44,10 +53,10 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "NKM-NHAN Portfolio",
-    description: "Web developer portfolio showcasing innovative projects",
+    title: "Tony Nguyen (nkmnhan) | Senior Fullstack Developer Portfolio",
+    description: "9+ years building scalable systems with .NET, React, Angular & cloud architecture. Open-source projects, microservices, and modern web development.",
     url: "https://nkmnhan.com",
-    siteName: "NKM-NHAN Portfolio",
+    siteName: "Tony Nguyen Portfolio",
     images: [
       {
         url: "/astronaut.png",
@@ -61,8 +70,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NKM-NHAN Portfolio",
-    description: "Web developer portfolio",
+    title: "Tony Nguyen (nkmnhan) | Senior Fullstack Developer",
+    description: "Senior Fullstack Developer — .NET, React, Angular, microservices, cloud architecture. 9+ years building scalable systems.",
     images: ["/astronaut.png"],
     creator: "@nkmnhan", // if applicable
   },
