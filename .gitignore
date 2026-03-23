@@ -70,6 +70,7 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.local
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -112,3 +113,13 @@ dist
 
 # Claude Code settings with tokens
 .claude/settings.json
+
+# Playwright
+test-results/
+playwright-report/
+
+# Lighthouse
+lighthouse-*.report.*
+
+# Storybook
+storybook-static/

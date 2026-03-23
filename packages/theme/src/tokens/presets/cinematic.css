@@ -1,0 +1,27 @@
+/* Cinematic preset — from portfolio-nextjs .theme-cinematic {} block */
+.theme-cinematic {
+  --color-bg: #020016;
+  --color-bg-subtle: #0A0520;
+  --color-surface: #1A0D1A;
+  --color-surface-hover: #2F122E;
+
+  --color-border: #531431;
+  --color-border-hover: #702D4C;
+
+  --color-text: #F2E5D9;
+  --color-text-secondary: #E4B3A3;
+  --color-text-muted: #C49A8A;
+  --color-text-subtle: #8B6B5E;
+
+  --color-accent: #E4B3A3;
+  --color-accent-hover: #F2C5B5;
+
+  --cinematic-rose: #E4B3A3;
+  --cinematic-burgundy: #531431;
+  --cinematic-deep-purple: #2F122E;
+  --cinematic-midnight: #020016;
+  --cinematic-gold: #D4A574;
+
+  --shadow-glow: 0 0 20px rgb(83 20 49 / 0.3);
+  --shadow-glow-strong: 0 0 40px rgb(83 20 49 / 0.5);
+}
