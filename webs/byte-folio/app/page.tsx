@@ -1,8 +1,9 @@
 import { Hero } from "@/app/components/hero";
 import { About } from "@/app/components/about";
 import { Experience } from "@/app/components/experience";
-import { SectionWrapper } from "@/app/components/section-wrapper";
-import { TerminalHeading } from "@/app/components/terminal-heading";
+import { Projects } from "@/app/components/projects";
+import { Skills } from "@/app/components/skills";
+import { Contact } from "@/app/components/contact";
 
 export default function Home() {
   return (
@@ -10,21 +11,9 @@ export default function Home() {
       <Hero />
       <About />
       <Experience />
-
-      <SectionWrapper id="projects">
-        <TerminalHeading command="ls ~/projects --featured" />
-        <p className="text-text-secondary">Projects section placeholder</p>
-      </SectionWrapper>
-
-      <SectionWrapper id="skills">
-        <TerminalHeading command="skills --categorize" />
-        <p className="text-text-secondary">Skills section placeholder</p>
-      </SectionWrapper>
-
-      <SectionWrapper id="contact">
-        <TerminalHeading command="send_transmission --to tony" />
-        <p className="text-text-secondary">Contact section placeholder</p>
-      </SectionWrapper>
+      <Projects />
+      <Skills />
+      <Contact />
     </main>
   );
 }

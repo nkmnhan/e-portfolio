@@ -4,7 +4,7 @@ export const skillsData: SkillCategory[] = [
   {
     name: "Languages",
     skills: [
-      { name: "C#", iconName: "SiCsharp" },
+      { name: "C#", iconName: "SiSharp" },
       { name: "TypeScript", iconName: "SiTypescript" },
       { name: "JavaScript", iconName: "SiJavascript" },
       { name: "Python", iconName: "SiPython" },
@@ -28,7 +28,7 @@ export const skillsData: SkillCategory[] = [
       { name: ".NET Core", iconName: "SiDotnet" },
       { name: "Node.js", iconName: "SiNodedotjs" },
       { name: "GraphQL", iconName: "SiGraphql" },
-      { name: "gRPC", iconName: "SiGrpc" },
+      { name: "gRPC", iconName: "FaServer" },
       { name: "SignalR", iconName: "SiDotnet" },
     ],
   },
@@ -38,15 +38,15 @@ export const skillsData: SkillCategory[] = [
       { name: "PostgreSQL", iconName: "SiPostgresql" },
       { name: "MongoDB", iconName: "SiMongodb" },
       { name: "Elasticsearch", iconName: "SiElasticsearch" },
-      { name: "SQL Server", iconName: "SiMicrosoftsqlserver" },
-      { name: "DynamoDB", iconName: "SiAmazondynamodb" },
+      { name: "SQL Server", iconName: "FaDatabase" },
+      { name: "DynamoDB", iconName: "FaDatabase" },
     ],
   },
   {
     name: "Cloud & DevOps",
     skills: [
-      { name: "AWS", iconName: "SiAmazonwebservices" },
-      { name: "Azure", iconName: "SiMicrosoftazure" },
+      { name: "AWS", iconName: "FaAws" },
+      { name: "Azure", iconName: "FaMicrosoft" },
       { name: "Docker", iconName: "SiDocker" },
       { name: "Kubernetes", iconName: "SiKubernetes" },
       { name: "GitHub Actions", iconName: "SiGithubactions" },
