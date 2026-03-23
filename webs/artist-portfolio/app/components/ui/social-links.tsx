@@ -2,16 +2,16 @@ import { clsxMerge } from "@/lib/utils";
 import type { SocialLinks as SocialLinksType } from "@/lib/types";
 import {
   SiArtstation,
-  SiLinkedin,
   SiInstagram,
   SiYoutube,
   SiVimeo,
 } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa6";
 
 const socialIcons: Record<string, React.ComponentType<{ className?: string }>> =
   {
     artstation: SiArtstation,
-    linkedin: SiLinkedin,
+    linkedin: FaLinkedin,
     instagram: SiInstagram,
     youtube: SiYoutube,
     vimeo: SiVimeo,

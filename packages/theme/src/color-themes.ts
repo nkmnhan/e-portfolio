@@ -64,4 +64,28 @@ export const themes: ColorTheme[] = [
       accent: "#eab308",
     },
   },
+  {
+    id: "coderabbit",
+    label: "CodeRabbit",
+    mode: "dark",
+    palette: {
+      background: "#0c0c0c",
+      foreground: "#e8e8e8",
+      primary: "#f97316",
+      secondary: "#22c55e",
+      accent: "#ec4899",
+    },
+  },
+  {
+    id: "terminal-green",
+    label: "Terminal",
+    mode: "dark",
+    palette: {
+      background: "#0a0a0a",
+      foreground: "#d4d4d4",
+      primary: "#4ade80",
+      secondary: "#facc15",
+      accent: "#38bdf8",
+    },
+  },
 ];

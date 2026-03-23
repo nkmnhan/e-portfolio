@@ -64,6 +64,14 @@
   .glow-cyan-text {
     text-shadow: 0 0 10px rgba(67, 224, 247, 0.5);
   }
+
+  .glow-primary {
+    box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 30%, transparent);
+  }
+
+  .glow-primary-text {
+    text-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 50%, transparent);
+  }
 }
 
 .stars-sm {
@@ -91,8 +99,8 @@
 }
 
 @keyframes breathe {
-  0%, 100% { box-shadow: 0 0 20px rgba(67, 224, 247, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(67, 224, 247, 0.5); }
+  0%, 100% { box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 30%, transparent); }
+  50% { box-shadow: 0 0 30px color-mix(in srgb, var(--color-primary) 50%, transparent); }
 }
 
 @keyframes bounce-down {

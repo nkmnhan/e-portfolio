@@ -20,7 +20,7 @@
     "framer-motion": "^12.0.0",
     "@react-three/fiber": "^9.5.0",
     "@react-three/drei": "^10.7.7",
-    "three": "^0.177.0"
+    "three": "^0.182.0"
   },
   "devDependencies": {
     "typescript": "^5.7.0",
@@ -29,6 +29,7 @@
     "tailwindcss": "^4.0.0",
     "@tailwindcss/postcss": "^4.0.0",
     "eslint": "^9.0.0",
-    "eslint-config-next": "^16.0.0"
+    "eslint-config-next": "^16.0.0",
+    "@types/three": "^0.182.0"
   }
 }

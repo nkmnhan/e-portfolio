@@ -52,7 +52,7 @@ export function hexToHsl(hex: string): [number, number, number] {
 }
 
 export function hslString(h: number, s: number, l: number): string {
-  return `${h} ${s}% ${l}%`;
+  return `hsl(${h} ${s}% ${l}%)`;
 }
 
 // --- Lightness/Saturation adjusters ---
@@ -260,8 +260,8 @@ export function deriveTheme(
   );
 
   // --- Gradients ---
-  vars["--gradient-primary"] = `linear-gradient(135deg, hsl(${hslString(...primaryHsl)}), hsl(${hslString(...secondaryHsl)}))`;
-  vars["--gradient-surface"] = `linear-gradient(180deg, hsl(${vars["--color-surface"]}), hsl(${vars["--color-bg"]}))`;
+  vars["--gradient-primary"] = `linear-gradient(135deg, ${hslString(...primaryHsl)}, ${hslString(...secondaryHsl)})`;
+  vars["--gradient-surface"] = `linear-gradient(180deg, ${vars["--color-surface"]}, ${vars["--color-bg"]})`;
 
   return { vars };
 }

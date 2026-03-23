@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { siteConfig } from "@/lib/data/site-config";
+import { ThemeSwitcher } from "./components/theme-switcher";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -94,6 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to main content
         </a>
+        <ThemeSwitcher />
         {children}
       </body>
     </html>

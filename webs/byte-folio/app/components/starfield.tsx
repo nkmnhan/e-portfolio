@@ -1,12 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type ElementRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
-import type { Points } from "three";
 
 function RotatingStars({ count }: { count: number }) {
-  const starsRef = useRef<Points>(null);
+  const starsRef = useRef<ElementRef<typeof Stars>>(null);
 
   useFrame((_, delta) => {
     if (starsRef.current) {

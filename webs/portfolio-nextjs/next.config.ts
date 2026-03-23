@@ -1,11 +1,14 @@
+import path from "node:path";
 import type { NextConfig } from "next";
 import withFlowbiteReact from "flowbite-react/plugin/nextjs";
 
+const monorepoRoot = path.resolve(__dirname, "../..");
+
 const nextConfig: NextConfig = {
   transpilePackages: ['three', '@eportfolio/ui', '@eportfolio/theme'],
-  outputFileTracingRoot: __dirname,
+  outputFileTracingRoot: monorepoRoot,
   turbopack: {
-    root: __dirname,
+    root: monorepoRoot,
   },
   images: {
     remotePatterns: [
