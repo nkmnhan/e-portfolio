@@ -14,7 +14,7 @@ export function NavDots() {
           setActiveSection(visible.target.id);
         }
       },
-      { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
+      { rootMargin: "-30% 0px -30% 0px", threshold: 0 }
     );
 
     sections.forEach(({ id }) => {
@@ -22,7 +22,21 @@ export function NavDots() {
       if (element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
+    // Detect scroll to bottom — activate last section
+    function handleScroll() {
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+      if (atBottom) {
+        const lastSection = sections[sections.length - 1];
+        if (lastSection) setActiveSection(lastSection.id);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (

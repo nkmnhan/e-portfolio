@@ -72,7 +72,7 @@ export function Contact() {
   }
 
   return (
-    <SectionWrapper id="contact">
+    <SectionWrapper id="contact" className="pt-6 md:pt-12">
       <TerminalHeading command={contactData.heading} />
       <div className="flex justify-center">
         <div
