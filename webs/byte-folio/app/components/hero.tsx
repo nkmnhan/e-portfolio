@@ -52,10 +52,10 @@ export function Hero() {
           <span className="text-primary">{">"}</span> {heroData.specialization}
         </motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.9 }} className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-          <a href={heroData.primaryCta.href} className="px-6 py-3 bg-primary text-bg font-semibold rounded-lg glow-primary hover:brightness-110 transition-all text-center">
+          <a href={heroData.primaryCta.href} className="px-6 py-3 bg-primary text-bg font-semibold rounded-lg glow-primary hover:brightness-110 transition-[filter] duration-200 text-center">
             {heroData.primaryCta.label}
           </a>
-          <a href={heroData.secondaryCta.href} className="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all text-center">
+          <a href={heroData.secondaryCta.href} className="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-colors text-center">
             {heroData.secondaryCta.label}
           </a>
         </motion.div>

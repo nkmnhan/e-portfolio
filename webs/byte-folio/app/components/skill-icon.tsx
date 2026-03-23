@@ -75,7 +75,7 @@ export function SkillIcon({ name, iconName }: SkillIconProps) {
   return (
     <div className="flex flex-col items-center gap-1.5 group">
       {Icon ? (
-        <Icon className="w-8 h-8 text-text-muted transition-colors duration-200 group-hover:text-primary group-hover:drop-shadow-[0_0_8px_rgba(67,224,247,0.5)]" />
+        <Icon className="w-8 h-8 text-text-muted transition-[color,filter] duration-200 group-hover:text-primary group-hover:drop-shadow-[0_0_8px_rgba(67,224,247,0.5)]" />
       ) : (
         <div className="w-8 h-8 rounded bg-surface flex items-center justify-center text-text-muted text-xs">
           ?

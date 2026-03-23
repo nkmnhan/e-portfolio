@@ -27,7 +27,7 @@ export function NavDots() {
 
   return (
     <nav
-      className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3"
+      className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3 will-change-transform"
       aria-label="Page sections"
     >
       {sections.map(({ id, label }) => (
@@ -44,7 +44,7 @@ export function NavDots() {
           </span>
           {/* Dot */}
           <span
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`w-3 h-3 rounded-full transition-[transform,background-color] duration-200 ${
               activeSection === id
                 ? "bg-primary glow-primary scale-125"
                 : "bg-text-muted/30 hover:bg-text-muted/60"

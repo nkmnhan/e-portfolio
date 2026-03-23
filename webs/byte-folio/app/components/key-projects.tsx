@@ -44,9 +44,11 @@ export function KeyProjects() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.12, duration: 0.5 }}
             style={{ "--_glow-color": `var(${accentGlowVar[project.accentColor]})` } as React.CSSProperties}
-            className={`group glass rounded-xl border-t-2 ${accentBorder[project.accentColor]} hover:shadow-[0_0_30px_color-mix(in_srgb,var(--_glow-color)_15%,transparent)] transition-shadow duration-500`}
+            className={`group relative glass rounded-xl border-t-2 ${accentBorder[project.accentColor]}`}
           >
-            <div className="p-6 md:p-8">
+            {/* Hover glow (GPU-composited via opacity) */}
+            <div className="absolute inset-0 rounded-xl shadow-[0_0_30px_color-mix(in_srgb,var(--_glow-color)_15%,transparent)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            <div className="relative p-6 md:p-8">
               {/* Header row */}
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
                 <div className="flex-1">

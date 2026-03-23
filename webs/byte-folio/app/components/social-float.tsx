@@ -41,7 +41,7 @@ export function SocialFloat() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3"
+            className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3 will-change-transform"
           >
             {heroSocials.map((link) => (
               <SocialLinkItem key={link.platform} link={link} />

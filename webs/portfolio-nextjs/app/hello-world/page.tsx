@@ -92,11 +92,13 @@ export default function HelloWorld() {
               alt="Astronaut"
               width={144}
               height={192}
+              style={{ width: "auto", height: "auto" }}
               className={clsxMerge(
                 "w-20 h-28 mx-auto transition-all duration-300 ease-in-out hover:rotate-12 drop-shadow-lg",
                 "sm:w-36 sm:h-48"
               )}
               priority
+              loading="eager"
             />
           </div>
           <h1 className={clsxMerge("text-4xl md:text-6xl font-bold mb-4 theme-text drop-shadow-md")}>

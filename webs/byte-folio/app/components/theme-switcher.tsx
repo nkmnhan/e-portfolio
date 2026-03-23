@@ -14,7 +14,7 @@ export function ThemeSwitcher({ className }: { className?: string }) {
   if (!isMounted) return null;
 
   return (
-    <div className={clsxMerge("fixed right-4 bottom-4 z-50", className)}>
+    <div className={clsxMerge("fixed right-4 bottom-14 md:bottom-4 z-50", className)}>
       {isOpen && (
         <div className="mb-2 flex flex-col gap-1.5 rounded-lg border border-border bg-surface p-2 shadow-lg backdrop-blur-sm">
           {themes
@@ -51,7 +51,7 @@ export function ThemeSwitcher({ className }: { className?: string }) {
         className={clsxMerge(
           "flex h-10 w-10 items-center justify-center rounded-full",
           "border border-border bg-surface",
-          "shadow-lg transition-all hover:scale-110",
+          "shadow-lg transition-[transform,border-color] duration-200 hover:scale-110",
           "hover:border-primary"
         )}
       >

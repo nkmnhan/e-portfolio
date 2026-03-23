@@ -9,27 +9,27 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "next": "^16.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "@eportfolio/ui": "workspace:*",
     "@eportfolio/theme": "workspace:*",
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^3.0.0",
-    "react-icons": "^5.4.0",
-    "framer-motion": "^12.0.0",
-    "@react-three/fiber": "^9.5.0",
+    "@eportfolio/ui": "workspace:*",
     "@react-three/drei": "^10.7.7",
-    "three": "^0.182.0"
+    "@react-three/fiber": "^9.5.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "next": "^16.2.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-icons": "^5.6.0",
+    "tailwind-merge": "^3.5.0",
+    "three": "^0.183.2"
   },
   "devDependencies": {
-    "typescript": "^5.7.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "tailwindcss": "^4.0.0",
-    "@tailwindcss/postcss": "^4.0.0",
-    "eslint": "^9.0.0",
-    "eslint-config-next": "^16.0.0",
-    "@types/three": "^0.182.0"
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.183.1",
+    "eslint": "^10.1.0",
+    "eslint-config-next": "^16.2.1",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3"
   }
 }

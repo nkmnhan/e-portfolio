@@ -118,6 +118,7 @@ export default function Clients() {
                 alt="Astronaut"
                 width={144} // 36*4
                 height={192} // 48*4
+                style={{ width: "auto", height: "auto" }}
                 className={clsxMerge(
                   "w-20 h-28 fixed float-left -translate-x-20 translate-y-4 transition-all duration-300 ease-in-out hover:rotate-12",
                   "sm:w-36 sm:h-48 sm:-translate-x-32 sm:-translate-y-24",

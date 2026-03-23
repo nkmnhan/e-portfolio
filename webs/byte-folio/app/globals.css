@@ -53,7 +53,7 @@
 @layer utilities {
   .glass {
     background: rgba(10, 22, 40, 0.7);
-    backdrop-filter: blur(24px);
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(30, 58, 95, 0.5);
   }
 
@@ -99,8 +99,8 @@
 }
 
 @keyframes breathe {
-  0%, 100% { box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 30%, transparent); }
-  50% { box-shadow: 0 0 30px color-mix(in srgb, var(--color-primary) 50%, transparent); }
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 @keyframes bounce-down {

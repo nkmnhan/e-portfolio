@@ -83,6 +83,7 @@ export default function BrandGallery({ className, src }: BrandGalleryProps) {
               src={item.src}
               alt={item.alt}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 60vw"
             />
             {item.logoSrc && (
               <div className="w-24 h-12 sm:w-48 sm:h-24 absolute bottom-8 sm:bottom-4 right-8 sm:right-28 bg-white rounded flex items-center justify-center shadow-lg">

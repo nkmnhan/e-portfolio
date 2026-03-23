@@ -54,8 +54,11 @@ export function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps
       viewport={{ once: true }}
       transition={{ delay: index * 0.15, duration: 0.6, ease: "easeOut" }}
       style={{ "--_glow-color": `var(${accent.glowVar})` } as React.CSSProperties}
-      className="group relative glass rounded-xl overflow-hidden hover:shadow-[0_0_40px_color-mix(in_srgb,var(--_glow-color)_12%,transparent)] transition-shadow duration-500"
+      className="group relative glass rounded-xl overflow-hidden"
     >
+      {/* Hover glow (GPU-composited via opacity) */}
+      <div className="absolute inset-0 rounded-xl shadow-[0_0_40px_color-mix(in_srgb,var(--_glow-color)_12%,transparent)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
       {/* Left accent bar */}
       <div className={`absolute left-0 top-0 bottom-0 w-1 ${accent.bar}`} />
 

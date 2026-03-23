@@ -28,10 +28,10 @@ export function Experience() {
         <div className="space-y-12">
           {experienceData.map((entry, index) => (
             <motion.div key={entry.period} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.15 }} className="relative md:flex md:justify-center">
-              <div className="text-sm font-[family-name:var(--font-mono)] text-text-muted mb-2 md:absolute md:top-0 md:-translate-y-8 md:left-1/2 md:-translate-x-1/2 md:whitespace-nowrap">
+              <div className="ml-6 text-sm font-[family-name:var(--font-mono)] text-text-muted mb-2 md:ml-0 md:absolute md:top-0 md:-translate-y-8 md:left-1/2 md:-translate-x-1/2 md:whitespace-nowrap">
                 {entry.period}
               </div>
-              <div className={`absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 md:top-4 w-3 h-3 rounded-full ${dotColors[entry.accentColor]}`} />
+              <div className={`absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0.5 md:top-4 w-3 h-3 rounded-full ${dotColors[entry.accentColor]}`} />
               <div className={`ml-6 md:ml-0 md:max-w-lg glass rounded-xl p-5 border-l-2 ${accentColors[entry.accentColor]}`}>
                 <h3 className="text-lg font-semibold font-[family-name:var(--font-display)]">{entry.title}</h3>
                 <p className="text-text-muted text-sm">{entry.company || entry.context}</p>

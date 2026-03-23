@@ -1,6 +1,7 @@
 "use client";
 import { memo, useState, forwardRef } from "react";
 import Image, { ImageProps } from "next/image";
+import { clsxMerge } from "../themes/utils";
 import { ImagePlaceholder } from "../skeletons";
 
 // Extend ImageProps and add custom props
@@ -21,9 +22,10 @@ const AdaptiveImage = forwardRef<HTMLImageElement, AdaptiveImageProps>(
     ref
   ) => {
     const [isLoading, setIsLoading] = useState(true);
+    const isFill = imageProps.fill === true;
 
     return (
-      <div className={containerClass}>
+      <div className={clsxMerge(isFill && "relative w-full h-full", containerClass)}>
         {isLoading &&
           showSkeleton &&
           (customPlaceholder ? (
@@ -38,7 +40,7 @@ const AdaptiveImage = forwardRef<HTMLImageElement, AdaptiveImageProps>(
         <Image
           ref={ref}
           className={className}
-          onLoadingComplete={() => setIsLoading(false)}
+          onLoad={() => setIsLoading(false)}
           {...imageProps}
         />
       </div>

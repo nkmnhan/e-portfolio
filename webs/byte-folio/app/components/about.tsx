@@ -53,11 +53,11 @@ function BadgeCard({ badge, index }: { badge: GitHubBadge; index: number }) {
     >
       <div
         style={{ "--_badge-color": `var(${badge.colorVar})` } as React.CSSProperties}
-        className="flex items-center gap-3 px-4 py-3 glass rounded-xl border border-[color-mix(in_srgb,var(--_badge-color)_25%,transparent)] hover:border-[color-mix(in_srgb,var(--_badge-color)_50%,transparent)] hover:shadow-[0_0_25px_color-mix(in_srgb,var(--_badge-color)_20%,transparent)] transition-all duration-300 cursor-default"
+        className="flex items-center gap-3 px-4 py-3 glass rounded-xl border border-[color-mix(in_srgb,var(--_badge-color)_25%,transparent)] hover:border-[color-mix(in_srgb,var(--_badge-color)_50%,transparent)] transition-[border-color] duration-300 cursor-default"
       >
         {/* Icon with glow ring */}
         <div className="relative shrink-0">
-          <div className="w-11 h-11 rounded-full flex items-center justify-center bg-[color-mix(in_srgb,var(--_badge-color)_10%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--_badge-color)_30%,transparent)] group-hover:ring-[color-mix(in_srgb,var(--_badge-color)_60%,transparent)] group-hover:bg-[color-mix(in_srgb,var(--_badge-color)_15%,transparent)] transition-all duration-300">
+          <div className="w-11 h-11 rounded-full flex items-center justify-center bg-[color-mix(in_srgb,var(--_badge-color)_10%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--_badge-color)_30%,transparent)] group-hover:ring-[color-mix(in_srgb,var(--_badge-color)_60%,transparent)] group-hover:bg-[color-mix(in_srgb,var(--_badge-color)_15%,transparent)] transition-colors duration-300">
             {Icon && <Icon className="w-6 h-6 text-[var(--_badge-color)]" />}
           </div>
         </div>
@@ -78,8 +78,9 @@ export function About() {
       <TerminalHeading command="about --verbose" />
       <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
         <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="shrink-0">
-          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden ring-2 ring-primary/50" style={{ animation: "breathe 3s ease-in-out infinite" }}>
-            <Image src={aboutData.avatar} alt="Tony Nguyen — Senior Fullstack Developer" width={192} height={192} className="object-cover w-full h-full" priority />
+          <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden ring-2 ring-primary/50">
+            <div className="absolute -inset-2 rounded-full glow-primary pointer-events-none" style={{ animation: "breathe 3s ease-in-out infinite" }} />
+            <Image src={aboutData.avatar} alt="Tony Nguyen — Senior Fullstack Developer" width={192} height={192} className="relative object-cover w-full h-full" priority />
           </div>
         </motion.div>
         <div className="flex-1 text-center md:text-left">

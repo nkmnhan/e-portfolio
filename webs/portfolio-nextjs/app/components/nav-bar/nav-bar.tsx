@@ -95,6 +95,7 @@ export default function NavBar() {
                         className="mx-auto min-w-25 m-4 md:m-8"
                         width={150}
                         height={100}
+                        style={{ width: "auto", height: "auto" }}
                       />
                     </span>
                   </div>

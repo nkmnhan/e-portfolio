@@ -43,7 +43,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ transition: "transform 0.15s ease-out" }}
-      className="glass rounded-xl overflow-hidden group"
+      className="glass rounded-xl overflow-hidden group will-change-transform"
     >
       {project.thumbnail && (
         <div className="relative h-40 w-full overflow-hidden">

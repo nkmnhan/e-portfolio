@@ -43,7 +43,7 @@ test.describe("Theme Switcher — byte-folio", () => {
     await button.click();
 
     // Find the dropdown panel (parent of theme buttons)
-    const panel = page.locator(".fixed.right-4.bottom-4 > div").first();
+    const panel = page.locator("[class*='fixed'][class*='right-4'][class*='bottom-'] > div").first();
     const panelBg = await panel.evaluate((el) => getComputedStyle(el).backgroundColor);
     const panelBorder = await panel.evaluate((el) => getComputedStyle(el).borderColor);
     const panelDisplay = await panel.evaluate((el) => getComputedStyle(el).display);
@@ -94,7 +94,7 @@ test.describe("Theme Switcher — byte-folio", () => {
       const style = document.getElementById("eportfolio-theme-vars");
       return {
         exists: !!style,
-        content: style?.textContent?.slice(0, 200) ?? "N/A",
+        content: style?.textContent?.slice(0, 500) ?? "N/A",
       };
     });
     console.log("Style element exists:", styleContent.exists);
@@ -123,7 +123,7 @@ test.describe("Theme Switcher — byte-folio", () => {
 
   test("debug: check if theme-switcher component renders in DOM", async ({ page }) => {
     // Check the fixed container exists
-    const container = page.locator("[class*='fixed'][class*='right-4'][class*='bottom-4']");
+    const container = page.locator("[class*='fixed'][class*='right-4'][class*='bottom-']");
     const count = await container.count();
     console.log("Fixed bottom-right containers found:", count);
 
