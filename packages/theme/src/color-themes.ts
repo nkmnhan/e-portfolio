@@ -33,11 +33,11 @@ export const themes: ColorTheme[] = [
     label: "Deep Space",
     mode: "dark",
     palette: {
-      background: "#090909",
-      foreground: "#F0F0F0",
+      background: "#020614",
+      foreground: "#e9fbff",
       primary: "#43e0f7",
-      secondary: "#8657e8",
-      accent: "#d10057",
+      secondary: "#7649fe",
+      accent: "#f8bc04",
     },
   },
   {
