@@ -5,8 +5,10 @@ const monorepoRoot = path.resolve(__dirname, "../..");
 
 const nextConfig: NextConfig = {
   experimental: {
-    optimizePackageImports: ["react-icons"],
+    optimizePackageImports: ["react-icons", "framer-motion", "@react-three/drei"],
   },
+  compress: true,
+  poweredByHeader: false,
   transpilePackages: ["@eportfolio/ui", "@eportfolio/theme"],
   outputFileTracingRoot: monorepoRoot,
   turbopack: {
