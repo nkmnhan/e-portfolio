@@ -115,3 +115,10 @@ dist
 
 # Playwright
 test-results/
+playwright-report/
+
+# Lighthouse
+lighthouse-*.report.*
+
+# Storybook
+storybook-static/
