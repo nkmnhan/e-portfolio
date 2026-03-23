@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projectsData } from "@/lib/data/projects";
+import { FeaturedProjectCard } from "./featured-project-card";
 import { ProjectCard } from "./project-card";
 import { TerminalHeading } from "./terminal-heading";
 import { SectionWrapper } from "./section-wrapper";
@@ -21,20 +22,16 @@ export function Projects() {
   return (
     <SectionWrapper id="projects">
       <TerminalHeading command="ls ~/projects --featured" />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      {/* Featured: Deep Space Transmission cards */}
+      <div className="flex flex-col gap-8 mb-12">
         {featuredProjects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <ProjectCard project={project} />
-          </motion.div>
+          <FeaturedProjectCard key={project.id} project={project} index={index} />
         ))}
       </div>
 
+      {/* Secondary: compact grid */}
+      <TerminalHeading command="ls ~/projects --all" className="mt-4" />
       <AnimatePresence>
         {isShowingAll && (
           <motion.div
@@ -44,7 +41,7 @@ export function Projects() {
             transition={{ duration: 0.4 }}
             className="overflow-hidden"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {secondaryProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
@@ -66,8 +63,8 @@ export function Projects() {
           className="text-sm text-primary hover:text-primary-hover transition-colors font-[family-name:var(--font-mono)]"
         >
           {isShowingAll
-            ? "Show Featured Only"
-            : `View All (${projectsData.length}) \u2192`}
+            ? "< Hide Secondary Projects"
+            : `> View All (${secondaryProjects.length} more) \u2192`}
         </button>
       </div>
     </SectionWrapper>

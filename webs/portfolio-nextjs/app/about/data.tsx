@@ -1,15 +1,15 @@
 const HERO_INFO = {
   name: "Tony Nguyen",
   title: "Software Engineer",
-  experience: "8+ Years Experience",
+  experience: "9+ Years Experience",
   technologies: [".NET Core", "Microservices", "Cloud Architecture"],
 };
 
-const HERO_OVERVIEW = `Hi, I'm Tony Nguyen (Nhan), a Software Engineer with 8+ years of experience specializing in .NET Core, JavaScript frameworks, and microservices architecture. I'm passionate about building scalable, maintainable solutions and driving technical excellence in cross-functional teams. With a strong foundation in Agile/Scrum methodologies, I thrive on creating innovative web and mobile applications that solve real-world problems. My journey in tech has been driven by curiosity, continuous learning, and a commitment to clean code and system performance. Let's collaborate to bring your vision to life!`;
+const HERO_OVERVIEW = `Hi, I'm Tony Nguyen (Nhan), a Senior Software Engineer with 9+ years of experience specializing in .NET Core, Angular, microservices architecture, and cloud-native solutions. Currently at Orient Software, I'm building enterprise HR & Talent Management features on the BravoSUITE platform using .NET 9 microservices and Angular micro-frontends. Previously, I led development on Singapore's Ministry of Education platform with .NET MAUI and AWS. Beyond work, I continuously sharpen my skills through open-source projects on GitHub — from IdentityServer4 integrations and Elasticsearch experiments to Vue.js Docker workflows — earning Pull Shark (x2), Pair Extraordinaire, and YOLO badges along the way. I'm passionate about clean code, system performance, and driving technical excellence in cross-functional teams.`;
 
 const SUMMARY_STATS = [
   {
-    value: "8+",
+    value: "9+",
     label: "Years Experience",
   },
   {
@@ -50,7 +50,7 @@ const KEY_HIGHLIGHTS = [
     title: "Global Impact",
     lines: [
       "Singapore, Europe, Vietnam",
-      "Education, E-commerce, Manufacturing",
+      "HR & Talent, Education, E-commerce, Manufacturing",
     ],
   },
 ];
@@ -59,7 +59,7 @@ const ABOUT_STORY = [
   {
     title: "My Journey",
     description:
-      "Starting as a Software Engineer at Hitachi Consulting Vietnam in 2016, I worked on semiconductor manufacturing systems and enterprise solutions. Moving to NASH TECH in 2018, I deepened my expertise in microservices and cloud architecture. In 2019, I joined Orient Software as a Senior Software Engineer, leading development for European and Singaporean clients — building digital learning platforms, mobile applications, and cloud-native solutions. Throughout my career, I've continuously practiced and explored new technologies through personal GitHub projects.",
+      "Starting as a Software Engineer at Hitachi Consulting Vietnam in 2016, I worked on semiconductor manufacturing systems. Moving to NASH TECH in 2018, I deepened my expertise in microservices and cloud architecture. In 2019, I joined Orient Software as a Senior Software Engineer — leading development on Singapore's MOE platform, European microservices, and now building enterprise HR features on BravoSUITE with .NET 9 and Angular micro-frontends. Throughout my career, I've continuously sharpened my skills through open-source GitHub projects, earning Pull Shark (x2), Pair Extraordinaire, and YOLO badges.",
     timeline: [
       {
         period: "2016 - 2018",
@@ -99,10 +99,13 @@ const ABOUT_STORY = [
   {
     title: "Projects & Creations",
     description:
-      "Led development on MOE platform for Singapore's Ministry of Education (2020-present), building .NET MAUI mobile apps, AWS Lambda functions, and implementing Playwright automation. Architected Lowell microservices system on Azure for European clients. Contributed to Open Create for UK's Open University, transforming static materials into dynamic learning experiences. Built MES systems for semiconductor factories using IBM frameworks.",
+      "Currently implementing Talent Acquisition features on BravoSUITE, an enterprise HR & Talent Management platform with .NET 9 microservices and Angular micro-frontends. Previously led MOE platform microservices design for Singapore's Ministry of Education (2020-2025) with ASP.NET Core, Angular, .NET MAUI, and AWS. Architected Lowell microservices on Azure for European clients. Contributed to Open Create for UK's Open University. Built MES systems for semiconductor factories.",
     textContent: [
+      "🚀 BravoSUITE - Enterprise HR & Talent Management",
+      ".NET 9 Microservices, Angular Micro-Frontends",
+      "━━━━━━━━━━",
       "🏆 MOE Platform - Ministry of Education Singapore",
-      ".NET MAUI, AWS Lambda, Playwright",
+      "ASP.NET Core, Angular, .NET MAUI, AWS, Playwright",
       "━━━━━━━━━━",
       "🏛️ Lowell Microservices - European Clients",
       "Azure, .NET Core, Event-Driven Architecture",

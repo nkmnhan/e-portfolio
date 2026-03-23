@@ -46,7 +46,7 @@ export function NavDots() {
           <span
             className={`w-3 h-3 rounded-full transition-all ${
               activeSection === id
-                ? "bg-primary glow-cyan scale-125"
+                ? "bg-primary glow-primary scale-125"
                 : "bg-text-muted/30 hover:bg-text-muted/60"
             }`}
           />

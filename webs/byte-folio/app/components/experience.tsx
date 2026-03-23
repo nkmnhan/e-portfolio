@@ -14,8 +14,8 @@ const accentColors: Record<ExperienceEntry["accentColor"], string> = {
 };
 
 const dotColors: Record<ExperienceEntry["accentColor"], string> = {
-  primary: "bg-primary shadow-[0_0_10px_rgba(67,224,247,0.5)]",
-  secondary: "bg-secondary shadow-[0_0_10px_rgba(118,73,254,0.5)]",
+  primary: "bg-primary shadow-[0_0_10px_color-mix(in_srgb,var(--color-primary)_50%,transparent)]",
+  secondary: "bg-secondary shadow-[0_0_10px_color-mix(in_srgb,var(--color-secondary)_50%,transparent)]",
   muted: "bg-text-muted",
 };
 

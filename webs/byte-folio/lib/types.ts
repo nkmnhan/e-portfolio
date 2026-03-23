@@ -23,12 +23,20 @@ export interface HeroData {
   secondaryCta: { label: string; href: string };
 }
 
+export interface GitHubBadge {
+  id: string;
+  label: string;
+  description: string;
+  colorVar: string;
+}
+
 export interface AboutData {
   avatar: string;
   bio: string[];
   stats: Array<{ value: string; label: string }>;
   education: string;
   availability: string;
+  githubBadges: GitHubBadge[];
 }
 
 export interface ExperienceEntry {
@@ -45,6 +53,8 @@ export interface Project {
   id: string;
   title: string;
   subtitle: string;
+  description?: string;
+  highlights?: string[];
   thumbnail?: string;
   techStack: string[];
   githubUrl: string;
@@ -57,6 +67,18 @@ export interface Project {
 export interface SkillCategory {
   name: string;
   skills: Array<{ name: string; iconName: string }>;
+}
+
+export interface KeyProject {
+  id: string;
+  name: string;
+  client: string;
+  role: string;
+  period: string;
+  description: string;
+  impact: string;
+  techStack: string[];
+  accentColor: "primary" | "secondary" | "accent";
 }
 
 export interface ContactData {

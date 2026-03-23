@@ -28,7 +28,7 @@ const SKILLS = [
 const JOURNEY = {
   title: "My Journey",
   description:
-    "Starting as a Software Engineer at Hitachi Consulting Vietnam in 2016, I worked on semiconductor manufacturing systems and enterprise solutions. Moving to NASH TECH in 2018, I deepened my expertise in microservices and cloud architecture. In 2019, I joined Orient Software as a Senior Software Engineer, leading development for European and Singaporean clients — building digital learning platforms, mobile applications, and cloud-native solutions. Throughout my career, I've continuously practiced and explored new technologies through personal GitHub projects.",
+    "Starting as a Software Engineer at Hitachi Consulting Vietnam in 2016, I worked on semiconductor manufacturing systems. Moving to NASH TECH in 2018, I deepened my expertise in microservices and cloud architecture. In 2019, I joined Orient Software as a Senior Software Engineer — leading development on Singapore's MOE platform, European microservices, and now building enterprise HR features on BravoSUITE with .NET 9 and Angular micro-frontends. Throughout my career, I've continuously sharpened my skills through open-source GitHub projects, earning Pull Shark (x2), Pair Extraordinaire, and YOLO badges.",
   timeline: [
     {
       period: "2016 - 2018",
@@ -54,11 +54,15 @@ const JOURNEY = {
 const PROJECTS = {
   title: "Projects",
   description:
-    "Led development on MOE platform for Singapore's Ministry of Education (2020-present), building .NET MAUI mobile apps, AWS Lambda functions, and implementing Playwright automation. Architected Lowell microservices system on Azure for European clients. Contributed to Open Create for UK's Open University, transforming static materials into dynamic learning experiences. Built MES systems for semiconductor factories using IBM frameworks.",
+    "Currently implementing Talent Acquisition features on BravoSUITE, an enterprise HR & Talent Management platform with .NET 9 microservices and Angular micro-frontends. Previously led development on MOE platform for Singapore's Ministry of Education (2020-2025), building .NET MAUI mobile apps, AWS Lambda functions, and Playwright automation. Architected Lowell microservices on Azure for European clients. Contributed to Open Create for UK's Open University. Built MES systems for semiconductor factories.",
   items: [
     {
+      name: "BravoSUITE - Enterprise HR & Talent Management",
+      technologies: ".NET 9 Microservices, Angular Micro-Frontends, Talent Acquisition",
+    },
+    {
       name: "MOE Platform - Ministry of Education Singapore",
-      technologies: ".NET MAUI, AWS Lambda, Playwright",
+      technologies: "ASP.NET Core, Angular, .NET MAUI, AWS, Playwright",
     },
     {
       name: "Lowell Microservices - European Clients",

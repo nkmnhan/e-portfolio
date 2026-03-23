@@ -10,7 +10,7 @@ export const siteConfig: SiteConfig = {
   name: "Tony Nguyen",
   title: "Tony Nguyen | Senior Fullstack Developer",
   description:
-    "Portfolio of Tony Nguyen — Senior Software Engineer specializing in .NET Core, React, Next.js, and microservices architecture. 8+ years building scalable systems across Singapore, Europe, and Vietnam.",
+    "Portfolio of Tony Nguyen — Senior Software Engineer specializing in .NET Core, Angular, microservices architecture, and cloud-native solutions. 9+ years building scalable systems across Singapore, Europe, and Vietnam.",
   url: "https://byte-folio.nkmnhan.com",
   ogImage: "/og-image.png",
   socialLinks: [
