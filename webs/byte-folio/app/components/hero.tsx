@@ -1,5 +1,3 @@
-"use client";
-
 import { heroData } from "@/lib/data/hero";
 import { getSocialLinksFor } from "@/lib/data/site-config";
 import { StarfieldCSS } from "./starfield-css";

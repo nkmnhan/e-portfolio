@@ -41,7 +41,7 @@ export function NavDots() {
 
   return (
     <nav
-      className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3 will-change-transform"
+      className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3"
       aria-label="Page sections"
     >
       {sections.map(({ id, label }) => (

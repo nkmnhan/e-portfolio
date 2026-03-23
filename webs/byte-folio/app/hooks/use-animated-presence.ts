@@ -14,11 +14,13 @@ export function useAnimatedPresence(isOpen: boolean, duration = 300) {
   useEffect(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
 
+    let rafId1: number;
+    let rafId2: number;
+
     if (isOpen) {
       setShouldRender(true);
-      // Delay visibility to next frame so the enter transition plays
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => setIsVisible(true));
+      rafId1 = requestAnimationFrame(() => {
+        rafId2 = requestAnimationFrame(() => setIsVisible(true));
       });
     } else {
       setIsVisible(false);
@@ -27,6 +29,8 @@ export function useAnimatedPresence(isOpen: boolean, duration = 300) {
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
+      cancelAnimationFrame(rafId1);
+      cancelAnimationFrame(rafId2);
     };
   }, [isOpen, duration]);
 

@@ -16,7 +16,7 @@ export function NavMobile() {
   return (
     <>
       {/* Bottom bar */}
-      <div className="md:hidden fixed bottom-0 inset-x-0 w-full z-40 glass border-t border-border/50 will-change-transform">
+      <div className="md:hidden fixed bottom-0 inset-x-0 w-full z-40 glass border-t border-border/50">
         <div className="flex justify-between items-center px-5 py-3 pr-16">
           <button
             onClick={() => setIsOpen(true)}

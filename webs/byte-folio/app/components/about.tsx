@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
 import { FaGraduationCap, FaLocationDot } from "react-icons/fa6";
 import { aboutData } from "@/lib/data/about";

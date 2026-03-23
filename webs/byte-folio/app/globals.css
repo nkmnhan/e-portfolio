@@ -57,14 +57,6 @@
     border: 1px solid rgba(30, 58, 95, 0.5);
   }
 
-  .glow-cyan {
-    box-shadow: 0 0 20px rgba(67, 224, 247, 0.3);
-  }
-
-  .glow-cyan-text {
-    text-shadow: 0 0 10px rgba(67, 224, 247, 0.5);
-  }
-
   .glow-primary {
     box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 30%, transparent);
   }
@@ -83,6 +75,7 @@
   .view-hidden.view-visible {
     opacity: 1;
     transform: translateY(0);
+    will-change: auto;
   }
   .view-hidden-left {
     opacity: 0;
@@ -93,6 +86,7 @@
   .view-hidden-left.view-visible {
     opacity: 1;
     transform: translateX(0);
+    will-change: auto;
   }
   .view-hidden-scale {
     opacity: 0;
@@ -103,6 +97,7 @@
   .view-hidden-scale.view-visible {
     opacity: 1;
     transform: scale(1);
+    will-change: auto;
   }
 
   /* Animated presence transitions */
