@@ -1,10 +1,35 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { heroData } from "@/lib/data/hero";
 import { siteConfig } from "@/lib/data/site-config";
 import { StarfieldCSS } from "./starfield-css";
 import { socialIcons } from "./social-icons";
+
+const StarfieldR3F = dynamic(
+  () => import("./starfield").then((mod) => ({ default: mod.Starfield })),
+  { ssr: false }
+);
+
+function HeroBackground() {
+  const [useWebGL, setUseWebGL] = useState(false);
+  const [starCount, setStarCount] = useState(2000);
+
+  useEffect(() => {
+    const hasPower = (navigator.hardwareConcurrency ?? 1) >= 4;
+    const isDesktop = window.innerWidth >= 768;
+    setUseWebGL(hasPower && isDesktop);
+    setStarCount(window.innerWidth >= 1280 ? 2000 : 800);
+  }, []);
+
+  if (useWebGL) {
+    return <StarfieldR3F count={starCount} />;
+  }
+
+  return <StarfieldCSS />;
+}
 
 export function Hero() {
   const heroSocials = siteConfig.socialLinks.filter(
@@ -13,7 +38,7 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-5 overflow-hidden">
-      <StarfieldCSS />
+      <HeroBackground />
       <div className="relative z-10 text-center max-w-3xl mx-auto">
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-text-muted text-sm font-[family-name:var(--font-mono)]">
           {heroData.greeting}
