@@ -46,6 +46,47 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen bg-bg text-text font-[family-name:var(--font-sans)] antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Person",
+                  name: "Tony Nguyen",
+                  jobTitle: "Senior Fullstack Developer",
+                  url: siteConfig.url,
+                  sameAs: [
+                    "https://github.com/nkmnhan",
+                    "https://linkedin.com/in/nkmnhan",
+                  ],
+                  knowsAbout: [
+                    ".NET Core", "React", "Next.js", "TypeScript",
+                    "Microservices", "Docker", "AWS", "Azure",
+                  ],
+                },
+                {
+                  "@type": "WebSite",
+                  name: "Tony Nguyen Portfolio",
+                  url: siteConfig.url,
+                  author: { "@type": "Person", name: "Tony Nguyen" },
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  name: ["About", "Experience", "Projects", "Skills", "Contact"],
+                  url: [
+                    `${siteConfig.url}#about`,
+                    `${siteConfig.url}#experience`,
+                    `${siteConfig.url}#projects`,
+                    `${siteConfig.url}#skills`,
+                    `${siteConfig.url}#contact`,
+                  ],
+                },
+              ],
+            }),
+          }}
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-bg focus:rounded-md"
