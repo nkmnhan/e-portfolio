@@ -7,7 +7,6 @@ export const skillsData: SkillCategory[] = [
       { name: "C#", iconName: "SiSharp" },
       { name: "TypeScript", iconName: "SiTypescript" },
       { name: "JavaScript", iconName: "SiJavascript" },
-      { name: "Python", iconName: "SiPython" },
       { name: "SQL", iconName: "SiPostgresql" },
     ],
   },
@@ -19,7 +18,6 @@ export const skillsData: SkillCategory[] = [
       { name: "Vue.js", iconName: "SiVuedotjs" },
       { name: "Angular", iconName: "SiAngular" },
       { name: "Tailwind CSS", iconName: "SiTailwindcss" },
-      { name: "Framer Motion", iconName: "SiFramer" },
     ],
   },
   {
@@ -39,7 +37,6 @@ export const skillsData: SkillCategory[] = [
       { name: "MongoDB", iconName: "SiMongodb" },
       { name: "Elasticsearch", iconName: "SiElasticsearch" },
       { name: "SQL Server", iconName: "FaDatabase" },
-      { name: "DynamoDB", iconName: "FaDatabase" },
     ],
   },
   {

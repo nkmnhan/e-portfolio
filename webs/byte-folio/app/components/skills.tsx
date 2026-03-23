@@ -18,7 +18,7 @@ function SkillCategory({ category, index }: { category: (typeof skillsData)[numb
       <h3 className="text-sm font-semibold text-primary font-[family-name:var(--font-mono)] mb-4">
         {category.name}
       </h3>
-      <div className="grid grid-cols-5 gap-3">
+      <div className="flex flex-wrap gap-3 justify-center md:justify-start">
         {category.skills.map((skill) => (
           <SkillIcon
             key={skill.name}

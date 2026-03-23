@@ -4,14 +4,12 @@ import {
   SiSharp,
   SiTypescript,
   SiJavascript,
-  SiPython,
   SiPostgresql,
   SiReact,
   SiNextdotjs,
   SiVuedotjs,
   SiAngular,
   SiTailwindcss,
-  SiFramer,
   SiDotnet,
   SiNodedotjs,
   SiGraphql,
@@ -30,21 +28,18 @@ import {
   FaMicrosoft,
   FaDatabase,
   FaServer,
-  FaCloud,
 } from "react-icons/fa6";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   SiSharp,
   SiTypescript,
   SiJavascript,
-  SiPython,
   SiPostgresql,
   SiReact,
   SiNextdotjs,
   SiVuedotjs,
   SiAngular,
   SiTailwindcss,
-  SiFramer,
   SiDotnet,
   SiNodedotjs,
   SiGraphql,
@@ -61,7 +56,6 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   FaMicrosoft,
   FaDatabase,
   FaServer,
-  FaCloud,
 };
 
 interface SkillIconProps {
@@ -73,7 +67,7 @@ export function SkillIcon({ name, iconName }: SkillIconProps) {
   const Icon = iconMap[iconName];
 
   return (
-    <div className="flex flex-col items-center gap-1.5 group">
+    <div className="flex flex-col items-center gap-1.5 group w-16 md:w-20">
       {Icon ? (
         <Icon className="w-8 h-8 text-text-muted transition-[color,filter] duration-200 group-hover:text-primary group-hover:drop-shadow-[0_0_8px_rgba(67,224,247,0.5)]" />
       ) : (
