@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { contactData } from "@/lib/data/contact";
 import { getSocialLinksFor } from "@/lib/data/site-config";
 import { SocialLinkItem } from "./social-link-item";
 import { TerminalHeading } from "./terminal-heading";
 import { SectionWrapper } from "./section-wrapper";
+import { useInView, useAnimatedPresence } from "@/app/hooks";
 
 const contactSocials = getSocialLinksFor("contact");
 
@@ -19,6 +19,8 @@ export function Contact() {
   const [formMessage, setFormMessage] = useState("");
   const [isToastVisible, setIsToastVisible] = useState(false);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout>>(null);
+  const { ref: formRef, isInView: formInView } = useInView();
+  const { shouldRender: toastShouldRender, isVisible: toastIsVisible } = useAnimatedPresence(isToastVisible);
 
   useEffect(() => {
     return () => {
@@ -46,11 +48,9 @@ export function Contact() {
     <SectionWrapper id="contact">
       <TerminalHeading command={contactData.heading} />
       <div className="flex justify-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="glass rounded-xl p-6 md:p-8 w-full max-w-md"
+        <div
+          ref={formRef}
+          className={`glass rounded-xl p-6 md:p-8 w-full max-w-md view-hidden ${formInView ? "view-visible" : ""}`}
         >
           <p className="text-text-secondary text-sm mb-6">
             {contactData.description}
@@ -124,21 +124,17 @@ export function Contact() {
               <SocialLinkItem key={link.platform} link={link} />
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
 
-      <AnimatePresence>
-        {isToastVisible && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-6 right-6 glass rounded-lg px-4 py-3 text-sm text-primary z-50"
-          >
-            Message prepared — check your email client.
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {toastShouldRender && (
+        <div
+          className={`fixed bottom-6 right-6 glass rounded-lg px-4 py-3 text-sm text-primary z-50 presence-fade ${toastIsVisible ? "presence-visible" : ""}`}
+          style={{ transform: toastIsVisible ? "translateY(0)" : "translateY(20px)" }}
+        >
+          Message prepared — check your email client.
+        </div>
+      )}
     </SectionWrapper>
   );
 }

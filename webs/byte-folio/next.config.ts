@@ -5,7 +5,7 @@ const monorepoRoot = path.resolve(__dirname, "../..");
 
 const nextConfig: NextConfig = {
   experimental: {
-    optimizePackageImports: ["react-icons", "framer-motion", "@react-three/drei"],
+    optimizePackageImports: ["react-icons"],
   },
   compress: true,
   poweredByHeader: false,

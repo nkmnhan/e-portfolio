@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
 import type { Project } from "@/lib/types";
 import { TechBadge } from "./tech-badge";
@@ -38,7 +37,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       : null;
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -88,6 +87,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </a>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

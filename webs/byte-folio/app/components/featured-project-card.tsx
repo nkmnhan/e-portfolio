@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useInView } from "@/app/hooks";
 import { FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
 import type { Project } from "@/lib/types";
 import { TechBadge } from "./tech-badge";
@@ -38,6 +38,7 @@ interface FeaturedProjectCardProps {
 }
 
 export function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps) {
+  const { ref, isInView } = useInView();
   const accent = accents[index % accents.length];
   const number = String(index + 1).padStart(2, "0");
 
@@ -48,13 +49,13 @@ export function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps
       : null;
 
   return (
-    <motion.article
-      initial={{ opacity: 0, x: -40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.15, duration: 0.6, ease: "easeOut" }}
-      style={{ "--_glow-color": `var(${accent.glowVar})` } as React.CSSProperties}
-      className="group relative glass rounded-xl overflow-hidden"
+    <article
+      ref={ref}
+      style={{
+        "--_glow-color": `var(${accent.glowVar})`,
+        transitionDelay: `${index * 0.15}s`,
+      } as React.CSSProperties}
+      className={`group relative glass rounded-xl overflow-hidden view-hidden-left ${isInView ? "view-visible" : ""}`}
     >
       {/* Hover glow (GPU-composited via opacity) */}
       <div className="absolute inset-0 rounded-xl shadow-[0_0_40px_color-mix(in_srgb,var(--_glow-color)_12%,transparent)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -146,6 +147,6 @@ export function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps
           </a>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }

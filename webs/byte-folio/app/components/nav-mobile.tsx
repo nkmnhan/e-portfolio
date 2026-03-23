@@ -1,16 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaChevronUp, FaXmark } from "react-icons/fa6";
 import { getSocialLinksFor } from "@/lib/data/site-config";
 import { sections } from "@/lib/data/sections";
 import { SocialLinkItem } from "./social-link-item";
+import { useAnimatedPresence } from "@/app/hooks";
 
 const navSocials = getSocialLinksFor("nav");
 
 export function NavMobile() {
   const [isOpen, setIsOpen] = useState(false);
+  const { shouldRender, isVisible } = useAnimatedPresence(isOpen, 300);
 
   return (
     <>
@@ -37,65 +38,56 @@ export function NavMobile() {
       </div>
 
       {/* Slide-up sheet */}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="md:hidden fixed inset-0 z-50 bg-black/60"
-            />
-            {/* Sheet */}
-            <motion.div
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="md:hidden fixed bottom-0 left-0 right-0 z-50 glass rounded-t-2xl border-t border-border/50"
-            >
-              <div className="p-5">
-                {/* Handle */}
-                <div className="flex justify-center mb-4">
-                  <div className="w-10 h-1 rounded-full bg-text-muted/30" />
-                </div>
-
-                {/* Close button */}
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="absolute top-4 right-4 p-2 text-text-muted"
-                  aria-label="Close navigation menu"
-                >
-                  <FaXmark className="w-5 h-5" />
-                </button>
-
-                {/* Section links */}
-                <nav aria-label="Page sections">
-                  {sections.map(({ id, label }) => (
-                    <a
-                      key={id}
-                      href={`#${id}`}
-                      onClick={() => setIsOpen(false)}
-                      className="block py-3 text-text-secondary hover:text-primary transition-colors text-base"
-                    >
-                      {label}
-                    </a>
-                  ))}
-                </nav>
-
-                {/* Social links */}
-                <div className="flex gap-4 mt-4 pt-4 border-t border-border/30">
-                  {navSocials.map((link) => (
-                    <SocialLinkItem key={link.platform} link={link} />
-                  ))}
-                </div>
+      {shouldRender && (
+        <>
+          {/* Backdrop */}
+          <div
+            onClick={() => setIsOpen(false)}
+            className={`md:hidden fixed inset-0 z-50 bg-black/60 presence-fade ${isVisible ? "presence-visible" : ""}`}
+          />
+          {/* Sheet */}
+          <div
+            className={`md:hidden fixed bottom-0 left-0 right-0 z-50 glass rounded-t-2xl border-t border-border/50 presence-slide-up ${isVisible ? "presence-visible" : ""}`}
+          >
+            <div className="p-5">
+              {/* Handle */}
+              <div className="flex justify-center mb-4">
+                <div className="w-10 h-1 rounded-full bg-text-muted/30" />
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+
+              {/* Close button */}
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute top-4 right-4 p-2 text-text-muted"
+                aria-label="Close navigation menu"
+              >
+                <FaXmark className="w-5 h-5" />
+              </button>
+
+              {/* Section links */}
+              <nav aria-label="Page sections">
+                {sections.map(({ id, label }) => (
+                  <a
+                    key={id}
+                    href={`#${id}`}
+                    onClick={() => setIsOpen(false)}
+                    className="block py-3 text-text-secondary hover:text-primary transition-colors text-base"
+                  >
+                    {label}
+                  </a>
+                ))}
+              </nav>
+
+              {/* Social links */}
+              <div className="flex gap-4 mt-4 pt-4 border-t border-border/30">
+                {navSocials.map((link) => (
+                  <SocialLinkItem key={link.platform} link={link} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }

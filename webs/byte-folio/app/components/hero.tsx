@@ -1,42 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
 import { heroData } from "@/lib/data/hero";
 import { getSocialLinksFor } from "@/lib/data/site-config";
 import { StarfieldCSS } from "./starfield-css";
 import { SocialLinkItem } from "./social-link-item";
-
-const StarfieldR3F = dynamic(
-  () => import("./starfield").then((mod) => ({ default: mod.Starfield })),
-  { ssr: false, loading: () => <StarfieldCSS /> }
-);
-
-function HeroBackground() {
-  const [webgl, setWebgl] = useState<{ enabled: false } | { enabled: true; starCount: number }>({ enabled: false });
-
-  useEffect(() => {
-    const hasPower = (navigator.hardwareConcurrency ?? 1) >= 4;
-    const isDesktop = window.innerWidth >= 768;
-    if (hasPower && isDesktop) {
-      setWebgl({ enabled: true, starCount: window.innerWidth >= 1280 ? 2000 : 800 });
-    }
-  }, []);
-
-  if (webgl.enabled) {
-    return <StarfieldR3F count={webgl.starCount} />;
-  }
-
-  return <StarfieldCSS />;
-}
 
 const heroSocials = getSocialLinksFor("hero");
 
 export function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-5 overflow-hidden">
-      <HeroBackground />
+      <StarfieldCSS />
       <div className="relative z-10 text-center max-w-3xl mx-auto">
         <p className="text-text-muted text-sm font-[family-name:var(--font-mono)] animate-[fadeInUp_0.5s_ease-out_both]">
           {heroData.greeting}
@@ -51,19 +25,19 @@ export function Hero() {
         <p className="text-text-muted mt-2 font-[family-name:var(--font-mono)] text-xs md:text-sm animate-[fadeIn_0.5s_0.7s_ease-out_both]">
           <span className="text-primary">{">"}</span> {heroData.specialization}
         </p>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.9 }} className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center animate-[fadeInUp_0.5s_0.9s_ease-out_both]">
           <a href={heroData.primaryCta.href} className="px-6 py-3 bg-primary text-bg font-semibold rounded-lg glow-primary hover:brightness-110 transition-[filter] duration-200 text-center">
             {heroData.primaryCta.label}
           </a>
           <a href={heroData.secondaryCta.href} className="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-colors text-center">
             {heroData.secondaryCta.label}
           </a>
-        </motion.div>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 1.1 }} className="mt-6 flex gap-4 justify-center">
+        </div>
+        <div className="mt-6 flex gap-4 justify-center animate-[fadeIn_0.5s_1.1s_ease-out_both]">
           {heroSocials.map((link) => (
             <SocialLinkItem key={link.platform} link={link} />
           ))}
-        </motion.div>
+        </div>
       </div>
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-text-muted" aria-hidden="true" style={{ animation: "bounce-down 2s ease-in-out infinite" }}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
