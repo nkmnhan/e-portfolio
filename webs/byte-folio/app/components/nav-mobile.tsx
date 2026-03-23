@@ -3,16 +3,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaChevronUp, FaXmark } from "react-icons/fa6";
-import { siteConfig } from "@/lib/data/site-config";
+import { getSocialLinksFor } from "@/lib/data/site-config";
 import { sections } from "@/lib/data/sections";
-import { socialIcons } from "./social-icons";
+import { SocialLinkItem } from "./social-link-item";
+
+const navSocials = getSocialLinksFor("nav");
 
 export function NavMobile() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const navSocials = siteConfig.socialLinks.filter(
-    (link) => !link.showIn || link.showIn.includes("nav")
-  );
 
   return (
     <>
@@ -29,6 +27,7 @@ export function NavMobile() {
           </button>
           <a
             href="#hero"
+            aria-label="Back to top"
             className="flex items-center gap-2 text-text-secondary text-sm"
           >
             <FaChevronUp className="w-4 h-4" />
@@ -88,21 +87,9 @@ export function NavMobile() {
 
                 {/* Social links */}
                 <div className="flex gap-4 mt-4 pt-4 border-t border-border/30">
-                  {navSocials.map((link) => {
-                    const Icon = socialIcons[link.platform];
-                    return Icon ? (
-                      <a
-                        key={link.platform}
-                        href={link.url}
-                        target={link.platform !== "email" ? "_blank" : undefined}
-                        rel={link.platform !== "email" ? "noopener noreferrer" : undefined}
-                        aria-label={link.label}
-                        className="p-2 text-text-muted hover:text-primary transition-colors"
-                      >
-                        <Icon className="w-5 h-5" />
-                      </a>
-                    ) : null;
-                  })}
+                  {navSocials.map((link) => (
+                    <SocialLinkItem key={link.platform} link={link} />
+                  ))}
                 </div>
               </div>
             </motion.div>

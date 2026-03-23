@@ -4,9 +4,9 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { heroData } from "@/lib/data/hero";
-import { siteConfig } from "@/lib/data/site-config";
+import { getSocialLinksFor } from "@/lib/data/site-config";
 import { StarfieldCSS } from "./starfield-css";
-import { socialIcons } from "./social-icons";
+import { SocialLinkItem } from "./social-link-item";
 
 const StarfieldR3F = dynamic(
   () => import("./starfield").then((mod) => ({ default: mod.Starfield })),
@@ -40,11 +40,9 @@ function HeroBackground() {
   return <StarfieldCSS />;
 }
 
-export function Hero() {
-  const heroSocials = siteConfig.socialLinks.filter(
-    (link) => !link.showIn || link.showIn.includes("hero")
-  );
+const heroSocials = getSocialLinksFor("hero");
 
+export function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-5 overflow-hidden">
       <HeroBackground />
@@ -71,17 +69,12 @@ export function Hero() {
           </a>
         </motion.div>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 1.1 }} className="mt-6 flex gap-4 justify-center">
-          {heroSocials.map((link) => {
-            const Icon = socialIcons[link.platform];
-            return Icon ? (
-              <a key={link.platform} href={link.url} target={link.platform !== "email" ? "_blank" : undefined} rel={link.platform !== "email" ? "noopener noreferrer" : undefined} aria-label={link.label} className="text-text-muted hover:text-primary transition-colors p-2">
-                <Icon className="w-5 h-5" />
-              </a>
-            ) : null;
-          })}
+          {heroSocials.map((link) => (
+            <SocialLinkItem key={link.platform} link={link} />
+          ))}
         </motion.div>
       </div>
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-text-muted" style={{ animation: "bounce-down 2s ease-in-out infinite" }}>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-text-muted" aria-hidden="true" style={{ animation: "bounce-down 2s ease-in-out infinite" }}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
         </svg>

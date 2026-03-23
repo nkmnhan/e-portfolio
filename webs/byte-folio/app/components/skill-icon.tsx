@@ -72,22 +72,15 @@ interface SkillIconProps {
 export function SkillIcon({ name, iconName }: SkillIconProps) {
   const Icon = iconMap[iconName];
 
-  if (!Icon) {
-    return (
-      <div className="flex flex-col items-center gap-1.5 group">
+  return (
+    <div className="flex flex-col items-center gap-1.5 group">
+      {Icon ? (
+        <Icon className="w-8 h-8 text-text-muted transition-colors duration-200 group-hover:text-primary group-hover:drop-shadow-[0_0_8px_rgba(67,224,247,0.5)]" />
+      ) : (
         <div className="w-8 h-8 rounded bg-surface flex items-center justify-center text-text-muted text-xs">
           ?
         </div>
-        <span className="text-xs text-text-muted text-center leading-tight">
-          {name}
-        </span>
-      </div>
-    );
-  }
-
-  return (
-    <div className="flex flex-col items-center gap-1.5 group">
-      <Icon className="w-8 h-8 text-text-muted transition-colors duration-200 group-hover:text-primary group-hover:drop-shadow-[0_0_8px_rgba(67,224,247,0.5)]" />
+      )}
       <span className="text-xs text-text-muted group-hover:text-text-secondary transition-colors text-center leading-tight">
         {name}
       </span>

@@ -4,14 +4,16 @@ import { motion } from "framer-motion";
 import { experienceData } from "@/lib/data/experience";
 import { TerminalHeading } from "./terminal-heading";
 import { SectionWrapper } from "./section-wrapper";
+import { TechBadge } from "./tech-badge";
+import type { ExperienceEntry } from "@/lib/types";
 
-const accentColors = {
+const accentColors: Record<ExperienceEntry["accentColor"], string> = {
   primary: "border-l-primary",
   secondary: "border-l-secondary",
   muted: "border-l-text-muted",
 };
 
-const dotColors = {
+const dotColors: Record<ExperienceEntry["accentColor"], string> = {
   primary: "bg-primary shadow-[0_0_10px_rgba(67,224,247,0.5)]",
   secondary: "bg-secondary shadow-[0_0_10px_rgba(118,73,254,0.5)]",
   muted: "bg-text-muted",
@@ -35,7 +37,7 @@ export function Experience() {
                 <p className="text-text-muted text-sm">{entry.company || entry.context}</p>
                 <div className="flex flex-wrap gap-2 mt-3">
                   {entry.techStack.map((tech) => (
-                    <span key={tech} className="px-2 py-0.5 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">{tech}</span>
+                    <TechBadge key={tech} label={tech} />
                   ))}
                 </div>
                 <ul className="mt-3 space-y-1">

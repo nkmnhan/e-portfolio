@@ -1,4 +1,10 @@
-import type { SiteConfig } from "@/lib/types";
+import type { SiteConfig, SocialLink } from "@/lib/types";
+
+export function getSocialLinksFor(section: "hero" | "contact" | "nav"): SocialLink[] {
+  return siteConfig.socialLinks.filter(
+    (link) => !link.showIn || link.showIn.includes(section)
+  );
+}
 
 export const siteConfig: SiteConfig = {
   name: "Tony Nguyen",

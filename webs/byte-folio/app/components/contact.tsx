@@ -1,22 +1,30 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { contactData } from "@/lib/data/contact";
-import { siteConfig } from "@/lib/data/site-config";
-import { socialIcons } from "./social-icons";
+import { getSocialLinksFor } from "@/lib/data/site-config";
+import { SocialLinkItem } from "./social-link-item";
 import { TerminalHeading } from "./terminal-heading";
 import { SectionWrapper } from "./section-wrapper";
+
+const contactSocials = getSocialLinksFor("contact");
+
+const inputClassName =
+  "w-full px-3 py-2 rounded-lg bg-surface text-text border border-border focus:border-primary focus:outline-none transition-colors text-sm";
 
 export function Contact() {
   const [formName, setFormName] = useState("");
   const [formEmail, setFormEmail] = useState("");
   const [formMessage, setFormMessage] = useState("");
   const [isToastVisible, setIsToastVisible] = useState(false);
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout>>(null);
 
-  const contactSocials = siteConfig.socialLinks.filter(
-    (link) => !link.showIn || link.showIn.includes("contact")
-  );
+  useEffect(() => {
+    return () => {
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    };
+  }, []);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,8 +37,9 @@ export function Contact() {
 
     window.open(mailtoUrl, "_blank");
 
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
     setIsToastVisible(true);
-    setTimeout(() => setIsToastVisible(false), 4000);
+    toastTimerRef.current = setTimeout(() => setIsToastVisible(false), 4000);
   }
 
   return (
@@ -61,7 +70,7 @@ export function Contact() {
                 required
                 value={formName}
                 onChange={(event) => setFormName(event.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-surface text-text border border-border focus:border-primary focus:outline-none transition-colors text-sm"
+                className={inputClassName}
                 placeholder="Your name"
               />
             </div>
@@ -79,7 +88,7 @@ export function Contact() {
                 required
                 value={formEmail}
                 onChange={(event) => setFormEmail(event.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-surface text-text border border-border focus:border-primary focus:outline-none transition-colors text-sm"
+                className={inputClassName}
                 placeholder="you@example.com"
               />
             </div>
@@ -97,7 +106,7 @@ export function Contact() {
                 rows={4}
                 value={formMessage}
                 onChange={(event) => setFormMessage(event.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-surface text-text border border-border focus:border-primary focus:outline-none transition-colors text-sm resize-none"
+                className={`${inputClassName} resize-none`}
                 placeholder="Your message..."
               />
             </div>
@@ -111,39 +120,25 @@ export function Contact() {
           </form>
 
           <div className="flex gap-4 justify-center mt-6 pt-4 border-t border-border">
-            {contactSocials.map((link) => {
-              const Icon = socialIcons[link.platform];
-              return Icon ? (
-                <a
-                  key={link.platform}
-                  href={link.url}
-                  target={link.platform !== "email" ? "_blank" : undefined}
-                  rel={
-                    link.platform !== "email"
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
-                  aria-label={link.label}
-                  className="text-text-muted hover:text-primary transition-colors p-2"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ) : null;
-            })}
+            {contactSocials.map((link) => (
+              <SocialLinkItem key={link.platform} link={link} />
+            ))}
           </div>
         </motion.div>
       </div>
 
-      {isToastVisible && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          className="fixed bottom-6 right-6 glass rounded-lg px-4 py-3 text-sm text-primary z-50"
-        >
-          Message prepared — check your email client.
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {isToastVisible && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-6 right-6 glass rounded-lg px-4 py-3 text-sm text-primary z-50"
+          >
+            Message prepared — check your email client.
+          </motion.div>
+        )}
+      </AnimatePresence>
     </SectionWrapper>
   );
 }

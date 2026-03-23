@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
 import type { Project } from "@/lib/types";
+import { TechBadge } from "./tech-badge";
 
 interface ProjectCardProps {
   project: Project;
@@ -12,7 +13,6 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [tiltTransform, setTiltTransform] = useState("perspective(800px) rotateX(0deg) rotateY(0deg)");
 
   function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
     const card = cardRef.current;
@@ -22,11 +22,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
     const centerY = rect.top + rect.height / 2;
     const rotateY = ((event.clientX - centerX) / (rect.width / 2)) * 8;
     const rotateX = ((centerY - event.clientY) / (rect.height / 2)) * 8;
-    setTiltTransform(`perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   }
 
   function handleMouseLeave() {
-    setTiltTransform("perspective(800px) rotateX(0deg) rotateY(0deg)");
+    if (cardRef.current) {
+      cardRef.current.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg)";
+    }
   }
 
   const primaryLink = project.liveUrl
@@ -40,7 +42,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ transform: tiltTransform, transition: "transform 0.15s ease-out" }}
+      style={{ transition: "transform 0.15s ease-out" }}
       className="glass rounded-xl overflow-hidden group"
     >
       {project.thumbnail && (
@@ -60,12 +62,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-text-secondary text-sm mt-1">{project.subtitle}</p>
         <div className="flex flex-wrap gap-2 mt-3">
           {project.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="px-2 py-0.5 text-xs rounded-full bg-primary/10 text-primary border border-primary/20"
-            >
-              {tech}
-            </span>
+            <TechBadge key={tech} label={tech} />
           ))}
         </div>
         <div className="flex gap-3 mt-4">
