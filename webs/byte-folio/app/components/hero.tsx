@@ -38,19 +38,19 @@ export function Hero() {
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-5 overflow-hidden">
       <HeroBackground />
       <div className="relative z-10 text-center max-w-3xl mx-auto">
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-text-muted text-sm font-[family-name:var(--font-mono)]">
+        <p className="text-text-muted text-sm font-[family-name:var(--font-mono)] animate-[fadeInUp_0.5s_ease-out_both]">
           {heroData.greeting}
-        </motion.p>
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="text-3xl md:text-5xl lg:text-6xl font-bold font-[family-name:var(--font-display)] mt-3 glow-primary-text">
+        </p>
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold font-[family-name:var(--font-display)] mt-3 glow-primary-text animate-[fadeInUp_0.5s_0.2s_ease-out_both]">
           {heroData.name}
-        </motion.h1>
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 }} className="text-text-secondary mt-4 font-[family-name:var(--font-mono)] text-sm md:text-base">
+        </h1>
+        <p className="text-text-secondary mt-4 font-[family-name:var(--font-mono)] text-sm md:text-base animate-[fadeIn_0.5s_0.5s_ease-out_both]">
           <span className="text-primary">{">"}</span> {heroData.title}
           <span className="inline-block w-2 h-4 bg-primary ml-1 align-middle" style={{ animation: "blink 1s step-end infinite" }} />
-        </motion.p>
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.7 }} className="text-text-muted mt-2 font-[family-name:var(--font-mono)] text-xs md:text-sm">
+        </p>
+        <p className="text-text-muted mt-2 font-[family-name:var(--font-mono)] text-xs md:text-sm animate-[fadeIn_0.5s_0.7s_ease-out_both]">
           <span className="text-primary">{">"}</span> {heroData.specialization}
-        </motion.p>
+        </p>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.9 }} className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
           <a href={heroData.primaryCta.href} className="px-6 py-3 bg-primary text-bg font-semibold rounded-lg glow-primary hover:brightness-110 transition-[filter] duration-200 text-center">
             {heroData.primaryCta.label}
