@@ -59,25 +59,25 @@ const ABOUT_STORY = [
   {
     title: "My Journey",
     description:
-      "Starting as a Software Engineer at Hitachi Consulting Vietnam in 2016, I worked on semiconductor manufacturing systems and enterprise solutions. In 2019, I advanced to Senior Software Engineer, leading microservices development for European and Singaporean clients at NASH TECH and Orient Software. My career has evolved from backend systems to building innovative digital learning platforms and mobile applications using .NET MAUI, Angular, and AWS.",
+      "Starting as a Software Engineer at Hitachi Consulting Vietnam in 2016, I worked on semiconductor manufacturing systems and enterprise solutions. Moving to NASH TECH in 2018, I deepened my expertise in microservices and cloud architecture. In 2019, I joined Orient Software as a Senior Software Engineer, leading development for European and Singaporean clients — building digital learning platforms, mobile applications, and cloud-native solutions. Throughout my career, I've continuously practiced and explored new technologies through personal GitHub projects.",
     timeline: [
       {
         period: "2016 - 2018",
         company: "Hitachi Consulting Vietnam",
-        description: "Semiconductor Systems",
+        description: "Semiconductor Systems & Enterprise Solutions",
         title: "Software Engineer"
       },
       {
-        period: "2018 - 2024",
-        company: "NASH TECH / Orient Software",
-        description: "Microservices Leadership",
-        title: "Senior Software Engineer"
+        period: "2018 - 2019",
+        company: "NASH TECH",
+        description: "Microservices & Cloud Architecture",
+        title: "Software Engineer"
       },
       {
-        period: "2024 - Present",
-        company: "Full-Stack Development",
-        description: ".NET MAUI, Angular, AWS",
-        title: "Full-Stack Developer"
+        period: "2019 - Present",
+        company: "Orient Software",
+        description: "Full-Stack Development, .NET MAUI, Angular, AWS",
+        title: "Senior Software Engineer"
       }
     ],
   },
