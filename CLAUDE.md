@@ -1,6 +1,6 @@
 # E-Portfolio — Monorepo
 
-Multi-project portfolio platform. Three Next.js apps sharing code via pnpm workspace packages.
+Multi-project portfolio platform. Two Next.js apps sharing code via pnpm workspace packages.
 
 ## Tech Stack
 
@@ -8,7 +8,7 @@ Multi-project portfolio platform. Three Next.js apps sharing code via pnpm works
 |-------|-------|
 | **Framework** | Next.js 16, React 19, TypeScript |
 | **Styling** | Tailwind CSS v4, Flowbite-React, CSS variables |
-| **3D/Motion** | React Three Fiber, Framer Motion |
+| **Animation** | CSS animations, IntersectionObserver |
 | **Package Mgr** | pnpm workspaces |
 | **Testing** | Storybook 10, Playwright |
 
@@ -22,7 +22,6 @@ e-portfolio/
 │   └── storybook-config/    # @eportfolio/storybook-config — shared Storybook base
 └── webs/
     ├── artist-portfolio/    # 3D/animation/concept art portfolio (:3001)
-    ├── portfolio-nextjs/    # Personal dev portfolio (:3000)
     └── byte-folio/          # Space/cosmic dev portfolio (:3002)
 ```
 
@@ -31,7 +30,6 @@ e-portfolio/
 | Term | Path |
 |------|------|
 | **artist** | `webs/artist-portfolio/` |
-| **portfolio** | `webs/portfolio-nextjs/` |
 | **byte** | `webs/byte-folio/` |
 | **ui** | `packages/ui/` |
 | **theme** | `packages/theme/` |
@@ -42,11 +40,9 @@ e-portfolio/
 ```bash
 pnpm install                    # Install all workspace deps
 pnpm dev:artist                 # Artist portfolio dev (:3001)
-pnpm dev:portfolio              # Portfolio-nextjs dev (:3000)
 pnpm dev:byte                   # Byte-folio dev (:3002)
 pnpm -r build                   # Build all projects
 pnpm -r lint                    # Lint all projects
-pnpm storybook                  # Storybook (:6006)
 ```
 
 ## Engineering Principles
