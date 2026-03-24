@@ -92,7 +92,7 @@ Dark cinematic theme with CSS custom properties:
 ## Development Notes
 
 - **NO "use client"** - All components are Server Components
-- **Port 3001** - Runs alongside portfolio-nextjs (3000)
+- **Port 3001** - Runs alongside byte-folio (3002)
 - **Mobile-first** - Design for mobile, scale up
 
 ## License
