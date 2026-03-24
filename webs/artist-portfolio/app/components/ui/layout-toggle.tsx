@@ -31,7 +31,7 @@ export function LayoutToggle({
       <button
         onClick={() => onLayoutChange("grid")}
         className={clsxMerge(
-          "p-2 rounded-md transition-all duration-200",
+          "p-2 rounded-md transition-colors duration-200",
           layout === "grid"
             ? "bg-[var(--color-primary)] text-white"
             : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
@@ -44,7 +44,7 @@ export function LayoutToggle({
       <button
         onClick={() => onLayoutChange("masonry")}
         className={clsxMerge(
-          "p-2 rounded-md transition-all duration-200",
+          "p-2 rounded-md transition-colors duration-200",
           layout === "masonry"
             ? "bg-[var(--color-primary)] text-white"
             : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"

@@ -73,7 +73,7 @@ export function Footer() {
                     "bg-[var(--color-surface)]",
                     "text-[var(--color-text-muted)]",
                     "hover:text-[var(--color-primary)] hover:bg-[var(--color-surface-hover)]",
-                    "transition-all duration-200"
+                    "transition-colors duration-200"
                   )}
                 >
                   <social.icon className="w-5 h-5" />

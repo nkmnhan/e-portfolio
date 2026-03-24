@@ -75,7 +75,7 @@ export function ImageCarousel({
                 "bg-black/60 backdrop-blur-sm",
                 "text-white hover:bg-black/80",
                 "opacity-0 group-hover:opacity-100",
-                "transition-all duration-300",
+                "transition-opacity duration-300",
                 "focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
               )}
               aria-label="Previous image"
@@ -90,7 +90,7 @@ export function ImageCarousel({
                 "bg-black/60 backdrop-blur-sm",
                 "text-white hover:bg-black/80",
                 "opacity-0 group-hover:opacity-100",
-                "transition-all duration-300",
+                "transition-opacity duration-300",
                 "focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
               )}
               aria-label="Next image"
@@ -128,7 +128,7 @@ export function ImageCarousel({
               key={index}
               onClick={() => goToSlide(index)}
               className={clsxMerge(
-                "w-2 h-2 rounded-full transition-all duration-300",
+                "w-2 h-2 rounded-full transition-[background-color,width] duration-300",
                 index === currentIndex
                   ? "bg-[var(--color-primary)] w-6"
                   : "bg-[var(--color-border)] hover:bg-[var(--color-border-hover)]"
@@ -148,7 +148,7 @@ export function ImageCarousel({
               onClick={() => goToSlide(index)}
               className={clsxMerge(
                 "relative flex-shrink-0 w-20 h-14 rounded overflow-hidden",
-                "ring-2 transition-all duration-300",
+                "ring-2 transition-[ring-color] duration-300",
                 index === currentIndex
                   ? "ring-[var(--color-primary)]"
                   : "ring-transparent hover:ring-[var(--color-border-hover)]"

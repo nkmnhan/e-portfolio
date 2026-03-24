@@ -34,7 +34,7 @@ export function NavLink({
         // Hover
         "hover:text-[var(--color-text)] hover:bg-[var(--color-surface)]",
         // Transitions
-        "transition-all duration-200",
+        "transition-colors duration-200",
         className
       )}
       aria-label={iconOnly && typeof children === "string" ? children : undefined}

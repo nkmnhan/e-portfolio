@@ -101,8 +101,9 @@ export function Header() {
                   href={item.href}
                   icon={<item.icon className="w-5 h-5" />}
                   iconOnly
-                  aria-label={item.label}
-                />
+                >
+                  {item.label}
+                </NavLink>
               ))}
               {/* Contact icon for mobile */}
               <Button

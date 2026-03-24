@@ -96,16 +96,16 @@ export function MediaCarousel({
     setTimeRemaining(duration);
     setShowCountdownWarning(false);
 
-    // Countdown timer
+    // Countdown timer - update every 1s (only displays whole seconds)
     countdownIntervalRef.current = setInterval(() => {
       setTimeRemaining((prev) => {
-        const newTime = prev - 100;
+        const newTime = prev - 1000;
         if (newTime <= warningThreshold && newTime > 0) {
           setShowCountdownWarning(true);
         }
         return newTime;
       });
-    }, 100);
+    }, 1000);
 
     // Auto-advance timer - inline to avoid stale closure and skip hasUserInteracted
     autoPlayTimerRef.current = setTimeout(() => {
@@ -342,7 +342,7 @@ export function MediaCarousel({
                 "bg-black/60 backdrop-blur-sm",
                 "text-white hover:bg-black/80",
                 "flex items-center justify-center",
-                "transition-all duration-300",
+                "transition-opacity duration-300",
                 "focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]",
                 "[@media(hover:none)]:opacity-60",
                 "[@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100"
@@ -359,7 +359,7 @@ export function MediaCarousel({
                 "bg-black/60 backdrop-blur-sm",
                 "text-white hover:bg-black/80",
                 "flex items-center justify-center",
-                "transition-all duration-300",
+                "transition-opacity duration-300",
                 "focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]",
                 "[@media(hover:none)]:opacity-60",
                 "[@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100"
@@ -441,7 +441,7 @@ export function MediaCarousel({
                   >
                     <div
                       className={clsxMerge(
-                        "h-full transition-all duration-300",
+                        "h-full transition-[background-color] duration-300",
                         isPast && "bg-[var(--color-primary)]",
                         isActive && isAutoPlaying && "bg-[var(--color-primary)] animate-progress",
                         !isPast && !isActive && "bg-transparent"
@@ -475,7 +475,7 @@ export function MediaCarousel({
               onClick={() => goToSlide(index)}
               className={clsxMerge(
                 "relative flex-shrink-0 w-20 h-14 rounded overflow-hidden",
-                "ring-2 transition-all duration-300",
+                "ring-2 transition-[ring-color] duration-300",
                 "[@media(hover:none)]:snap-center",
                 index === currentIndex
                   ? "ring-[var(--color-primary)]"

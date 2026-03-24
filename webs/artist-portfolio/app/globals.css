@@ -15,7 +15,7 @@
   /* Text Colors */
   --color-text: #fafafa;
   --color-text-secondary: #a1a1aa;
-  --color-text-muted: #71717a;
+  --color-text-muted: #8b8b94;
 
   /* Primary - Cyan/Teal for creative energy */
   --color-primary: #06b6d4;
@@ -152,14 +152,28 @@ img {
   z-index: -1;
 }
 
-/* Card hover effect */
+/* Card hover effect - uses composited properties only (transform + opacity) */
 .card-hover {
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition: transform var(--transition-base);
+}
+
+.card-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: var(--shadow-glow);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
 }
 
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-glow);
+}
+
+.card-hover:hover::after {
+  opacity: 1;
 }
 
 /* Image overlay for artwork cards */

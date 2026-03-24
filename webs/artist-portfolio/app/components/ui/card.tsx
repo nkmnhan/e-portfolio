@@ -22,7 +22,7 @@ const variantStyles = {
     "bg-[var(--color-surface)]",
     "border border-[var(--color-border)]",
     "hover:border-[var(--color-border-hover)]",
-    "transition-all duration-300",
+    "transition-[border-color] duration-300",
     "cursor-pointer"
   ),
   gradient: clsxMerge(

@@ -195,7 +195,7 @@ export default async function ShowreelDetailPage({ params }: Readonly<Props>) {
                   href={`/showreels/${reel.id}`}
                   className="group"
                 >
-                  <div className="overflow-hidden rounded-lg border border-[var(--color-border)] hover:border-[var(--color-border-hover)] transition-all">
+                  <div className="overflow-hidden rounded-lg border border-[var(--color-border)] hover:border-[var(--color-border-hover)] transition-[border-color]">
                     <div className="relative aspect-video overflow-hidden">
                       <Image
                         src={reel.thumbnail}

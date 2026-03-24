@@ -133,7 +133,7 @@ export function EmbedPlayer({ media, aspectRatio = "video" }: EmbedPlayerProps) 
                 "bg-black/60 backdrop-blur-sm",
                 "text-white hover:text-[var(--color-primary)]",
                 "opacity-0 group-hover:opacity-100",
-                "transition-all duration-300"
+                "transition-[opacity,color] duration-300"
               )}
               aria-label={`Open in ${media.platform}`}
             >

@@ -44,7 +44,7 @@ export function ProjectCard({
           "bg-[var(--color-surface)]",
           "border border-[var(--color-border)]",
           "hover:border-[var(--color-border-hover)]",
-          "transition-all duration-300"
+          "transition-[border-color] duration-300"
         )}
       >
         {/* Media Container */}
@@ -83,7 +83,7 @@ export function ProjectCard({
           <div
             className={clsxMerge(
               "absolute inset-x-0 bottom-0 p-5",
-              "transition-all duration-300",
+              "transition-[opacity,transform] duration-300",
               isActive
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-2"

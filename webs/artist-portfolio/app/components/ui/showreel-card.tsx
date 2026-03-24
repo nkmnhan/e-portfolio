@@ -37,7 +37,7 @@ export function ShowreelCard({ showreel, priority = false }: Readonly<ShowreelCa
         "bg-[var(--color-surface)]",
         "border border-[var(--color-border)]",
         "hover:border-[var(--color-border-hover)]",
-        "transition-all duration-300 cursor-pointer"
+        "transition-[border-color] duration-300 cursor-pointer"
       )}
       onClick={navigateToDetail}
       role="button"

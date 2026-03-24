@@ -71,7 +71,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       "inline-flex items-center justify-center gap-2",
       "font-medium",
       "rounded-lg",
-      "transition-all duration-200",
+      "transition-colors duration-200",
       // Variant
       variantStyles[variant],
       // Size
@@ -101,7 +101,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         : {};
 
       return (
-        <Link href={href} className={buttonClasses} {...linkProps}>
+        <Link href={href} className={buttonClasses} {...linkProps} aria-label={props["aria-label"]}>
           {content}
         </Link>
       );

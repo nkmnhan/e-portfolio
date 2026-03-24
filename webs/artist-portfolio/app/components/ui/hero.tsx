@@ -48,7 +48,6 @@ export function Hero() {
                   "ring-4 ring-[var(--color-primary)]/30",
                   "shadow-xl shadow-[var(--color-primary)]/20"
                 )}
-                priority
               />
               {/* Availability indicator */}
               {profile.availableForWork && (

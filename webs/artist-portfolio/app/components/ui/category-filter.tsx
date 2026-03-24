@@ -53,7 +53,7 @@ export function CategoryFilter({
               // Base styles - smaller on mobile
               "px-3 py-1.5 lg:px-4 lg:py-2 rounded-full",
               "text-xs lg:text-sm font-medium",
-              "transition-all duration-200",
+              "transition-colors duration-200",
               "flex items-center gap-1.5 lg:gap-2",
               // Prevent shrinking on mobile
               "flex-shrink-0",

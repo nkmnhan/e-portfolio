@@ -265,7 +265,7 @@ export function VideoThumbnail({
         fill
         sizes={sizes}
         className={clsxMerge(
-          "object-cover transition-all duration-500",
+          "object-cover transition-[opacity,transform] duration-500",
           "group-hover:scale-105",
           hasVideo && showVideo ? "opacity-0" : "opacity-100"
         )}
@@ -310,7 +310,7 @@ export function VideoThumbnail({
             "flex items-center justify-center",
             "bg-black/60 backdrop-blur-sm",
             "text-white",
-            "transition-all duration-300",
+            "transition-[opacity,transform] duration-300",
             "active:scale-95",
             "min-w-11 min-h-11"
           )}
@@ -333,7 +333,7 @@ export function VideoThumbnail({
             "w-8 h-8 rounded-full",
             "flex items-center justify-center",
             "bg-[var(--color-primary)] text-white",
-            "transition-all duration-300",
+            "transition-transform duration-300",
             isHovered && !isBuffering ? "scale-110" : "scale-100"
           )}
           aria-label={isBuffering ? "Video loading" : "Video available"}
