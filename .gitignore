@@ -109,8 +109,6 @@ dist
 #  VS Code workspace settings
 .vscode/
 
-/webs/portfolio-nextjs/public/temp-images/*
-
 # Claude Code settings with tokens
 .claude/settings.json
 

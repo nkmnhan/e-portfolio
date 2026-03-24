@@ -11,7 +11,7 @@ export const siteConfig: SiteConfig = {
   title: "Tony Nguyen | Senior Fullstack Developer",
   description:
     "Portfolio of Tony Nguyen — Senior Software Engineer specializing in .NET Core, Angular, microservices architecture, and cloud-native solutions. 9+ years building scalable systems across Singapore, Europe, and Vietnam.",
-  url: "https://byte-folio.nkmnhan.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://nkmnhan.com",
   ogImage: "/og-image.png",
   socialLinks: [
     { platform: "github", url: "https://github.com/nkmnhan", label: "GitHub" },
