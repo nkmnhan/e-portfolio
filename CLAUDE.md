@@ -3,10 +3,17 @@
 Multi-project portfolio platform. Two Next.js apps sharing code via pnpm workspace packages.
 
 ## Tech Stack
-- Next.js 16+ (App Router), TypeScript, Tailwind CSS v4, Flowbite-React, R3F
-- Package Manager: pnpm workspaces
+
+| Layer | Stack |
+|-------|-------|
+| **Framework** | Next.js 16, React 19, TypeScript |
+| **Styling** | Tailwind CSS v4, Flowbite-React, CSS variables |
+| **Animation** | CSS animations, IntersectionObserver |
+| **Package Mgr** | pnpm workspaces |
+| **Testing** | Storybook 10, Playwright |
 
 ## Monorepo Structure
+
 ```
 e-portfolio/
 ├── packages/
@@ -36,93 +43,40 @@ pnpm dev:artist                 # Artist portfolio dev (:3001)
 pnpm dev:byte                   # Byte-folio dev (:3002)
 pnpm -r build                   # Build all projects
 pnpm -r lint                    # Lint all projects
-pnpm storybook                  # Storybook (:6006)
-```
-
-## Core Rules
-
-### 1. Server Components First
-```tsx
-// DEFAULT: No "use client"
-// Only add "use client" for: onClick, useState, useEffect, window/localStorage
-```
-
-### 2. Mobile-First Responsive Design
-```tsx
-className="text-sm md:text-base lg:text-lg"
-className="flex flex-col md:flex-row"
-className="p-4 md:p-6 lg:p-8"
-```
-
-### 3. Flowbite-React First
-```tsx
-import { Button, Card, Modal, Tabs, Breadcrumb } from "flowbite-react";
-// Customize via theme prop, NOT className overrides
-<Button theme={{ base: "custom-classes" }}>Click</Button>
-```
-
-### 4. Use clsxMerge
-```tsx
-import { clsxMerge } from "@eportfolio/ui/utils";
-className={clsxMerge("flex", conditional && "active", props.className)}
-```
-
-### 5. CSS Variables / Semantic Tokens Only
-```tsx
-// Use design tokens, never hardcode colors
-className="bg-[var(--color-surface)]"
-className="text-[var(--color-primary)]"
-```
-
-### 6. Use Tailwind Spacing Scale — NO Arbitrary Pixel Values
-```tsx
-// GOOD
-className="min-w-56 p-7 gap-10 mb-14"
-// BAD
-className="min-w-[220px] p-[28px] gap-[40px]"
-// Exception: CSS variables are allowed
-className="bg-[var(--color-surface)]"
 ```
 
 ## Engineering Principles
+
 - **KISS** — simplest solution that works
 - **YAGNI** — don't build for hypothetical future requirements
-- **DRY** — extract shared logic into `packages/`, don't over-abstract for single use
+- **DRY** — extract shared logic into `packages/`, but don't over-abstract for a single use
 - **Composition over Inheritance** — small components, hooks for reuse
+- **Immutability** — never mutate state directly, always return new objects
+- **Fail Fast** — validate at boundaries, throw early with meaningful errors
+
+## Naming Conventions
+
+- Booleans: `is`, `has`, `can`, `should` prefix
+- Event handlers: `on`/`handle` prefix
+- Async: verb prefix (`fetchProject`, `loadProfile`)
+- Components: PascalCase, noun-first (`ProjectCard`)
+- Hooks: `use` prefix (`useColorTheme`)
+- No single-letter names (except `i`/`j` in simple loops)
+
+## Collaboration Protocol
+
+- **Read CHANGELOG.md** at the start of a session
 - **Read before write** — always read existing code before modifying
+- **Evidence over assumption** — show grep/glob proof when claiming something exists or doesn't
+- **Verify after change** — run lint/build after modifying code
 
-## Commands
+## Development Workflow
 
-| Command | Usage |
-|---------|-------|
-| `/component` | Create server component |
-| `/client-component` | Create client component |
-| `/simplify` | Simplify existing code |
-| `/review` | Review code quality |
+For non-trivial work: Design → Plan → Isolate (feature branch) → Execute → Verify → Finish.
 
-## Team Agents
+If superpowers plugin is installed, use its skills for each step.
 
-| Role | Agent | Use for |
-|------|-------|---------|
-| BA | `business-analyst` | Requirements, user stories |
-| Dev | `developer` | Implementation |
-| Test | `tester` | Testing, QA |
-| PM | `project-manager` | Coordination |
-| Design | `ui-ux-designer` | UI/UX review |
+## Detailed Rules
 
-## MCP Servers
-
-### Development Tools
-| Server | Purpose |
-|--------|---------|
-| `context7` | Docs for Next.js, Tailwind, Flowbite |
-| `sequential-thinking` | Complex problem-solving |
-| `github` | Issues, PRs, repos (needs `GITHUB_TOKEN`) |
-
-### UI/UX Design Tools
-| Server | Purpose | Setup |
-|--------|---------|-------|
-| `figma` | Read Figma designs, tokens, layouts | Needs OAuth: type `/mcp` → Authenticate |
-| `storybook-mcp` | Component stories, screenshots | Run `pnpm storybook` first |
-| `playwright` | Visual testing, browser automation | Auto-starts on demand |
-| `a11y` | Accessibility audits (axe-core) | Auto-starts on demand |
+Path-scoped rules in `.claude/rules/` — auto-loaded when editing relevant files.
+Per-project context in each project's `CLAUDE.md`.

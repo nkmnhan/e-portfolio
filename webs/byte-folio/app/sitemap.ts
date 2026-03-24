@@ -1,36 +1,34 @@
 import { MetadataRoute } from "next";
+import { siteConfig } from "@/lib/data/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://nkmnhan.com";
-
   return [
     {
-      url: baseUrl,
+      url: siteConfig.url,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/#skills`,
+      url: `${siteConfig.url}/#skills`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/#projects`,
+      url: `${siteConfig.url}/#projects`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/#experience`,
+      url: `${siteConfig.url}/#experience`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: `${siteConfig.url}/contact`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.8,

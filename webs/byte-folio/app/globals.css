@@ -1,711 +1,222 @@
 @import "tailwindcss";
 
-/* ============================================
-   BYTE-FOLIO - COSMIC SPACE THEME
-   ============================================ */
+@import "@eportfolio/theme/tokens/base.css";
+@import "@eportfolio/theme/tokens/presets/space";
 
-:root {
-  /* Space Background Colors - Figma exact values */
-  --color-space-dark: #090909;
-  --color-space-mid: #19002a;
-  --color-space-light: #4c009f;
-  --color-space-purple: #330995;
+@theme {
+  --color-bg: var(--color-bg);
+  --color-bg-subtle: var(--color-bg-subtle);
+  --color-surface: var(--color-surface);
+  --color-surface-hover: var(--color-surface-hover);
 
-  /* Mountain/Landscape Blues - Figma gradients */
-  --color-mountain-dark: #120751;
-  --color-mountain-mid: #142187;
-  --color-mountain-light: #3744b5;
-  --color-mountain-glow: #221b8c;
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
 
-  /* Surface Colors */
-  --color-bg: #090909;
-  --color-bg-secondary: #19002a;
-  --color-surface: #1b146d;
-  --color-surface-hover: #22279f;
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
 
-  /* Neon Glow Colors - Figma exact values */
-  --color-neon-cyan: #43e0f7;
-  --color-neon-cyan-dim: #439fc2;
-  --color-neon-blue: #00b1ff;
-  --color-neon-pink: #d10057;
-  --color-neon-purple: #8657e8;
-  --color-neon-magenta: #5102ae;
+  --color-border: var(--color-border);
+  --color-border-hover: var(--color-border-hover);
 
-  /* Primary - Cyan from Figma */
-  --color-primary: #43e0f7;
-  --color-primary-hover: #00b1ff;
-  --color-primary-light: rgba(67, 224, 247, 0.1);
-  --color-primary-glow: rgba(67, 224, 247, 0.4);
-
-  /* Accent - Purple/Pink from Figma */
-  --color-accent: #8657e8;
-  --color-accent-hover: #798df1;
-  --color-accent-light: rgba(134, 87, 232, 0.1);
-  --color-accent-dark: #42218e;
-
-  /* Gold accent from Figma */
-  --color-gold: #ffb400;
-
-  /* Star colors from Figma */
-  --color-star: #439fc2;
-
-  /* Text Colors */
-  --color-text: #ffffff;
-  --color-text-secondary: #b8b8d0;
-  --color-text-muted: #6b6b8a;
-
-  /* Borders & Dividers */
-  --color-border: #330995;
-  --color-border-hover: #4c009f;
-  --color-border-glow: rgba(67, 224, 247, 0.3);
-
-  /* Status Colors */
-  --color-success: #22c55e;
-  --color-error: #ef4444;
-
-  /* Gradients - Figma exact values */
-  --gradient-space: linear-gradient(180deg, #090909 0%, #19002a 53%, #4c009f 99%);
-  --gradient-neon: linear-gradient(135deg, var(--color-neon-cyan) 0%, var(--color-neon-purple) 100%);
-  --gradient-glow: radial-gradient(circle at center, var(--color-primary-glow) 0%, transparent 70%);
-  --gradient-card: linear-gradient(180deg, rgba(27, 20, 109, 0.8) 0%, rgba(9, 9, 9, 0.9) 100%);
-  --gradient-mountain: linear-gradient(180deg, #3744b5 0%, #330995 51%, transparent 100%);
-  --gradient-pink-orb: radial-gradient(circle, #d10057 0%, #92003d 12%, #5e0027 30%, #350016 48%, transparent 78%);
-  --gradient-earth: radial-gradient(circle, #00b1ff 69%, #004361 88%, transparent 100%);
-  --gradient-purple-orb: radial-gradient(circle, #42218e 59%, #8657e8 100%);
-
-  /* Shadows & Glows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
-  --glow-cyan: 0 0 20px rgba(67, 224, 247, 0.4);
-  --glow-cyan-strong: 0 0 40px rgba(67, 224, 247, 0.6);
-  --glow-purple: 0 0 20px rgba(134, 87, 232, 0.4);
-  --glow-pink: 0 0 20px rgba(209, 0, 87, 0.4);
-  --glow-text: 0 0 10px rgba(67, 224, 247, 0.8), 0 0 20px rgba(67, 224, 247, 0.4);
-
-  /* Typography */
-  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
-
-  /* Spacing */
-  --container-max: 1400px;
-  --section-padding: 5rem;
-  --section-padding-sm: 3rem;
-
-  /* Animation */
-  --transition-fast: 150ms ease;
-  --transition-base: 200ms ease;
-  --transition-slow: 300ms ease;
+  --color-success: var(--color-success);
+  --color-error: var(--color-error);
 }
 
-/* Base Styles */
 @layer base {
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
-
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    background: var(--gradient-space);
-    background-attachment: fixed;
+    background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
-    line-height: 1.6;
-    min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-}
 
-/* Selection */
-::selection {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
-}
-
-/* Scrollbar - Space themed */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-neon-cyan);
-  box-shadow: var(--glow-cyan);
-}
-
-/* Focus styles for accessibility */
-:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  box-shadow: var(--glow-cyan);
-}
-
-/* Links */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* Images */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
-
-/* Neon Glow Text */
-.text-glow {
-  text-shadow: var(--glow-text);
-}
-
-.text-glow-purple {
-  text-shadow: 0 0 10px rgba(168, 85, 247, 0.8), 0 0 20px rgba(168, 85, 247, 0.4);
-}
-
-/* Gradient Text */
-.text-gradient {
-  background: var(--gradient-neon);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Neon Border */
-.border-glow {
-  border: 1px solid var(--color-border-glow);
-  box-shadow: var(--glow-cyan), inset 0 0 20px rgba(0, 255, 255, 0.05);
-}
-
-/* Card with glow effect */
-.card-glow {
-  background: var(--gradient-card);
-  border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  transition: all var(--transition-base);
-}
-
-.card-glow:hover {
-  border-color: var(--color-border-glow);
-  box-shadow: var(--glow-cyan);
-  transform: translateY(-4px);
-}
-
-/* Button glow */
-.btn-glow {
-  position: relative;
-  background: transparent;
-  border: 2px solid var(--color-neon-cyan);
-  color: var(--color-neon-cyan);
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  transition: all var(--transition-base);
-  cursor: pointer;
-}
-
-.btn-glow:hover {
-  background: var(--color-neon-cyan);
-  color: var(--color-bg);
-  box-shadow: var(--glow-cyan-strong);
-}
-
-/* Background glow effect */
-.bg-glow {
-  position: relative;
-}
-
-.bg-glow::before {
-  content: "";
-  position: absolute;
-  inset: -50%;
-  background: var(--gradient-glow);
-  opacity: 0.3;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Container */
-.container-custom {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .container-custom {
-    padding: 0 2rem;
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
   }
 }
 
-@media (min-width: 768px) {
-  .container-custom {
-    padding: 0 3rem;
+@layer utilities {
+  .glass {
+    background: rgba(10, 22, 40, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(30, 58, 95, 0.5);
   }
-}
 
-@media (min-width: 1024px) {
-  .container-custom {
-    padding: 0 4rem;
+  .glow-primary {
+    box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 30%, transparent);
   }
-}
 
-/* Section spacing */
-.section-padding {
-  padding-top: var(--section-padding-sm);
-  padding-bottom: var(--section-padding-sm);
-}
-
-@media (min-width: 768px) {
-  .section-padding {
-    padding-top: var(--section-padding);
-    padding-bottom: var(--section-padding);
+  .glow-primary-text {
+    text-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 50%, transparent);
   }
-}
 
-/* ============================================
-   ANIMATIONS
-   ============================================ */
-
-/* Floating animation for astronaut */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-10px) rotate(2deg);
-  }
-  50% {
-    transform: translateY(-5px) rotate(0deg);
-  }
-  75% {
-    transform: translateY(-15px) rotate(-2deg);
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Twinkling stars */
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-.animate-twinkle {
-  animation: twinkle 3s ease-in-out infinite;
-}
-
-/* Pulse glow */
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(0, 255, 255, 0.8);
-  }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* Bounce indicator */
-@keyframes bounce-down {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(8px);
-  }
-}
-
-.animate-bounce-down {
-  animation: bounce-down 1.5s ease-in-out infinite;
-}
-
-/* Fade in */
-@keyframes fadeIn {
-  from {
+  /* GPU-composited view transitions (transform + opacity only) */
+  .view-hidden {
     opacity: 0;
     transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    will-change: opacity, transform;
   }
-  to {
+  .view-hidden.view-visible {
+    opacity: 1;
+    transform: translateY(0);
+    will-change: auto;
+  }
+  .view-hidden-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+  }
+  .view-hidden-left.view-visible {
+    opacity: 1;
+    transform: translateX(0);
+    will-change: auto;
+  }
+  .view-hidden-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    will-change: opacity, transform;
+  }
+  .view-hidden-scale.view-visible {
+    opacity: 1;
+    transform: scale(1);
+    will-change: auto;
+  }
+
+  /* Animated presence transitions */
+  .presence-fade {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+  .presence-fade.presence-visible {
+    opacity: 1;
+  }
+  .presence-slide-up {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease-out, transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .presence-slide-up.presence-visible {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.5s ease-out;
-}
-
-/* Slide in from left */
-@keyframes slideInLeft {
-  from {
+  .presence-slide-left {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
   }
-  to {
+  .presence-slide-left.presence-visible {
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-.animate-slideInLeft {
-  animation: slideInLeft 0.5s ease-out;
-}
-
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .animate-float,
-  .animate-twinkle,
-  .animate-pulse-glow,
-  .animate-bounce-down,
-  .animate-fadeIn,
-  .animate-slideInLeft {
-    animation: none;
-  }
-}
-
-/* ============================================
-   SCROLLBAR UTILITIES
-   ============================================ */
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* ============================================
-   STAR FIELD BACKGROUND
-   ============================================ */
-
-.star-field {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.5;
-}
-
-/* ============================================
-   SCROLL FADE-IN SECTIONS
-   ============================================ */
-
-/* Fade-in section - controlled by ScrollObserver */
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .fade-in-section {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-/* ============================================
-   LINE CLAMP UTILITY
-   ============================================ */
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* ============================================
-   SPACE BACKGROUND
-   ============================================ */
-
-.space-background {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Star layers - CSS radial gradients for stars */
-.stars-layer {
-  position: absolute;
-  inset: 0;
-  background-repeat: repeat;
-}
-
-/* Stars use #439fc2 from Figma */
-.stars-small {
-  background-image:
-    radial-gradient(1px 1px at 20px 30px, #439fc2, transparent),
-    radial-gradient(1px 1px at 40px 70px, rgba(67, 159, 194, 0.8), transparent),
-    radial-gradient(1px 1px at 50px 160px, rgba(67, 159, 194, 0.6), transparent),
-    radial-gradient(1px 1px at 90px 40px, #439fc2, transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(67, 159, 194, 0.7), transparent),
-    radial-gradient(1px 1px at 160px 120px, #439fc2, transparent);
-  background-size: 200px 200px;
-  animation: twinkle 4s ease-in-out infinite;
-}
-
-.stars-medium {
-  background-image:
-    radial-gradient(1.5px 1.5px at 150px 150px, #439fc2, transparent),
-    radial-gradient(1.5px 1.5px at 200px 220px, rgba(67, 159, 194, 0.9), transparent),
-    radial-gradient(1.5px 1.5px at 100px 280px, #439fc2, transparent),
-    radial-gradient(1.5px 1.5px at 300px 100px, rgba(67, 159, 194, 0.8), transparent);
-  background-size: 400px 400px;
-  animation: twinkle 5s ease-in-out infinite;
-  animation-delay: 1s;
-}
-
-/* Large stars with Figma accent colors */
-.stars-large {
-  background-image:
-    radial-gradient(2px 2px at 250px 200px, rgba(67, 224, 247, 0.8), transparent),
-    radial-gradient(2px 2px at 400px 350px, rgba(134, 87, 232, 0.7), transparent),
-    radial-gradient(2px 2px at 550px 100px, rgba(209, 0, 87, 0.6), transparent);
-  background-size: 600px 500px;
-  animation: twinkle 6s ease-in-out infinite;
-  animation-delay: 2s;
-}
-
-/* Shooting stars - uses Figma cyan #43e0f7 */
-.shooting-star {
-  position: absolute;
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.8), rgba(67, 224, 247, 0.6));
-  border-radius: 50%;
-  transform: rotate(-45deg);
-  opacity: 0;
-  animation: shooting 8s ease-in-out infinite;
-}
-
-.shooting-star-1 {
-  top: 10%;
-  left: 20%;
-  animation-delay: 0s;
-}
-
-.shooting-star-2 {
-  top: 30%;
-  left: 60%;
-  animation-delay: 3s;
-}
-
-.shooting-star-3 {
-  top: 50%;
-  left: 40%;
-  animation-delay: 6s;
-}
-
-@keyframes shooting {
-  0%, 90%, 100% {
+  .presence-clip {
     opacity: 0;
-    transform: rotate(-45deg) translateX(0);
+    clip-path: inset(0 0 100% 0);
+    transition: opacity 0.4s ease-out, clip-path 0.4s ease-out;
   }
-  5% {
+  .presence-clip.presence-visible {
     opacity: 1;
-  }
-  15% {
-    opacity: 0;
-    transform: rotate(-45deg) translateX(300px);
+    clip-path: inset(0 0 0% 0);
   }
 }
 
-/* Glow orbs - ambient lighting using Figma gradients */
-.glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.4;
+/* Star layers — rasterized once, GPU-composited drift via transform */
+.stars-sm {
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.6) 50%, transparent 50%),
+    radial-gradient(1px 1px at 30% 65%, rgba(255,255,255,0.5) 50%, transparent 50%),
+    radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.4) 50%, transparent 50%),
+    radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.6) 50%, transparent 50%),
+    radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.5) 50%, transparent 50%),
+    radial-gradient(1px 1px at 15% 90%, rgba(255,255,255,0.3) 50%, transparent 50%),
+    radial-gradient(1px 1px at 60% 50%, rgba(255,255,255,0.4) 50%, transparent 50%),
+    radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.5) 50%, transparent 50%),
+    radial-gradient(1px 1px at 3% 45%, rgba(255,255,255,0.5) 50%, transparent 50%),
+    radial-gradient(1px 1px at 22% 8%, rgba(255,255,255,0.4) 50%, transparent 50%),
+    radial-gradient(1px 1px at 42% 92%, rgba(255,255,255,0.6) 50%, transparent 50%),
+    radial-gradient(1px 1px at 78% 35%, rgba(255,255,255,0.3) 50%, transparent 50%),
+    radial-gradient(1px 1px at 95% 72%, rgba(255,255,255,0.5) 50%, transparent 50%),
+    radial-gradient(1px 1px at 55% 28%, rgba(255,255,255,0.4) 50%, transparent 50%),
+    radial-gradient(1px 1px at 8% 68%, rgba(255,255,255,0.6) 50%, transparent 50%),
+    radial-gradient(1px 1px at 38% 42%, rgba(255,255,255,0.3) 50%, transparent 50%),
+    radial-gradient(1px 1px at 65% 5%, rgba(255,255,255,0.5) 50%, transparent 50%),
+    radial-gradient(1px 1px at 82% 58%, rgba(255,255,255,0.4) 50%, transparent 50%),
+    radial-gradient(1px 1px at 18% 78%, rgba(255,255,255,0.6) 50%, transparent 50%),
+    radial-gradient(1px 1px at 48% 52%, rgba(255,255,255,0.3) 50%, transparent 50%);
+  animation: star-drift-slow 60s linear infinite;
 }
 
-/* Cyan glow - uses #43e0f7 from Figma */
-.glow-orb-cyan {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(67, 224, 247, 0.4) 0%, transparent 70%);
-  top: 10%;
-  right: 10%;
+.stars-md {
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(67,224,247,0.4) 50%, transparent 50%),
+    radial-gradient(2px 2px at 40% 70%, rgba(118,73,254,0.3) 50%, transparent 50%),
+    radial-gradient(2px 2px at 75% 20%, rgba(255,255,255,0.6) 50%, transparent 50%),
+    radial-gradient(2px 2px at 55% 85%, rgba(67,224,247,0.3) 50%, transparent 50%),
+    radial-gradient(2px 2px at 5% 55%, rgba(248,188,4,0.3) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 33% 15%, rgba(255,255,255,0.5) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 62% 42%, rgba(67,224,247,0.25) 50%, transparent 50%),
+    radial-gradient(2px 2px at 88% 65%, rgba(118,73,254,0.2) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 12% 48%, rgba(255,255,255,0.4) 50%, transparent 50%),
+    radial-gradient(2px 2px at 45% 8%, rgba(67,224,247,0.3) 50%, transparent 50%);
+  animation: star-drift-fast 40s linear infinite;
 }
 
-/* Pink glow - uses #d10057 from Figma */
-.glow-orb-pink {
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(209, 0, 87, 0.3) 0%, rgba(146, 0, 61, 0.15) 30%, transparent 70%);
-  bottom: 30%;
-  left: 5%;
+@keyframes star-drift-slow {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-20px, -15px); }
 }
 
-/* Purple glow - uses #8657e8 from Figma */
-.glow-orb-purple {
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(134, 87, 232, 0.3) 0%, rgba(66, 33, 142, 0.15) 50%, transparent 70%);
-  top: 40%;
-  left: 30%;
+@keyframes star-drift-fast {
+  from { transform: translate(0, 0); }
+  to { transform: translate(15px, -25px); }
 }
 
-/* Mountain silhouettes */
-.mountains {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  min-height: 200px;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* ============================================
-   COSMIC ELEMENTS
-   ============================================ */
-
-/* Planet Earth */
-.planet-earth {
-  position: absolute;
-  bottom: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(500px, 80vw);
-  height: min(500px, 80vw);
-  z-index: 1;
-  opacity: 0.9;
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Astronaut */
-.astronaut {
-  position: absolute;
-  width: 80px;
-  height: 100px;
-  z-index: 2;
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-/* UFO */
-.ufo {
-  position: absolute;
-  width: 60px;
-  height: 40px;
-  z-index: 2;
+@keyframes breathe {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
-.ufo-1 {
-  top: 15%;
-  left: 10%;
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
 }
 
-.ufo-2 {
-  top: 25%;
-  right: 15%;
-}
-
-/* Moon */
-.moon {
-  position: absolute;
-  z-index: 1;
-}
-
-.moon-1 {
-  width: 40px;
-  height: 40px;
-  top: 20%;
-  right: 20%;
-}
-
-.moon-2 {
-  width: 25px;
-  height: 25px;
-  top: 60%;
-  left: 8%;
-}
-
-/* ============================================
-   HERO SECTION SPECIFIC
-   ============================================ */
-
-.hero-content {
-  position: relative;
-  z-index: 10;
-}
-
-/* Mobile adjustments for cosmic elements */
-@media (max-width: 768px) {
-  .planet-earth {
-    bottom: -30%;
-    opacity: 0.7;
-  }
-
-  .glow-orb {
-    opacity: 0.2;
-  }
-
-  .shooting-star {
-    display: none;
-  }
-
-  .ufo, .moon {
-    transform: scale(0.7);
-  }
-}
-
-/* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .shooting-star,
-  .stars-small,
-  .stars-medium,
-  .stars-large {
-    animation: none;
-  }
-
-  .shooting-star {
-    opacity: 0.3;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

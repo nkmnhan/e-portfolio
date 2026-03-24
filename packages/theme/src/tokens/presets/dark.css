@@ -1,0 +1,20 @@
+/* Dark mode preset — from portfolio-nextjs .dark {} block */
+.dark {
+  --color-bg: #030712;
+  --color-bg-subtle: #111827;
+  --color-surface: #1F2937;
+  --color-surface-hover: #374151;
+  --color-border: #374151;
+  --color-border-hover: #4B5563;
+
+  --color-text: #F9FAFB;
+  --color-text-secondary: #E5E7EB;
+  --color-text-muted: #9CA3AF;
+  --color-text-subtle: #6B7280;
+  --color-text-inverted: #111827;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+}

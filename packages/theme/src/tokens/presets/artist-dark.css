@@ -1,0 +1,31 @@
+/* Artist Dark preset — from artist-portfolio :root vars */
+.theme-artist-dark {
+  --color-bg: #0a0a0b;
+  --color-bg-subtle: #111113;
+  --color-surface: #1c1c1f;
+  --color-surface-hover: #252528;
+
+  --color-text: #fafafa;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+
+  --color-primary: #06b6d4;
+  --color-primary-hover: #22d3ee;
+
+  --color-accent: #a855f7;
+  --color-accent-hover: #c084fc;
+
+  --color-border: #27272a;
+  --color-border-hover: #3f3f46;
+
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+
+  --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
+  --gradient-surface: linear-gradient(180deg, #1c1c1f 0%, #0a0a0b 100%);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(6, 182, 212, 0.3);
+}
