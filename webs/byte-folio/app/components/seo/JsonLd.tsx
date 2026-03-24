@@ -42,6 +42,44 @@ const websiteSchema = {
   },
 };
 
+// SiteNavigationElement — helps Google build sitelinks tree
+const navigationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: [
+    {
+      "@type": "SiteNavigationElement",
+      position: 1,
+      name: "About",
+      url: `${siteConfig.url}/#hero`,
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 2,
+      name: "Skills",
+      url: `${siteConfig.url}/#skills`,
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 3,
+      name: "Projects",
+      url: `${siteConfig.url}/#projects`,
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 4,
+      name: "Experience",
+      url: `${siteConfig.url}/#experience`,
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 5,
+      name: "Contact",
+      url: `${siteConfig.url}/contact`,
+    },
+  ],
+};
+
 export function JsonLd() {
   return (
     <>
@@ -55,6 +93,12 @@ export function JsonLd() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(websiteSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(navigationSchema),
         }}
       />
     </>

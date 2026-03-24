@@ -9,7 +9,7 @@ export const siteConfig = {
   title: "Tony Nguyen | Software Engineer",
   description:
     "Software Engineer with 8+ years of experience in .NET Core, React, and microservices architecture. Building scalable solutions for global clients.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://tonynguyen.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://nkmnhan.com",
   ogImage: "/og-image.jpg",
   locale: "en_US",
   keywords: [
@@ -88,9 +88,14 @@ export const defaultMetadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
 
-  // Verification (add your own IDs when ready)
+  // Verification
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: {
+      ...(process.env.BING_SITE_VERIFICATION
+        ? { "msvalidate.01": [process.env.BING_SITE_VERIFICATION] }
+        : {}),
+    },
   },
 
   // Canonical
