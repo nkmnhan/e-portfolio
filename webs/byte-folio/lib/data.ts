@@ -1,6 +1,6 @@
 // ============================================
 // BYTE-FOLIO DATA TYPES & REAL DATA
-// Based on portfolio-nextjs project
+// Real portfolio data
 // ============================================
 
 export type SkillCategory =

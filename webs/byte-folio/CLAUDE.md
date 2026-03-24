@@ -15,7 +15,7 @@ Space-themed developer portfolio inspired by Figma design.
 ## Tech Stack
 - Next.js 16+ (App Router), TypeScript, Tailwind CSS v4, Flowbite-React
 - Package Manager: pnpm
-- Port: 3002 (to run alongside portfolio-nextjs:3000 and artist-portfolio:3001)
+- Port: 3002 (to run alongside artist-portfolio:3001)
 
 ## Project Structure
 ```

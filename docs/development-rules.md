@@ -36,7 +36,7 @@ export function LikeButton() {
 
 ## 2. CSS with clsxMerge
 
-Always use `clsxMerge` from `@/app/components/themes/utils`:
+Always use `clsxMerge` from `@eportfolio/ui/utils`:
 
 ```tsx
 // ✅ GOOD
@@ -89,7 +89,7 @@ components/{name}/
 ### Template
 
 ```tsx
-import { clsxMerge } from "@/app/components/themes/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 
 interface Props {
   className?: string;

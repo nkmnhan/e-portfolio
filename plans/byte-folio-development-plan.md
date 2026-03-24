@@ -1,7 +1,7 @@
 # Byte-Folio Development Plan
 
 > Space-themed developer portfolio - LIGHTWEIGHT & HIGH-PERFORMANCE
-> Data sourced from portfolio-nextjs project (Tony Nguyen's portfolio)
+> Data sourced from Tony Nguyen's portfolio
 
 ## Project Overview
 
@@ -114,7 +114,7 @@
 
 ---
 
-## Real Data Overview (from portfolio-nextjs)
+## Real Data Overview
 
 ### Profile Information
 | Field | Value |

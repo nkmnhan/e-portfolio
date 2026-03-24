@@ -17,7 +17,7 @@ Portfolio platform for **3D Artists**, **Animation Artists**, and **Concept Arti
 ## Tech Stack
 - Next.js 14+ (App Router), TypeScript, Tailwind CSS, Flowbite-React
 - Package Manager: pnpm
-- Port: 3001 (to run alongside portfolio-nextjs on 3000)
+- Port: 3001
 
 ## Project Structure
 ```
