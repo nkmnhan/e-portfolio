@@ -12,6 +12,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
+  const secondaryProjects = projectsData
+    .filter((p) => !p.isFeatured)
+    .map((project) => ({
+      url: `${siteConfig.url}/projects/${project.id}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
+
   return [
     {
       url: siteConfig.url,
@@ -20,5 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     ...featuredProjects,
+    ...secondaryProjects,
   ];
 }

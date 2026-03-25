@@ -9,7 +9,7 @@ import { SectionWrapper } from "./section-wrapper";
 import { useAnimatedPresence } from "@/app/hooks";
 
 export function Projects() {
-  const [isShowingAll, setIsShowingAll] = useState(false);
+  const [isShowingAll, setIsShowingAll] = useState(true);
   const { shouldRender, isVisible } = useAnimatedPresence(isShowingAll, 400);
 
   const featuredProjects = projectsData

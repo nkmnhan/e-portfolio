@@ -38,7 +38,13 @@ test.describe("Byte-Folio Screenshots", () => {
   }
 
   // Project detail pages
-  const projects = ["meditrack", "aspire-nexus", "e-portfolio"];
+  const projects = [
+    "meditrack", "aspire-nexus", "e-portfolio",
+    "vue-identityserver4", "maui-mediatr", "elasticsearch-nest",
+    "vuejs-hot-reload-docker", "resource-manager", "e-shop",
+    "sql-converter", "push-notification", "hybrid-webview",
+    "calendar-demo", "identityserver4-study",
+  ];
 
   for (const slug of projects) {
     test(`capture project detail: ${slug}`, async ({ page }) => {

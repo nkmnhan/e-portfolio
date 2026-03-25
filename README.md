@@ -64,11 +64,32 @@ A space/cosmic-themed developer portfolio with a CLI aesthetic. Single-page desi
 </details>
 
 <details>
-<summary>Project detail pages</summary>
+<summary>Project detail pages — Featured</summary>
 
 | MediTrack | Aspire.Nexus | E-Portfolio |
 |-----------|--------------|-------------|
 | ![MediTrack](./docs/screenshots/byte-folio-project-meditrack.png) | ![Aspire.Nexus](./docs/screenshots/byte-folio-project-aspire-nexus.png) | ![E-Portfolio](./docs/screenshots/byte-folio-project-e-portfolio.png) |
+
+</details>
+
+<details>
+<summary>Project detail pages — All projects</summary>
+
+| Vue-IdentityServer4 | MAUI.MediatR | Elasticsearch NEST |
+|---------------------|--------------|-------------------|
+| ![Vue-IdentityServer4](./docs/screenshots/byte-folio-project-vue-identityserver4.png) | ![MAUI.MediatR](./docs/screenshots/byte-folio-project-maui-mediatr.png) | ![Elasticsearch NEST](./docs/screenshots/byte-folio-project-elasticsearch-nest.png) |
+
+| Vue.js Hot Reload Docker | ResourceManager | E-Shop |
+|--------------------------|-----------------|--------|
+| ![Vue.js Hot Reload Docker](./docs/screenshots/byte-folio-project-vuejs-hot-reload-docker.png) | ![ResourceManager](./docs/screenshots/byte-folio-project-resource-manager.png) | ![E-Shop](./docs/screenshots/byte-folio-project-e-shop.png) |
+
+| SQLConverter | Push Notification | HybridWebView |
+|--------------|-------------------|---------------|
+| ![SQLConverter](./docs/screenshots/byte-folio-project-sql-converter.png) | ![Push Notification](./docs/screenshots/byte-folio-project-push-notification.png) | ![HybridWebView](./docs/screenshots/byte-folio-project-hybrid-webview.png) |
+
+| Calendar Demo | IdentityServer4.Study |
+|---------------|-----------------------|
+| ![Calendar Demo](./docs/screenshots/byte-folio-project-calendar-demo.png) | ![IdentityServer4.Study](./docs/screenshots/byte-folio-project-identityserver4-study.png) |
 
 </details>
 

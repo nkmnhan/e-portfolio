@@ -49,6 +49,15 @@ export interface ExperienceEntry {
   accentColor: "primary" | "secondary" | "muted";
 }
 
+export interface ProjectMeta {
+  titleSuffix: string;
+  description: string;
+  keywords: string[];
+  category: string;
+  dateCreated: string;
+  programmingLanguages: string[];
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -62,6 +71,7 @@ export interface Project {
   docsUrl?: string;
   isFeatured: boolean;
   sortOrder: number;
+  meta: ProjectMeta;
 }
 
 export interface SkillCategory {

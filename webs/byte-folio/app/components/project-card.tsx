@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
+import Link from "next/link";
+import { FaGithub, FaArrowUpRightFromSquare, FaArrowRight } from "react-icons/fa6";
 import type { Project } from "@/lib/types";
 import { TechBadge } from "./tech-badge";
 
@@ -86,6 +87,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <FaGithub className="w-4 h-4" />
             Code
           </a>
+          <Link
+            href={`/projects/${project.id}`}
+            className="flex items-center gap-1.5 text-sm text-primary hover:text-primary-hover transition-colors"
+          >
+            <FaArrowRight className="w-3.5 h-3.5" />
+            Details
+          </Link>
         </div>
       </div>
     </div>

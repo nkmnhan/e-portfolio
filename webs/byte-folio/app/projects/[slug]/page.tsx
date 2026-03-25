@@ -1,75 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { FaGithub, FaArrowUpRightFromSquare, FaArrowLeft, FaBookOpen } from "react-icons/fa6";
+import { FaGithub, FaArrowUpRightFromSquare, FaArrowLeft, FaBookOpen, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { projectsData } from "@/lib/data/projects";
 import { siteConfig } from "@/lib/data/site-config";
 import { TechBadge } from "@/app/components/tech-badge";
 
-const featuredSlugs = ["meditrack", "aspire-nexus", "e-portfolio"];
-
 export function generateStaticParams() {
-  return featuredSlugs.map((slug) => ({ slug }));
+  return projectsData.map((p) => ({ slug: p.id }));
 }
 
 function getProject(slug: string) {
-  return projectsData.find((p) => p.id === slug && p.isFeatured);
+  return projectsData.find((p) => p.id === slug);
 }
-
-const projectMeta: Record<
-  string,
-  {
-    titleSuffix: string;
-    description: string;
-    keywords: string[];
-    category: string;
-    dateCreated: string;
-    programmingLanguages: string[];
-  }
-> = {
-  meditrack: {
-    titleSuffix: "Open-source EMR Platform",
-    description:
-      "MediTrack is an open-source EMR platform built by Tony Nguyen (Nhan Nguyen). Featuring Clara AI for real-time speech-to-text transcription and automatic SOAP note generation, MediTrack helps doctors focus on patient care. Built with .NET 10, React 19, PostgreSQL, and RabbitMQ microservices.",
-    keywords: [
-      "MediTrack", "EMR platform", "electronic medical records", "Clara AI",
-      "SOAP note generation", "speech-to-text medical", "healthcare software",
-      ".NET microservices", "React medical app", "RabbitMQ event-driven",
-      "Tony Nguyen MediTrack", "Nhan Nguyen EMR",
-    ],
-    category: "HealthApplication",
-    dateCreated: "2025-01-01",
-    programmingLanguages: ["C#", ".NET 10", "TypeScript", "React 19", "SQL"],
-  },
-  "aspire-nexus": {
-    titleSuffix: "Zero-code .NET Aspire Orchestration",
-    description:
-      "Aspire.Nexus by Tony Nguyen (Nhan Nguyen) enables zero-code service orchestration for .NET Aspire. Configure and toggle microservices via JSON without C# changes or rebuilds. Supports .NET, Node.js, and custom dev servers with infrastructure persistence.",
-    keywords: [
-      "Aspire.Nexus", ".NET Aspire", "service orchestration", "JSON configuration",
-      "zero-code deployment", "microservices management", "infrastructure persistence",
-      "developer tools", ".NET 10 Aspire",
-      "Tony Nguyen Aspire", "Nhan Nguyen .NET",
-    ],
-    category: "DeveloperApplication",
-    dateCreated: "2025-03-01",
-    programmingLanguages: ["C#", ".NET 10", "JSON", "Docker"],
-  },
-  "e-portfolio": {
-    titleSuffix: "Next.js 16 Monorepo Portfolio Platform",
-    description:
-      "E-Portfolio is a pnpm monorepo by Tony Nguyen (Nhan Nguyen) housing multiple Next.js 16 portfolio apps with shared packages. Features a perceptual color derivation engine, React Three Fiber starfield, Playwright E2E tests, and Storybook component documentation.",
-    keywords: [
-      "E-Portfolio", "Next.js 16 portfolio", "React 19 portfolio", "pnpm monorepo",
-      "perceptual color engine", "React Three Fiber", "Tailwind CSS v4",
-      "developer portfolio", "portfolio monorepo",
-      "Tony Nguyen portfolio", "Nhan Nguyen portfolio",
-    ],
-    category: "WebApplication",
-    dateCreated: "2024-01-01",
-    programmingLanguages: ["TypeScript", "React 19", "Next.js 16", "CSS"],
-  },
-};
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -78,7 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = getProject(slug);
   if (!project) return {};
 
-  const meta = projectMeta[slug];
+  const { meta } = project;
   const pageUrl = `${siteConfig.url}/projects/${slug}`;
   const title = `${project.title} — ${siteConfig.name} | ${meta.titleSuffix}`;
 
@@ -127,8 +70,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const project = getProject(slug);
   if (!project) notFound();
 
-  const meta = projectMeta[slug];
+  const { meta } = project;
   const pageUrl = `${siteConfig.url}/projects/${slug}`;
+
+  const sortedProjects = [...projectsData].sort((a, b) => a.sortOrder - b.sortOrder);
+  const currentIndex = sortedProjects.findIndex((p) => p.id === slug);
+  const prevProject = currentIndex > 0 ? sortedProjects[currentIndex - 1] : null;
+  const nextProject = currentIndex < sortedProjects.length - 1 ? sortedProjects[currentIndex + 1] : null;
 
   const primaryLink = project.liveUrl
     ? { href: project.liveUrl, label: "Live Demo", icon: FaArrowUpRightFromSquare }
@@ -299,8 +247,43 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
           </section>
 
-          {/* Divider */}
-          <div className="border-t border-border/50 mb-8 md:mb-12" />
+          {/* Project navigation */}
+          <nav aria-label="Project navigation" className="border-t border-border/50 pt-8 md:pt-12 mb-8 md:mb-12">
+            <div className="flex items-stretch justify-between gap-4">
+              {prevProject ? (
+                <Link
+                  href={`/projects/${prevProject.id}`}
+                  className="group flex items-center gap-3 min-h-11 max-w-[48%] text-left"
+                >
+                  <FaChevronLeft className="w-4 h-4 shrink-0 text-text-muted group-hover:text-primary transition-colors" />
+                  <div className="min-w-0">
+                    <span className="block text-xs text-text-muted font-[family-name:var(--font-mono)]">prev</span>
+                    <span className="block text-sm text-text group-hover:text-primary transition-colors truncate">
+                      {prevProject.title}
+                    </span>
+                  </div>
+                </Link>
+              ) : (
+                <div />
+              )}
+              {nextProject ? (
+                <Link
+                  href={`/projects/${nextProject.id}`}
+                  className="group flex items-center gap-3 min-h-11 max-w-[48%] text-right ml-auto"
+                >
+                  <div className="min-w-0">
+                    <span className="block text-xs text-text-muted font-[family-name:var(--font-mono)]">next</span>
+                    <span className="block text-sm text-text group-hover:text-primary transition-colors truncate">
+                      {nextProject.title}
+                    </span>
+                  </div>
+                  <FaChevronRight className="w-4 h-4 shrink-0 text-text-muted group-hover:text-primary transition-colors" />
+                </Link>
+              ) : (
+                <div />
+              )}
+            </div>
+          </nav>
 
           {/* Author + more projects */}
           <footer>
