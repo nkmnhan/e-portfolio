@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { siteConfig } from "@/lib/data/site-config";
 import { ThemeSwitcher } from "./components/theme-switcher";
 import "./globals.css";
@@ -27,13 +29,32 @@ export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
   keywords: [
-    "Tony Nguyen", "Nhan Nguyen", "nkmnhan", "@nkmnhan", "Tony F. Wilson",
-    "nkmnhan github", "nkmnhan developer", "nkmnhan portfolio",
-    "Nhan developer", "Nhan fullstack developer", "Tony developer", "Tony fullstack developer",
+    // Name variations
+    "Tony Nguyen", "Nhan Nguyen", "Nguyen Khanh Minh Nhan",
+    "nkmnhan", "@nkmnhan", "nkmnhan.com", "Tony F. Wilson",
+    // Name + role
+    "Tony Nguyen developer", "Nhan Nguyen developer",
+    "Tony Nguyen software engineer", "Nhan Nguyen software engineer",
+    "Tony Nguyen fullstack developer", "Nhan Nguyen fullstack developer",
+    "Tony Nguyen .NET developer", "Tony Nguyen React developer",
+    // Name + portfolio
+    "Tony Nguyen portfolio", "Nhan Nguyen portfolio",
+    "nkmnhan portfolio", "nkmnhan github", "nkmnhan developer",
+    // Name + location
+    "Tony Nguyen Ho Chi Minh City", "Nhan Nguyen Ho Chi Minh City",
+    "Tony Nguyen Vietnam developer", "Nhan Nguyen Vietnam developer",
+    "Tony Nguyen Singapore developer", "Nhan Nguyen Singapore developer",
+    // Name + company
+    "Orient Software Tony Nguyen",
+    // Role keywords
     "Senior Software Engineer", "Senior Fullstack Developer",
-    ".NET Core", "React", "Next.js", "Angular", "TypeScript",
-    "microservices", "cloud architecture", "AWS", "Azure", "Docker",
-    "fullstack developer Vietnam", "software engineer portfolio",
+    // Tech keywords
+    ".NET Core developer", "React developer", "Angular developer",
+    "Next.js", "TypeScript", "microservices", "cloud architecture",
+    "AWS", "Azure", "Docker",
+    // Location keywords
+    "fullstack developer Vietnam", "software engineer Vietnam",
+    "fullstack developer Singapore",
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: "Tony Nguyen (nkmnhan)",
@@ -58,23 +79,14 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     url: siteConfig.url,
-    siteName: "Tony Nguyen Portfolio",
+    siteName: "Tony Nguyen (Nhan Nguyen) Portfolio",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: "Tony Nguyen — Senior Fullstack Developer Portfolio",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
   },
   alternates: {
     canonical: siteConfig.url,
@@ -97,17 +109,40 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@graph": [
                 {
                   "@type": "Person",
+                  "@id": `${siteConfig.url}/#person`,
                   name: "Tony Nguyen",
-                  alternateName: ["Nhan Nguyen", "nkmnhan", "Tony F. Wilson"],
+                  alternateName: ["Nhan Nguyen", "nkmnhan", "Tony F. Wilson", "Nguyen Khanh Minh Nhan"],
+                  givenName: "Nhan",
+                  familyName: "Nguyen",
                   jobTitle: "Senior Fullstack Developer",
                   url: siteConfig.url,
                   email: "nkmnhan@gmail.com",
-                  image: `${siteConfig.url}${siteConfig.ogImage}`,
+                  image: `${siteConfig.url}/opengraph-image`,
                   description: siteConfig.description,
+                  nationality: { "@type": "Country", name: "Vietnam" },
+                  address: { "@type": "PostalAddress", addressCountry: "VN", addressLocality: "Ho Chi Minh City" },
                   sameAs: [
                     "https://github.com/nkmnhan",
                     "https://linkedin.com/in/nkmnhan",
                     "https://www.nkmnhan.com",
+                    "https://facebook.com/nkmnhan",
+                    "https://nhannguyensharing.com",
+                    "https://www.facebook.com/nhannguyensharingday",
+                    "https://www.rmit.edu.vn/profiles/n/nhan-nguyen",
+                  ],
+                  alumniOf: {
+                    "@type": "CollegeOrUniversity",
+                    name: "University of Information Technology",
+                    url: "https://www.uit.edu.vn",
+                    sameAs: "https://en.wikipedia.org/wiki/University_of_Information_Technology",
+                  },
+                  hasOccupation: [
+                    {
+                      "@type": "Occupation",
+                      name: "Senior Software Engineer",
+                      occupationLocation: { "@type": "Country", name: "Vietnam" },
+                      skills: ".NET Core, React, Angular, TypeScript, Microservices, Cloud Architecture",
+                    },
                   ],
                   knowsAbout: [
                     ".NET Core", "React", "Next.js", "Angular", "TypeScript",
@@ -118,19 +153,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     "@type": "Organization",
                     name: "Orient Software",
                   },
+                  knowsLanguage: ["English", "Vietnamese"],
+                },
+                {
+                  "@type": "ProfilePage",
+                  "@id": siteConfig.url,
+                  name: siteConfig.title,
+                  url: siteConfig.url,
+                  description: siteConfig.description,
+                  mainEntity: { "@id": `${siteConfig.url}/#person` },
+                  dateCreated: "2024-01-01",
+                  dateModified: new Date().toISOString().split("T")[0],
+                  inLanguage: "en-US",
                 },
                 {
                   "@type": "WebSite",
-                  name: "Tony Nguyen Portfolio",
-                  alternateName: "nkmnhan portfolio",
+                  name: "Tony Nguyen (Nhan Nguyen) Portfolio",
+                  alternateName: ["nkmnhan portfolio", "Nhan Nguyen developer portfolio", "Tony Nguyen developer portfolio"],
                   url: siteConfig.url,
                   description: siteConfig.description,
-                  author: { "@type": "Person", name: "Tony Nguyen" },
-                  potentialAction: {
-                    "@type": "SearchAction",
-                    target: `${siteConfig.url}#projects`,
-                    "query-input": "required name=search_term_string",
-                  },
+                  author: { "@id": `${siteConfig.url}/#person` },
+                  inLanguage: "en-US",
                 },
                 {
                   "@type": "SiteNavigationElement",
@@ -142,6 +185,67 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     `${siteConfig.url}#projects`,
                     `${siteConfig.url}#skills`,
                     `${siteConfig.url}#contact`,
+                  ],
+                },
+                {
+                  "@type": "ItemList",
+                  name: "Projects by Tony Nguyen",
+                  description: "Software projects and open-source contributions by Tony Nguyen (Nhan Nguyen)",
+                  numberOfItems: 3,
+                  itemListElement: [
+                    {
+                      "@type": "ListItem",
+                      position: 1,
+                      item: {
+                        "@type": "SoftwareSourceCode",
+                        name: "MediTrack",
+                        description: "Open-source EMR platform with AI-powered clinical documentation",
+                        author: { "@id": `${siteConfig.url}/#person` },
+                        url: `${siteConfig.url}/projects/meditrack`,
+                        codeRepository: "https://github.com/nkmnhan/meditrack",
+                        programmingLanguage: ["C#", "TypeScript"],
+                        runtimePlatform: ".NET 10",
+                      },
+                    },
+                    {
+                      "@type": "ListItem",
+                      position: 2,
+                      item: {
+                        "@type": "SoftwareSourceCode",
+                        name: "Aspire.Nexus",
+                        description: "JSON-driven .NET Aspire orchestrator for zero-code service management",
+                        author: { "@id": `${siteConfig.url}/#person` },
+                        url: `${siteConfig.url}/projects/aspire-nexus`,
+                        codeRepository: "https://github.com/nkmnhan/Aspire.Nexus",
+                        programmingLanguage: ["C#"],
+                        runtimePlatform: ".NET 10",
+                      },
+                    },
+                    {
+                      "@type": "ListItem",
+                      position: 3,
+                      item: {
+                        "@type": "SoftwareSourceCode",
+                        name: "E-Portfolio",
+                        description: "Multi-app portfolio monorepo with 3D graphics and perceptual theming engine",
+                        author: { "@id": `${siteConfig.url}/#person` },
+                        url: `${siteConfig.url}/projects/e-portfolio`,
+                        codeRepository: "https://github.com/nkmnhan/e-portfolio",
+                        programmingLanguage: ["TypeScript"],
+                        runtimePlatform: "Next.js 16",
+                      },
+                    },
+                  ],
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  itemListElement: [
+                    {
+                      "@type": "ListItem",
+                      position: 1,
+                      name: "Home",
+                      item: siteConfig.url,
+                    },
                   ],
                 },
               ],
@@ -156,6 +260,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <ThemeSwitcher />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
