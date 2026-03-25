@@ -53,6 +53,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: "Tony Nguyen (Nhan Nguyen) Portfolio",
       locale: "en_US",
       type: "article",
+      publishedTime: meta.dateCreated,
+      modifiedTime: new Date().toISOString(),
+      authors: [siteConfig.url],
     },
     twitter: {
       card: "summary_large_image",
@@ -102,7 +105,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         inLanguage: "en-US",
       },
       {
-        "@type": "SoftwareApplication",
+        "@type": "SoftwareSourceCode",
         "@id": `${pageUrl}#software`,
         name: project.title,
         description: meta.description,

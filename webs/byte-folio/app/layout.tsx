@@ -101,6 +101,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       data-scroll-behavior="smooth"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+          <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
+          <link rel="preconnect" href="https://avatars.githubusercontent.com" crossOrigin="anonymous" />
+          <link rel="dns-prefetch" href="https://picsum.photos" />
+          <link rel="preconnect" href="https://picsum.photos" crossOrigin="anonymous" />
+        </head>
       <body className="min-h-screen bg-bg text-text font-[family-name:var(--font-sans)] antialiased">
         <script
           type="application/ld+json"
@@ -124,9 +130,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   address: { "@type": "PostalAddress", addressCountry: "VN", addressLocality: "Ho Chi Minh City" },
                   sameAs: [
                     "https://github.com/nkmnhan",
-                    "https://linkedin.com/in/nkmnhan",
+                    "https://www.linkedin.com/in/nkmnhan",
                     "https://www.nkmnhan.com",
-                    "https://facebook.com/nkmnhan",
+                    "https://www.facebook.com/nkmnhan",
                     "https://nhannguyensharing.com",
                     "https://www.facebook.com/nhannguyensharingday",
                     "https://www.rmit.edu.vn/profiles/n/nhan-nguyen",
@@ -189,8 +195,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 },
                 {
                   "@type": "ItemList",
-                  name: "Projects by Tony Nguyen",
-                  description: "Software projects and open-source contributions by Tony Nguyen (Nhan Nguyen)",
+                  name: "Featured Projects by Tony Nguyen",
+                  description: "Featured open-source projects by Tony Nguyen (Nhan Nguyen)",
                   numberOfItems: 3,
                   itemListElement: [
                     {
@@ -205,6 +211,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         codeRepository: "https://github.com/nkmnhan/meditrack",
                         programmingLanguage: ["C#", "TypeScript"],
                         runtimePlatform: ".NET 10",
+                        dateCreated: "2025-01-01",
                       },
                     },
                     {
@@ -219,6 +226,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         codeRepository: "https://github.com/nkmnhan/Aspire.Nexus",
                         programmingLanguage: ["C#"],
                         runtimePlatform: ".NET 10",
+                        dateCreated: "2025-03-01",
                       },
                     },
                     {
@@ -233,6 +241,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         codeRepository: "https://github.com/nkmnhan/e-portfolio",
                         programmingLanguage: ["TypeScript"],
                         runtimePlatform: "Next.js 16",
+                        dateCreated: "2024-01-01",
                       },
                     },
                   ],

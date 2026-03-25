@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((p) => p.isFeatured)
     .map((project) => ({
       url: `${siteConfig.url}/projects/${project.id}`,
-      lastModified: new Date(),
+      lastModified: new Date(project.meta.dateCreated),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     }));
@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((p) => !p.isFeatured)
     .map((project) => ({
       url: `${siteConfig.url}/projects/${project.id}`,
-      lastModified: new Date(),
+      lastModified: new Date(project.meta.dateCreated),
       changeFrequency: "monthly" as const,
       priority: 0.6,
     }));
@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: siteConfig.url,
-      lastModified: new Date(),
+      lastModified: new Date("2025-03-01"),
       changeFrequency: "monthly",
       priority: 1.0,
     },
