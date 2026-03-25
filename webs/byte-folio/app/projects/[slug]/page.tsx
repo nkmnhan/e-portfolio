@@ -140,6 +140,20 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": pageUrl,
+        url: pageUrl,
+        name: `${project.title} — ${meta.titleSuffix}`,
+        description: meta.description,
+        isPartOf: { "@id": `${siteConfig.url}/#website` },
+        about: { "@id": `${pageUrl}#software` },
+        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+        author: { "@id": `${siteConfig.url}/#person` },
+        datePublished: meta.dateCreated,
+        dateModified: new Date().toISOString().split("T")[0],
+        inLanguage: "en-US",
+      },
+      {
         "@type": "SoftwareApplication",
         "@id": `${pageUrl}#software`,
         name: project.title,
@@ -161,6 +175,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       },
       {
         "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
         itemListElement: [
           {
             "@type": "ListItem",

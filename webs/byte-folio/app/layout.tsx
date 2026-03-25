@@ -168,6 +168,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 },
                 {
                   "@type": "WebSite",
+                  "@id": `${siteConfig.url}/#website`,
                   name: "Tony Nguyen (Nhan Nguyen) Portfolio",
                   alternateName: ["nkmnhan portfolio", "Nhan Nguyen developer portfolio", "Tony Nguyen developer portfolio"],
                   url: siteConfig.url,
@@ -177,14 +178,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 },
                 {
                   "@type": "SiteNavigationElement",
-                  name: ["About", "Experience", "Key Projects", "Projects", "Skills", "Contact"],
-                  url: [
-                    `${siteConfig.url}#about`,
-                    `${siteConfig.url}#experience`,
-                    `${siteConfig.url}#key-projects`,
-                    `${siteConfig.url}#projects`,
-                    `${siteConfig.url}#skills`,
-                    `${siteConfig.url}#contact`,
+                  "@id": `${siteConfig.url}/#navigation`,
+                  name: "Main Navigation",
+                  hasPart: [
+                    { "@type": "SiteNavigationElement", name: "MediTrack", url: `${siteConfig.url}/projects/meditrack` },
+                    { "@type": "SiteNavigationElement", name: "Aspire.Nexus", url: `${siteConfig.url}/projects/aspire-nexus` },
+                    { "@type": "SiteNavigationElement", name: "E-Portfolio", url: `${siteConfig.url}/projects/e-portfolio` },
                   ],
                 },
                 {
@@ -234,17 +233,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         programmingLanguage: ["TypeScript"],
                         runtimePlatform: "Next.js 16",
                       },
-                    },
-                  ],
-                },
-                {
-                  "@type": "BreadcrumbList",
-                  itemListElement: [
-                    {
-                      "@type": "ListItem",
-                      position: 1,
-                      name: "Home",
-                      item: siteConfig.url,
                     },
                   ],
                 },

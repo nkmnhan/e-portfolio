@@ -63,6 +63,15 @@ A space/cosmic-themed developer portfolio with a CLI aesthetic. Single-page desi
 
 </details>
 
+<details>
+<summary>Project detail pages</summary>
+
+| MediTrack | Aspire.Nexus | E-Portfolio |
+|-----------|--------------|-------------|
+| ![MediTrack](./docs/screenshots/byte-folio-project-meditrack.png) | ![Aspire.Nexus](./docs/screenshots/byte-folio-project-aspire-nexus.png) | ![E-Portfolio](./docs/screenshots/byte-folio-project-e-portfolio.png) |
+
+</details>
+
 ## Project Structure
 
 ```

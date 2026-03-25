@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useInView } from "@/app/hooks";
-import { FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { FaGithub, FaArrowUpRightFromSquare, FaArrowRight } from "react-icons/fa6";
 import type { Project } from "@/lib/types";
 import { TechBadge } from "./tech-badge";
 
@@ -75,9 +76,11 @@ export function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps
       <div className="relative p-6 md:p-8 pl-7 md:pl-10">
         {/* Signal header */}
         <div className="flex items-center gap-3 mb-4">
-          <h3 className={`text-2xl md:text-3xl font-bold font-[family-name:var(--font-display)] glow-primary-text`}>
-            {project.title}
-          </h3>
+          <Link href={`/projects/${project.id}`} className="hover:underline underline-offset-4 decoration-primary/50">
+            <h3 className={`text-2xl md:text-3xl font-bold font-[family-name:var(--font-display)] glow-primary-text`}>
+              {project.title}
+            </h3>
+          </Link>
           {primaryLink && (
             <span className={`px-2 py-0.5 text-xs font-[family-name:var(--font-mono)] rounded-full border ${accent.btnBg} uppercase tracking-widest`}>
               {accent.signal}
@@ -124,15 +127,15 @@ export function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps
         </div>
 
         {/* Links */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-stretch gap-3">
           {primaryLink && (
             <a
               href={primaryLink.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-4 py-2 min-h-11 rounded-lg border text-sm font-medium transition-colors ${accent.btnBg}`}
+              className={`inline-flex items-center justify-center gap-2 px-4 py-2 min-h-11 rounded-lg border text-sm font-medium whitespace-nowrap transition-colors ${accent.btnBg}`}
             >
-              <FaArrowUpRightFromSquare className="w-3.5 h-3.5" />
+              <FaArrowUpRightFromSquare className="w-3.5 h-3.5 shrink-0" />
               {primaryLink.label}
             </a>
           )}
@@ -140,11 +143,18 @@ export function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 min-h-11 rounded-lg border border-border text-sm text-text-muted hover:text-text hover:border-border-hover transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 min-h-11 rounded-lg border border-border text-sm text-text-muted hover:text-text hover:border-border-hover whitespace-nowrap transition-colors"
           >
-            <FaGithub className="w-4 h-4" />
+            <FaGithub className="w-4 h-4 shrink-0" />
             Source Code
           </a>
+          <Link
+            href={`/projects/${project.id}`}
+            className={`inline-flex items-center justify-center gap-2 px-4 py-2 min-h-11 rounded-lg border text-sm font-medium whitespace-nowrap transition-colors ${accent.btnBg}`}
+          >
+            <FaArrowRight className="w-3.5 h-3.5 shrink-0" />
+            Details
+          </Link>
         </div>
       </div>
     </article>
