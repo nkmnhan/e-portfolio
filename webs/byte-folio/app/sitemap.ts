@@ -1,7 +1,17 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/data/site-config";
+import { projectsData } from "@/lib/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const featuredProjects = projectsData
+    .filter((p) => p.isFeatured)
+    .map((project) => ({
+      url: `${siteConfig.url}/projects/${project.id}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }));
+
   return [
     {
       url: siteConfig.url,
@@ -9,29 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1.0,
     },
-    {
-      url: `${siteConfig.url}/#skills`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteConfig.url}/#projects`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteConfig.url}/#experience`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteConfig.url}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.8,
-    },
+    ...featuredProjects,
   ];
 }

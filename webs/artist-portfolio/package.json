@@ -13,6 +13,8 @@
     "@eportfolio/ui": "workspace:*",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
     "flowbite": "^4.0.1",
     "flowbite-react": "^0.12.17",
