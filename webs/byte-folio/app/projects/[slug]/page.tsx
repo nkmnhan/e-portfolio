@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const { meta } = project;
   const pageUrl = `${siteConfig.url}/projects/${slug}`;
-  const title = `${project.title} — ${siteConfig.name} | ${meta.titleSuffix}`;
+  const title = `${project.title} — nkmnhan | ${meta.titleSuffix}`;
 
   return {
     title,
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description: meta.description,
       url: pageUrl,
-      siteName: "Tony Nguyen (Nhan Nguyen) Portfolio",
+      siteName: "nkmnhan — Tony Nguyen Portfolio",
       locale: "en_US",
       type: "article",
       publishedTime: meta.dateCreated,
@@ -94,7 +94,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": pageUrl,
         url: pageUrl,
-        name: `${project.title} — ${meta.titleSuffix}`,
+        name: `${project.title} — nkmnhan | ${meta.titleSuffix}`,
         description: meta.description,
         isPartOf: { "@id": `${siteConfig.url}/#website` },
         about: { "@id": `${pageUrl}#software` },

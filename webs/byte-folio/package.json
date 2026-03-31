@@ -6,7 +6,8 @@
     "dev": "next dev --port 3002 --turbopack",
     "build": "next build",
     "start": "next start --port 3002",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "ping-search-engines": "npx tsx scripts/ping-search-engines.ts"
   },
   "dependencies": {
     "@eportfolio/theme": "workspace:*",

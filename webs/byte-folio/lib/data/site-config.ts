@@ -8,9 +8,9 @@ export function getSocialLinksFor(section: "hero" | "contact" | "nav"): SocialLi
 
 export const siteConfig: SiteConfig = {
   name: "Tony Nguyen",
-  title: "Tony Nguyen (Nhan Nguyen) — Senior Fullstack Developer | .NET, React, Cloud",
+  title: "nkmnhan — Tony Nguyen | Senior Fullstack Developer | .NET, React, Cloud",
   description:
-    "Senior Fullstack Developer with 9+ years in .NET, React & cloud-native systems. Explore projects, skills and experience by Tony Nguyen (Nhan Nguyen).",
+    "nkmnhan — Senior Fullstack Developer with 9+ years in .NET, React & cloud-native systems. Explore projects, skills and experience by Tony Nguyen (Nhan Nguyen).",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://nkmnhan.com",
   ogImage: "/og-image.png",
   socialLinks: [
