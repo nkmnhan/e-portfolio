@@ -169,8 +169,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   url: siteConfig.url,
                   description: siteConfig.description,
                   mainEntity: { "@id": `${siteConfig.url}/#person` },
-                  dateCreated: "2024-01-01",
-                  dateModified: new Date().toISOString().split("T")[0],
+                  dateCreated: "2024-01-01T00:00:00Z",
+                  dateModified: new Date().toISOString(),
                   inLanguage: "en-US",
                 },
                 {
@@ -211,7 +211,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         codeRepository: "https://github.com/nkmnhan/meditrack",
                         programmingLanguage: ["C#", "TypeScript"],
                         runtimePlatform: ".NET 10",
-                        dateCreated: "2025-01-01",
+                        dateCreated: "2025-01-01T00:00:00Z",
                       },
                     },
                     {
@@ -226,7 +226,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         codeRepository: "https://github.com/nkmnhan/Aspire.Nexus",
                         programmingLanguage: ["C#"],
                         runtimePlatform: ".NET 10",
-                        dateCreated: "2025-03-01",
+                        dateCreated: "2025-03-01T00:00:00Z",
                       },
                     },
                     {
@@ -241,7 +241,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         codeRepository: "https://github.com/nkmnhan/e-portfolio",
                         programmingLanguage: ["TypeScript"],
                         runtimePlatform: "Next.js 16",
-                        dateCreated: "2024-01-01",
+                        dateCreated: "2024-01-01T00:00:00Z",
                       },
                     },
                   ],
