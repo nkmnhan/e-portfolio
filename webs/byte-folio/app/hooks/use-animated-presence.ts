@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
  */
 export function useAnimatedPresence(isOpen: boolean, duration = 300) {
   const [shouldRender, setShouldRender] = useState(isOpen);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(isOpen);
   const timerRef = useRef<ReturnType<typeof setTimeout>>(null);
 
   useEffect(() => {
