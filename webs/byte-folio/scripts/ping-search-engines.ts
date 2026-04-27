@@ -1,6 +1,9 @@
 /**
- * Post-deploy script: pings IndexNow (Bing/Yandex/DuckDuckGo) and Google
- * with all site URLs so search engines re-crawl promptly.
+ * Post-deploy script: pings IndexNow (Bing/Yandex/DuckDuckGo) with all site
+ * URLs so search engines re-crawl promptly.
+ *
+ * Google is intentionally excluded — their sitemap ping endpoint was deprecated
+ * in 2023. Google discovers content via the Sitemap directive in robots.txt.
  *
  * Usage:
  *   npx tsx scripts/ping-search-engines.ts
@@ -58,23 +61,11 @@ async function pingIndexNow(): Promise<void> {
   }
 }
 
-async function pingGoogle(): Promise<void> {
-  const sitemapUrl = encodeURIComponent(`${SITE_URL}/sitemap.xml`);
-  const url = `https://www.google.com/ping?sitemap=${sitemapUrl}`;
-
-  try {
-    const res = await fetch(url);
-    console.log(`Google sitemap ping: ${res.status} ${res.statusText}`);
-  } catch (err) {
-    console.error("Google sitemap ping: FAILED", err);
-  }
-}
-
 async function main(): Promise<void> {
   console.log(`Pinging search engines for ${SITE_URL}...`);
   console.log(`Submitting ${URLS.length} URLs\n`);
 
-  await Promise.all([pingIndexNow(), pingGoogle()]);
+  await pingIndexNow();
 
   console.log("\nDone. URLs submitted for crawling.");
 }
