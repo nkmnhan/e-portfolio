@@ -1,50 +1,8 @@
 @import "tailwindcss";
 
 @import "@eportfolio/theme/tokens/base.css";
-@import "@eportfolio/theme/tokens/presets/space";
-
-/* Dark defaults for byte-folio — ensures dark background is available immediately
-   from CSS, before JS hydration. Without this, base.css :root sets white bg and
-   white stars become invisible. Runtime useColorTheme will override with derived values. */
-:root {
-  --color-bg: #090909;
-  --color-bg-subtle: #0d0d12;
-  --color-surface: #151520;
-  --color-surface-hover: #1e1e2e;
-  --color-text: #f0f0f0;
-  --color-text-secondary: #b0b0c0;
-  --color-text-muted: #808098;
-  --color-primary: #43e0f7;
-  --color-primary-hover: #66e8fa;
-  --color-secondary: #8657e8;
-  --color-accent: #d10057;
-  --color-border: #252535;
-  --color-border-hover: #353550;
-  --color-success: #00ff88;
-  --color-error: #ff3366;
-}
-
-@theme {
-  --color-bg: var(--color-bg);
-  --color-bg-subtle: var(--color-bg-subtle);
-  --color-surface: var(--color-surface);
-  --color-surface-hover: var(--color-surface-hover);
-
-  --color-text: var(--color-text);
-  --color-text-secondary: var(--color-text-secondary);
-  --color-text-muted: var(--color-text-muted);
-
-  --color-primary: var(--color-primary);
-  --color-primary-hover: var(--color-primary-hover);
-  --color-secondary: var(--color-secondary);
-  --color-accent: var(--color-accent);
-
-  --color-border: var(--color-border);
-  --color-border-hover: var(--color-border-hover);
-
-  --color-success: var(--color-success);
-  --color-error: var(--color-error);
-}
+@import "@eportfolio/theme/tokens/themes.css";
+@import "@eportfolio/theme/tokens/tailwind.css";
 
 @layer base {
   html {

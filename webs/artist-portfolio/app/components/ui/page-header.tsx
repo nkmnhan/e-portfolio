@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 
 export interface PageHeaderProps {
   title: string;
@@ -21,7 +21,7 @@ export function PageHeader({
   return (
     <section
       className={clsxMerge(
-        "py-16 md:py-20 bg-[var(--color-bg-secondary)]",
+        "py-16 md:py-20 bg-[var(--color-bg-subtle)]",
         className
       )}
     >

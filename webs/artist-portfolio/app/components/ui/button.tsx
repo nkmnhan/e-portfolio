@@ -1,6 +1,6 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
 import Link from "next/link";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import { HiArrowRight } from "react-icons/hi";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

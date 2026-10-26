@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useRef, useEffect, useCallback, memo } from "react";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import type { MediaCarouselMedia, MediaCarouselItem } from "@/lib/types";
 import { useTouchDevice } from "./hooks/use-touch-device";

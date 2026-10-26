@@ -1,6 +1,6 @@
 ---
 description: Security rules for web applications
-globs: webs/**
+paths: webs/**
 ---
 
 # Security Rules

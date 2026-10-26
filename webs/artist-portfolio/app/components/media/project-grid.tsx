@@ -1,4 +1,4 @@
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import type { Project } from "@/lib/types";
 import { ProjectCard, type AspectRatio } from "./project-card";
 

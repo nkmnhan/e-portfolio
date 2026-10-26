@@ -1,6 +1,6 @@
 "use client";
 
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import { HiViewGrid, HiViewBoards } from "react-icons/hi";
 import type { LayoutMode } from "@/app/components/media/project-grid";
 

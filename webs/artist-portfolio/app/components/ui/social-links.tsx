@@ -1,4 +1,4 @@
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import type { SocialLinks as SocialLinksType } from "@/lib/types";
 import {
   SiArtstation,

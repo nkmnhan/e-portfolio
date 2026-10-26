@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { Header } from "./components/nav/header";
 import { Footer } from "./components/nav/footer";
+import { ThemeSwitcher } from "@eportfolio/theme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +44,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      data-theme="artist-dark"
+      data-scroll-behavior="smooth"
+      // theme-init.js sets data-theme before hydration
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Must block render so the saved theme applies before first paint */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="/theme-init.js" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
@@ -58,6 +70,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ThemeSwitcher />
         <Analytics />
         <SpeedInsights />
       </body>

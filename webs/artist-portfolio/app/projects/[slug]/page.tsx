@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProjectBySlug, getProjects, getProfile, getAdjacentProjects, getAllProjectSlugs } from "@/lib/services";
 import { MediaRenderer } from "@/app/components/media/media-renderer";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import {
   HiArrowLeft,
   HiArrowRight,
@@ -51,7 +51,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   return (
     <>
       {/* Header */}
-      <section className="py-12 md:py-16 bg-[var(--color-bg-secondary)]">
+      <section className="py-12 md:py-16 bg-[var(--color-bg-subtle)]">
         <div className="container-custom">
           {/* Breadcrumb */}
           <Breadcrumb
@@ -144,7 +144,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       )}
 
       {/* Tools & Tags */}
-      <section className="py-12 md:py-16 bg-[var(--color-bg-secondary)]">
+      <section className="py-12 md:py-16 bg-[var(--color-bg-subtle)]">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Tools */}

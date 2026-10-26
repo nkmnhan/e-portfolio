@@ -68,8 +68,7 @@ test.describe("Theme Switcher — byte-folio", () => {
     await page.getByLabel("Switch color theme").click();
     await page.getByText("CodeRabbit").click();
 
-    // Wait for style injection
-    await page.waitForTimeout(500);
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "coderabbit");
 
     const newPrimary = await page.evaluate(() =>
       getComputedStyle(document.documentElement).getPropertyValue("--color-primary").trim()
@@ -85,23 +84,16 @@ test.describe("Theme Switcher — byte-folio", () => {
     expect(stored).toBe("coderabbit");
   });
 
-  test("injected style element exists after theme selection", async ({ page }) => {
+  test("selected theme sets data-theme and survives reload", async ({ page }) => {
     await page.getByLabel("Switch color theme").click();
     await page.getByText("Terminal").click();
-    await page.waitForTimeout(500);
 
-    const styleContent = await page.evaluate(() => {
-      const style = document.getElementById("eportfolio-theme-vars");
-      return {
-        exists: !!style,
-        content: style?.textContent?.slice(0, 500) ?? "N/A",
-      };
-    });
-    console.log("Style element exists:", styleContent.exists);
-    console.log("Style content (first 200 chars):", styleContent.content);
+    const html = page.locator("html");
+    await expect(html).toHaveAttribute("data-theme", "terminal-green");
 
-    expect(styleContent.exists).toBe(true);
-    expect(styleContent.content).toContain("--color-primary");
+    // theme-init.js must re-apply it before hydration
+    await page.reload();
+    await expect(html).toHaveAttribute("data-theme", "terminal-green");
   });
 
   test("debug: dump all CSS variable values on page load", async ({ page }) => {

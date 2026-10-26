@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getShowreelById, getShowreels, getProfile } from "@/lib/services";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import {
   HiArrowLeft,
   HiOutlineCalendar,
@@ -53,7 +53,7 @@ export default async function ShowreelDetailPage({ params }: Readonly<Props>) {
   return (
     <>
       {/* Header */}
-      <section className="py-12 md:py-16 bg-[var(--color-bg-secondary)]">
+      <section className="py-12 md:py-16 bg-[var(--color-bg-subtle)]">
         <div className="container-custom">
           {/* Breadcrumb */}
           <Breadcrumb
@@ -142,7 +142,7 @@ export default async function ShowreelDetailPage({ params }: Readonly<Props>) {
 
       {/* Breakdown */}
       {showreel.breakdown && showreel.breakdown.length > 0 && (
-        <section className="py-12 md:py-16 bg-[var(--color-bg-secondary)]">
+        <section className="py-12 md:py-16 bg-[var(--color-bg-subtle)]">
           <div className="container-custom">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-2xl font-bold mb-8">Reel Breakdown</h2>

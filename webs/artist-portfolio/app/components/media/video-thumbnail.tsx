@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useRef, useEffect, useCallback } from "react";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import { HiPlay, HiPause } from "react-icons/hi";
 
 export type AspectRatio = "4/3" | "16/9" | "1/1" | "3/4" | "auto";

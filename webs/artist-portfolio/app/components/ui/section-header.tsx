@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import { HiArrowRight } from "react-icons/hi";
 
 interface SectionHeaderProps {

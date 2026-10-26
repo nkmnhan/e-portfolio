@@ -3,7 +3,7 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { siteConfig } from "@/lib/data/site-config";
-import { ThemeSwitcher } from "./components/theme-switcher";
+import { ThemeSwitcher } from "@eportfolio/theme";
 import { ClarityInit } from "./components/clarity-init";
 import "./globals.css";
 
@@ -98,10 +98,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
+      data-theme="space-cosmic"
       data-scroll-behavior="smooth"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      // theme-init.js sets data-theme before hydration
+      suppressHydrationWarning
     >
       <head>
+          {/* Must block render so the saved theme applies before first paint */}
+          {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+          <script src="/theme-init.js" />
           <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
           <link rel="preconnect" href="https://avatars.githubusercontent.com" crossOrigin="anonymous" />
           <link rel="dns-prefetch" href="https://picsum.photos" />

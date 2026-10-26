@@ -111,6 +111,8 @@ dist
 
 # Claude Code settings with tokens
 .claude/settings.json
+.claude/settings.local.json
+CLAUDE.local.md
 
 # Playwright
 test-results/

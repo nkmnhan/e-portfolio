@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { getProfile } from "@/lib/services";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 
 // Get profile for static metadata generation
 const profile = getProfile();
@@ -47,7 +47,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-16 md:py-20 bg-[var(--color-bg-secondary)]">
+      <section className="py-16 md:py-20 bg-[var(--color-bg-subtle)]">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14">
             {/* Avatar */}
@@ -96,7 +96,7 @@ export default function AboutPage() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="section-padding bg-[var(--color-bg-secondary)]">
+      <section id="skills" className="section-padding bg-[var(--color-bg-subtle)]">
         <div className="container-custom">
           <h2 className="text-2xl font-bold mb-10 flex items-center gap-3">
             <HiOutlineStar className="w-6 h-6 text-[var(--color-primary)]" />
@@ -139,7 +139,7 @@ export default function AboutPage() {
       <section id="experience" className="section-padding">
         <div className="container-custom">
           <h2 className="text-2xl font-bold mb-10 flex items-center gap-3">
-            <HiOutlineBriefcase className="w-6 h-6 text-[var(--color-accent)]" />
+            <HiOutlineBriefcase className="w-6 h-6 text-[var(--color-secondary)]" />
             Experience
           </h2>
 
@@ -158,7 +158,7 @@ export default function AboutPage() {
                   className={clsxMerge(
                     "absolute left-0 top-0 -translate-x-1/2",
                     "w-4 h-4 rounded-full",
-                    "bg-[var(--color-accent)] ring-4 ring-[var(--color-bg)]"
+                    "bg-[var(--color-secondary)] ring-4 ring-[var(--color-bg)]"
                   )}
                 />
 
@@ -183,7 +183,7 @@ export default function AboutPage() {
       </section>
 
       {/* Education & Awards */}
-      <section className="section-padding bg-[var(--color-bg-secondary)]">
+      <section className="section-padding bg-[var(--color-bg-subtle)]">
         <div className="container-custom">
           <ResponsiveGrid columns={2} gap="lg">
             {/* Education */}

@@ -4,7 +4,7 @@ import { Suspense, useState } from "react";
 import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, useGLTF, Center, PresentationControls } from "@react-three/drei";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import { HiCube, HiRefresh, HiZoomIn, HiZoomOut } from "react-icons/hi";
 import type { Model3DMedia } from "@/lib/types";
 
@@ -77,10 +77,10 @@ export function Model3DViewer({ media }: Model3DViewerProps) {
               <div
                 className={clsxMerge(
                   "p-4 rounded-full",
-                  "bg-[var(--color-accent)] text-white",
+                  "bg-[var(--color-secondary)] text-white",
                   "transform hover:scale-110",
                   "transition-transform duration-300",
-                  "shadow-lg shadow-[var(--color-accent)]/30"
+                  "shadow-lg shadow-[var(--color-secondary)]/30"
                 )}
               >
                 <HiCube className="w-8 h-8" />
@@ -93,7 +93,7 @@ export function Model3DViewer({ media }: Model3DViewerProps) {
               className={clsxMerge(
                 "absolute top-4 left-4",
                 "px-3 py-1.5 rounded-full",
-                "bg-[var(--color-accent)] text-white",
+                "bg-[var(--color-secondary)] text-white",
                 "text-sm font-medium",
                 "flex items-center gap-2"
               )}
@@ -179,7 +179,7 @@ export function Model3DViewer({ media }: Model3DViewerProps) {
               className={clsxMerge(
                 "absolute top-4 left-4",
                 "px-3 py-1.5 rounded-full",
-                "bg-[var(--color-accent)] text-white",
+                "bg-[var(--color-secondary)] text-white",
                 "text-sm font-medium",
                 "flex items-center gap-2"
               )}

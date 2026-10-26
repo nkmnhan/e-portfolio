@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import { FaArtstation, FaLinkedin, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const footerLinks = [
@@ -18,7 +18,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)]">
+    <footer className="bg-[var(--color-bg-subtle)] border-t border-[var(--color-border)]">
       <div className="container-custom py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}

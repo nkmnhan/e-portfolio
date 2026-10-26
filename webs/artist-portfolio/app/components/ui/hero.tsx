@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import { getProfile } from "@/lib/services";
 import { HiPlay, HiOutlineMail, HiOutlineLocationMarker } from "react-icons/hi";
 import { Badge } from "./badge";

@@ -1,5 +1,5 @@
 import { type HTMLAttributes, type ReactNode } from "react";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   variant?:
@@ -17,7 +17,7 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 
 const variantStyles = {
   primary: "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
-  accent: "bg-[var(--color-accent)]/20 text-[var(--color-accent)]",
+  accent: "bg-[var(--color-secondary)]/20 text-[var(--color-secondary)]",
   success: "bg-[var(--color-success)] text-white",
   warning: "bg-yellow-500/10 text-yellow-500",
   muted: "bg-[var(--color-text-muted)]/20 text-[var(--color-text-muted)]",

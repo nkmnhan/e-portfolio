@@ -1,6 +1,6 @@
 ---
 description: Monorepo workspace conventions for shared packages
-globs:
+paths:
   - packages/**
   - pnpm-workspace.yaml
 ---
@@ -9,9 +9,8 @@ globs:
 
 ## Package Scope
 All shared packages use `@eportfolio/*` scope:
-- `@eportfolio/ui` — components, types, utils, services
-- `@eportfolio/theme` — CSS tokens, derivation engine, hooks
-- `@eportfolio/storybook-config` — shared Storybook base
+- `@eportfolio/ui` — shared utils (`clsxMerge`); add shared components here when a second app needs them
+- `@eportfolio/theme` — CSS color themes, theme list, switch hook
 
 ## Source Protocol (No Build Step)
 Packages export raw TypeScript source via `"exports"` field:
@@ -39,6 +38,6 @@ packages/{name}/
 ```
 
 ## Import Conventions
-- From web apps: `import { Button } from "@eportfolio/ui/components"`
-- Subpath exports for tree-shaking: `@eportfolio/ui/utils`, `@eportfolio/ui/types`
+- From web apps: `import { clsxMerge } from "@eportfolio/ui/utils"`
+- Subpath exports for tree-shaking: `@eportfolio/ui/utils`
 - Never import from package internals (only exported subpaths)

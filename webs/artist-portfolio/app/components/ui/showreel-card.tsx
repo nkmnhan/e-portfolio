@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import type { Showreel } from "@/lib/types";
 import { Badge } from "./badge";
 import { VideoThumbnail } from "@/app/components/media/video-thumbnail";
