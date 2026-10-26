@@ -201,7 +201,7 @@ export const projectsData: Project[] = [
     isFeatured: false,
     sortOrder: 7,
     meta: {
-      titleSuffix: "Docker Hot Reload for Vue.js Development",
+      titleSuffix: "Vue.js HMR in Docker",
       description:
         "Vue.js Hot Reload Docker by Nhan Nguyen — seamless HMR inside Docker containers using Chokidar polling with Docker Compose for Vue.js development.",
       keywords: [
