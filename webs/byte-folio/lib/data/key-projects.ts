@@ -28,12 +28,12 @@ export const keyProjectsData: KeyProject[] = [
   {
     id: "lowell",
     name: "Lowell Microservices",
-    client: "European Financial Clients",
-    role: "Software Architect",
-    period: "2019 - 2020",
+    client: "European Financial Services (at NashTech)",
+    role: "Software Developer",
+    period: "2018 - 2019",
     description:
-      "Event-driven microservices platform for a European financial services company, handling high-throughput data processing with Azure cloud infrastructure.",
-    impact: "Architected distributed system with event-driven communication for financial operations",
+      "Event-driven microservices platform for a European financial services company, running on Azure cloud infrastructure.",
+    impact: "Developed features in an 8-person team and supported Docker-based deployments",
     techStack: ["Azure", ".NET Core", "RabbitMQ", "Docker", "Event-Driven"],
     accentColor: "accent",
   },
