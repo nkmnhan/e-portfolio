@@ -5,6 +5,6 @@ export const heroData: HeroData = {
   name: "Tony Nguyen",
   title: "Senior Fullstack Developer",
   specialization: ".NET · Angular · React · Azure & AWS",
-  primaryCta: { label: "View My Work", href: "#key-projects" },
+  primaryCta: { label: "View My Work", href: "#experience" },
   secondaryCta: { label: "Get In Touch", href: "#contact" },
 };

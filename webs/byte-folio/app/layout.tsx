@@ -118,7 +118,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     "https://www.facebook.com/nkmnhan",
                     "https://nhannguyensharing.com",
                     "https://www.facebook.com/nhannguyensharingday",
-                    "https://www.rmit.edu.vn/profiles/n/nhan-nguyen",
                   ],
                   alumniOf: {
                     "@type": "CollegeOrUniversity",

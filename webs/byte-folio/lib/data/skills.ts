@@ -25,7 +25,6 @@ export const skillsData: SkillCategory[] = [
     skills: [
       { name: ".NET Core", iconName: "SiDotnet" },
       { name: "Node.js", iconName: "SiNodedotjs" },
-      { name: "GraphQL", iconName: "SiGraphql" },
       { name: "gRPC", iconName: "FaServer" },
       { name: "SignalR", iconName: "SiDotnet" },
     ],
