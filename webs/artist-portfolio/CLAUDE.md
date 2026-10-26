@@ -4,7 +4,7 @@
 
 ## Port & Identity
 - **Port**: 3001
-- **Theme**: Dark/cinematic (cyan primary, purple accent, orange highlights)
+- **Theme**: Dark/cinematic (cyan primary, purple secondary, orange accent) — `artist-dark` theme from `@eportfolio/theme`
 - **Design**: Minimal UI, high-quality media display, immersive presentation
 
 ## Project Categories
@@ -19,10 +19,3 @@
 - Artworks: `https://images.unsplash.com/photo-{id}?w={width}&h={height}&fit=crop`
 - Avatars: `https://i.pravatar.cc/150?u={seed}`
 - General: `https://picsum.photos/{width}/{height}?random={seed}`
-
-## Scripts
-```bash
-pnpm dev          # Dev server (:3001)
-pnpm build        # Production build
-pnpm lint         # ESLint
-```

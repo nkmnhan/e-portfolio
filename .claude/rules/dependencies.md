@@ -1,6 +1,6 @@
 ---
 description: Dependency management rules for package.json files
-globs: **/package.json
+paths: **/package.json
 ---
 
 # Dependency Rules

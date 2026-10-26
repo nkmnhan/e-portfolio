@@ -1,6 +1,6 @@
 ---
 description: Frontend development rules for all Next.js web projects
-globs: webs/**
+paths: webs/**
 ---
 
 # Frontend Rules
@@ -16,7 +16,8 @@ globs: webs/**
 - No horizontal scrolling on mobile
 
 ## CSS Variables / Semantic Tokens Only
-- Use design tokens: `bg-[var(--color-surface)]`, `text-[var(--color-primary)]`
+- Use design tokens via the Tailwind classes mapped in `globals.css` `@theme`: `bg-surface`, `text-primary`
+- `bg-[var(--color-surface)]` is equivalent (older artist code uses it) — prefer the mapped class in new code
 - Never hardcode colors: no `bg-gray-800`, `text-gray-400`
 - Exception: Tailwind's built-in semantic classes (`bg-white`, `text-black`) for light/dark base
 
