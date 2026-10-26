@@ -9,7 +9,6 @@ export const experienceData: ExperienceEntry[] = [
     achievements: [
       "Building BravoSUITE, an enterprise HR & Talent Management platform with .NET 9 microservices and Angular micro-frontends",
       "Led up to 5 developers on the Search, Course and Learner modules of Singapore's MOE Platform (2020-2025)",
-      "Built Open Create platform for UK's Open University",
     ],
     accentColor: "primary",
   },
@@ -17,8 +16,9 @@ export const experienceData: ExperienceEntry[] = [
     period: "2018 - 2019",
     title: "Software Engineer",
     company: "NASH TECH",
-    techStack: [".NET Core", "Azure", "Docker", "Docker Compose", "Microservices"],
+    techStack: ["C#", ".NET Core", "Angular", "Azure", "Docker", "Docker Compose", "Microservices"],
     achievements: [
+      "Joined Open Create (The Open University, UK) from the resource pool for app upgrades, documentation and project close-out",
       "Developed event-driven microservices for Lowell, a European financial services company",
       "Feature developer in an 8-person team (5 developers, 1 frontend developer, 2 testers)",
       "Supported deployments with Docker and Docker Compose",

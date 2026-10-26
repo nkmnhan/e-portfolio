@@ -40,13 +40,13 @@ export const keyProjectsData: KeyProject[] = [
   {
     id: "open-create",
     name: "Open Create",
-    client: "The Open University, UK",
-    role: "Full-Stack Developer",
-    period: "2019",
+    client: "The Open University, UK (at NashTech)",
+    role: "Software Developer",
+    period: "2018",
     description:
-      "Digital learning platform transforming static educational materials into dynamic, interactive learning experiences for the UK's largest university.",
-    impact: "Delivered interactive content platform serving university-scale learner base",
-    techStack: ["Angular", "Node.js", ".NET Core"],
+      "Interactive digital learning platform for the UK's largest university. Joined from the resource pool in the project's final phase, before moving to Lowell.",
+    impact: "Upgraded the app, wrote documentation and helped close out the project",
+    techStack: ["C#", "Angular"],
     accentColor: "secondary",
   },
 ];
