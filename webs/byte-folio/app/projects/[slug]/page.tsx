@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const { meta } = project;
   const pageUrl = `${siteConfig.url}/projects/${slug}`;
-  const title = `${project.title} — nkmnhan | ${meta.titleSuffix}`;
+  const title = `${project.title} | nkmnhan | ${meta.titleSuffix}`;
 
   return {
     title,
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description: meta.description,
       url: pageUrl,
-      siteName: "nkmnhan — Tony Nguyen Portfolio",
+      siteName: "nkmnhan | Tony Nguyen Portfolio",
       locale: "en_US",
       type: "article",
       publishedTime: new Date(meta.dateCreated).toISOString(),
@@ -83,6 +83,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
   const primaryLink = project.liveUrl
     ? { href: project.liveUrl, label: "Live Demo", icon: FaArrowUpRightFromSquare }
+    : project.previewUrl
+      ? { href: project.previewUrl, label: "UI Preview", icon: FaArrowUpRightFromSquare }
     : project.docsUrl
       ? { href: project.docsUrl, label: "Documentation", icon: FaBookOpen }
       : null;
@@ -94,7 +96,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": pageUrl,
         url: pageUrl,
-        name: `${project.title} — nkmnhan | ${meta.titleSuffix}`,
+        name: `${project.title} | nkmnhan | ${meta.titleSuffix}`,
         description: meta.description,
         isPartOf: { "@id": `${siteConfig.url}/#website` },
         about: { "@id": `${pageUrl}#software` },
@@ -295,7 +297,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <Link href="/" className="text-primary hover:text-primary-hover transition-colors">
                 Tony Nguyen (Nhan Nguyen)
               </Link>
-              {" "}— Senior Fullstack Developer with 9+ years of experience
+              {", "}Senior Fullstack Developer with 10+ years of experience
               building scalable systems across Singapore, Europe, and Vietnam.
             </p>
             <Link

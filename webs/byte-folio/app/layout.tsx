@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     url: siteConfig.url,
-    siteName: "nkmnhan — Tony Nguyen Portfolio",
+    siteName: "nkmnhan | Tony Nguyen Portfolio",
     locale: "en_US",
     type: "website",
   },
@@ -182,7 +182,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {
                   "@type": "WebSite",
                   "@id": `${siteConfig.url}/#website`,
-                  name: "nkmnhan — Tony Nguyen Portfolio",
+                  name: "nkmnhan | Tony Nguyen Portfolio",
                   alternateName: ["Tony Nguyen portfolio", "Nhan Nguyen developer portfolio", "nkmnhan portfolio"],
                   url: siteConfig.url,
                   description: siteConfig.description,
@@ -241,7 +241,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       item: {
                         "@type": "SoftwareSourceCode",
                         name: "E-Portfolio",
-                        description: "Multi-app portfolio monorepo with 3D graphics and perceptual theming engine",
+                        description: "Multi-app portfolio monorepo with 3D graphics and a shared multi-theme system",
                         author: { "@id": `${siteConfig.url}/#person` },
                         url: `${siteConfig.url}/projects/e-portfolio`,
                         codeRepository: "https://github.com/nkmnhan/e-portfolio",

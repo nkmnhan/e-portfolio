@@ -35,6 +35,7 @@ export interface AboutData {
   bio: string[];
   stats: Array<{ value: string; label: string }>;
   education: string;
+  assessments: string;
   availability: string;
   githubBadges: GitHubBadge[];
 }
@@ -68,6 +69,8 @@ export interface Project {
   techStack: string[];
   githubUrl: string;
   liveUrl?: string;
+  /** UI mockup/styleguide — not a working app, so it must not be labelled "Live" */
+  previewUrl?: string;
   docsUrl?: string;
   isFeatured: boolean;
   sortOrder: number;

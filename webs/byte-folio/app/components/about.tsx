@@ -1,18 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { FaGraduationCap, FaLocationDot } from "react-icons/fa6";
+import { FaCircleCheck, FaGraduationCap, FaLocationDot } from "react-icons/fa6";
 import { aboutData } from "@/lib/data/about";
 import { TerminalHeading } from "./terminal-heading";
 import { SectionWrapper } from "./section-wrapper";
-import { PullSharkIcon, PairExtraordinaireIcon, YoloIcon } from "./icons/github-badges";
+import { PullSharkIcon, PairExtraordinaireIcon } from "./icons/github-badges";
 import { useInView, useCountUp } from "@/app/hooks";
 import type { GitHubBadge } from "@/lib/types";
 
 const badgeIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   "pull-shark": PullSharkIcon,
   "pair-extraordinaire": PairExtraordinaireIcon,
-  "yolo": YoloIcon,
 };
 
 function AnimatedStat({ value, label }: { value: string; label: string }) {
@@ -79,7 +78,7 @@ export function About() {
         >
           <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden ring-2 ring-primary/50">
             <div className="absolute -inset-2 rounded-full glow-primary pointer-events-none" style={{ animation: "breathe 3s ease-in-out infinite" }} />
-            <Image src={aboutData.avatar} alt="Tony Nguyen — Senior Fullstack Developer" width={192} height={192} className="relative object-cover w-full h-full" priority />
+            <Image src={aboutData.avatar} alt="Tony Nguyen, Senior Fullstack Developer" width={192} height={192} className="relative object-cover w-full h-full" priority />
           </div>
         </div>
         <div ref={bioRef} className="flex-1 text-center md:text-left">
@@ -122,12 +121,16 @@ export function About() {
 
       <div
         ref={eduRef}
-        className={`flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-6 text-text-muted text-sm view-hidden ${eduInView ? "view-visible" : ""}`}
+        className={`flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center md:justify-start mt-6 text-text-muted text-sm view-hidden ${eduInView ? "view-visible" : ""}`}
         style={{ transitionDelay: "800ms" }}
       >
         <span className="inline-flex items-center gap-2">
           <FaGraduationCap className="w-4 h-4 text-primary" />
           {aboutData.education}
+        </span>
+        <span className="inline-flex items-center gap-2">
+          <FaCircleCheck className="w-4 h-4 text-secondary" />
+          {aboutData.assessments}
         </span>
         <span className="inline-flex items-center gap-2">
           <FaLocationDot className="w-4 h-4 text-accent" />

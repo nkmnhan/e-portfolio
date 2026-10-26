@@ -33,6 +33,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   const primaryLink = project.liveUrl
     ? { href: project.liveUrl, label: "Live" }
+    : project.previewUrl
+      ? { href: project.previewUrl, label: "Preview" }
     : project.docsUrl
       ? { href: project.docsUrl, label: "Docs" }
       : null;
