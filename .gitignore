@@ -112,6 +112,11 @@ dist
 # Claude Code settings with tokens
 .claude/settings.json
 .claude/settings.local.json
+.claude/launch.json
+
+# Local research output
+research_notes/
+reports/
 CLAUDE.local.md
 
 # Playwright
