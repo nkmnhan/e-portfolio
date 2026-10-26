@@ -1,13 +1,14 @@
 import type { AboutData } from "@/lib/types";
+import { yearsOfExperience } from "@/lib/data/site-config";
 
 export const aboutData: AboutData = {
   avatar: "https://avatars.githubusercontent.com/u/49507410?v=4",
   bio: [
-    "I'm Tony Nguyen (Nhan), a Senior Fullstack Developer with 10+ years of experience specializing in .NET Core, Angular, microservices architecture, and cloud-native solutions.",
+    `I'm Tony Nguyen (Nhan), a Senior Fullstack Developer with ${yearsOfExperience} years of experience specializing in .NET Core, Angular, microservices architecture, and cloud-native solutions.`,
     "Currently building enterprise HR & Talent Management features on BravoSUITE. Previously led a module team on Singapore's MOE platform and worked on European financial microservices and UK education systems.",
   ],
   stats: [
-    { value: "10+", label: "Years" },
+    { value: yearsOfExperience, label: "Years" },
     { value: "14", label: "Projects" },
     { value: "20+", label: "Technologies" },
     { value: "3", label: "Countries" },

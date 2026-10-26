@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { FaGithub, FaArrowUpRightFromSquare, FaArrowLeft, FaBookOpen, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { projectsData } from "@/lib/data/projects";
-import { siteConfig } from "@/lib/data/site-config";
+import { siteConfig, yearsOfExperience } from "@/lib/data/site-config";
 import { TechBadge } from "@/app/components/tech-badge";
 
 export function generateStaticParams() {
@@ -297,7 +297,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <Link href="/" className="text-primary hover:text-primary-hover transition-colors">
                 Tony Nguyen (Nhan Nguyen)
               </Link>
-              {", "}Senior Fullstack Developer with 10+ years of experience
+              {", "}Senior Fullstack Developer with {yearsOfExperience} years of experience
               building scalable systems across Singapore, Europe, and Vietnam.
             </p>
             <Link
