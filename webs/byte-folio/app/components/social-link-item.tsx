@@ -9,7 +9,7 @@ interface SocialLinkItemProps {
 
 export function SocialLinkItem({
   link,
-  className = "p-2 text-text-muted hover:text-primary transition-colors",
+  className = "p-3 text-text-muted hover:text-primary transition-colors",
   iconClassName = "w-5 h-5",
 }: SocialLinkItemProps) {
   const Icon = socialIcons[link.platform];

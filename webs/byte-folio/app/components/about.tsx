@@ -70,7 +70,7 @@ export function About() {
 
   return (
     <SectionWrapper id="about">
-      <TerminalHeading command="about --verbose" />
+      <TerminalHeading command="about --verbose" label="About" />
       <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
         <div
           ref={avatarRef}

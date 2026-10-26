@@ -7,7 +7,7 @@ export const skillsData: SkillCategory[] = [
       { name: "C#", iconName: "SiSharp" },
       { name: "TypeScript", iconName: "SiTypescript" },
       { name: "JavaScript", iconName: "SiJavascript" },
-      { name: "SQL", iconName: "SiPostgresql" },
+      { name: "SQL", iconName: "FaDatabase" },
     ],
   },
   {
@@ -46,18 +46,16 @@ export const skillsData: SkillCategory[] = [
       { name: "Azure", iconName: "FaMicrosoft" },
       { name: "Docker", iconName: "SiDocker" },
       { name: "GitHub Actions", iconName: "SiGithubactions" },
-      { name: "CI/CD", iconName: "SiJenkins" },
     ],
   },
   {
     name: "Architecture",
     skills: [
-      { name: "Microservices", iconName: "SiApachekafka" },
-      { name: "DDD", iconName: "SiDiagramsdotnet" },
-      { name: "CQRS", iconName: "SiDiagramsdotnet" },
+      { name: "Microservices", iconName: "FaCubes" },
+      { name: "DDD", iconName: "FaDiagramProject" },
+      { name: "CQRS", iconName: "FaCodeBranch" },
       { name: "Event-Driven", iconName: "SiRabbitmq" },
-      { name: "MediatR", iconName: "SiDotnet" },
-      { name: "SOLID", iconName: "SiDotnet" },
+      { name: "Micro-Frontends", iconName: "FaPuzzlePiece" },
     ],
   },
 ];

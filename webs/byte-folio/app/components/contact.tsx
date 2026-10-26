@@ -34,6 +34,7 @@ export function Contact() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const botcheck = (event.currentTarget.elements.namedItem("botcheck") as HTMLInputElement | null)?.checked ?? false;
     setStatus("sending");
 
     try {
@@ -47,6 +48,7 @@ export function Contact() {
           message: formMessage,
           subject: `Portfolio contact from ${formName}`,
           from_name: "Byte-Folio Contact Form",
+          botcheck,
         }),
       });
 
@@ -73,7 +75,7 @@ export function Contact() {
 
   return (
     <SectionWrapper id="contact" className="pt-6 md:pt-12">
-      <TerminalHeading command={contactData.heading} />
+      <TerminalHeading command={contactData.heading} label="Contact" />
       <div className="flex justify-center">
         <div
           ref={formRef}
@@ -139,12 +141,12 @@ export function Contact() {
             </div>
 
             {/* Honeypot for spam bots */}
-            <input type="checkbox" name="botcheck" className="hidden" />
+            <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
 
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full px-4 py-2.5 bg-primary text-bg font-semibold rounded-lg glow-primary hover:brightness-110 transition-[filter] duration-200 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full min-h-11 px-4 py-2.5 bg-primary text-bg font-semibold rounded-lg glow-primary hover:brightness-110 transition-[filter] duration-200 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>

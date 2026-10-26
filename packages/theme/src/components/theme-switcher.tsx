@@ -43,7 +43,7 @@ export function ThemeSwitcher({ className }: { className?: string }) {
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Switch color theme"
         className={clsxMerge(
-          "flex h-10 w-10 items-center justify-center rounded-full",
+          "flex h-11 w-11 items-center justify-center rounded-full",
           "border border-border bg-surface",
           "shadow-lg transition-[transform,border-color] duration-200 hover:scale-110",
           "hover:border-primary"

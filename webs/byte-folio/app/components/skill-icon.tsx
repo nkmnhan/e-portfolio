@@ -15,9 +15,6 @@ import {
   SiElasticsearch,
   SiDocker,
   SiGithubactions,
-  SiJenkins,
-  SiApachekafka,
-  SiDiagramsdotnet,
   SiRabbitmq,
 } from "react-icons/si";
 import {
@@ -25,6 +22,10 @@ import {
   FaMicrosoft,
   FaDatabase,
   FaServer,
+  FaCubes,
+  FaDiagramProject,
+  FaCodeBranch,
+  FaPuzzlePiece,
 } from "react-icons/fa6";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -44,14 +45,15 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   SiElasticsearch,
   SiDocker,
   SiGithubactions,
-  SiJenkins,
-  SiApachekafka,
-  SiDiagramsdotnet,
   SiRabbitmq,
   FaAws,
   FaMicrosoft,
   FaDatabase,
   FaServer,
+  FaCubes,
+  FaDiagramProject,
+  FaCodeBranch,
+  FaPuzzlePiece,
 };
 
 interface SkillIconProps {

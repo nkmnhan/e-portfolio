@@ -8,20 +8,24 @@ import { Contact } from "@/app/components/contact";
 import { NavDots } from "@/app/components/nav-dots";
 import { NavMobile } from "@/app/components/nav-mobile";
 import { SocialFloat } from "@/app/components/social-float";
+import { Footer } from "@/app/components/footer";
 
 export default function Home() {
   return (
-    <main id="main-content">
-      <Hero />
-      <About />
-      <Experience />
-      <KeyProjects />
-      <Projects />
-      <Skills />
-      <Contact />
-      <NavDots />
-      <NavMobile />
-      <SocialFloat />
-    </main>
+    <>
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Experience />
+        <KeyProjects />
+        <Projects />
+        <Skills />
+        <Contact />
+        <NavDots />
+        <NavMobile />
+        <SocialFloat />
+      </main>
+      <Footer />
+    </>
   );
 }

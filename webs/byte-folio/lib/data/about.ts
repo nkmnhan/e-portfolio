@@ -5,13 +5,13 @@ export const aboutData: AboutData = {
   avatar: "https://avatars.githubusercontent.com/u/49507410?v=4",
   bio: [
     `I'm Tony Nguyen (Nhan), a Senior Fullstack Developer with ${yearsOfExperience} years of experience specializing in .NET Core, Angular, microservices architecture, and cloud-native solutions.`,
-    "Currently building enterprise HR & Talent Management features on BravoSUITE. Previously led a module team on Singapore's MOE platform and worked on European financial microservices and UK education systems.",
+    "Today I build Talent Acquisition features for BravoSUITE with .NET 9 and Angular micro-frontends. Before that I spent five years on Singapore's MOE learning platform, leading up to 5 developers across the Search, Course and Learner modules.",
   ],
   stats: [
     { value: yearsOfExperience, label: "Years" },
-    { value: "14", label: "Projects" },
-    { value: "20+", label: "Technologies" },
-    { value: "3", label: "Countries" },
+    { value: "100+", label: "Peak team (MOE)" },
+    { value: "5", label: "Devs led" },
+    { value: "3", label: "Companies" },
   ],
   education: "Bachelor of Information Technology, University of Information Technology (2012-2017)",
   assessments: "Passed LinkedIn Skill Assessments: C#, JavaScript",

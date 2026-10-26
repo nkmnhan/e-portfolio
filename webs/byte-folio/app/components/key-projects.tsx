@@ -95,7 +95,7 @@ function KeyProjectCard({ project, index }: { project: KeyProject; index: number
 export function KeyProjects() {
   return (
     <SectionWrapper id="key-projects">
-      <TerminalHeading command="showcase --professional" />
+      <TerminalHeading command="showcase --professional" label="Professional projects" />
       <div className="grid grid-cols-1 gap-6">
         {keyProjectsData.map((project, index) => (
           <KeyProjectCard key={project.id} project={project} index={index} />

@@ -30,32 +30,11 @@ export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
   keywords: [
-    // Name variations
-    "Tony Nguyen", "Nhan Nguyen", "Nguyen Khanh Minh Nhan",
-    "nkmnhan", "@nkmnhan", "nkmnhan.com", "Tony F. Wilson",
-    // Name + role
-    "Tony Nguyen developer", "Nhan Nguyen developer",
-    "Tony Nguyen software engineer", "Nhan Nguyen software engineer",
-    "Tony Nguyen fullstack developer", "Nhan Nguyen fullstack developer",
-    "Tony Nguyen .NET developer", "Tony Nguyen React developer",
-    // Name + portfolio
-    "Tony Nguyen portfolio", "Nhan Nguyen portfolio",
-    "nkmnhan portfolio", "nkmnhan github", "nkmnhan developer",
-    // Name + location
-    "Tony Nguyen Ho Chi Minh City", "Nhan Nguyen Ho Chi Minh City",
-    "Tony Nguyen Vietnam developer", "Nhan Nguyen Vietnam developer",
-    "Tony Nguyen Singapore developer", "Nhan Nguyen Singapore developer",
-    // Name + company
-    "Orient Software Tony Nguyen",
-    // Role keywords
-    "Senior Software Engineer", "Senior Fullstack Developer",
-    // Tech keywords
-    ".NET Core developer", "React developer", "Angular developer",
-    "Next.js", "TypeScript", "microservices", "cloud architecture",
-    "AWS", "Azure", "Docker",
-    // Location keywords
-    "fullstack developer Vietnam", "software engineer Vietnam",
-    "fullstack developer Singapore",
+    "Tony Nguyen", "Nhan Nguyen", "Nguyen Khoa Minh Nhan", "Nguyễn Khoa Minh Nhân", "nkmnhan",
+    "Senior Fullstack Developer", "Senior Software Engineer",
+    ".NET developer", "Angular developer", "React developer",
+    "microservices", "Azure", "AWS",
+    "software engineer Vietnam", "remote fullstack developer",
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: "Tony Nguyen (nkmnhan)",
@@ -110,8 +89,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <script src="/theme-init.js" />
           <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
           <link rel="preconnect" href="https://avatars.githubusercontent.com" crossOrigin="anonymous" />
-          <link rel="dns-prefetch" href="https://picsum.photos" />
-          <link rel="preconnect" href="https://picsum.photos" crossOrigin="anonymous" />
         </head>
       <body className="min-h-screen bg-bg text-text font-[family-name:var(--font-sans)] antialiased">
         <script
@@ -124,7 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   "@type": "Person",
                   "@id": `${siteConfig.url}/#person`,
                   name: "Tony Nguyen",
-                  alternateName: ["Nhan Nguyen", "nkmnhan", "Tony F. Wilson", "Nguyen Khanh Minh Nhan"],
+                  alternateName: ["Nhan Nguyen", "nkmnhan", "Tony F. Wilson", "Nguyen Khoa Minh Nhan", "Nguyễn Khoa Minh Nhân"],
                   givenName: "Nhan",
                   familyName: "Nguyen",
                   jobTitle: "Senior Fullstack Developer",
@@ -154,7 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       "@type": "Occupation",
                       name: "Senior Software Engineer",
                       occupationLocation: { "@type": "Country", name: "Vietnam" },
-                      skills: ".NET Core, React, Angular, TypeScript, Microservices, Cloud Architecture",
+                      skills: ".NET, Angular, React, TypeScript, Microservices, Azure, AWS",
                     },
                   ],
                   knowsAbout: [
@@ -262,7 +239,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to main content
         </a>
-        <ThemeSwitcher />
+        <ThemeSwitcher className="bottom-1 md:bottom-4" />
         {children}
         {process.env.NEXT_PUBLIC_CLARITY_ID && (
           <ClarityInit projectId={process.env.NEXT_PUBLIC_CLARITY_ID} />

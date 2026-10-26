@@ -37,10 +37,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     creator: "Tony Nguyen (nkmnhan)",
     publisher: "Tony Nguyen",
     robots: {
-      index: true,
+      index: project.isFeatured,
       follow: true,
       googleBot: {
-        index: true,
+        index: project.isFeatured,
         follow: true,
         "max-image-preview": "large",
         "max-snippet": -1,
@@ -187,7 +187,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {project.description && (
             <section className="mb-8 md:mb-12" aria-label="Project overview">
               <h2 className="text-sm text-text-muted font-[family-name:var(--font-mono)] mb-3">
-                <span className="text-primary">{">"}</span> cat README.md
+                <span className="sr-only">Overview</span>
+                <span aria-hidden="true"><span className="text-primary">{">"}</span> cat README.md</span>
               </h2>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed">
                 {project.description}
@@ -199,7 +200,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {project.highlights && project.highlights.length > 0 && (
             <section className="mb-8 md:mb-12" aria-label="Key features">
               <h2 className="text-sm text-text-muted font-[family-name:var(--font-mono)] mb-4">
-                <span className="text-primary">{">"}</span> grep --highlights
+                <span className="sr-only">Highlights</span>
+                <span aria-hidden="true"><span className="text-primary">{">"}</span> grep --highlights</span>
               </h2>
               <div className="glass rounded-xl p-6 md:p-8">
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
@@ -217,7 +219,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {/* Tech stack */}
           <section className="mb-8 md:mb-12" aria-label="Technology stack">
             <h2 className="text-sm text-text-muted font-[family-name:var(--font-mono)] mb-4">
-              <span className="text-primary">{">"}</span> tech.stack:
+              <span className="sr-only">Tech stack</span>
+              <span aria-hidden="true"><span className="text-primary">{">"}</span> tech.stack:</span>
             </h2>
             <div className="flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
@@ -298,7 +301,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 Tony Nguyen (Nhan Nguyen)
               </Link>
               {", "}Senior Fullstack Developer with {yearsOfExperience} years of experience
-              building scalable systems across Singapore, Europe, and Vietnam.
+              building systems for clients across Asia and Europe.
             </p>
             <Link
               href="/#projects"
