@@ -33,7 +33,7 @@ export const keyProjectsData: KeyProject[] = [
     period: "2019 - 2020",
     description:
       "Microservices system for a European financial services company: .NET Core services talking over gRPC, a Vue.js frontend, PostgreSQL, RabbitMQ and Azure Service Bus, containerized with Kubernetes on Azure.",
-    impact: "Developed features in an 8-person team, worked on the IdentityServer4 identity provider and supported Docker and Kubernetes deployments",
+    impact: "Built the IdentityServer4 identity provider, set up Docker and the project structure, and delivered features in an 8-person team",
     techStack: ["ASP.NET Core", "gRPC", "IdentityServer4", "Vue.js", "RabbitMQ", "Kubernetes"],
     accentColor: "accent",
   },

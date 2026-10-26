@@ -19,7 +19,8 @@ export const experienceData: ExperienceEntry[] = [
     techStack: ["C#", "ASP.NET Core", "gRPC", "IdentityServer4", "Vue.js", "Angular", "RabbitMQ", "Azure", "Docker", "Kubernetes"],
     achievements: [
       "Lowell (2019-2020): feature developer in an 8-person team (5 developers, 1 frontend developer, 2 testers) building microservices for a European financial services company with ASP.NET Core, gRPC, Vue.js and PostgreSQL on Azure",
-      "Worked on the IdentityServer4 identity provider and supported deployments with Docker, Docker Compose and Kubernetes",
+      "Built and managed the IdentityServer4 identity provider, set up Docker and the project structure, and ran R&D to improve the exchange system's performance",
+      "Supported deployments with Docker, Docker Compose and Kubernetes on Azure",
       "Open Create (2018-2019): joined The Open University UK project from the resource pool for app upgrades, documentation and project close-out",
       "Dimensions (2018): order management for an apparel company's e-commerce platform, with C# APIs (stored procedures, Dapper, LINQ, SQL Server), a WinForms client and Azure Service Bus",
     ],

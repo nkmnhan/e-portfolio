@@ -159,7 +159,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   ],
                   knowsAbout: [
                     ".NET Core", "React", "Next.js", "Angular", "TypeScript",
-                    "Microservices", "Docker", "AWS", "Azure", "Kubernetes",
+                    "Microservices", "Docker", "AWS", "Azure",
                     "PostgreSQL", "MongoDB", "Elasticsearch",
                   ],
                   worksFor: {

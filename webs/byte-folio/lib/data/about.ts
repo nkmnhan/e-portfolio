@@ -12,7 +12,7 @@ export const aboutData: AboutData = {
     { value: "20+", label: "Technologies" },
     { value: "3", label: "Countries" },
   ],
-  education: "BSc Computer Software Engineering, University of Information Technology (2012-2017)",
+  education: "Bachelor of Information Technology, University of Information Technology (2012-2017)",
   assessments: "Passed LinkedIn Skill Assessments: C#, JavaScript",
   availability: "Based in Vietnam · Open to remote worldwide",
   githubBadges: [

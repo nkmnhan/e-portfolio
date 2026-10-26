@@ -45,7 +45,6 @@ export const skillsData: SkillCategory[] = [
       { name: "AWS", iconName: "FaAws" },
       { name: "Azure", iconName: "FaMicrosoft" },
       { name: "Docker", iconName: "SiDocker" },
-      { name: "Kubernetes", iconName: "SiKubernetes" },
       { name: "GitHub Actions", iconName: "SiGithubactions" },
       { name: "CI/CD", iconName: "SiJenkins" },
     ],
