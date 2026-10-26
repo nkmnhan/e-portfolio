@@ -29,7 +29,7 @@ export default function HomePage() {
       <Hero />
 
       {/* Featured Projects */}
-      <section className="section-padding bg-[var(--color-bg-secondary)]">
+      <section className="section-padding bg-[var(--color-bg-subtle)]">
         <div className="container-custom">
           <SectionHeader
             title="Featured Projects"
@@ -123,7 +123,7 @@ export default function HomePage() {
       </section>
 
       {/* Showreels */}
-      <section className="section-padding bg-[var(--color-bg-secondary)]">
+      <section className="section-padding bg-[var(--color-bg-subtle)]">
         <div className="container-custom">
           <SectionHeader
             title="Demo Reels"

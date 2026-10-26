@@ -99,7 +99,7 @@ A space/cosmic-themed developer portfolio with a CLI aesthetic. Single-page desi
 e-portfolio/
 ├── packages/
 │   ├── ui/                  # Shared components, types, utils
-│   ├── theme/               # CSS tokens, derivation, hooks
+│   ├── theme/               # CSS color themes + switch hook
 │   └── storybook-config/    # Shared Storybook base
 └── webs/
     ├── artist-portfolio/    # 3D/animation/concept art portfolio

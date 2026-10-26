@@ -26,7 +26,7 @@ const variantStyles = {
     "cursor-pointer"
   ),
   gradient: clsxMerge(
-    "bg-gradient-to-br from-[var(--color-primary)]/20 to-[var(--color-accent)]/20"
+    "bg-gradient-to-br from-[var(--color-primary)]/20 to-[var(--color-secondary)]/20"
   ),
 };
 
@@ -84,7 +84,7 @@ export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 const iconColorStyles = {
   primary: "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
-  accent: "bg-[var(--color-accent)]/10 text-[var(--color-accent)]",
+  accent: "bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]",
   warning: "bg-yellow-500/10 text-yellow-500",
 };
 

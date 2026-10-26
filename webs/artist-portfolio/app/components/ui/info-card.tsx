@@ -15,7 +15,7 @@ export interface InfoCardProps {
 
 const iconColorStyles = {
   primary: "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
-  accent: "bg-[var(--color-accent)]/10 text-[var(--color-accent)]",
+  accent: "bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]",
   warning: "bg-yellow-500/10 text-yellow-500",
 };
 

@@ -6,12 +6,16 @@
   "exports": {
     ".": "./src/index.ts",
     "./tokens/base.css": "./src/tokens/base.css",
-    "./tokens/presets/*": "./src/tokens/presets/*.css"
+    "./tokens/themes.css": "./src/tokens/themes.css",
+    "./tokens/tailwind.css": "./src/tokens/tailwind.css"
   },
   "peerDependencies": {
     "react": "^19.0.0"
   },
   "devDependencies": {
     "@types/react": "^19.2.14"
+  },
+  "dependencies": {
+    "@eportfolio/ui": "workspace:*"
   }
 }

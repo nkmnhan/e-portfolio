@@ -21,7 +21,7 @@ export function PageHeader({
   return (
     <section
       className={clsxMerge(
-        "py-16 md:py-20 bg-[var(--color-bg-secondary)]",
+        "py-16 md:py-20 bg-[var(--color-bg-subtle)]",
         className
       )}
     >
