@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { FaGithub, FaArrowUpRightFromSquare, FaArrowLeft, FaBookOpen, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { projectsData } from "@/lib/data/projects";
-import { siteConfig } from "@/lib/data/site-config";
+import { siteConfig, yearsOfExperience } from "@/lib/data/site-config";
 import { TechBadge } from "@/app/components/tech-badge";
 
 export function generateStaticParams() {
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const { meta } = project;
   const pageUrl = `${siteConfig.url}/projects/${slug}`;
-  const title = `${project.title} — nkmnhan | ${meta.titleSuffix}`;
+  const title = `${project.title} | nkmnhan | ${meta.titleSuffix}`;
 
   return {
     title,
@@ -37,10 +37,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     creator: "Tony Nguyen (nkmnhan)",
     publisher: "Tony Nguyen",
     robots: {
-      index: true,
+      index: project.isFeatured,
       follow: true,
       googleBot: {
-        index: true,
+        index: project.isFeatured,
         follow: true,
         "max-image-preview": "large",
         "max-snippet": -1,
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description: meta.description,
       url: pageUrl,
-      siteName: "nkmnhan — Tony Nguyen Portfolio",
+      siteName: "nkmnhan | Tony Nguyen Portfolio",
       locale: "en_US",
       type: "article",
       publishedTime: new Date(meta.dateCreated).toISOString(),
@@ -83,6 +83,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
   const primaryLink = project.liveUrl
     ? { href: project.liveUrl, label: "Live Demo", icon: FaArrowUpRightFromSquare }
+    : project.previewUrl
+      ? { href: project.previewUrl, label: "UI Preview", icon: FaArrowUpRightFromSquare }
     : project.docsUrl
       ? { href: project.docsUrl, label: "Documentation", icon: FaBookOpen }
       : null;
@@ -94,7 +96,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": pageUrl,
         url: pageUrl,
-        name: `${project.title} — nkmnhan | ${meta.titleSuffix}`,
+        name: `${project.title} | nkmnhan | ${meta.titleSuffix}`,
         description: meta.description,
         isPartOf: { "@id": `${siteConfig.url}/#website` },
         about: { "@id": `${pageUrl}#software` },
@@ -185,7 +187,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {project.description && (
             <section className="mb-8 md:mb-12" aria-label="Project overview">
               <h2 className="text-sm text-text-muted font-[family-name:var(--font-mono)] mb-3">
-                <span className="text-primary">{">"}</span> cat README.md
+                <span className="sr-only">Overview</span>
+                <span aria-hidden="true"><span className="text-primary">{">"}</span> cat README.md</span>
               </h2>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed">
                 {project.description}
@@ -197,7 +200,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {project.highlights && project.highlights.length > 0 && (
             <section className="mb-8 md:mb-12" aria-label="Key features">
               <h2 className="text-sm text-text-muted font-[family-name:var(--font-mono)] mb-4">
-                <span className="text-primary">{">"}</span> grep --highlights
+                <span className="sr-only">Highlights</span>
+                <span aria-hidden="true"><span className="text-primary">{">"}</span> grep --highlights</span>
               </h2>
               <div className="glass rounded-xl p-6 md:p-8">
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
@@ -215,7 +219,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {/* Tech stack */}
           <section className="mb-8 md:mb-12" aria-label="Technology stack">
             <h2 className="text-sm text-text-muted font-[family-name:var(--font-mono)] mb-4">
-              <span className="text-primary">{">"}</span> tech.stack:
+              <span className="sr-only">Tech stack</span>
+              <span aria-hidden="true"><span className="text-primary">{">"}</span> tech.stack:</span>
             </h2>
             <div className="flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
@@ -295,8 +300,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <Link href="/" className="text-primary hover:text-primary-hover transition-colors">
                 Tony Nguyen (Nhan Nguyen)
               </Link>
-              {" "}— Senior Fullstack Developer with 9+ years of experience
-              building scalable systems across Singapore, Europe, and Vietnam.
+              {", "}Senior Fullstack Developer with {yearsOfExperience} years of experience
+              building systems for clients across Asia and Europe.
             </p>
             <Link
               href="/#projects"

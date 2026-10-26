@@ -13,7 +13,6 @@ const accents = [
     glowVar: "--color-primary",
     text: "text-primary",
     btnBg: "bg-primary/15 border-primary/30 text-primary hover:bg-primary/25",
-    signal: "LIVE",
   },
   {
     bar: "bg-secondary",
@@ -21,7 +20,6 @@ const accents = [
     glowVar: "--color-secondary",
     text: "text-secondary",
     btnBg: "bg-secondary/15 border-secondary/30 text-secondary hover:bg-secondary/25",
-    signal: "DOCS",
   },
   {
     bar: "bg-accent",
@@ -29,7 +27,6 @@ const accents = [
     glowVar: "--color-accent",
     text: "text-accent",
     btnBg: "bg-accent/15 border-accent/30 text-accent hover:bg-accent/25",
-    signal: "LIVE",
   },
 ];
 
@@ -44,9 +41,11 @@ export function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps
   const number = String(index + 1).padStart(2, "0");
 
   const primaryLink = project.liveUrl
-    ? { href: project.liveUrl, label: "Live Demo" }
+    ? { href: project.liveUrl, label: "Live Demo", signal: "LIVE" }
+    : project.previewUrl
+      ? { href: project.previewUrl, label: "UI Preview", signal: "PREVIEW" }
     : project.docsUrl
-      ? { href: project.docsUrl, label: "Documentation" }
+      ? { href: project.docsUrl, label: "Documentation", signal: "DOCS" }
       : null;
 
   return (
@@ -83,7 +82,7 @@ export function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps
           </Link>
           {primaryLink && (
             <span className={`px-2 py-0.5 text-xs font-[family-name:var(--font-mono)] rounded-full border ${accent.btnBg} uppercase tracking-widest`}>
-              {accent.signal}
+              {primaryLink.signal}
             </span>
           )}
         </div>

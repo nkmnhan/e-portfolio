@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/data/site-config";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Tony Nguyen (Nhan Nguyen) — Senior Fullstack Developer",
+    name: "Tony Nguyen (Nhan Nguyen), Senior Fullstack Developer",
     short_name: "Tony Nguyen",
     description: siteConfig.description,
     start_url: "/",

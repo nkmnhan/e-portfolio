@@ -35,6 +35,7 @@ export interface AboutData {
   bio: string[];
   stats: Array<{ value: string; label: string }>;
   education: string;
+  assessments: string;
   availability: string;
   githubBadges: GitHubBadge[];
 }
@@ -42,11 +43,21 @@ export interface AboutData {
 export interface ExperienceEntry {
   period: string;
   title: string;
-  company?: string;
-  context?: string;
-  techStack: string[];
-  achievements: string[];
+  company: string;
+  /** One-line context shown under the title when projects share a theme */
+  summary?: string;
   accentColor: "primary" | "secondary" | "muted";
+  projects: ExperienceProject[];
+}
+
+export interface ExperienceProject {
+  name: string;
+  period: string;
+  client?: string;
+  role?: string;
+  summary: string;
+  impact?: string;
+  techStack?: string[];
 }
 
 export interface ProjectMeta {
@@ -68,6 +79,8 @@ export interface Project {
   techStack: string[];
   githubUrl: string;
   liveUrl?: string;
+  /** UI mockup/styleguide — not a working app, so it must not be labelled "Live" */
+  previewUrl?: string;
   docsUrl?: string;
   isFeatured: boolean;
   sortOrder: number;
@@ -77,18 +90,6 @@ export interface Project {
 export interface SkillCategory {
   name: string;
   skills: Array<{ name: string; iconName: string }>;
-}
-
-export interface KeyProject {
-  id: string;
-  name: string;
-  client: string;
-  role: string;
-  period: string;
-  description: string;
-  impact: string;
-  techStack: string[];
-  accentColor: "primary" | "secondary" | "accent";
 }
 
 export interface ContactData {

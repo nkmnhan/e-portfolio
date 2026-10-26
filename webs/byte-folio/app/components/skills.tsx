@@ -34,7 +34,7 @@ function SkillCategory({ category, index }: { category: (typeof skillsData)[numb
 export function Skills() {
   return (
     <SectionWrapper id="skills">
-      <TerminalHeading command="skills --categorize" />
+      <TerminalHeading command="skills --categorize" label="Skills" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skillsData.map((category, categoryIndex) => (
           <SkillCategory key={category.name} category={category} index={categoryIndex} />

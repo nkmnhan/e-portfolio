@@ -17,7 +17,6 @@ test.describe("Byte-Folio Screenshots", () => {
     { id: "hero", path: "/", selector: "#hero", name: "byte-folio-hero" },
     { id: "about", path: "/", selector: "#about", name: "byte-folio-about" },
     { id: "experience", path: "/", selector: "#experience", name: "byte-folio-experience" },
-    { id: "key-projects", path: "/", selector: "#key-projects", name: "byte-folio-key-projects" },
     { id: "projects", path: "/", selector: "#projects", name: "byte-folio-projects" },
     { id: "skills", path: "/", selector: "#skills", name: "byte-folio-skills" },
     { id: "contact", path: "/", selector: "#contact", name: "byte-folio-contact" },

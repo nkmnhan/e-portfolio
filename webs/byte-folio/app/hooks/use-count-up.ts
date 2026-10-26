@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useCountUp(target: number, isActive: boolean, duration = 2000) {
-  const [value, setValue] = useState(0);
+  // Start at the target so SSR/no-JS shows the real number; the card is hidden until in view anyway
+  const [value, setValue] = useState(target);
   const rafRef = useRef<number>(0);
 
   useEffect(() => {

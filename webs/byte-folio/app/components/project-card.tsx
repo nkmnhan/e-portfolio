@@ -33,6 +33,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   const primaryLink = project.liveUrl
     ? { href: project.liveUrl, label: "Live" }
+    : project.previewUrl
+      ? { href: project.previewUrl, label: "Preview" }
     : project.docsUrl
       ? { href: project.docsUrl, label: "Docs" }
       : null;
@@ -66,13 +68,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <TechBadge key={tech} label={tech} />
           ))}
         </div>
-        <div className="flex gap-3 mt-4">
+        <div className="flex flex-wrap gap-x-4 mt-3">
           {primaryLink && (
             <a
               href={primaryLink.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-primary hover:text-primary-hover transition-colors"
+              className="flex items-center gap-1.5 min-h-11 text-sm text-primary hover:text-primary-hover transition-colors"
             >
               <FaArrowUpRightFromSquare className="w-3.5 h-3.5" />
               {primaryLink.label}
@@ -82,14 +84,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm text-text-muted hover:text-primary transition-colors"
+            className="flex items-center gap-1.5 min-h-11 text-sm text-text-muted hover:text-primary transition-colors"
           >
             <FaGithub className="w-4 h-4" />
             Code
           </a>
           <Link
             href={`/projects/${project.id}`}
-            className="flex items-center gap-1.5 text-sm text-primary hover:text-primary-hover transition-colors"
+            className="flex items-center gap-1.5 min-h-11 text-sm text-primary hover:text-primary-hover transition-colors"
           >
             <FaArrowRight className="w-3.5 h-3.5" />
             Details

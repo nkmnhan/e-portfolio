@@ -9,7 +9,7 @@ import { SectionWrapper } from "./section-wrapper";
 import { useAnimatedPresence } from "@/app/hooks";
 
 export function Projects() {
-  const [isShowingAll, setIsShowingAll] = useState(true);
+  const [isShowingAll, setIsShowingAll] = useState(false);
   const { shouldRender, isVisible } = useAnimatedPresence(isShowingAll, 400);
 
   const featuredProjects = projectsData
@@ -22,7 +22,7 @@ export function Projects() {
 
   return (
     <SectionWrapper id="projects">
-      <TerminalHeading command="ls ~/projects --featured" />
+      <TerminalHeading command="ls ~/projects --featured" label="Open-source projects" />
 
       {/* Featured: Deep Space Transmission cards */}
       <div className="flex flex-col gap-5 md:gap-8 mb-8 md:mb-12">
@@ -32,7 +32,7 @@ export function Projects() {
       </div>
 
       {/* Secondary: compact grid */}
-      <TerminalHeading command="ls ~/projects --all" className="mt-4" />
+      <TerminalHeading command="ls ~/projects --all" label="More projects" className="mt-4" />
       {shouldRender && (
         <div
           className={`overflow-hidden presence-clip ${isVisible ? "presence-visible" : ""}`}
@@ -54,7 +54,7 @@ export function Projects() {
       <div className="mt-8 text-center">
         <button
           onClick={() => setIsShowingAll((previous) => !previous)}
-          className="text-sm text-primary hover:text-primary-hover transition-colors font-[family-name:var(--font-mono)]"
+          className="min-h-11 px-3 text-sm text-primary hover:text-primary-hover transition-colors font-[family-name:var(--font-mono)]"
         >
           {isShowingAll
             ? "< Hide Secondary Projects"

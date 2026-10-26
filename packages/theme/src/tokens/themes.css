@@ -31,7 +31,7 @@
   --color-surface-hover: hsl(227 82% 16%);
   --color-text: hsl(191 100% 96%);
   --color-text-secondary: hsl(191 50% 63%);
-  --color-text-muted: hsl(191 30% 44%);
+  --color-text-muted: hsl(191 30% 46%);
   --color-primary: hsl(188 92% 62%);
   --color-primary-hover: hsl(188 92% 72%);
   --color-secondary: hsl(255 99% 64%);
@@ -50,7 +50,7 @@
   --color-surface-hover: hsl(222 47% 23%);
   --color-text: hsl(210 40% 98%);
   --color-text-secondary: hsl(210 20% 63%);
-  --color-text-muted: hsl(210 12% 44%);
+  --color-text-muted: hsl(210 12% 58%);
   --color-primary: hsl(217 91% 60%);
   --color-primary-hover: hsl(217 91% 70%);
   --color-secondary: hsl(258 90% 66%);
@@ -69,7 +69,7 @@
   --color-surface-hover: hsl(323 44% 19%);
   --color-text: hsl(327 73% 97%);
   --color-text-secondary: hsl(327 37% 63%);
-  --color-text-muted: hsl(327 22% 44%);
+  --color-text-muted: hsl(327 22% 58%);
   --color-primary: hsl(347 77% 50%);
   --color-primary-hover: hsl(347 77% 60%);
   --color-secondary: hsl(271 91% 65%);
@@ -88,7 +88,7 @@
   --color-surface-hover: hsl(0 0% 17%);
   --color-text: hsl(0 0% 91%);
   --color-text-secondary: hsl(0 0% 63%);
-  --color-text-muted: hsl(0 0% 44%);
+  --color-text-muted: hsl(0 0% 54%);
   --color-primary: hsl(25 95% 53%);
   --color-primary-hover: hsl(25 95% 63%);
   --color-secondary: hsl(142 71% 45%);
@@ -107,7 +107,7 @@
   --color-surface-hover: hsl(0 0% 16%);
   --color-text: hsl(0 0% 83%);
   --color-text-secondary: hsl(0 0% 63%);
-  --color-text-muted: hsl(0 0% 44%);
+  --color-text-muted: hsl(0 0% 53%);
   --color-primary: hsl(142 69% 58%);
   --color-primary-hover: hsl(142 69% 68%);
   --color-secondary: hsl(48 96% 53%);

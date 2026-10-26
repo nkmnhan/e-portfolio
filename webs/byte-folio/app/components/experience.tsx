@@ -5,7 +5,7 @@ import { experienceData } from "@/lib/data/experience";
 import { TerminalHeading } from "./terminal-heading";
 import { SectionWrapper } from "./section-wrapper";
 import { TechBadge } from "./tech-badge";
-import type { ExperienceEntry } from "@/lib/types";
+import type { ExperienceEntry, ExperienceProject } from "@/lib/types";
 
 const accentColors: Record<ExperienceEntry["accentColor"], string> = {
   primary: "border-l-primary",
@@ -19,51 +19,74 @@ const dotColors: Record<ExperienceEntry["accentColor"], string> = {
   muted: "bg-text-muted",
 };
 
+function ProjectBlock({ project }: { project: ExperienceProject }) {
+  const meta = [project.client, project.role].filter(Boolean).join(" · ");
+
+  return (
+    <div className="pt-4 mt-4 border-t border-border/50">
+      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+        <h4 className="text-lg font-semibold font-[family-name:var(--font-display)]">{project.name}</h4>
+        <span className="text-sm font-[family-name:var(--font-mono)] text-text-muted">{project.period}</span>
+      </div>
+      {meta && <p className="text-sm font-[family-name:var(--font-mono)] text-text-muted">{meta}</p>}
+      <p className="mt-2 text-text-secondary text-sm md:text-base leading-relaxed">{project.summary}</p>
+      {project.impact && (
+        <p className="mt-3 px-4 py-3 rounded-lg bg-surface/50 border border-border/50 text-sm text-text-secondary">
+          <span className="mr-2 font-bold uppercase tracking-wider text-primary">Impact</span>
+          {project.impact}
+        </p>
+      )}
+      {project.techStack && (
+        <div className="flex flex-wrap gap-2 mt-3">
+          {project.techStack.map((tech) => (
+            <TechBadge key={tech} label={tech} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function TimelineEntry({ entry, index }: { entry: ExperienceEntry; index: number }) {
   const { ref, isInView } = useInView();
 
   return (
-    <div
-      ref={ref}
-      className={`relative md:flex md:justify-center view-hidden-left ${isInView ? "view-visible" : ""}`}
-      style={{ transitionDelay: `${index * 0.15}s` }}
-    >
-      <div className="ml-6 text-sm font-[family-name:var(--font-mono)] text-text-muted mb-2 md:ml-0 md:absolute md:top-0 md:-translate-y-8 md:left-1/2 md:-translate-x-1/2 md:whitespace-nowrap">
-        {entry.period}
-      </div>
-      <div className={`absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0.5 md:top-4 w-3 h-3 rounded-full ${dotColors[entry.accentColor]}`} />
-      <div className={`ml-6 md:ml-0 md:max-w-lg glass rounded-xl p-5 border-l-2 ${accentColors[entry.accentColor]}`}>
-        <h3 className="text-lg font-semibold font-[family-name:var(--font-display)]">{entry.title}</h3>
-        <p className="text-text-muted text-sm">{entry.company || entry.context}</p>
-        <div className="flex flex-wrap gap-2 mt-3">
-          {entry.techStack.map((tech) => (
-            <TechBadge key={tech} label={tech} />
+    <li className="relative pl-8">
+      <div
+        ref={ref}
+        className={`view-hidden-left ${isInView ? "view-visible" : ""}`}
+        style={{ transitionDelay: `${Math.min(index, 1) * 0.1}s` }}
+      >
+        <div className={`absolute left-0 top-7 w-3 h-3 rounded-full ${dotColors[entry.accentColor]}`} />
+        <article className={`glass rounded-xl p-5 md:p-8 border-l-2 ${accentColors[entry.accentColor]}`}>
+          <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+            <h3 className="text-2xl font-bold font-[family-name:var(--font-display)]">{entry.company}</h3>
+            <span className="text-sm font-[family-name:var(--font-mono)] text-text-muted">{entry.period}</span>
+          </div>
+          <p className="text-primary text-sm font-[family-name:var(--font-mono)] mt-1">{entry.title}</p>
+          {entry.summary && (
+            <p className="mt-3 text-text-secondary text-sm md:text-base leading-relaxed">{entry.summary}</p>
+          )}
+          {entry.projects.map((project) => (
+            <ProjectBlock key={project.name} project={project} />
           ))}
-        </div>
-        <ul className="mt-3 space-y-1">
-          {entry.achievements.map((achievement) => (
-            <li key={achievement} className="text-text-secondary text-sm flex gap-2">
-              <span className="text-primary shrink-0">•</span>{achievement}
-            </li>
-          ))}
-        </ul>
+        </article>
       </div>
-    </div>
+    </li>
   );
 }
 
 export function Experience() {
   return (
     <SectionWrapper id="experience">
-      <TerminalHeading command="career --timeline" />
+      <TerminalHeading command="career --timeline" label="Experience" />
       <div className="relative">
-        <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-border" />
-        <div className="space-y-8 md:space-y-12">
+        <div className="absolute left-1.5 top-7 bottom-7 w-px bg-border" aria-hidden="true" />
+        <ol className="space-y-6 md:space-y-8">
           {experienceData.map((entry, index) => (
-            <TimelineEntry key={entry.period} entry={entry} index={index} />
+            <TimelineEntry key={entry.company} entry={entry} index={index} />
           ))}
-        </div>
-        <div className="md:hidden absolute left-1.5 top-0 bottom-0 w-px bg-border -z-10" />
+        </ol>
       </div>
     </SectionWrapper>
   );

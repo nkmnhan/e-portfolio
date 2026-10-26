@@ -105,31 +105,3 @@ export function PairExtraordinaireIcon({ className = "w-8 h-8" }: IconProps) {
     </svg>
   );
 }
-
-export function YoloIcon({ className = "w-8 h-8" }: IconProps) {
-  return (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-      {/* Lightning bolt */}
-      <path
-        d="M36 4L16 32h12L24 60l24-32H34L36 4z"
-        fill="currentColor"
-        fillOpacity={0.15}
-        stroke="currentColor"
-        strokeWidth={2.5}
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-      {/* Inner highlight */}
-      <path
-        d="M33 12L20 32h8L25 50l16-24h-8z"
-        fill="currentColor"
-        fillOpacity={0.1}
-      />
-      {/* Spark particles */}
-      <circle cx={46} cy={18} r={1.5} fill="currentColor" opacity={0.6} />
-      <circle cx={50} cy={24} r={1} fill="currentColor" opacity={0.4} />
-      <circle cx={14} cy={42} r={1.5} fill="currentColor" opacity={0.6} />
-      <circle cx={10} cy={36} r={1} fill="currentColor" opacity={0.4} />
-    </svg>
-  );
-}

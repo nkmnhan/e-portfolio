@@ -17,10 +17,10 @@ export function NavMobile() {
     <>
       {/* Bottom bar */}
       <div className="md:hidden fixed bottom-0 inset-x-0 w-full z-40 glass border-t border-border/50">
-        <div className="flex justify-between items-center px-5 py-3 pr-16">
+        <div className="flex justify-between items-center px-5 py-1 pr-16">
           <button
             onClick={() => setIsOpen(true)}
-            className="flex items-center gap-2 text-text-secondary text-sm"
+            className="flex items-center gap-2 min-h-11 min-w-11 text-text-secondary text-sm"
             aria-label="Open navigation menu"
           >
             <FaBars className="w-4 h-4" />
@@ -29,7 +29,7 @@ export function NavMobile() {
           <a
             href="#hero"
             aria-label="Back to top"
-            className="flex items-center gap-2 text-text-secondary text-sm"
+            className="flex items-center gap-2 min-h-11 min-w-11 text-text-secondary text-sm"
           >
             <FaChevronUp className="w-4 h-4" />
             Top

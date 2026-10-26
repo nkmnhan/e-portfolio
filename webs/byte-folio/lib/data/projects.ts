@@ -5,7 +5,7 @@ export const projectsData: Project[] = [
     id: "meditrack",
     title: "MediTrack",
     subtitle: "Open-source EMR platform that lets doctors focus on care, not clicks",
-    description: "Doctors spend excessive time on documentation instead of patient care. MediTrack solves this with Clara AI — a clinical companion that provides real-time speech-to-text transcription, automatic SOAP note generation, and live medication suggestions during consultations.",
+    description: "Doctors spend excessive time on documentation instead of patient care. MediTrack solves this with Clara AI, a clinical companion that provides real-time speech-to-text transcription, automatic SOAP note generation, and live medication suggestions during consultations.",
     highlights: [
       "5 microservices: Identity, Patient, Appointment, MedicalRecords, Clara AI",
       "Clara AI achieves 82% average note quality with doctor review",
@@ -14,13 +14,13 @@ export const projectsData: Project[] = [
     ],
     techStack: [".NET 10", "React 19", "PostgreSQL", "RabbitMQ", "MCP", "Docker"],
     githubUrl: "https://github.com/nkmnhan/meditrack",
-    liveUrl: "https://meditrack-styleguide.lovable.app/",
+    previewUrl: "https://meditrack-styleguide.lovable.app/",
     isFeatured: true,
     sortOrder: 1,
     meta: {
       titleSuffix: "Open-source EMR Platform",
       description:
-        "MediTrack by Nhan Nguyen — open-source EMR with Clara AI for speech-to-text transcription and SOAP note generation. Built with .NET 10 and React 19.",
+        "MediTrack by Nhan Nguyen: open-source EMR with Clara AI for speech-to-text transcription and SOAP note generation. Built with .NET 10 and React 19.",
       keywords: [
         "MediTrack", "EMR platform", "electronic medical records", "Clara AI",
         "SOAP note generation", "speech-to-text medical", "healthcare software",
@@ -35,11 +35,11 @@ export const projectsData: Project[] = [
   {
     id: "aspire-nexus",
     title: "Aspire.Nexus",
-    subtitle: "Orchestrate your entire dev environment from JSON — zero C# changes",
+    subtitle: "Orchestrate your entire dev environment from JSON with zero C# changes",
     description: "Standard .NET Aspire AppHosts require hardcoding every service in Program.cs. As projects scale to 10+ APIs, adding or toggling services means code changes and rebuilds. Aspire.Nexus moves all configuration to JSON, enabling zero-code service management with infrastructure persistence.",
     highlights: [
-      "Toggle services via JSON — no rebuilds, no code changes",
-      "Infrastructure persistence — databases survive Aspire restarts",
+      "Toggle services via JSON with no rebuilds or code changes",
+      "Infrastructure persistence: databases survive Aspire restarts",
       "Supports .NET, Node.js, and custom dev servers",
       "Automatic pre-build, dependency install, and HTTPS setup",
     ],
@@ -51,7 +51,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Zero-code .NET Aspire Orchestration",
       description:
-        "Aspire.Nexus by Nhan Nguyen — zero-code .NET Aspire orchestration. Toggle microservices via JSON without rebuilds, with infrastructure persistence.",
+        "Aspire.Nexus by Nhan Nguyen: zero-code .NET Aspire orchestration. Toggle microservices via JSON without rebuilds, with infrastructure persistence.",
       keywords: [
         "Aspire.Nexus", ".NET Aspire", "service orchestration", "JSON configuration",
         "zero-code deployment", "microservices management", "infrastructure persistence",
@@ -66,13 +66,13 @@ export const projectsData: Project[] = [
   {
     id: "e-portfolio",
     title: "E-Portfolio",
-    subtitle: "Multi-app portfolio monorepo with 3D graphics, theming engine, and shared packages",
-    description: "A pnpm monorepo housing three Next.js 16 portfolio apps — each with a distinct visual identity — sharing code through workspace packages for UI components, a perceptual color theme engine, and centralized data. Built to showcase how a single developer can maintain multiple production-grade sites efficiently.",
+    subtitle: "Multi-app portfolio monorepo with 3D graphics, shared theming, and shared packages",
+    description: "A pnpm monorepo housing two Next.js 16 portfolio apps (a developer portfolio and an artist portfolio, each with a distinct visual identity) sharing UI components and a theme system through workspace packages. Built to show how a single developer can maintain multiple production-grade sites efficiently.",
     highlights: [
-      "3 portfolio apps with shared @eportfolio/ui, theme, and data packages",
-      "Perceptual color derivation engine — 5 hex values generate 100+ CSS tokens",
+      "2 portfolio apps sharing @eportfolio/ui and @eportfolio/theme workspace packages",
+      "6 switchable color themes as static data-theme CSS, with no flash on first paint",
       "React Three Fiber starfield with lazy loading and CSS fallback",
-      "Playwright E2E tests and Storybook component documentation",
+      "Playwright E2E tests for the theme switcher",
     ],
     techStack: ["Next.js 16", "React 19", "R3F", "Tailwind v4", "pnpm"],
     githubUrl: "https://github.com/nkmnhan/e-portfolio",
@@ -82,10 +82,10 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Next.js 16 Monorepo Portfolio Platform",
       description:
-        "E-Portfolio by Nhan Nguyen — pnpm monorepo with multiple Next.js 16 apps, perceptual color engine, React Three Fiber starfield, and shared packages.",
+        "E-Portfolio by Nhan Nguyen: pnpm monorepo with two Next.js 16 apps, a shared multi-theme system, React Three Fiber starfield, and shared packages.",
       keywords: [
         "E-Portfolio", "Next.js 16 portfolio", "React 19 portfolio", "pnpm monorepo",
-        "perceptual color engine", "React Three Fiber", "Tailwind CSS v4",
+        "multi-theme design tokens", "React Three Fiber", "Tailwind CSS v4",
         "developer portfolio", "portfolio monorepo",
         "Tony Nguyen portfolio", "Nhan Nguyen portfolio",
       ],
@@ -113,7 +113,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "OAuth 2.0 + OpenID Connect with Vue.js",
       description:
-        "Vue-IdentityServer4 by Nhan Nguyen — complete OpenID Connect auth flow with Vue.js and oidc-client, backed by IdentityServer4 as identity provider.",
+        "Vue-IdentityServer4 by Nhan Nguyen: complete OpenID Connect auth flow with Vue.js and oidc-client, backed by IdentityServer4 as identity provider.",
       keywords: [
         "Vue-IdentityServer4", "OpenID Connect", "OAuth 2.0", "oidc-client",
         "Vue.js authentication", "IdentityServer4", "SPA authentication",
@@ -143,7 +143,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Clean Architecture with .NET MAUI + MediatR",
       description:
-        "MAUI.MediatR by Nhan Nguyen — mediator pattern for .NET MAUI with MediatR and DependencyService for clean, decoupled mobile architecture.",
+        "MAUI.MediatR by Nhan Nguyen: mediator pattern for .NET MAUI with MediatR and DependencyService for clean, decoupled mobile architecture.",
       keywords: [
         "MAUI.MediatR", ".NET MAUI", "MediatR", "CQRS",
         "mediator pattern", "cross-platform mobile", "clean architecture",
@@ -173,7 +173,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Elasticsearch Integration with .NET NEST Client",
       description:
-        "Elasticsearch NEST by Nhan Nguyen — practical full-text search implementation using the NEST high-level .NET client with indexing and query patterns.",
+        "Elasticsearch NEST by Nhan Nguyen: practical full-text search implementation using the NEST high-level .NET client with indexing and query patterns.",
       keywords: [
         "Elasticsearch", "NEST client", ".NET Elasticsearch",
         "full-text search", "search integration", "indexing",
@@ -203,7 +203,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Vue.js HMR in Docker",
       description:
-        "Vue.js Hot Reload Docker by Nhan Nguyen — seamless HMR inside Docker containers using Chokidar polling with Docker Compose for Vue.js development.",
+        "Vue.js Hot Reload Docker by Nhan Nguyen: seamless HMR inside Docker containers using Chokidar polling with Docker Compose for Vue.js development.",
       keywords: [
         "Vue.js Docker", "hot reload Docker", "Docker Compose",
         "Chokidar polling", "HMR Docker", "containerized development",
@@ -233,7 +233,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Excel-based XML Resource File Management",
       description:
-        "ResourceManager by Nhan Nguyen — manage multilingual XML resource files via Excel spreadsheets, streamlining localization for .NET Core projects.",
+        "ResourceManager by Nhan Nguyen: manage multilingual XML resource files via Excel spreadsheets, streamlining localization for .NET Core projects.",
       keywords: [
         "ResourceManager", "XML resource files", "localization",
         "Excel resource management", "multilingual", ".NET Core",
@@ -263,7 +263,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Full-featured E-commerce Web Application",
       description:
-        "E-Shop by Nhan Nguyen — full-featured e-commerce web app with product catalog, shopping cart, and purchase workflows for online retail platforms.",
+        "E-Shop by Nhan Nguyen: full-featured e-commerce web app with product catalog, shopping cart, and purchase workflows for online retail platforms.",
       keywords: [
         "E-Shop", "e-commerce", "online store",
         "product catalog", "shopping cart", "web application",
@@ -293,7 +293,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Automated Data-to-SQL Script Conversion",
       description:
-        "SQLConverter by Nhan Nguyen — automate structured data to SQL script conversion, eliminating manual INSERT statements for data migration and seeding.",
+        "SQLConverter by Nhan Nguyen: automate structured data to SQL script conversion, eliminating manual INSERT statements for data migration and seeding.",
       keywords: [
         "SQLConverter", "SQL script generation", "data migration",
         "INSERT statement generator", "database seeding", ".NET CLI tool",
@@ -323,7 +323,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Firebase Cloud Messaging Push Notification Service",
       description:
-        "Push Notification by Nhan Nguyen — Firebase Cloud Messaging example with end-to-end flow from server-side dispatch to client-side notification handling.",
+        "Push Notification by Nhan Nguyen: Firebase Cloud Messaging example with end-to-end flow from server-side dispatch to client-side notification handling.",
       keywords: [
         "push notification", "Firebase Cloud Messaging", "FCM",
         "real-time notifications", "server-side dispatch",
@@ -353,7 +353,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Hybrid Web/Native Rendering with .NET",
       description:
-        "HybridWebView by Nhan Nguyen — render web content in native .NET apps with bidirectional JavaScript-to-native interop for cross-platform development.",
+        "HybridWebView by Nhan Nguyen: render web content in native .NET apps with bidirectional JavaScript-to-native interop for cross-platform development.",
       keywords: [
         "HybridWebView", "hybrid app", "WebView",
         ".NET MAUI WebView", "JavaScript interop", "native web bridge",
@@ -383,7 +383,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Interactive Calendar Component with Angular",
       description:
-        "Calendar Demo by Nhan Nguyen — interactive Angular calendar component with event scheduling, built with Angular CLI and TypeScript.",
+        "Calendar Demo by Nhan Nguyen: interactive Angular calendar component with event scheduling, built with Angular CLI and TypeScript.",
       keywords: [
         "Calendar Demo", "Angular calendar", "event scheduling",
         "interactive calendar", "Angular component", "TypeScript",
@@ -413,7 +413,7 @@ export const projectsData: Project[] = [
     meta: {
       titleSuffix: "Complete Reference Token Authentication System",
       description:
-        "IdentityServer4.Study by Nhan Nguyen — complete reference token auth with IdentityServer4, SQL Server, MVC client, and protected API integration.",
+        "IdentityServer4.Study by Nhan Nguyen: complete reference token auth with IdentityServer4, SQL Server, MVC client, and protected API integration.",
       keywords: [
         "IdentityServer4", "reference token authentication", "OAuth 2.0",
         "OpenID Connect", "SQL Server", "MVC client",

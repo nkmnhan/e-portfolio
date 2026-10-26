@@ -7,7 +7,7 @@ const heroSocials = getSocialLinksFor("hero");
 
 export function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center px-5 overflow-hidden">
+    <section id="hero" className="relative min-h-[85svh] flex items-center justify-center px-5 overflow-hidden">
       <HeroBackground />
       <div className="relative z-10 text-center max-w-3xl mx-auto">
         <p className="text-text-muted text-sm font-[family-name:var(--font-mono)] animate-[fadeInUp_0.5s_ease-out_both]">
