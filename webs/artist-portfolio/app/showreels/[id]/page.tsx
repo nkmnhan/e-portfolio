@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getShowreelById, getShowreels, getProfile } from "@/lib/services";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import {
   HiArrowLeft,
   HiOutlineCalendar,

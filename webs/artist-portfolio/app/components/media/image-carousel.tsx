@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import type { CarouselMedia } from "@/lib/types";
 

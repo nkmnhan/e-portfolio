@@ -10,7 +10,6 @@ Multi-project portfolio platform. Two Next.js apps sharing code via pnpm workspa
 | **byte** | `webs/byte-folio/` |
 | **ui** | `packages/ui/` |
 | **theme** | `packages/theme/` |
-| **storybook** | `packages/storybook-config/` |
 
 ## Naming Conventions
 

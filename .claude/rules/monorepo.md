@@ -9,9 +9,8 @@ paths:
 
 ## Package Scope
 All shared packages use `@eportfolio/*` scope:
-- `@eportfolio/ui` — components, types, utils, services
+- `@eportfolio/ui` — shared utils (`clsxMerge`); add shared components here when a second app needs them
 - `@eportfolio/theme` — CSS color themes, theme list, switch hook
-- `@eportfolio/storybook-config` — shared Storybook base
 
 ## Source Protocol (No Build Step)
 Packages export raw TypeScript source via `"exports"` field:
@@ -40,5 +39,5 @@ packages/{name}/
 
 ## Import Conventions
 - From web apps: `import { clsxMerge } from "@eportfolio/ui/utils"`
-- Subpath exports for tree-shaking: `@eportfolio/ui/utils`, `@eportfolio/ui/types`
+- Subpath exports for tree-shaking: `@eportfolio/ui/utils`
 - Never import from package internals (only exported subpaths)

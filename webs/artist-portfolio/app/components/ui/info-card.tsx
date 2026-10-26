@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import Link from "next/link";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 
 export interface InfoCardProps {
   icon: ReactNode;

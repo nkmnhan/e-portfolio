@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import { getProfile } from "@/lib/services";
 import {
   HiOutlineHome,

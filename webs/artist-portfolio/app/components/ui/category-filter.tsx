@@ -1,6 +1,6 @@
 "use client";
 
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import type { ProjectCategory } from "@/lib/types";
 
 interface CategoryCount {

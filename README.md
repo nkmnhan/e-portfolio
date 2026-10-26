@@ -98,9 +98,8 @@ A space/cosmic-themed developer portfolio with a CLI aesthetic. Single-page desi
 ```
 e-portfolio/
 ├── packages/
-│   ├── ui/                  # Shared components, types, utils
-│   ├── theme/               # CSS color themes + switch hook
-│   └── storybook-config/    # Shared Storybook base
+│   ├── ui/                  # Shared utils (clsxMerge)
+│   └── theme/               # CSS color themes, switcher, hook
 └── webs/
     ├── artist-portfolio/    # 3D/animation/concept art portfolio
     └── byte-folio/          # Space-themed dev portfolio
@@ -108,5 +107,4 @@ e-portfolio/
 
 ## Documentation
 
-- [Development Rules](./docs/development-rules.md) - Coding standards
 - [Theming Guide](./docs/theming-guide.md) - Theme system documentation

@@ -1,3 +1,2 @@
-// @eportfolio/ui — Shared UI components, types, utilities, and services
+// @eportfolio/ui — shared utilities
 export * from "./utils";
-export * from "./types";

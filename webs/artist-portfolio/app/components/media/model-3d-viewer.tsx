@@ -4,7 +4,7 @@ import { Suspense, useState } from "react";
 import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, useGLTF, Center, PresentationControls } from "@react-three/drei";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import { HiCube, HiRefresh, HiZoomIn, HiZoomOut } from "react-icons/hi";
 import type { Model3DMedia } from "@/lib/types";
 

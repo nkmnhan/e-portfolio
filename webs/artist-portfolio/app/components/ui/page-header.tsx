@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 
 export interface PageHeaderProps {
   title: string;

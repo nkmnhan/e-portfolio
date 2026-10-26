@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProjectBySlug, getProjects, getProfile, getAdjacentProjects, getAllProjectSlugs } from "@/lib/services";
 import { MediaRenderer } from "@/app/components/media/media-renderer";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import {
   HiArrowLeft,
   HiArrowRight,

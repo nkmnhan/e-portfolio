@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { getProfile } from "@/lib/services";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 
 // Get profile for static metadata generation
 const profile = getProfile();

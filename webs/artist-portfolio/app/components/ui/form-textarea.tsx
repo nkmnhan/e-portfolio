@@ -1,5 +1,5 @@
 import { forwardRef, type TextareaHTMLAttributes } from "react";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 
 export interface FormTextareaProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement> {

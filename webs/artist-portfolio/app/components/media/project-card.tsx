@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { clsxMerge } from "@/lib/utils";
+import { clsxMerge } from "@eportfolio/ui/utils";
 import type { Project } from "@/lib/types";
 import { HiOutlineEye } from "react-icons/hi";
 import { Badge } from "@/app/components/ui/badge";
