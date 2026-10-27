@@ -37,10 +37,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     creator: "Tony Nguyen (nkmnhan)",
     publisher: "Tony Nguyen",
     robots: {
-      index: project.isFeatured,
+      index: true,
       follow: true,
       googleBot: {
-        index: project.isFeatured,
+        index: true,
         follow: true,
         "max-image-preview": "large",
         "max-snippet": -1,
