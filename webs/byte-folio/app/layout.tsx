@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { siteConfig } from "@/lib/data/site-config";
 import { ThemeSwitcher } from "@eportfolio/theme";
 import { ClarityInit } from "./components/clarity-init";
+import { HeroBackground } from "./components/hero-background";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -91,6 +92,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <link rel="preconnect" href="https://avatars.githubusercontent.com" crossOrigin="anonymous" />
         </head>
       <body className="min-h-screen bg-bg text-text font-[family-name:var(--font-sans)] antialiased">
+        {/* Fixed starfield behind every page */}
+        <div className="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
+          <HeroBackground />
+        </div>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

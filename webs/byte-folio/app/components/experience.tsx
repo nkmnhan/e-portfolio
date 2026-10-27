@@ -52,12 +52,13 @@ function TimelineEntry({ entry, index }: { entry: ExperienceEntry; index: number
 
   return (
     <li className="relative pl-8">
+      {/* Outside the transformed wrapper so it anchors to the li, on the timeline line */}
+      <div className={`absolute left-0 top-7 md:top-10 z-10 w-3 h-3 rounded-full ${dotColors[entry.accentColor]}`} />
       <div
         ref={ref}
         className={`view-hidden-left ${isInView ? "view-visible" : ""}`}
         style={{ transitionDelay: `${Math.min(index, 1) * 0.1}s` }}
       >
-        <div className={`absolute left-0 top-7 w-3 h-3 rounded-full ${dotColors[entry.accentColor]}`} />
         <article className={`glass rounded-xl p-5 md:p-8 border-l-2 ${accentColors[entry.accentColor]}`}>
           <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
             <h3 className="text-2xl font-bold font-[family-name:var(--font-display)]">{entry.company}</h3>
@@ -81,7 +82,7 @@ export function Experience() {
     <SectionWrapper id="experience">
       <TerminalHeading command="career --timeline" label="Experience" />
       <div className="relative">
-        <div className="absolute left-1.5 top-7 bottom-7 w-px bg-border" aria-hidden="true" />
+        <div className="absolute left-1.5 top-7 md:top-10 bottom-7 w-px bg-border" aria-hidden="true" />
         <ol className="space-y-6 md:space-y-8">
           {experienceData.map((entry, index) => (
             <TimelineEntry key={entry.company} entry={entry} index={index} />

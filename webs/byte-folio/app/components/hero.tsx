@@ -1,14 +1,12 @@
 import { heroData } from "@/lib/data/hero";
 import { getSocialLinksFor } from "@/lib/data/site-config";
-import { HeroBackground } from "./hero-background";
 import { SocialLinkItem } from "./social-link-item";
 
 const heroSocials = getSocialLinksFor("hero");
 
 export function Hero() {
   return (
-    <section id="hero" className="relative min-h-[85svh] flex items-center justify-center px-5 overflow-hidden">
-      <HeroBackground />
+    <section id="hero" className="relative min-h-svh flex items-center justify-center px-5 overflow-hidden">
       <div className="relative z-10 text-center max-w-3xl mx-auto">
         <p className="text-text-muted text-sm font-[family-name:var(--font-mono)] animate-[fadeInUp_0.5s_ease-out_both]">
           {heroData.greeting}
