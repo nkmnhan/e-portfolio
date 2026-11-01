@@ -2,6 +2,9 @@
   "name": "artist-portfolio",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "26.x"
+  },
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",

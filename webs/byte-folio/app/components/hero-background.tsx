@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
 import { StarfieldCSS } from "./starfield-css";
 
@@ -9,21 +9,33 @@ const StarfieldR3F = dynamic(
   { ssr: false }
 );
 
+// 0 = CSS starfield; otherwise the WebGL star count. Read once on the client, never changes.
+function subscribeToNothing() {
+  return () => {};
+}
+
+function getWebGLStarCount() {
+  const hasPower = (navigator.hardwareConcurrency ?? 1) >= 4;
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  if (!hasPower || prefersReducedMotion) return 0;
+  return window.innerWidth >= 1280 ? 2000 : 800;
+}
+
+function getServerWebGLStarCount() {
+  return 0;
+}
+
 export function HeroBackground() {
-  const [useWebGL, setUseWebGL] = useState(false);
-  const [starCount, setStarCount] = useState(2000);
+  const webGLStarCount = useSyncExternalStore(
+    subscribeToNothing,
+    getWebGLStarCount,
+    getServerWebGLStarCount
+  );
 
-  useEffect(() => {
-    const hasPower = (navigator.hardwareConcurrency ?? 1) >= 4;
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    setUseWebGL(hasPower && !prefersReducedMotion);
-    setStarCount(window.innerWidth >= 1280 ? 2000 : 800);
-  }, []);
-
-  if (useWebGL) {
-    return <StarfieldR3F count={starCount} />;
+  if (webGLStarCount > 0) {
+    return <StarfieldR3F count={webGLStarCount} />;
   }
 
   return <StarfieldCSS />;

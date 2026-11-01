@@ -1,10 +1,10 @@
 {
   "name": "@eportfolio/root",
   "private": true,
-  "packageManager": "pnpm@10.34.9",
   "engines": {
-    "node": ">=26"
+    "node": "26.x"
   },
+  "packageManager": "pnpm@10.34.9",
   "scripts": {
     "dev:artist": "pnpm --filter artist-portfolio dev",
     "dev:byte": "pnpm --filter byte-folio dev",

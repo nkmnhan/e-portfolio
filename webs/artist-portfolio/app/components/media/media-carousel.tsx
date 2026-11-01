@@ -1,11 +1,31 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef, useEffect, useCallback, memo } from "react";
+import { useState, useRef, useEffect, useCallback, useSyncExternalStore, memo } from "react";
 import { clsxMerge } from "@eportfolio/ui/utils";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import type { MediaCarouselMedia, MediaCarouselItem } from "@/lib/types";
 import { useTouchDevice } from "./hooks/use-touch-device";
+
+const SWIPE_HINT_STORAGE_KEY = "mediaCarouselSwipeHintSeen";
+const COUNTDOWN_WARNING_MS = 3000; // Show countdown at 3s remaining
+
+// localStorage has no change event for this tab, so the store never notifies
+function subscribeToNothing() {
+  return () => {};
+}
+
+function getHasSeenSwipeHint() {
+  try {
+    return localStorage.getItem(SWIPE_HINT_STORAGE_KEY) !== null;
+  } catch {
+    return true; // Storage unavailable — don't show the hint
+  }
+}
+
+function getServerHasSeenSwipeHint() {
+  return true;
+}
 
 interface MediaCarouselProps {
   media: MediaCarouselMedia;
@@ -18,12 +38,18 @@ export function MediaCarousel({
 }: Readonly<MediaCarouselProps>) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(media.autoplay ?? true);
-  const [timeRemaining, setTimeRemaining] = useState(0);
-  const [showCountdownWarning, setShowCountdownWarning] = useState(false);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
-  const [showSwipeHint, setShowSwipeHint] = useState(false);
-  
+  const [isSwipeHintDismissed, setIsSwipeHintDismissed] = useState(false);
+  // Countdown ticks belong to one auto-play run; a new run (slide/pause change) starts from 0
+  const autoPlayRunKey = `${currentIndex}|${isAutoPlaying}|${hasUserInteracted}`;
+  const [countdownTicks, setCountdownTicks] = useState({ runKey: autoPlayRunKey, elapsedMs: 0 });
+
   const isTouchDevice = useTouchDevice();
+  const hasSeenSwipeHint = useSyncExternalStore(
+    subscribeToNothing,
+    getHasSeenSwipeHint,
+    getServerHasSeenSwipeHint
+  );
   const autoPlayTimerRef = useRef<NodeJS.Timeout | null>(null);
   const countdownIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const interactionResumeTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -55,19 +81,28 @@ export function MediaCarousel({
     return baseInterval * timingMultiplier;
   }, [currentItem, media.interval, isTouchDevice]);
 
-  // Check if first visit for swipe hint
+  const elapsedMs = countdownTicks.runKey === autoPlayRunKey ? countdownTicks.elapsedMs : 0;
+  const timeRemaining = getCurrentDuration() - elapsedMs;
+  const showCountdownWarning =
+    !hasUserInteracted && timeRemaining > 0 && timeRemaining <= COUNTDOWN_WARNING_MS;
+
+  // Swipe hint on first visit (touch devices only)
+  const showSwipeHint =
+    isTouchDevice && items.length > 1 && !hasSeenSwipeHint && !isSwipeHintDismissed;
+
   useEffect(() => {
-    if (isTouchDevice && items.length > 1) {
-      const hasSeenHint = localStorage.getItem("mediaCarouselSwipeHintSeen");
-      if (!hasSeenHint) {
-        setShowSwipeHint(true);
-        setTimeout(() => {
-          setShowSwipeHint(false);
-          localStorage.setItem("mediaCarouselSwipeHintSeen", "true");
-        }, 3000);
+    if (!showSwipeHint) return;
+
+    const hintTimer = setTimeout(() => {
+      setIsSwipeHintDismissed(true);
+      try {
+        localStorage.setItem(SWIPE_HINT_STORAGE_KEY, "true");
+      } catch {
+        // Storage unavailable — hint may show again next visit
       }
-    }
-  }, [isTouchDevice, items.length]);
+    }, 3000);
+    return () => clearTimeout(hintTimer);
+  }, [showSwipeHint]);
 
   // Preload adjacent images
   useEffect(() => {
@@ -91,33 +126,32 @@ export function MediaCarousel({
     if (!isAutoPlaying || hasUserInteracted) return;
 
     const duration = getCurrentDuration();
-    const warningThreshold = 3000; // Show countdown at 3s remaining
-    
-    setTimeRemaining(duration);
-    setShowCountdownWarning(false);
 
     // Countdown timer - update every 1s (only displays whole seconds)
     countdownIntervalRef.current = setInterval(() => {
-      setTimeRemaining((prev) => {
-        const newTime = prev - 1000;
-        if (newTime <= warningThreshold && newTime > 0) {
-          setShowCountdownWarning(true);
-        }
-        return newTime;
-      });
+      setCountdownTicks((prev) => ({
+        runKey: autoPlayRunKey,
+        elapsedMs: (prev.runKey === autoPlayRunKey ? prev.elapsedMs : 0) + 1000,
+      }));
     }, 1000);
 
     // Auto-advance timer - inline to avoid stale closure and skip hasUserInteracted
     autoPlayTimerRef.current = setTimeout(() => {
       setCurrentIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
-      setShowCountdownWarning(false);
     }, duration);
 
     return () => {
       if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
       if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
     };
-  }, [currentIndex, isAutoPlaying, hasUserInteracted, getCurrentDuration, items.length]);
+  }, [autoPlayRunKey, isAutoPlaying, hasUserInteracted, getCurrentDuration, items.length]);
+
+  const pauseAllVideos = useCallback(() => {
+    videoRefs.current.forEach((video) => {
+      video.pause();
+      video.currentTime = 0; // Reset to beginning
+    });
+  }, []);
 
   // Page Visibility API - pause on tab switch
   useEffect(() => {
@@ -132,28 +166,22 @@ export function MediaCarousel({
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, []);
+  }, [pauseAllVideos]);
 
   // Video cleanup on unmount
   useEffect(() => {
+    const videos = videoRefs.current;
     return () => {
-      videoRefs.current.forEach((video) => {
+      videos.forEach((video) => {
         video.pause();
         video.currentTime = 0;
       });
-      videoRefs.current.clear();
+      videos.clear();
       if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
       if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
       if (longPressTimerRef.current) clearTimeout(longPressTimerRef.current);
       if (interactionResumeTimerRef.current) clearTimeout(interactionResumeTimerRef.current);
     };
-  }, []);
-
-  const pauseAllVideos = useCallback(() => {
-    videoRefs.current.forEach((video) => {
-      video.pause();
-      video.currentTime = 0; // Reset to beginning
-    });
   }, []);
 
   // Handle user interaction - pause auto-play and resume after 10s
@@ -164,7 +192,6 @@ export function MediaCarousel({
     }
 
     setHasUserInteracted(true);
-    setShowCountdownWarning(false);
 
     // Resume auto-play after 10 seconds of inactivity
     interactionResumeTimerRef.current = setTimeout(() => {
@@ -573,7 +600,6 @@ const MediaSlide = memo(({
       );
 
     case "youtube":
-      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       return (
         <section
           onMouseEnter={onEmbedInteraction}
@@ -593,7 +619,6 @@ const MediaSlide = memo(({
       );
 
     case "vimeo":
-      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       return (
         <section
           onMouseEnter={onEmbedInteraction}
@@ -613,7 +638,6 @@ const MediaSlide = memo(({
       );
 
     case "sketchfab":
-      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       return (
         <section
           onMouseEnter={onEmbedInteraction}

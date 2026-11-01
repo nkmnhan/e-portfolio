@@ -17,7 +17,7 @@ pnpm install
 pnpm dev:artist    # Artist portfolio (:3001)
 pnpm dev:byte      # Byte-folio (:3002)
 pnpm build         # Production build of both apps
-pnpm lint          # ESLint (byte-folio; artist-portfolio has no ESLint config yet)
+pnpm lint          # ESLint (next/core-web-vitals + TypeScript) for both apps
 ```
 
 ## Projects

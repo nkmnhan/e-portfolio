@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { clsxMerge } from "@eportfolio/ui/utils";
 import { HiPlay, HiPause } from "react-icons/hi";
+import { useTouchDevice } from "./hooks/use-touch-device";
 
 export type AspectRatio = "4/3" | "16/9" | "1/1" | "3/4" | "auto";
 
@@ -30,8 +31,6 @@ interface VideoThumbnailProps {
   onHoverChange?: (isHovered: boolean) => void;
   /** Callback when playing state changes */
   onPlayingChange?: (isPlaying: boolean) => void;
-  /** Video buffering timeout in ms (default: 5000) for slow connections */
-  videoBufferTimeout?: number;
 }
 
 const aspectRatioClasses: Record<AspectRatio, string> = {
@@ -63,72 +62,53 @@ export function VideoThumbnail({
   children,
   onHoverChange,
   onPlayingChange,
-  videoBufferTimeout = 5000,
 }: Readonly<VideoThumbnailProps>) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const [isInView, setIsInView] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
+  const [readyVideoUrl, setReadyVideoUrl] = useState(video);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Detect if device lacks hover capability (true mobile/tablet)
+  const isTouchDevice = useTouchDevice();
   const hasVideo = Boolean(video);
 
-  // Detect if device lacks hover capability (true mobile/tablet)
-  useEffect(() => {
-    const hoverQuery = globalThis.matchMedia("(hover: hover)");
+  // Reset video readiness when video URL changes
+  if (readyVideoUrl !== video) {
+    setReadyVideoUrl(video);
+    setVideoReady(false);
+  }
 
-    const checkHoverCapability = () => {
-      setIsTouchDevice(!hoverQuery.matches);
-    };
-
-    checkHoverCapability();
-    hoverQuery.addEventListener("change", checkHoverCapability);
-
-    return () => {
-      hoverQuery.removeEventListener("change", checkHoverCapability);
-    };
-  }, []);
-
-  // Intersection Observer for auto-play on scroll (mobile only)
+  // Auto-play/pause based on viewport visibility (mobile only)
   useEffect(() => {
     if (!hasVideo || !containerRef.current || !isTouchDevice) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        const videoElement = videoRef.current;
+        if (!videoElement) return;
+
+        if (entry.isIntersecting) {
+          videoElement.play().catch(() => {
+            // Autoplay blocked - user needs to tap play button
+          });
+          setIsPlaying(true);
+          onPlayingChange?.(true);
+        } else {
+          videoElement.pause();
+          videoElement.currentTime = 0;
+          setIsPlaying(false);
+          onPlayingChange?.(false);
+        }
       },
       { threshold: 0.5 }
     );
 
     observer.observe(containerRef.current);
     return () => observer.disconnect();
-  }, [hasVideo, isTouchDevice]);
-
-  // Reset video readiness when video URL changes
-  useEffect(() => {
-    setVideoReady(false);
-  }, [video]);
-
-  // Auto-play/pause based on viewport visibility (mobile only)
-  useEffect(() => {
-    if (!hasVideo || !videoRef.current || !isTouchDevice) return;
-
-    if (isInView) {
-      videoRef.current.play().catch(() => {
-        // Autoplay blocked - user needs to tap play button
-      });
-      setIsPlaying(true);
-      onPlayingChange?.(true);
-    } else {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-      setIsPlaying(false);
-      onPlayingChange?.(false);
-    }
-  }, [isInView, hasVideo, isTouchDevice, onPlayingChange]);
+  }, [hasVideo, isTouchDevice, onPlayingChange]);
 
   // Video readiness, preload, and buffering detection
   useEffect(() => {

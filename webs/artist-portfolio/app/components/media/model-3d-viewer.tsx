@@ -1,12 +1,32 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Component, Suspense, useState, type ReactNode } from "react";
 import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, useGLTF, Center, PresentationControls } from "@react-three/drei";
 import { clsxMerge } from "@eportfolio/ui/utils";
-import { HiCube, HiRefresh, HiZoomIn, HiZoomOut } from "react-icons/hi";
+import { HiCube, HiRefresh } from "react-icons/hi";
 import type { Model3DMedia } from "@/lib/types";
+
+// R3F rethrows Canvas errors (e.g. a failed model load) into the parent tree — catch them here
+class ModelErrorBoundary extends Component<
+  { onError: () => void; children: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch() {
+    this.props.onError();
+  }
+
+  render() {
+    return this.state.hasError ? null : this.props.children;
+  }
+}
 
 interface Model3DViewerProps {
   media: Model3DMedia;
@@ -126,39 +146,41 @@ export function Model3DViewer({ media }: Model3DViewerProps) {
         ) : (
           /* 3D Canvas */
           <>
-            <Canvas
-              camera={{
-                position: cameraPosition as [number, number, number],
-                fov: 45,
-              }}
-              className="touch-none"
-            >
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[5, 5, 5]} intensity={1} />
-              <Suspense fallback={<ModelPlaceholder />}>
-                <Center>
-                  <PresentationControls
-                    global
-                    snap
-                    speed={1}
-                    zoom={0.8}
-                    rotation={[0, 0, 0]}
-                    polar={[-Math.PI / 4, Math.PI / 4]}
-                    azimuth={[-Math.PI / 4, Math.PI / 4]}
-                  >
-                    <Model url={media.modelUrl} />
-                  </PresentationControls>
-                </Center>
-                <Environment preset="studio" />
-              </Suspense>
-              <OrbitControls
-                autoRotate={autoRotate}
-                autoRotateSpeed={2}
-                enablePan={false}
-                minDistance={2}
-                maxDistance={10}
-              />
-            </Canvas>
+            <ModelErrorBoundary onError={handleError}>
+              <Canvas
+                camera={{
+                  position: cameraPosition as [number, number, number],
+                  fov: 45,
+                }}
+                className="touch-none"
+              >
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[5, 5, 5]} intensity={1} />
+                <Suspense fallback={<ModelPlaceholder />}>
+                  <Center>
+                    <PresentationControls
+                      global
+                      snap
+                      speed={1}
+                      zoom={0.8}
+                      rotation={[0, 0, 0]}
+                      polar={[-Math.PI / 4, Math.PI / 4]}
+                      azimuth={[-Math.PI / 4, Math.PI / 4]}
+                    >
+                      <Model url={media.modelUrl} />
+                    </PresentationControls>
+                  </Center>
+                  <Environment preset="studio" />
+                </Suspense>
+                <OrbitControls
+                  autoRotate={autoRotate}
+                  autoRotateSpeed={2}
+                  enablePan={false}
+                  minDistance={2}
+                  maxDistance={10}
+                />
+              </Canvas>
+            </ModelErrorBoundary>
 
             {/* Controls Hint */}
             <div

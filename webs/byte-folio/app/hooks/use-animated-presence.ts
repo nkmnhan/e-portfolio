@@ -7,8 +7,9 @@ import { useEffect, useRef, useState } from "react";
  * Returns `shouldRender` (whether to keep in DOM) and `isVisible` (CSS class trigger).
  */
 export function useAnimatedPresence(isOpen: boolean, duration = 300) {
-  const [shouldRender, setShouldRender] = useState(isOpen);
-  const [isVisible, setIsVisible] = useState(isOpen);
+  // Both flags lag `isOpen`: set after the enter frames, cleared after the exit transition
+  const [isEntered, setIsEntered] = useState(isOpen);
+  const [isMountedForExit, setIsMountedForExit] = useState(isOpen);
   const timerRef = useRef<ReturnType<typeof setTimeout>>(null);
 
   useEffect(() => {
@@ -18,13 +19,15 @@ export function useAnimatedPresence(isOpen: boolean, duration = 300) {
     let rafId2: number;
 
     if (isOpen) {
-      setShouldRender(true);
       rafId1 = requestAnimationFrame(() => {
-        rafId2 = requestAnimationFrame(() => setIsVisible(true));
+        setIsMountedForExit(true);
+        rafId2 = requestAnimationFrame(() => setIsEntered(true));
       });
     } else {
-      setIsVisible(false);
-      timerRef.current = setTimeout(() => setShouldRender(false), duration);
+      timerRef.current = setTimeout(() => {
+        setIsMountedForExit(false);
+        setIsEntered(false);
+      }, duration);
     }
 
     return () => {
@@ -34,5 +37,8 @@ export function useAnimatedPresence(isOpen: boolean, duration = 300) {
     };
   }, [isOpen, duration]);
 
-  return { shouldRender, isVisible };
+  return {
+    shouldRender: isOpen || isMountedForExit,
+    isVisible: isOpen && isEntered,
+  };
 }

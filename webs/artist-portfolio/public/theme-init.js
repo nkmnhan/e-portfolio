@@ -3,6 +3,6 @@
 try {
   var savedTheme = localStorage.getItem("eportfolio-color-theme");
   if (savedTheme) document.documentElement.dataset.theme = savedTheme;
-} catch (error) {
+} catch {
   // Storage unavailable — keep the default theme
 }
