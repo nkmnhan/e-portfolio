@@ -10,8 +10,5 @@
     "dev:byte": "pnpm --filter byte-folio dev",
     "build": "pnpm -r build",
     "lint": "pnpm -r lint"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.64.1"
   }
 }

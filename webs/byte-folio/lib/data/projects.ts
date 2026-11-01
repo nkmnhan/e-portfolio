@@ -72,7 +72,6 @@ export const projectsData: Project[] = [
       "2 portfolio apps sharing @eportfolio/ui and @eportfolio/theme workspace packages",
       "6 switchable color themes as static data-theme CSS, with no flash on first paint",
       "React Three Fiber starfield with lazy loading and CSS fallback",
-      "Playwright E2E tests for the theme switcher",
     ],
     techStack: ["Next.js 16", "React 19", "R3F", "Tailwind v4", "pnpm"],
     githubUrl: "https://github.com/nkmnhan/e-portfolio",

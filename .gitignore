@@ -119,10 +119,6 @@ research_notes/
 reports/
 CLAUDE.local.md
 
-# Playwright
-test-results/
-playwright-report/
-
 # Lighthouse
 lighthouse-*.report.*
 
