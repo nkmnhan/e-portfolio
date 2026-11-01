@@ -4,6 +4,8 @@ export interface SiteConfig {
   description: string;
   url: string;
   ogImage: string;
+  /** ISO date of the last real content change; drives sitemap lastmod */
+  contentUpdatedAt: string;
   socialLinks: SocialLink[];
 }
 
@@ -17,6 +19,9 @@ export interface SocialLink {
 export interface HeroData {
   greeting: string;
   name: string;
+  /** Shown under the name so search engines tie the handle to the person */
+  alias: string;
+  handle: string;
   title: string;
   specialization: string;
   primaryCta: { label: string; href: string };

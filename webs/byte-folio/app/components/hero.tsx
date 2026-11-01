@@ -14,6 +14,9 @@ export function Hero() {
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold font-[family-name:var(--font-display)] mt-3 glow-primary-text animate-[fadeInUp_0.5s_0.2s_ease-out_both]">
           {heroData.name}
         </h1>
+        <p className="text-text-muted mt-2 font-[family-name:var(--font-mono)] text-xs md:text-sm animate-[fadeIn_0.5s_0.4s_ease-out_both]">
+          aka {heroData.alias} · <span className="text-primary">@{heroData.handle}</span>
+        </p>
         <p className="text-text-secondary mt-4 font-[family-name:var(--font-mono)] text-sm md:text-base animate-[fadeIn_0.5s_0.5s_ease-out_both]">
           <span className="text-primary">{">"}</span> {heroData.title}
           <span className="inline-block w-2 h-4 bg-primary ml-1 align-middle" style={{ animation: "blink 1s step-end infinite" }} />

@@ -119,7 +119,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   sameAs: [
                     "https://github.com/nkmnhan",
                     "https://www.linkedin.com/in/nkmnhan",
-                    "https://www.nkmnhan.com",
                     "https://www.facebook.com/nkmnhan",
                     "https://nhannguyensharing.com",
                     "https://www.facebook.com/nhannguyensharingday",
@@ -157,7 +156,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   description: siteConfig.description,
                   mainEntity: { "@id": `${siteConfig.url}/#person` },
                   dateCreated: "2024-01-01T00:00:00Z",
-                  dateModified: new Date().toISOString(),
+                  dateModified: new Date(siteConfig.contentUpdatedAt).toISOString(),
                   inLanguage: "en-US",
                 },
                 {

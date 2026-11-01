@@ -24,6 +24,8 @@ export const siteConfig: SiteConfig = {
     `nkmnhan: Senior Fullstack Developer with ${yearsOfExperience} years in .NET, Angular, React and cloud microservices. Explore projects, skills and experience by Tony Nguyen (Nhan Nguyen).`,
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://nkmnhan.com",
   ogImage: "/og-image.png",
+  // Bump when page content changes; search engines ignore lastmod that never moves
+  contentUpdatedAt: "2026-10-27",
   socialLinks: [
     { platform: "github", url: "https://github.com/nkmnhan", label: "GitHub" },
     { platform: "linkedin", url: "https://linkedin.com/in/nkmnhan", label: "LinkedIn" },
