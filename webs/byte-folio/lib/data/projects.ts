@@ -49,11 +49,12 @@ export const projectsData: Project[] = [
     isFeatured: true,
     sortOrder: 2,
     meta: {
-      titleSuffix: "Zero-code .NET Aspire Orchestration",
+      titleSuffix: ".NET Aspire AppHost from JSON",
       description:
-        "Aspire.Nexus by Nhan Nguyen: zero-code .NET Aspire orchestration. Toggle microservices via JSON without rebuilds, with infrastructure persistence.",
+        "Open-source .NET Aspire AppHost example by Nhan Nguyen: add or toggle services from JSON instead of Program.cs. No rebuilds; databases survive restarts.",
       keywords: [
-        "Aspire.Nexus", ".NET Aspire", "service orchestration", "JSON configuration",
+        "Aspire.Nexus", ".NET Aspire", ".NET Aspire AppHost", "Aspire AppHost example",
+        "service orchestration", "JSON configuration",
         "zero-code deployment", "microservices management", "infrastructure persistence",
         "developer tools", ".NET 10 Aspire",
         "Tony Nguyen Aspire", "Nhan Nguyen .NET",
@@ -110,11 +111,12 @@ export const projectsData: Project[] = [
     isFeatured: false,
     sortOrder: 4,
     meta: {
-      titleSuffix: "OAuth 2.0 + OpenID Connect with Vue.js",
+      titleSuffix: "Vue OAuth2 & OIDC Example",
       description:
-        "Vue-IdentityServer4 by Nhan Nguyen: complete OpenID Connect auth flow with Vue.js and oidc-client, backed by IdentityServer4 as identity provider.",
+        "Vue.js OAuth 2.0 / OpenID Connect (OIDC) client example by Nhan Nguyen: a full login flow in a Vue SPA with oidc-client and IdentityServer4.",
       keywords: [
-        "Vue-IdentityServer4", "OpenID Connect", "OAuth 2.0", "oidc-client",
+        "Vue-IdentityServer4", "Vue OAuth2", "Vue OIDC client", "Vue.js OAuth2 authentication",
+        "OpenID Connect", "OAuth 2.0", "oidc-client",
         "Vue.js authentication", "IdentityServer4", "SPA authentication",
         "token-based auth", "Tony Nguyen", "Nhan Nguyen",
       ],
@@ -350,11 +352,12 @@ export const projectsData: Project[] = [
     isFeatured: false,
     sortOrder: 12,
     meta: {
-      titleSuffix: "Hybrid Web/Native Rendering with .NET",
+      titleSuffix: ".NET MAUI JS ↔ Native Interop",
       description:
-        "HybridWebView by Nhan Nguyen: render web content in native .NET apps with bidirectional JavaScript-to-native interop for cross-platform development.",
+        "HybridWebView for .NET MAUI by Nhan Nguyen: render web content inside a native app and call between JavaScript and .NET in both directions. Open-source example.",
       keywords: [
-        "HybridWebView", "hybrid app", "WebView",
+        "HybridWebView", "MAUI HybridWebView", ".NET MAUI HybridWebView example",
+        "hybrid app", "WebView",
         ".NET MAUI WebView", "JavaScript interop", "native web bridge",
         "cross-platform", "Tony Nguyen", "Nhan Nguyen",
       ],
@@ -380,11 +383,12 @@ export const projectsData: Project[] = [
     isFeatured: false,
     sortOrder: 13,
     meta: {
-      titleSuffix: "Interactive Calendar Component with Angular",
+      titleSuffix: "Angular Event Calendar Component",
       description:
-        "Calendar Demo by Nhan Nguyen: interactive Angular calendar component with event scheduling, built with Angular CLI and TypeScript.",
+        "Angular calendar demo by Nhan Nguyen: an event-scheduling calendar component built with Angular CLI and TypeScript, with unit and end-to-end tests.",
       keywords: [
-        "Calendar Demo", "Angular calendar", "event scheduling",
+        "Calendar Demo", "Angular calendar", "Angular calendar demo", "Angular event calendar",
+        "event scheduling",
         "interactive calendar", "Angular component", "TypeScript",
         "date management", "Tony Nguyen", "Nhan Nguyen",
       ],

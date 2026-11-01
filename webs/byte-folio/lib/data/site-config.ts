@@ -25,7 +25,7 @@ export const siteConfig: SiteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://nkmnhan.com",
   ogImage: "/og-image.png",
   // Bump when page content changes; search engines ignore lastmod that never moves
-  contentUpdatedAt: "2026-10-27",
+  contentUpdatedAt: "2026-11-01",
   socialLinks: [
     { platform: "github", url: "https://github.com/nkmnhan", label: "GitHub" },
     { platform: "linkedin", url: "https://linkedin.com/in/nkmnhan", label: "LinkedIn" },
