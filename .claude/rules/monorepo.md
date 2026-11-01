@@ -21,7 +21,8 @@ Each Next.js app transpiles them via `transpilePackages` in `next.config.ts`.
 
 ## Peer Dependencies
 Shared packages declare peer deps for framework libraries:
-- `react`, `next`, `clsx`, `tailwind-merge`, `react-icons`
+- `@eportfolio/ui`: `clsx`, `tailwind-merge`
+- `@eportfolio/theme`: `react`
 - Consumers (webs/) install the actual versions
 
 ## Dual-Update Rule

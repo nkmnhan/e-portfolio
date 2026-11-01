@@ -16,7 +16,7 @@ paths: webs/**
 - No horizontal scrolling on mobile
 
 ## CSS Variables / Semantic Tokens Only
-- Use design tokens via the Tailwind classes mapped in `globals.css` `@theme`: `bg-surface`, `text-primary`
+- Use design tokens via the Tailwind classes mapped in `packages/theme/src/tokens/tailwind.css` `@theme`: `bg-surface`, `text-primary`
 - `bg-[var(--color-surface)]` is equivalent (older artist code uses it) — prefer the mapped class in new code
 - Never hardcode colors: no `bg-gray-800`, `text-gray-400`
 - Exception: Tailwind's built-in semantic classes (`bg-white`, `text-black`) for light/dark base
@@ -50,11 +50,6 @@ Example: `"flex items-center"` → `"w-full h-12 px-4"` → `"rounded-lg border"
 - Keyboard navigation support
 - `prefers-reduced-motion` respected (no essential animations)
 - ARIA labels on interactive elements
-
-## Flowbite-React First
-- Check Flowbite-React before creating custom components
-- Customize via `theme` prop, not `className` overrides
-- Common: Button, Card, Modal, Tabs, Breadcrumb, Timeline, Badge
 
 ## React Patterns
 - Composition over inheritance — small, focused components

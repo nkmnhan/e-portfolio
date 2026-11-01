@@ -11,10 +11,9 @@ Developer portfolio with space/cosmic theme. Neon accents, CSS-driven animated b
 - Skills grouped by category (frontend, backend, devops, tools)
 - Projects with tech stacks, live URLs, GitHub links
 - Experience timeline (chronological career history)
-- Certifications and achievements
 
 ## Design Notes
 - Space-themed CSS backgrounds (stars, nebula gradients)
 - Neon glow effects on interactive elements
 - Monospace/tech typography accents
-- Dark-only — no light mode needed
+- Default theme `space-cosmic`; the shared `ThemeSwitcher` offers the other `@eportfolio/theme` themes
