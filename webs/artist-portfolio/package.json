@@ -16,8 +16,6 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
-    "flowbite": "^4.0.2",
-    "flowbite-react": "^0.12.17",
     "next": "16.4.3",
     "react": "19.3.1",
     "react-dom": "19.3.1",

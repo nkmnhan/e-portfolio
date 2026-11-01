@@ -103,8 +103,6 @@ dist
 
 # TernJS port file
 .tern-port
-# Ignore Flowbite React CLI files
-.flowbite-react/
 
 #  VS Code workspace settings
 .vscode/
@@ -121,6 +119,3 @@ CLAUDE.local.md
 
 # Lighthouse
 lighthouse-*.report.*
-
-# Storybook
-storybook-static/
