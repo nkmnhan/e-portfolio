@@ -4,24 +4,27 @@ A monorepo portfolio platform with two Next.js apps and shared packages.
 
 ## Tech Stack
 
-- **Framework**: Next.js 16+ (App Router), TypeScript
-- **Styling**: Tailwind CSS v4, Flowbite-React
-- **3D/Motion**: React Three Fiber, Framer Motion
-- **Package Manager**: pnpm workspaces
+- **Framework**: Next.js 16 (App Router), React 19, TypeScript
+- **Styling**: Tailwind CSS v4, shared `@eportfolio/theme` tokens
+- **3D**: React Three Fiber
+- **Tooling**: Node 26 LTS (`.nvmrc`), pnpm workspaces
 
 ## Quick Start
 
 ```bash
+nvm use            # Node 26
 pnpm install
 pnpm dev:artist    # Artist portfolio (:3001)
 pnpm dev:byte      # Byte-folio (:3002)
+pnpm build         # Production build of both apps
+pnpm lint          # ESLint (next/core-web-vitals + TypeScript) for both apps
 ```
 
 ## Projects
 
 ### Artist Portfolio
 
-A 3D artist and animator portfolio featuring project galleries, showreels, and a contact page. Built with React Three Fiber and Framer Motion.
+A 3D artist and animator portfolio with filterable project galleries, project detail pages (images, video, carousels, embedded 3D models), showreels with timestamped breakdowns, and a contact page. Default theme: `artist-dark`.
 
 | Desktop | Mobile |
 |---------|--------|
@@ -42,7 +45,7 @@ A 3D artist and animator portfolio featuring project galleries, showreels, and a
 
 ### Byte-Folio
 
-A space/cosmic-themed developer portfolio with a CLI aesthetic. Single-page design with sections for about, experience, projects, skills, and contact.
+A space/cosmic-themed developer portfolio with a CLI aesthetic and a React Three Fiber starfield (CSS fallback). A single home page with hero, about, experience, projects, skills, and contact sections, plus a statically generated detail page for each of the 14 projects (`/projects/[slug]`). Default theme: `space-cosmic`.
 
 ![Byte-Folio - Hero](./docs/screenshots/byte-folio-hero.png)
 
@@ -97,14 +100,18 @@ A space/cosmic-themed developer portfolio with a CLI aesthetic. Single-page desi
 
 ```
 e-portfolio/
+├── docs/                    # Theming guide, README screenshots
 ├── packages/
 │   ├── ui/                  # Shared utils (clsxMerge)
-│   └── theme/               # CSS color themes, switcher, hook
+│   └── theme/               # 6 CSS color themes, ThemeSwitcher, useColorTheme
 └── webs/
     ├── artist-portfolio/    # 3D/animation/concept art portfolio
     └── byte-folio/          # Space-themed dev portfolio
 ```
 
+Both apps share the theme system: every page has a floating theme switcher with six dark themes.
+
 ## Documentation
 
 - [Theming Guide](./docs/theming-guide.md) - Theme system documentation
+- [Artist Portfolio README](./webs/artist-portfolio/README.md) - Routes and structure of the artist app

@@ -8,7 +8,6 @@ import {
   HiOutlineFolder,
   HiOutlineFilm,
   HiOutlineMail,
-  HiArrowRight,
 } from "react-icons/hi";
 import { Button, NavLink } from "../ui";
 

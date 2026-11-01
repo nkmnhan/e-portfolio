@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-@import "@eportfolio/theme/tokens/base.css";
 @import "@eportfolio/theme/tokens/themes.css";
 @import "@eportfolio/theme/tokens/tailwind.css";
 

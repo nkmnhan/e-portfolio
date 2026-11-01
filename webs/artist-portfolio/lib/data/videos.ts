@@ -17,8 +17,6 @@ export const SAMPLE_VIDEOS = {
   tearsOfSteel: "https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
 } as const;
 
-export type VideoKey = keyof typeof SAMPLE_VIDEOS;
-
 // Valid YouTube embed IDs for testing
 export const SAMPLE_YOUTUBE = {
   blender: "YE7VzlLtp-4", // Blender Demo Reel

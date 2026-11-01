@@ -1,36 +1,31 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
+
+// Touch-only devices do NOT match this query; desktop/laptop devices do
+const HOVER_QUERY = '(hover: hover)';
+
+function subscribeToHoverQuery(onChange: () => void) {
+  // Fires when hover capability changes (e.g., connecting/disconnecting a mouse)
+  const hoverQuery = window.matchMedia(HOVER_QUERY);
+  hoverQuery.addEventListener('change', onChange);
+  return () => hoverQuery.removeEventListener('change', onChange);
+}
+
+function getIsTouchDevice() {
+  return !window.matchMedia(HOVER_QUERY).matches;
+}
+
+function getServerIsTouchDevice() {
+  return false;
+}
 
 /**
  * Detects if the device supports touch/hover capabilities
  * Uses @media(hover: hover) to differentiate between touch and hover-capable devices
- * 
+ *
  * @returns {boolean} true if device is touch-only (no hover support), false if device has hover
  */
 export function useTouchDevice(): boolean {
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-
-  useEffect(() => {
-    // Check if the device supports hover capability
-    // Touch-only devices will NOT match this media query
-    // Desktop/laptop devices WILL match this query
-    const hoverQuery = window.matchMedia('(hover: hover)');
-    
-    // If hover is NOT supported, it's a touch device
-    setIsTouchDevice(!hoverQuery.matches);
-
-    // Listen for changes in hover capability (e.g., connecting/disconnecting mouse)
-    const handleChange = (e: MediaQueryListEvent) => {
-      setIsTouchDevice(!e.matches);
-    };
-
-    hoverQuery.addEventListener('change', handleChange);
-    
-    return () => {
-      hoverQuery.removeEventListener('change', handleChange);
-    };
-  }, []);
-
-  return isTouchDevice;
+  return useSyncExternalStore(subscribeToHoverQuery, getIsTouchDevice, getServerIsTouchDevice);
 }

@@ -1,43 +1,43 @@
 # Artist Portfolio
 
-Portfolio platform for **3D Artists**, **Animation Artists**, and **Concept Artists**.
+Portfolio for **3D Artists**, **Animation Artists**, and **Concept Artists**.
 
 ## Features
 
-- **Dark Cinematic Theme** - Artwork pops against dark backgrounds
-- **Server Components** - Fast, SEO-friendly rendering
+- **Dark Cinematic Theme** - `artist-dark` theme from `@eportfolio/theme`, switchable at runtime
+- **Server Components first** - Client islands only for media players, filters and forms
+- **Rich media** - Images, video, carousels, embedded 3D models (Sketchfab) and YouTube/Vimeo
 - **Responsive Design** - Mobile-first, tablet-friendly
-- **External Placeholders** - Unsplash/Pravatar images for development
+- **External Placeholders** - Unsplash/Pravatar/Picsum images for development
 
 ## Pages
 
 | Page | URL | Description |
 |------|-----|-------------|
-| Home | `/` | Hero, featured artworks, artists, showreels |
-| Artists | `/artists` | Artist directory by specialization |
-| Artist Profile | `/artists/[slug]` | Individual artist with portfolio |
-| Gallery | `/gallery` | All artworks by category |
+| Home | `/` | Hero, featured projects, showreels |
+| About | `/about` | Bio, skills, experience |
+| Projects | `/projects` | All projects, filterable by category |
+| Project | `/projects/[slug]` | Project detail with media and prev/next navigation |
 | Showreels | `/showreels` | Video demo reels |
+| Showreel | `/showreels/[id]` | Reel with timestamped breakdown |
+| Contact | `/contact` | Contact form and social links |
 
 ## Quick Start
 
 ```bash
-# Install dependencies
+# From the repo root
 pnpm install
+pnpm dev:artist    # http://localhost:3001
 
-# Run development server (port 3001)
-pnpm dev
-
-# Build for production
-pnpm build
+# Production build
+pnpm --filter artist-portfolio build
 ```
 
 ## Tech Stack
 
-- Next.js 16+ (App Router)
-- TypeScript
-- Tailwind CSS v4
-- Flowbite-React
+- Next.js 16 (App Router), React 19, TypeScript
+- Tailwind CSS v4 + `@eportfolio/theme` tokens
+- React Three Fiber / drei
 - React Icons
 
 ## Project Structure
@@ -45,55 +45,26 @@ pnpm build
 ```
 app/
 ├── components/
-│   ├── artwork/       # ArtworkCard, ArtworkGrid
-│   ├── artist/        # ArtistCard
+│   ├── media/         # Media renderers (image, video, carousel, 3D, embeds) + hooks
 │   ├── nav/           # Header, Footer
-│   └── ui/            # Hero, SectionHeader, ShowreelCard
-├── artists/
-│   ├── page.tsx       # Artists listing
-│   └── [slug]/
-│       └── page.tsx   # Artist profile
-├── gallery/
-│   └── page.tsx       # Artwork gallery
-├── showreels/
-│   └── page.tsx       # Video reels
-├── layout.tsx         # Root layout
-├── page.tsx           # Home page
-└── globals.css        # Dark theme tokens
+│   └── ui/            # Hero, Card, form controls, filters, ShowreelCard
+├── about/
+├── contact/
+├── projects/[slug]/
+├── showreels/[id]/
+├── layout.tsx
+├── page.tsx
+└── globals.css
 
 lib/
-├── data.ts            # Mock data & types
-└── utils.ts           # Utility functions
+├── data/              # Mock data (profile, projects by category, showreels)
+├── services/          # Data access layer (swap for an API later)
+└── types/             # Profile, Project, Showreel types
 ```
 
-## Mock Data
+## Project Categories
 
-The project includes mock data with external placeholder images:
-
-- **5 Artists** - 3D artists, animators, concept artists
-- **10 Artworks** - Characters, environments, VFX
-- **3 Showreels** - Animation and VFX demo reels
-
-Images are loaded from:
-- Unsplash (artworks, covers)
-- Pravatar (avatars)
-
-## Design Tokens
-
-Dark cinematic theme with CSS custom properties:
-
-```css
---color-bg: #0a0a0b;
---color-surface: #1c1c1f;
---color-primary: #06b6d4;  /* Cyan */
---color-accent: #a855f7;   /* Purple */
-```
-
-## Development Notes
-
-- **NO "use client"** - All components are Server Components
-- **Port 3001** - Runs alongside byte-folio (3002)
-- **Mobile-first** - Design for mobile, scale up
+`character` | `environment` | `concept-art` | `animation` | `vfx` | `game-art` | `film`
 
 ## License
 

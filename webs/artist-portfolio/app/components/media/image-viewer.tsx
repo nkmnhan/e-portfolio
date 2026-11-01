@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { clsxMerge } from "@eportfolio/ui/utils";
 import type { ImageMedia } from "@/lib/types";
 
 interface ImageViewerProps {

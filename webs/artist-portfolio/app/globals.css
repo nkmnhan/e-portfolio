@@ -12,7 +12,6 @@
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-  --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
   --gradient-glow: radial-gradient(circle at center, var(--color-primary-light) 0%, transparent 70%);
 
   /* Shadows */
@@ -31,9 +30,7 @@
   --section-padding-sm: 3rem;
 
   /* Animation */
-  --transition-fast: 150ms ease;
   --transition-base: 200ms ease;
-  --transition-slow: 300ms ease;
 }
 
 /* Base Styles - Must be in @layer base so Tailwind utilities can override */
