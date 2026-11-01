@@ -25,25 +25,3 @@ export function getFeaturedShowreels(): Showreel[] {
 export function getShowreelById(id: string): Showreel | undefined {
   return showreels.find((s) => s.id === id);
 }
-
-/**
- * Get total breakdown clips count across all showreels
- */
-export function getTotalBreakdownClips(): number {
-  return showreels.reduce((acc, s) => acc + (s.breakdown?.length || 0), 0);
-}
-
-/**
- * Get showreels stats
- */
-export function getShowreelStats(): {
-  total: number;
-  featured: number;
-  totalClips: number;
-} {
-  return {
-    total: showreels.length,
-    featured: showreels.filter((s) => s.featured).length,
-    totalClips: getTotalBreakdownClips(),
-  };
-}

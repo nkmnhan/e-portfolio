@@ -2,13 +2,7 @@
 // Usage: import { getProfile, getProjects, getShowreels } from "@/lib/services"
 
 // Profile Service
-export {
-  getProfile,
-  getSkillsByCategory,
-  getExpertSkills,
-  getSkillsGroupedByCategory,
-  isAvailableForWork,
-} from "./profile.service";
+export { getProfile } from "./profile.service";
 
 // Projects Service
 export {
@@ -16,11 +10,7 @@ export {
   getCategories,
   getProjectBySlug,
   getFeaturedProjects,
-  getProjectsByCategory,
-  getAllTags,
-  getAllTools,
   getAllProjectSlugs,
-  getProjectCountByCategory,
   getAdjacentProjects,
 } from "./projects.service";
 
@@ -29,6 +19,4 @@ export {
   getShowreels,
   getFeaturedShowreels,
   getShowreelById,
-  getTotalBreakdownClips,
-  getShowreelStats,
 } from "./showreels.service";

@@ -3,7 +3,7 @@
 // Currently uses static mock data - can be swapped for API calls later
 
 import { projects, categories } from "@/lib/data";
-import type { Project, ProjectCategory, Category } from "@/lib/types";
+import type { Project, Category } from "@/lib/types";
 
 /**
  * Get all projects
@@ -36,48 +36,10 @@ export function getFeaturedProjects(): Project[] {
 }
 
 /**
- * Get projects by category
- */
-export function getProjectsByCategory(category: ProjectCategory): Project[] {
-  return projects.filter((p) => p.category === category);
-}
-
-/**
- * Get all unique tags across projects
- */
-export function getAllTags(): string[] {
-  const tags = new Set<string>();
-  projects.forEach((p) => p.tags.forEach((t) => tags.add(t)));
-  return Array.from(tags).sort();
-}
-
-/**
- * Get all unique tools across projects
- */
-export function getAllTools(): string[] {
-  const tools = new Set<string>();
-  projects.forEach((p) => p.tools.forEach((t) => tools.add(t)));
-  return Array.from(tools).sort();
-}
-
-/**
  * Get all project slugs (for static generation)
  */
 export function getAllProjectSlugs(): string[] {
   return projects.map((p) => p.slug);
-}
-
-/**
- * Get project count by category
- */
-export function getProjectCountByCategory(): Record<ProjectCategory, number> {
-  const counts = {} as Record<ProjectCategory, number>;
-
-  categories.forEach((cat) => {
-    counts[cat.id] = projects.filter((p) => p.category === cat.id).length;
-  });
-
-  return counts;
 }
 
 /**

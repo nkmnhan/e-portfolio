@@ -8,12 +8,8 @@ export { Button, ButtonGroup, type ButtonProps, type ButtonGroupProps } from "./
 export {
   Card,
   CardHeader,
-  CardContent,
-  CardFooter,
   type CardProps,
   type CardHeaderProps,
-  type CardContentProps,
-  type CardFooterProps,
 } from "./card";
 
 // Layout
