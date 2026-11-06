@@ -6,6 +6,9 @@ import { projectsData } from "@/lib/data/projects";
 import { siteConfig, yearsOfExperience } from "@/lib/data/site-config";
 import { TechBadge } from "@/app/components/tech-badge";
 
+// Unknown slugs return 404 instead of rendering on demand, so random URLs can't burn function usage.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return projectsData.map((p) => ({ slug: p.id }));
 }
