@@ -14,11 +14,21 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: monorepoRoot,
   },
+  // Keep the optimizer to the one avatar and a few variants, so requests can't use up the
+  // transformation quota. If the `?v=` in lib/data/about.ts changes, update `search` too.
   images: {
     remotePatterns: [
-      { protocol: "https", hostname: "avatars.githubusercontent.com" },
-      { protocol: "https", hostname: "picsum.photos" },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        pathname: "/u/49507410",
+        search: "?v=4",
+      },
     ],
+    deviceSizes: [640],
+    imageSizes: [256, 384],
+    qualities: [75],
+    minimumCacheTTL: 2678400,
   },
 };
 

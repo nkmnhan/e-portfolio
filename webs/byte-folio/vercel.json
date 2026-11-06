@@ -1,4 +1,10 @@
 {
+  "routes": [
+    {
+      "src": "^/(?:wp-.*|xmlrpc\\.php|\\.env.*|\\.git(?:/.*)?)$",
+      "mitigate": { "action": "deny" }
+    }
+  ],
   "headers": [
     {
       "source": "/_next/static/(.*)",
